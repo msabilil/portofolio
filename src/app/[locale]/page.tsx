@@ -30,7 +30,7 @@ export default function HomePage() {
   const tContact = useTranslations("contact");
 
   return (
-    <div className="flex flex-col gap-20 py-12 md:py-16">
+    <div className="flex flex-col gap-24 py-12 md:py-16">
       <section id="about" className="fade-in-up">
         <p style={{ color: "var(--color-text-muted)" }}>{tHome("greeting")}</p>
         <h1 className="text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
@@ -44,7 +44,7 @@ export default function HomePage() {
       </section>
 
       <section id="skills">
-        <h2 className="mb-6 text-2xl font-semibold">{tSkills("title")}</h2>
+        <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tSkills("title")}</h2>
         <div className="mb-8">
           <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {tSkills("toolsHeading")}
@@ -68,7 +68,7 @@ export default function HomePage() {
       </section>
 
       <section id="experience">
-        <h2 className="mb-6 text-2xl font-semibold">{tExperience("title")}</h2>
+        <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tExperience("title")}</h2>
         <div>
           {experience.map((entry) => (
             <ExperienceItem
@@ -82,7 +82,7 @@ export default function HomePage() {
       </section>
 
       <section id="projects">
-        <h2 className="mb-6 text-2xl font-semibold">{tProjects("title")}</h2>
+        <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tProjects("title")}</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard
@@ -96,8 +96,8 @@ export default function HomePage() {
       </section>
 
       <section id="contact">
-        <h2 className="mb-4 text-2xl font-semibold">{tContact("title")}</h2>
-        <p className="mb-6" style={{ color: "var(--color-text-muted)" }}>{tContact("intro")}</p>
+        <h2 className="mb-4 text-[32px] font-semibold tracking-[-0.01em]">{tContact("title")}</h2>
+        <p className="mb-6 max-w-prose" style={{ color: "var(--color-text-muted)" }}>{tContact("intro")}</p>
         <SocialLinks />
       </section>
     </div>

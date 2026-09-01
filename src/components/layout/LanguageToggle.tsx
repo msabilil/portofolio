@@ -18,8 +18,11 @@ export function LanguageToggle() {
           type="button"
           aria-current={code === locale ? "true" : undefined}
           onClick={() => router.replace(pathname, { locale: code })}
-          style={{ color: code === locale ? "var(--color-text)" : "var(--color-text-muted)" }}
-          className={code === locale ? "font-semibold underline" : undefined}
+          className={
+            code === locale
+              ? "font-semibold text-[var(--color-text)] underline underline-offset-4"
+              : "text-[var(--color-text-muted)] transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-hover)]"
+          }
         >
           {code.toUpperCase()}
         </button>

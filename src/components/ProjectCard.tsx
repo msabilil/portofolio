@@ -11,16 +11,13 @@ function CoverPlaceholder({ title }: { title: string }) {
   return (
     <div
       aria-hidden="true"
-      className="flex h-full w-full items-center justify-center rounded-[var(--radius-sm)] border"
+      className="flex h-full w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--color-border)]"
       style={{
-        borderColor: "var(--color-border)",
         background:
           "repeating-linear-gradient(135deg, var(--color-bg-subtle) 0 2px, transparent 2px 14px)",
       }}
     >
-      <span className="text-4xl font-semibold" style={{ color: "var(--color-border)" }}>
-        {title.charAt(0)}
-      </span>
+      <span className="text-4xl font-semibold text-[var(--color-border)]">{title.charAt(0)}</span>
     </div>
   );
 }
@@ -28,8 +25,7 @@ function CoverPlaceholder({ title }: { title: string }) {
 export function ProjectCard({ project, description, viewLabel }: ProjectCardProps) {
   return (
     <article
-      className="group rounded-[var(--radius-md)] border p-4 transition-colors duration-[var(--dur-base)]"
-      style={{ borderColor: "var(--color-border)" }}
+      className="group rounded-[var(--radius-md)] border border-[var(--color-border)] p-4 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--color-text-muted)] hover:shadow-[var(--shadow-md)]"
     >
       <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)]">
         {project.cover ? (
@@ -49,15 +45,19 @@ export function ProjectCard({ project, description, viewLabel }: ProjectCardProp
         {project.tags.map((tag) => (
           <li
             key={tag}
-            className="rounded-full border px-2 py-1 text-xs"
-            style={{ borderColor: "var(--color-border)" }}
+            className="rounded-full border border-[var(--color-border)] px-2 py-1 text-xs"
           >
             {tag}
           </li>
         ))}
       </ul>
       {project.link && (
-        <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block underline">
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block underline underline-offset-4 transition-opacity duration-[var(--dur-fast)] hover:opacity-70"
+        >
           {viewLabel}
         </a>
       )}

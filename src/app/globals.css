@@ -20,6 +20,9 @@
 
   --focus-ring: 2px solid var(--color-text);
   --focus-ring-offset: 2px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.04), 0 1px 1px rgba(15, 15, 15, 0.03);
+  --shadow-md: 0 16px 32px rgba(15, 15, 15, 0.08), 0 2px 8px rgba(15, 15, 15, 0.05);
 }
 
 @theme inline {
@@ -37,6 +40,34 @@ body {
 *:focus-visible {
   outline: var(--focus-ring);
   outline-offset: var(--focus-ring-offset);
+}
+
+::selection {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+html {
+  scrollbar-color: var(--color-border) transparent;
 }
 
 @keyframes fade-in-up {

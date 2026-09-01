@@ -9,16 +9,14 @@ export function Sidebar() {
 
   return (
     <aside
-      className="flex shrink-0 flex-row items-center gap-4 rounded-[var(--radius-md)] border p-4 md:sticky md:top-1/2 md:w-[var(--sidebar-w)] md:-translate-y-1/2 md:flex-col md:items-start md:gap-6 md:p-8"
-      style={{ borderColor: "var(--color-border)" }}
+      className="flex shrink-0 flex-row items-center gap-4 rounded-[var(--radius-md)] border border-[var(--color-border)] p-4 shadow-[var(--shadow-sm)] md:sticky md:top-1/2 md:w-[var(--sidebar-w)] md:-translate-y-1/2 md:flex-col md:items-start md:gap-6 md:p-8"
     >
       <Image
         src="/assets/photos/profile.jpg"
         alt={profile.name}
         width={80}
         height={80}
-        className="rounded-full border object-cover"
-        style={{ borderColor: "var(--color-border)" }}
+        className="rounded-full border border-[var(--color-border)] object-cover"
       />
       <div>
         <p className="font-semibold leading-tight">{profile.name}</p>
