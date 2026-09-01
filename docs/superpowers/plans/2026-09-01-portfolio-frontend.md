@@ -45,12 +45,39 @@ bun add -d @testing-library/react @testing-library/jest-dom @happy-dom/global-re
 `src/test/setup.ts`:
 ```ts
 import { GlobalRegistrator } from "@happy-dom/global-registrator";
-import { expect } from "bun:test";
-import * as matchers from "@testing-library/jest-dom/matchers";
+import { afterEach, expect } from "bun:test";
 
 GlobalRegistrator.register();
-expect.extend(matchers);
+
+const matchers = await import("@testing-library/jest-dom/matchers");
+expect.extend(matchers as Parameters<typeof expect.extend>[0]);
+
+const { cleanup } = await import("@testing-library/react");
+afterEach(cleanup);
 ```
+
+> Note: the `jest-dom/matchers` and `@testing-library/react` imports must be
+> **dynamic** (`await import(...)`), not static — a static import gets
+> hoisted above `GlobalRegistrator.register()` and evaluates
+> `@testing-library/dom`'s `screen` binding before `document` exists, which
+> permanently breaks it. `expect.extend` also needs a type cast here because
+> the matchers module's declared type doesn't structurally match bun:test's
+> `expect.extend` parameter type. You'll also need a small ambient
+> declaration file so bun:test's `Matchers` interface picks up jest-dom's
+> custom matcher types:
+>
+> `src/test/jest-dom.d.ts`:
+> ```ts
+> /// <reference path="../../node_modules/@testing-library/jest-dom/types/bun.d.ts" />
+> ```
+>
+> And `@types/bun` as a dev dependency (`bun add -d @types/bun`) so
+> `bun:test` itself type-checks under `next build`'s TypeScript pass.
+>
+> Finally, `@testing-library/react`'s auto-cleanup relies on detecting a
+> global `afterEach` — Bun's test runner doesn't expose one implicitly, so
+> without the explicit `afterEach(cleanup)` above, DOM from one test leaks
+> into the next within the same file.
 
 - [ ] **Step 3: Point Bun's test runner at the preload file**
 
@@ -1090,6 +1117,8 @@ import { describe, expect, it, mock } from "bun:test";
 mock.module("next/navigation", () => ({
   usePathname: () => "/about",
   useRouter: () => ({ push: () => {}, replace: () => {} }),
+  redirect: () => {},
+  permanentRedirect: () => {},
 }));
 
 const { render, screen } = await import("@testing-library/react");
