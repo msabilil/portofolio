@@ -1,8 +1,16 @@
 # Design — Website Portofolio Personal
 
-**Versi:** 1.0
+**Versi:** 1.1
 **Tanggal:** 2026-09-01
+**Menggantikan:** v1.0
 **Referensi:** https://sawad.framer.website/ · https://www.satriabahari.my.id/en
+
+## Riwayat Perubahan
+
+| Versi | Perubahan |
+|-------|-----------|
+| 1.0 | Draf awal: sidebar fixed full-height dua kolom, multi-page, mobile pakai header+drawer. |
+| 1.1 | Single-page — sidebar jadi **kotak rounded, sticky, vertically-centered** tanpa nav menu; main content dipusatkan dengan margin ±20% viewport; mobile: sidebar jadi kartu ringkas di atas (drawer dihapus, tidak ada nav yang perlu disembunyikan). |
 
 ---
 
@@ -80,29 +88,27 @@ export const archivo = Archivo({
 
 ## 4. Layout & Grid
 
-- **Container maksimum ~1400px**, `margin-inline: auto`, dengan padding kiri-kanan
-  agar tidak menempel tepi di layar lebar. Konten **tidak full-width**.
-- **Dua kolom di desktop:**
-  - **Sidebar kiri fixed**, lebar **280–320px**.
-  - **Kolom konten kanan**, punya **scroll area sendiri**.
+- **Main content dipusatkan secara horizontal**, menyisakan ruang kosong
+  kiri-kanan **±20% lebar viewport** di layar lebar (mis. `w-4/5` dengan
+  `max-width` ~1200px sebagai batas atas di layar sangat lebar, biar margin
+  gak melar tanpa batas). Konten **tidak full-width**, dan bukan dua kolom
+  fixed-width penuh layar seperti draf v1.0.
+- **Di dalam area yang dipusatkan itu:**
+  - **Sidebar** — kotak rounded, **sticky & vertically-centered**, tinggi
+    mengikuti konten (bukan full-height).
+  - **Konten section** — satu kolom, discroll (Lenis), berisi semua section
+    berurutan.
 
 ```
-┌──────────────────────── max-width ~1400px ─────────────────────────┐
-│                                                                    │
-│  ┌───────────────┐   ┌───────────────────────────────────────┐    │
-│  │  SIDEBAR       │   │  CONTENT (scroll sendiri, Lenis)       │    │
-│  │  (fixed,       │   │                                        │    │
-│  │   280–320px)   │   │  Halaman aktif                         │    │
-│  │                │   │                                        │    │
-│  │  • foto        │   │                                        │    │
-│  │  • nama        │   │                                        │    │
-│  │  • role        │   │                                        │    │
-│  │  • sosial      │   │                                        │    │
-│  │  • toggle ID/EN│   │                                        │    │
-│  │  • nav menu    │   │                                        │    │
-│  └───────────────┘   └───────────────────────────────────────┘    │
-│                                                                    │
-└────────────────────────────────────────────────────────────────────┘
+┌───20%───┬──────────── main (±60% viewport) ────────────┬───20%───┐
+│         │  ┌─────────┐   ┌─────────────────────────┐   │         │
+│         │  │ SIDEBAR │   │  CONTENT (scroll, Lenis) │   │         │
+│  kosong │  │ (rounded,│   │  Tentang → Skills →      │   │  kosong │
+│         │  │  sticky, │   │  Pengalaman → Projects → │   │         │
+│         │  │  center- │   │  Contact                 │   │         │
+│         │  │  vertikal)│  │                          │   │         │
+│         │  └─────────┘   └─────────────────────────┘   │         │
+└─────────┴───────────────────────────────────────────────┴─────────┘
 ```
 
 - **Spacing scale** (kelipatan 4/8): 4, 8, 12, 16, 24, 32, 48, 64, 96px.
@@ -113,19 +119,23 @@ export const archivo = Archivo({
 ## 5. Komponen
 
 ### 5.1 Sidebar (desktop)
-- Fixed di kiri, penuh tinggi viewport.
-- Urutan vertikal: **foto profil** (bulat/rounded) → **nama** → **role/title
-  singkat** → **icon sosial** (baris ikon, hover naik kontras) → **toggle bahasa**
-  → **nav menu**.
-- Border kanan tipis (`--color-border`) opsional sebagai pemisah dari konten.
-- Item nav aktif: penanda selain warna (mis. garis kecil / titik / weight naik).
+- **Kotak dengan sudut rounded** (`--radius-md`), border tipis
+  (`--color-border`), padding dalam nyaman (mis. 32px).
+- **Sticky & vertically-centered**: `position: sticky` + `top: 50%` +
+  `translateY(-50%)` — tetap kelihatan pas discroll, tapi tinggi kotak
+  mengikuti kontennya sendiri (bukan `height: 100vh`).
+- Urutan vertikal: **foto profil** (bulat) → **nama** → **role/title
+  singkat** → **icon sosial** (baris ikon, hover naik kontras) → **toggle
+  bahasa**. **Tidak ada nav menu** — semua section sudah tampil di satu
+  halaman yang sama.
 
-### 5.2 Mobile header + drawer
-- **Header bar tipis**: foto kecil + nama di kiri, **hamburger** di kanan.
-- **Drawer** (slide dari kanan/kiri) berisi: nav menu, icon sosial, toggle bahasa.
-- Overlay gelap tipis di belakang drawer; klik overlay / Esc / tombol close =
-  tutup.
-- Transisi drawer halus (ease-out ~250ms).
+### 5.2 Sidebar (mobile)
+- Kartu yang sama (isi identik: foto, nama, role, sosial, toggle bahasa),
+  tapi tampil sebagai **blok statis di bagian paling atas halaman** —
+  bukan sticky, bukan drawer/hamburger. Karena tidak ada nav yang perlu
+  disembunyikan, tidak perlu pola header+drawer dari draf v1.0.
+- Layout dalam kartu boleh lebih horizontal di mobile (foto di kiri, nama+role
+  di kanan) supaya tidak makan tinggi layar.
 
 ### 5.3 Social links
 - Ikon garis (line icon) monokrom. Default `--color-text-muted`, hover
@@ -147,6 +157,14 @@ export const archivo = Archivo({
   sekadar teks berjarak.
 - **Tanpa progress bar / persentase.** Dua kelompok terpisah: **Tools** dan
   **Soft skills**, masing-masing diberi label seksi kecil (UPPERCASE muted).
+
+### 5.7 Experience item *(baru di v1.1)*
+- List vertikal sederhana, bukan card bertumpuk berat. Tiap entri: **role**
+  (semibold) + **tempat** dalam satu baris, **periode** kecil di sampingnya
+  (`--color-text-muted`, mis. UPPERCASE kecil), lalu **deskripsi** singkat di
+  bawahnya.
+- Pemisah antar entri: border tipis atas/bawah atau spacing besar — bukan
+  card dengan shadow.
 
 ---
 
@@ -183,23 +201,20 @@ const lenis = new Lenis({
 
 | Breakpoint | Perilaku |
 |-----------|----------|
-| ≥ 1024px (desktop) | Sidebar fixed + konten kanan (dua kolom). |
-| 768–1023px (tablet) | Bisa tetap dua kolom dengan sidebar lebih sempit, atau beralih ke header + drawer. |
-| < 768px (mobile) | Header bar tipis + hamburger drawer; konten satu kolom penuh (dalam padding). |
+| ≥ 768px (desktop/tablet) | Main dipusatkan (±20% margin kiri-kanan), sidebar rounded sticky vertically-centered di kiri, konten di kanan. |
+| < 768px (mobile) | Sidebar jadi kartu statis di atas (layout horizontal ringkas); konten satu kolom penuh di bawahnya (dalam padding). |
 
-- Konten selalu dibatasi oleh container ~1400px; di layar sangat lebar, whitespace
-  kiri-kanan bertambah.
+- Di layar sangat lebar, `max-width` pada wrapper mencegah margin kiri-kanan
+  melebihi proporsi wajar — lihat §10.
 
 ---
 
 ## 8. Aksesibilitas
 
 - Kontras teks utama tinggi (near-black di atas putih).
-- Semua kontrol interaktif dapat difokuskan & dioperasikan via keyboard (nav,
-  toggle, drawer, link sosial). Gunakan `--focus-ring` (outline 2px solid,
-  offset 2px) — jangan hilangkan outline tanpa pengganti.
-- Drawer mobile: fokus terkurung saat terbuka, Esc menutup, tombol punya
-  `aria-label`.
+- Semua kontrol interaktif dapat difokuskan & dioperasikan via keyboard
+  (toggle bahasa, link sosial, link project). Gunakan `--focus-ring`
+  (outline 2px solid, offset 2px) — jangan hilangkan outline tanpa pengganti.
 - `prefers-reduced-motion` mematikan smooth scroll berlebih.
 - Gambar punya `alt` yang bermakna (foto profil, cover project).
 
@@ -211,42 +226,42 @@ const lenis = new Lenis({
 src/
   app/
     [locale]/
-      layout.tsx           // sidebar/header + SmoothScroll + provider i18n
-      page.tsx             // Home
-      about/page.tsx
-      skills/page.tsx
-      projects/page.tsx
-      projects/[slug]/page.tsx   // opsional (detail)
-      contact/page.tsx
+      layout.tsx           // wrapper margin + SmoothScroll + provider i18n
+      page.tsx             // satu-satunya halaman — semua section di sini
   components/
-    Sidebar.tsx
-    MobileHeader.tsx
-    Drawer.tsx
-    LanguageToggle.tsx
-    SocialLinks.tsx
+    layout/
+      Sidebar.tsx           // rounded, sticky, vertically-centered (desktop)
+                             // + varian kartu statis (mobile) di komponen sama
+      LanguageToggle.tsx
+      SocialLinks.tsx
     SmoothScroll.tsx        // wrapper Lenis (client component)
     ProjectCard.tsx
     SkillTag.tsx
+    ExperienceItem.tsx
   content/
+    profile.ts             // nama, role, sosial
     projects.ts            // data project (title, desc id/en, tags, cover, link)
+    experience.ts           // data pengalaman (placeholder)
   i18n/
     routing.ts             // konfigurasi locale (id, en)
+    navigation.ts
     request.ts
   styles/
-    globals.css            // token warna (CSS variables), reset, base
+    fonts.ts
 messages/
   id.json
   en.json
 public/
   assets/
-    profile.jpg
+    photos/profile.jpg
     projects/
       <slug>/cover.jpg
 ```
 
-> Catatan App Router: pakai **segment folder** per halaman (`about/`, `skills/`,
-> dst.), bukan route group `(...)` — tanda kurung tidak muncul di URL, jadi tidak
-> membentuk path halaman. Home = `page.tsx` di root `[locale]`.
+> v1.1 menghapus `MobileHeader.tsx`, `Drawer.tsx`, dan `NavLinks.tsx` dari
+> draf v1.0 — tidak relevan lagi tanpa nav menu/multi-page. Route per
+> halaman (`about/`, `skills/`, dst.) juga dihapus; semua jadi section di
+> satu `page.tsx`.
 
 ---
 
@@ -261,7 +276,7 @@ public/
   --color-border: #E6E6E4;
   --color-hover: #000000;
 
-  --container-max: 1400px;
+  --container-max: 1200px;   /* batas atas lebar main di layar sangat lebar */
   --sidebar-w: 300px;         /* di rentang 280–320px */
 
   --radius-sm: 8px;
@@ -280,12 +295,16 @@ public/
 
 ## 11. Checklist Sesuai Referensi
 
-- [ ] Container tidak full-width (max ~1400px, margin auto).
-- [ ] Sidebar kiri fixed dengan foto, nama, role, sosial, toggle bahasa, nav.
-- [ ] Mobile: header tipis + hamburger drawer.
+- [ ] Main dipusatkan, margin kiri-kanan ±20% di layar lebar (tidak full-width).
+- [ ] Sidebar berbentuk kotak rounded, sticky, vertically-centered — bukan
+      panel fixed full-height, dan **tanpa nav menu**.
+- [ ] Mobile: sidebar jadi kartu statis di atas (bukan drawer/hamburger).
 - [ ] Putih dominan, aksen hitam tipis, tanpa warna lain.
 - [ ] Font Archivo via `next/font`.
-- [ ] Scroll pelan (Lenis) di area konten kanan.
+- [ ] Scroll pelan (Lenis) di area konten.
 - [ ] Skills sebagai tag/grid, tanpa progress bar.
+- [ ] Section Pengalaman tampil (placeholder) di antara Skills dan Projects.
 - [ ] Projects dari config + folder aset per slug.
 - [ ] Toggle ID/EN ganti prefix URL tanpa reload penuh.
+- [ ] Semua section (Tentang/Skills/Pengalaman/Projects/Contact) tampil di
+      satu halaman yang sama, urut vertikal.
