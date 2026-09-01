@@ -4,6 +4,9 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { archivo } from "@/styles/fonts";
+import { MobileHeader } from "@/components/layout/MobileHeader";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,7 +41,13 @@ export default async function LocaleLayout({
     <html lang={locale} className={archivo.variable}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <MobileHeader />
+          <div className="mx-auto flex max-w-[var(--container-max)]">
+            <Sidebar />
+            <SmoothScroll>
+              <main className="w-full p-6 md:ml-[var(--sidebar-w)] md:p-12">{children}</main>
+            </SmoothScroll>
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>
