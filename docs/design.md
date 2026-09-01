@@ -196,7 +196,8 @@ const lenis = new Lenis({
 
 - Kontras teks utama tinggi (near-black di atas putih).
 - Semua kontrol interaktif dapat difokuskan & dioperasikan via keyboard (nav,
-  toggle, drawer, link sosial).
+  toggle, drawer, link sosial). Gunakan `--focus-ring` (outline 2px solid,
+  offset 2px) — jangan hilangkan outline tanpa pengganti.
 - Drawer mobile: fokus terkurung saat terbuka, Esc menutup, tombol punya
   `aria-label`.
 - `prefers-reduced-motion` mematikan smooth scroll berlebih.
@@ -269,6 +270,9 @@ public/
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 150ms;
   --dur-base: 250ms;
+
+  --focus-ring: 2px solid var(--color-text);
+  --focus-ring-offset: 2px;
 }
 ```
 
