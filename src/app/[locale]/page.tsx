@@ -31,12 +31,14 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col gap-20 py-12 md:py-16">
-      <section id="about">
+      <section id="about" className="fade-in-up">
         <p style={{ color: "var(--color-text-muted)" }}>{tHome("greeting")}</p>
-        <h1 className="text-3xl font-semibold">{profile.name}</h1>
-        <p className="mt-1" style={{ color: "var(--color-text-muted)" }}>{tHome("tagline")}</p>
+        <h1 className="text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
+          {profile.name}
+        </h1>
+        <p className="mt-2 text-lg" style={{ color: "var(--color-text-muted)" }}>{tHome("tagline")}</p>
         <p className="mt-6 max-w-prose">{tAbout("bio")}</p>
-        <a href="#projects" className="mt-6 inline-block underline">
+        <a href="#projects" className="mt-6 inline-block underline underline-offset-4">
           {tHome("cta")}
         </a>
       </section>

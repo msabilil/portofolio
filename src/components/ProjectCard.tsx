@@ -7,14 +7,41 @@ type ProjectCardProps = {
   viewLabel: string;
 };
 
+function CoverPlaceholder({ title }: { title: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className="flex h-full w-full items-center justify-center rounded-[var(--radius-sm)] border"
+      style={{
+        borderColor: "var(--color-border)",
+        background:
+          "repeating-linear-gradient(135deg, var(--color-bg-subtle) 0 2px, transparent 2px 14px)",
+      }}
+    >
+      <span className="text-4xl font-semibold" style={{ color: "var(--color-border)" }}>
+        {title.charAt(0)}
+      </span>
+    </div>
+  );
+}
+
 export function ProjectCard({ project, description, viewLabel }: ProjectCardProps) {
   return (
     <article
-      className="rounded-[var(--radius-md)] border p-4"
+      className="group rounded-[var(--radius-md)] border p-4 transition-colors duration-[var(--dur-base)]"
       style={{ borderColor: "var(--color-border)" }}
     >
-      <div className="relative mb-3 aspect-[4/3]">
-        <Image src={project.cover} alt={project.title} fill className="rounded-[var(--radius-sm)] object-cover" />
+      <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)]">
+        {project.cover ? (
+          <Image
+            src={project.cover}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-[var(--dur-base)] group-hover:scale-105"
+          />
+        ) : (
+          <CoverPlaceholder title={project.title} />
+        )}
       </div>
       <h3 className="font-semibold">{project.title}</h3>
       <p style={{ color: "var(--color-text-muted)" }}>{description}</p>

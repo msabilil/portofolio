@@ -17,11 +17,12 @@ export function Sidebar() {
         alt={profile.name}
         width={80}
         height={80}
-        className="rounded-full"
+        className="rounded-full border object-cover"
+        style={{ borderColor: "var(--color-border)" }}
       />
       <div>
-        <p className="font-semibold">{profile.name}</p>
-        <p style={{ color: "var(--color-text-muted)" }}>{t("roleLabel")}</p>
+        <p className="font-semibold leading-tight">{profile.name}</p>
+        <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>{t("roleLabel")}</p>
       </div>
       <SocialLinks />
       <LanguageToggle />

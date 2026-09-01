@@ -8,7 +8,7 @@
   --color-border: #e6e6e4;
   --color-hover: #000000;
 
-  --container-max: 1400px;
+  --container-max: 1200px;
   --sidebar-w: 300px;
 
   --radius-sm: 8px;
@@ -37,4 +37,25 @@ body {
 *:focus-visible {
   outline: var(--focus-ring);
   outline-offset: var(--focus-ring-offset);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 600ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    animation: none;
+  }
 }

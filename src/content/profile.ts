@@ -5,13 +5,11 @@ export type SocialLink = {
   href: string;
 };
 
-// Ganti href github/linkedin/instagram dengan URL profil asli sebelum publish.
+// linkedin/instagram belum ada URL terverifikasi — tambahkan saat sudah ada.
 export const profile = {
-  name: "Muhamad Fajri",
+  name: "Muhammad Sabilil Fajri",
   social: [
     { id: "email", href: "mailto:muhamadfajri943@gmail.com" },
-    { id: "github", href: "https://github.com/" },
-    { id: "linkedin", href: "https://linkedin.com/" },
-    { id: "instagram", href: "https://instagram.com/" },
+    { id: "github", href: "https://github.com/msabilil" },
   ] as SocialLink[],
 };

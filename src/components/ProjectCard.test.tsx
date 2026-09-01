@@ -34,4 +34,10 @@ describe("ProjectCard", () => {
     render(<ProjectCard project={{ ...project, link: undefined }} description={project.description.en} viewLabel="View" />);
     expect(screen.queryByRole("link")).not.toBeInTheDocument();
   });
+
+  it("renders a letter placeholder when the project has no cover image", () => {
+    render(<ProjectCard project={{ ...project, cover: undefined }} description={project.description.en} viewLabel="View" />);
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    expect(screen.getByText("D")).toBeInTheDocument();
+  });
 });
