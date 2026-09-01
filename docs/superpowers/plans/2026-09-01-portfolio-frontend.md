@@ -1472,10 +1472,17 @@ git commit -m "feat: wire sidebar/mobile-header/smooth-scroll shell into the loc
 
 `src/components/ProjectCard.test.tsx`:
 ```tsx
-import { describe, expect, it } from "bun:test";
-import { render, screen } from "@testing-library/react";
-import { ProjectCard } from "./ProjectCard";
+import { describe, expect, it, mock } from "bun:test";
 import type { Project } from "@/content/projects";
+
+// next/image needs Next's runtime image loader config, which isn't present
+// under a bare bun test render — swap in a plain <img> for this test.
+mock.module("next/image", () => ({
+  default: (props: { src: string; alt: string }) => <img src={props.src} alt={props.alt} />,
+}));
+
+const { render, screen } = await import("@testing-library/react");
+const { ProjectCard } = await import("./ProjectCard");
 
 const project: Project = {
   slug: "demo",
