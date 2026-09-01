@@ -10,7 +10,7 @@ export function Sidebar() {
 
   return (
     <aside
-      className="hidden md:fixed md:inset-y-0 md:left-0 md:flex md:w-[var(--sidebar-w)] md:flex-col md:gap-8 md:border-r md:p-8"
+      className="hidden shrink-0 md:sticky md:top-0 md:flex md:h-screen md:w-[var(--sidebar-w)] md:flex-col md:gap-8 md:border-r md:py-16 md:pr-8"
       style={{ borderColor: "var(--color-border)" }}
     >
       <Image

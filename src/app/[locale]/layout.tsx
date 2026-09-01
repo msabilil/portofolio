@@ -42,10 +42,10 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <MobileHeader />
-          <div className="mx-auto flex max-w-[var(--container-max)]">
+          <div className="mx-auto flex max-w-[var(--container-max)] md:gap-12 md:px-12">
             <Sidebar />
             <SmoothScroll>
-              <main className="w-full p-6 md:ml-[var(--sidebar-w)] md:p-12">{children}</main>
+              <main className="w-full min-w-0 p-6 py-12 md:py-16">{children}</main>
             </SmoothScroll>
           </div>
         </NextIntlClientProvider>
