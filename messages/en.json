@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "mainLabel": "Main navigation",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "sidebar": {
+    "roleLabel": "UI/UX Designer",
+    "languageLabel": "Language"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "tagline": "I design clear, human interfaces.",
+    "cta": "View projects"
+  },
+  "about": {
+    "title": "About",
+    "bio": "Placeholder bio — add a short paragraph about your background and design focus here."
+  },
+  "skills": {
+    "title": "Skills",
+    "toolsHeading": "Tools",
+    "softHeading": "Soft skills",
+    "tools": {
+      "figma": "Figma",
+      "balsamiq": "Balsamiq",
+      "googleStitch": "Google Stitch",
+      "claudeDesign": "Claude Design",
+      "deepseek": "DeepSeek"
+    },
+    "soft": {
+      "creative": "Creative",
+      "innovative": "Innovative",
+      "communication": "Communication",
+      "interpersonal": "Interpersonal",
+      "criticalThinking": "Critical thinking",
+      "analyticalThinking": "Analytical thinking",
+      "problemSolving": "Problem solving",
+      "curiosity": "Curiosity",
+      "initiative": "Initiative"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "viewLink": "View"
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "The fastest way to reach me is by email or social media."
+  },
+  "drawer": {
+    "openLabel": "Open menu",
+    "closeLabel": "Close menu"
+  },
+  "social": {
+    "emailLabel": "Email",
+    "githubLabel": "GitHub",
+    "linkedinLabel": "LinkedIn",
+    "instagramLabel": "Instagram"
+  }
+}

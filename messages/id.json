@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "mainLabel": "Navigasi utama",
+    "home": "Beranda",
+    "about": "Tentang",
+    "skills": "Keahlian",
+    "projects": "Proyek",
+    "contact": "Kontak"
+  },
+  "sidebar": {
+    "roleLabel": "UI/UX Designer",
+    "languageLabel": "Bahasa"
+  },
+  "home": {
+    "greeting": "Hai, saya",
+    "tagline": "Saya merancang antarmuka yang jelas dan manusiawi.",
+    "cta": "Lihat proyek"
+  },
+  "about": {
+    "title": "Tentang",
+    "bio": "Bio placeholder — tambahkan paragraf singkat tentang latar belakang dan fokus desainmu di sini."
+  },
+  "skills": {
+    "title": "Keahlian",
+    "toolsHeading": "Tools",
+    "softHeading": "Soft skill",
+    "tools": {
+      "figma": "Figma",
+      "balsamiq": "Balsamiq",
+      "googleStitch": "Google Stitch",
+      "claudeDesign": "Claude Design",
+      "deepseek": "DeepSeek"
+    },
+    "soft": {
+      "creative": "Creative",
+      "innovative": "Innovative",
+      "communication": "Communication",
+      "interpersonal": "Interpersonal",
+      "criticalThinking": "Critical thinking",
+      "analyticalThinking": "Analytical thinking",
+      "problemSolving": "Problem solving",
+      "curiosity": "Curiosity",
+      "initiative": "Initiative"
+    }
+  },
+  "projects": {
+    "title": "Proyek",
+    "viewLink": "Lihat"
+  },
+  "contact": {
+    "title": "Kontak",
+    "intro": "Cara tercepat menghubungi saya lewat email atau media sosial."
+  },
+  "drawer": {
+    "openLabel": "Buka menu",
+    "closeLabel": "Tutup menu"
+  },
+  "social": {
+    "emailLabel": "Email",
+    "githubLabel": "GitHub",
+    "linkedinLabel": "LinkedIn",
+    "instagramLabel": "Instagram"
+  }
+}
