@@ -4,4 +4,4 @@ import { expect } from "bun:test";
 GlobalRegistrator.register();
 
 const matchers = await import("@testing-library/jest-dom/matchers");
-expect.extend(matchers);
+expect.extend(matchers as Parameters<typeof expect.extend>[0]);
