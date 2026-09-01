@@ -1,5 +1,17 @@
 # Portfolio Frontend Implementation Plan
 
+> **Superseded (2026-09-01, same day):** this plan built a **multi-page**
+> layout (Home/About/Skills/Projects/Contact routes, fixed full-height
+> sidebar with a nav menu, mobile header+drawer). After review, PRD/design.md
+> were revised to **v1.1**: a **single page** with all sections stacked
+> (anchors, no nav menu), a **rounded, sticky, vertically-centered** sidebar
+> card, and a centered main content column (~20% margin at large
+> breakpoints). `MobileHeader`, `Drawer`, and `NavLinks` from Tasks 7–9 below
+> were deleted; the multi-page routes from Task 12 were merged into one
+> `page.tsx`. This plan is kept as a historical record of the first pass —
+> read `docs/prd.md` / `docs/design.md` (v1.1) and the git log after commit
+> `e6d4d4b` for the current architecture, not the tasks below.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the bilingual (EN/ID) portfolio UI on top of the existing Next.js scaffold: fixed sidebar / mobile drawer navigation, slow smooth scroll, design tokens from `design.md`, and five placeholder-content pages (Home, About, Skills, Projects, Contact).
