@@ -1,10 +1,10 @@
 # PRD — Website Portofolio Personal
 
-**Versi:** 1.1
+**Versi:** 1.2
 **Tanggal:** 2026-09-01
 **Status:** Draft
 **Pemilik:** [Nama kamu]
-**Menggantikan:** v1.0
+**Menggantikan:** v1.1
 
 ---
 
@@ -14,6 +14,7 @@
 |-------|-----------|
 | 1.0 | Draf awal: multi-page (Home/About/Skills/Projects/Contact), sidebar fixed full-height dengan nav menu. |
 | 1.1 | **Perubahan besar:** dari multi-page jadi **single-page** (semua section discroll di satu halaman, tanpa nav menu). Sidebar berubah dari fixed full-height jadi **kotak rounded, sticky, vertically-centered**, tidak lagi menampung nav menu. Main content area dipusatkan dengan ruang kosong kiri-kanan (~20% viewport tiap sisi) alih-alih dua kolom fixed-width. Tambah section baru **Pengalaman** (placeholder, data asli menyusul). |
+| 1.2 | Margin kiri-kanan main di layar lebar diturunkan dari **~20%** jadi **~10%** tiap sisi — 20% dirasa kelewat lebar. |
 
 ## 1. Ringkasan Produk
 
@@ -93,7 +94,7 @@ Halaman detail project (`/[locale]/projects/[slug]`) tetap di luar cakupan
 
 ### 6.1 Layout utama
 - Main content area **dipusatkan secara horizontal**, menyisakan ruang kosong
-  kiri-kanan **±20% lebar viewport** di layar lebar (bukan dua kolom
+  kiri-kanan **±10% lebar viewport** di layar lebar (bukan dua kolom
   fixed-width penuh layar).
 - Di dalam area tersebut: **sidebar** (lihat §6.2) + konten section yang
   discroll.
@@ -201,7 +202,7 @@ lagi nav menu.)
 - **Aksesibilitas:** kontras teks memadai, fokus keyboard jelas, hormati
   `prefers-reduced-motion` (matikan/kurangi smooth scroll bila diminta).
 - **Responsif:** layout rapi dari mobile kecil hingga layar lebar. Di layar
-  lebar, main content dipusatkan dengan ruang kosong ±20% kiri-kanan (bukan
+  lebar, main content dipusatkan dengan ruang kosong ±10% kiri-kanan (bukan
   menempel tepi); di mobile, sidebar jadi kartu ringkas di atas, bukan
   drawer/hamburger.
 - **Maintainability:** tambah project cukup edit 1 file config + folder aset;
@@ -234,7 +235,7 @@ lagi nav menu.)
 ## 12. Milestone (usulan)
 
 1. **Setup** — Next.js + Bun + TS + Archivo + next-intl + Lenis. *(selesai)*
-2. **Layout inti (v1.1)** — main content dipusatkan (±20% margin kiri-kanan),
+2. **Layout inti (v1.2)** — main content dipusatkan (±10% margin kiri-kanan),
    sidebar kotak rounded sticky vertically-centered (tanpa nav menu), smooth
    scroll.
 3. **Section** — Tentang, Skills & Tools, Pengalaman (placeholder), Projects,

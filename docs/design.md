@@ -1,8 +1,8 @@
 # Design — Website Portofolio Personal
 
-**Versi:** 1.1
+**Versi:** 1.2
 **Tanggal:** 2026-09-01
-**Menggantikan:** v1.0
+**Menggantikan:** v1.1
 **Referensi:** https://sawad.framer.website/ · https://www.satriabahari.my.id/en
 
 ## Riwayat Perubahan
@@ -11,6 +11,7 @@
 |-------|-----------|
 | 1.0 | Draf awal: sidebar fixed full-height dua kolom, multi-page, mobile pakai header+drawer. |
 | 1.1 | Single-page — sidebar jadi **kotak rounded, sticky, vertically-centered** tanpa nav menu; main content dipusatkan dengan margin ±20% viewport; mobile: sidebar jadi kartu ringkas di atas (drawer dihapus, tidak ada nav yang perlu disembunyikan). |
+| 1.2 | Margin kiri-kanan diturunkan dari **±20%** jadi **±10%** viewport di layar lebar — 20% dirasa kelewat lebar. |
 
 ---
 
@@ -89,10 +90,11 @@ export const archivo = Archivo({
 ## 4. Layout & Grid
 
 - **Main content dipusatkan secara horizontal**, menyisakan ruang kosong
-  kiri-kanan **±20% lebar viewport** di layar lebar (mis. `w-4/5` dengan
-  `max-width` ~1200px sebagai batas atas di layar sangat lebar, biar margin
-  gak melar tanpa batas). Konten **tidak full-width**, dan bukan dua kolom
-  fixed-width penuh layar seperti draf v1.0.
+  kiri-kanan **±10% lebar viewport** di layar lebar (padding horizontal
+  persentase pada wrapper, dibungkus `max-width` ~1200px sebagai batas atas
+  di layar sangat lebar, biar margin gak melar tanpa batas). Konten **tidak
+  full-width**, dan bukan dua kolom fixed-width penuh layar seperti draf
+  v1.0.
 - **Di dalam area yang dipusatkan itu:**
   - **Sidebar** — kotak rounded, **sticky & vertically-centered**, tinggi
     mengikuti konten (bukan full-height).
@@ -100,7 +102,7 @@ export const archivo = Archivo({
     berurutan.
 
 ```
-┌───20%───┬──────────── main (±60% viewport) ────────────┬───20%───┐
+┌──10%──┬──────────────── main (±80% viewport) ─────────────────┬──10%──┐
 │         │  ┌─────────┐   ┌─────────────────────────┐   │         │
 │         │  │ SIDEBAR │   │  CONTENT (scroll, Lenis) │   │         │
 │  kosong │  │ (rounded,│   │  Tentang → Skills →      │   │  kosong │
@@ -201,7 +203,7 @@ const lenis = new Lenis({
 
 | Breakpoint | Perilaku |
 |-----------|----------|
-| ≥ 768px (desktop/tablet) | Main dipusatkan (±20% margin kiri-kanan), sidebar rounded sticky vertically-centered di kiri, konten di kanan. |
+| ≥ 768px (desktop/tablet) | Main dipusatkan (±10% margin kiri-kanan), sidebar rounded sticky vertically-centered di kiri, konten di kanan. |
 | < 768px (mobile) | Sidebar jadi kartu statis di atas (layout horizontal ringkas); konten satu kolom penuh di bawahnya (dalam padding). |
 
 - Di layar sangat lebar, `max-width` pada wrapper mencegah margin kiri-kanan
@@ -295,7 +297,7 @@ public/
 
 ## 11. Checklist Sesuai Referensi
 
-- [ ] Main dipusatkan, margin kiri-kanan ±20% di layar lebar (tidak full-width).
+- [ ] Main dipusatkan, margin kiri-kanan ±10% di layar lebar (tidak full-width).
 - [ ] Sidebar berbentuk kotak rounded, sticky, vertically-centered — bukan
       panel fixed full-height, dan **tanpa nav menu**.
 - [ ] Mobile: sidebar jadi kartu statis di atas (bukan drawer/hamburger).

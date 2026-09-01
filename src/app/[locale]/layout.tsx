@@ -40,7 +40,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={archivo.variable}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 py-10 md:flex-row md:items-start md:gap-10 md:px-[10%] md:py-14 lg:gap-16 lg:px-[20%]">
+          <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 py-10 md:flex-row md:items-start md:gap-10 md:px-[10%] md:py-14 lg:gap-16">
             <Sidebar />
             <SmoothScroll>
               <main className="w-full min-w-0">{children}</main>
