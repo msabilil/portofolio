@@ -1,12 +1,4 @@
 {
-  "nav": {
-    "mainLabel": "Navigasi utama",
-    "home": "Beranda",
-    "about": "Tentang",
-    "skills": "Keahlian",
-    "projects": "Proyek",
-    "contact": "Kontak"
-  },
   "sidebar": {
     "roleLabel": "UI/UX Designer",
     "languageLabel": "Bahasa"
@@ -42,6 +34,9 @@
       "curiosity": "Curiosity",
       "initiative": "Initiative"
     }
+  },
+  "experience": {
+    "title": "Pengalaman"
   },
   "projects": {
     "title": "Proyek",

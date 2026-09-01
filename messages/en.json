@@ -1,12 +1,4 @@
 {
-  "nav": {
-    "mainLabel": "Main navigation",
-    "home": "Home",
-    "about": "About",
-    "skills": "Skills",
-    "projects": "Projects",
-    "contact": "Contact"
-  },
   "sidebar": {
     "roleLabel": "UI/UX Designer",
     "languageLabel": "Language"
@@ -42,6 +34,9 @@
       "curiosity": "Curiosity",
       "initiative": "Initiative"
     }
+  },
+  "experience": {
+    "title": "Experience"
   },
   "projects": {
     "title": "Projects",

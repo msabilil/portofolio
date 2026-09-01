@@ -4,7 +4,6 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { archivo } from "@/styles/fonts";
-import { MobileHeader } from "@/components/layout/MobileHeader";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
@@ -41,11 +40,10 @@ export default async function LocaleLayout({
     <html lang={locale} className={archivo.variable}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <MobileHeader />
-          <div className="mx-auto flex max-w-[var(--container-max)] md:gap-12 md:px-12">
+          <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 py-10 md:flex-row md:items-start md:gap-10 md:px-[10%] md:py-14 lg:gap-16 lg:px-[20%]">
             <Sidebar />
             <SmoothScroll>
-              <main className="w-full min-w-0 p-6 py-12 md:py-16">{children}</main>
+              <main className="w-full min-w-0">{children}</main>
             </SmoothScroll>
           </div>
         </NextIntlClientProvider>
