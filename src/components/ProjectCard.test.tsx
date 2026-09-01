@@ -4,6 +4,7 @@ import type { Project } from "@/content/projects";
 // next/image needs Next's runtime image loader config, which isn't present
 // under a bare bun test render — swap in a plain <img> for this test.
 mock.module("next/image", () => ({
+  // eslint-disable-next-line @next/next/no-img-element -- test-only stand-in
   default: (props: { src: string; alt: string }) => <img src={props.src} alt={props.alt} />,
 }));
 
