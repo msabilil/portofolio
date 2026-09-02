@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import { routing } from "@/i18n/routing";
 import { archivo, jetbrainsMono } from "@/styles/fonts";
 import { Sidebar } from "@/components/layout/Sidebar";
@@ -36,22 +37,16 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme")?.value === "dark" ? "dark" : "light";
 
   return (
-    <html lang={locale} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}",
-          }}
-        />
-      </head>
+    <html lang={locale} data-theme={theme} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <TopNav />
           <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 pb-10 pt-24 md:flex-row md:items-start md:gap-10 md:px-10 md:pb-14 md:pt-24 lg:px-12 lg:gap-16">
-            <Sidebar />
+            <Sidebar theme={theme} />
             <SmoothScroll>
               <main className="w-full min-w-0">{children}</main>
             </SmoothScroll>

@@ -5,7 +5,7 @@ import { LanguageToggle } from "./LanguageToggle";
 import { ThemeToggle } from "./ThemeToggle";
 import { SocialLinks } from "./SocialLinks";
 
-export function Sidebar() {
+export function Sidebar({ theme }: { theme: "light" | "dark" }) {
   const t = useTranslations("sidebar");
 
   return (
@@ -26,7 +26,7 @@ export function Sidebar() {
       <SocialLinks />
       <div className="flex items-center gap-4">
         <LanguageToggle />
-        <ThemeToggle />
+        <ThemeToggle initialTheme={theme} />
       </div>
     </aside>
   );

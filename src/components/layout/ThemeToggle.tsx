@@ -1,23 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 type Theme = "light" | "dark";
 const THEMES: Theme[] = ["light", "dark"];
 
-export function ThemeToggle() {
+export function ThemeToggle({ initialTheme }: { initialTheme: Theme }) {
   const t = useTranslations("sidebar");
-  const [theme, setTheme] = useState<Theme>("light");
-
-  useEffect(() => {
-    setTheme((document.documentElement.dataset.theme as Theme) ?? "light");
-  }, []);
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   function applyTheme(next: Theme) {
     setTheme(next);
     document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
+    document.cookie = `theme=${next}; path=/; max-age=31536000; samesite=lax`;
   }
 
   return (
