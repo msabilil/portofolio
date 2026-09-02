@@ -17,10 +17,10 @@ export function Sidebar() {
         alt={profile.name}
         width={112}
         height={112}
-        className="rounded-[var(--radius-md)] border border-[var(--color-border)] object-cover"
+        className="rounded-[var(--radius-md)] border border-[var(--color-border)] object-cover object-[center_20%]"
       />
       <div>
-        <p className="font-semibold leading-tight">{profile.name}</p>
+        <p className="text-lg font-bold leading-tight tracking-[-0.01em]">{profile.name}</p>
         <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>{t("roleLabel")}</p>
       </div>
       <SocialLinks />

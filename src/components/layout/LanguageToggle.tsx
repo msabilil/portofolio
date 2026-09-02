@@ -11,7 +11,11 @@ export function LanguageToggle() {
   const t = useTranslations("sidebar");
 
   return (
-    <div role="group" aria-label={t("languageLabel")} className="flex gap-2">
+    <div
+      role="group"
+      aria-label={t("languageLabel")}
+      className="flex items-center gap-1 rounded-full border border-[var(--color-border)] p-1"
+    >
       {routing.locales.map((code) => (
         <button
           key={code}
@@ -20,8 +24,8 @@ export function LanguageToggle() {
           onClick={() => router.replace(pathname, { locale: code })}
           className={
             code === locale
-              ? "font-semibold text-[var(--color-text)] underline underline-offset-4"
-              : "text-[var(--color-text-muted)] transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-hover)]"
+              ? "rounded-full bg-[var(--color-accent)] px-3 py-1 text-xs font-semibold text-white"
+              : "rounded-full px-3 py-1 text-xs text-[var(--color-text-muted)] transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-text)]"
           }
         >
           {code.toUpperCase()}

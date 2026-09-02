@@ -58,6 +58,13 @@ const ICONS: Record<SocialLinkId, () => React.JSX.Element> = {
   instagram: InstagramIcon,
 };
 
+const BRAND_COLORS: Record<SocialLinkId, string> = {
+  email: "#EA4335",
+  github: "var(--color-text)",
+  linkedin: "#0A66C2",
+  instagram: "#E4405F",
+};
+
 export function SocialLinks() {
   const t = useTranslations("social");
 
@@ -72,7 +79,8 @@ export function SocialLinks() {
               target={link.id === "email" ? undefined : "_blank"}
               rel={link.id === "email" ? undefined : "noopener noreferrer"}
               aria-label={t(LABEL_KEYS[link.id])}
-              className="block text-[var(--color-text-muted)] transition-[color,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:text-[var(--color-hover)]"
+              style={{ color: BRAND_COLORS[link.id] }}
+              className="block transition-[opacity,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:opacity-75"
             >
               <Icon />
             </a>

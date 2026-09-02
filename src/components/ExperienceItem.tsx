@@ -13,7 +13,7 @@ export function ExperienceItem({ experience, role, description }: ExperienceItem
         src={experience.logo}
         alt=""
         aria-hidden="true"
-        className="h-10 w-10 shrink-0 rounded-[var(--radius-sm)] border object-contain p-1"
+        className="h-12 w-12 shrink-0 rounded-[var(--radius-sm)] border object-cover"
         style={{ borderColor: "var(--color-border)" }}
       />
       <div className="min-w-0 flex-1">

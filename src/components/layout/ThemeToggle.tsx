@@ -21,7 +21,11 @@ export function ThemeToggle() {
   }
 
   return (
-    <div role="group" aria-label={t("themeLabel")} className="flex gap-2">
+    <div
+      role="group"
+      aria-label={t("themeLabel")}
+      className="flex items-center gap-1 rounded-full border border-[var(--color-border)] p-1"
+    >
       {THEMES.map((value) => (
         <button
           key={value}
@@ -30,8 +34,8 @@ export function ThemeToggle() {
           onClick={() => applyTheme(value)}
           className={
             value === theme
-              ? "font-semibold text-[var(--color-text)] underline underline-offset-4"
-              : "text-[var(--color-text-muted)] transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-hover)]"
+              ? "rounded-full bg-[var(--color-accent)] px-3 py-1 text-xs font-semibold text-white"
+              : "rounded-full px-3 py-1 text-xs text-[var(--color-text-muted)] transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-text)]"
           }
         >
           {t(value === "light" ? "lightLabel" : "darkLabel")}
