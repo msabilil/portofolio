@@ -32,7 +32,7 @@ export function TopNav() {
   return (
     <div className="pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center">
       <nav
-        className="pointer-events-auto -ml-17 flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/90 p-1.5 shadow-[var(--shadow-md)] backdrop-blur"
+        className="pointer-events-auto -ml-16 flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/90 p-1.5 shadow-[var(--shadow-md)] backdrop-blur"
         aria-label="Section navigation"
       >
         {NAV_ITEMS.map(({ key, href }) => {
