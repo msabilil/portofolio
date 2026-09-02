@@ -10,7 +10,7 @@ export function Sidebar({ theme }: { theme: "light" | "dark" }) {
 
   return (
     <aside
-      className="flex shrink-0 flex-row items-center gap-4 rounded-[var(--radius-md)] border border-[var(--color-border)] p-4 shadow-[var(--shadow-sm)] md:sticky md:top-1/2 md:w-[var(--sidebar-w)] md:-translate-y-1/2 md:flex-col md:items-start md:gap-6 md:p-8"
+      className="flex shrink-0 flex-row items-center gap-4 rounded-[var(--radius-md)] border border-[var(--color-border)] p-4 shadow-[var(--shadow-sm)] md:sticky md:top-1/2 md:w-[var(--sidebar-w)] md:-translate-y-1/2 md:flex-col md:items-center md:gap-6 md:p-8"
     >
       <Image
         src="/assets/photos/itsme.jpg"
@@ -19,7 +19,7 @@ export function Sidebar({ theme }: { theme: "light" | "dark" }) {
         height={112}
         className="rounded-[var(--radius-md)] border border-[var(--color-border)] object-cover object-[center_20%]"
       />
-      <div>
+      <div className="md:text-center">
         <p className="text-lg font-bold leading-tight tracking-[-0.01em]">{profile.name}</p>
         <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>{t("roleLabel")}</p>
       </div>

@@ -14,7 +14,7 @@ export function LanguageToggle() {
     <div
       role="group"
       aria-label={t("languageLabel")}
-      className="flex items-center gap-1 rounded-full border border-[var(--color-border)] p-1"
+      className="flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/90 p-1 shadow-[var(--shadow-sm)] backdrop-blur"
     >
       {routing.locales.map((code) => (
         <button

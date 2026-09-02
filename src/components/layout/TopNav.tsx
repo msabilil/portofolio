@@ -30,45 +30,47 @@ export function TopNav() {
   const pathname = usePathname();
 
   return (
-    <nav
-      className="fixed left-1/2 top-6 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/90 p-1.5 shadow-[var(--shadow-md)] backdrop-blur"
-      aria-label="Section navigation"
-    >
-      {NAV_ITEMS.map(({ key, href }) => {
-        const isActive = pathname === href;
-        return (
-          <Link
-            key={key}
-            href={href}
-            aria-current={isActive ? "page" : undefined}
-            className={
-              "group relative flex h-12 w-12 items-center justify-center rounded-full transition-colors duration-[var(--dur-fast)] " +
-              (isActive
-                ? "bg-[var(--color-accent)] text-white"
-                : "text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]")
-            }
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
+    <div className="pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center">
+      <nav
+        className="pointer-events-auto flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/90 p-1.5 shadow-[var(--shadow-md)] backdrop-blur"
+        aria-label="Section navigation"
+      >
+        {NAV_ITEMS.map(({ key, href }) => {
+          const isActive = pathname === href;
+          return (
+            <Link
+              key={key}
+              href={href}
+              aria-current={isActive ? "page" : undefined}
+              className={
+                "group relative flex h-12 w-12 items-center justify-center rounded-full transition-colors duration-[var(--dur-fast)] " +
+                (isActive
+                  ? "bg-[var(--color-accent)] text-white"
+                  : "text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]")
+              }
             >
-              {ICONS[key]}
-            </svg>
-            <span
-              className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 -translate-y-1 whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--color-text)] px-2.5 py-1 text-xs text-[var(--color-bg)] opacity-0 shadow-[var(--shadow-sm)] transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100"
-            >
-              {t(key)}
-            </span>
-          </Link>
-        );
-      })}
-    </nav>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                {ICONS[key]}
+              </svg>
+              <span
+                className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 -translate-y-1 whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--color-text)] px-2.5 py-1 text-xs text-[var(--color-bg)] opacity-0 shadow-[var(--shadow-sm)] transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                {t(key)}
+              </span>
+            </Link>
+          );
+        })}
+      </nav>
+    </div>
   );
 }
