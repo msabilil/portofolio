@@ -5,9 +5,10 @@ import { experience } from "@/content/experience";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillTag } from "@/components/SkillTag";
-import { SocialLinks } from "@/components/layout/SocialLinks";
+import { Contact } from "@/components/layout/Contact";
+import { Link } from "@/i18n/navigation";
 
-const TOOL_KEYS = ["figma", "balsamiq", "googleStitch", "claudeDesign", "deepseek"] as const;
+const TOOL_KEYS = ["figma", "microsoftOffice", "researching", "prototyping", "wireframing", "uxWriting"] as const;
 const SOFT_KEYS = [
   "creative",
   "innovative",
@@ -17,8 +18,8 @@ const SOFT_KEYS = [
   "analyticalThinking",
   "problemSolving",
   "curiosity",
-  "initiative",
 ] as const;
+const LANGUAGE_KEYS = ["english", "indonesian"] as const;
 
 export default function HomePage() {
   const locale = useLocale() as "en" | "id";
@@ -27,23 +28,22 @@ export default function HomePage() {
   const tSkills = useTranslations("skills");
   const tExperience = useTranslations("experience");
   const tProjects = useTranslations("projects");
-  const tContact = useTranslations("contact");
 
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
-      <section id="about" className="fade-in-up">
+      <section className="fade-in-up">
         <p style={{ color: "var(--color-text-muted)" }}>{tHome("greeting")}</p>
         <h1 className="text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
           {profile.name}
         </h1>
         <p className="mt-2 text-lg" style={{ color: "var(--color-text-muted)" }}>{tHome("tagline")}</p>
         <p className="mt-6 max-w-prose">{tAbout("bio")}</p>
-        <a href="#projects" className="mt-6 inline-block underline underline-offset-4">
+        <Link href="/projects" className="mt-6 inline-block underline underline-offset-4">
           {tHome("cta")}
-        </a>
+        </Link>
       </section>
 
-      <section id="skills">
+      <section>
         <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tSkills("title")}</h2>
         <div className="mb-8">
           <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
@@ -55,7 +55,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="mb-8">
           <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {tSkills("softHeading")}
           </h3>
@@ -65,9 +65,19 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        <div>
+          <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
+            {tSkills("languagesHeading")}
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {LANGUAGE_KEYS.map((key) => (
+              <SkillTag key={key} label={tSkills(`languages.${key}`)} />
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section id="experience">
+      <section>
         <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tExperience("title")}</h2>
         <div>
           {experience.map((entry) => (
@@ -81,7 +91,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="projects">
+      <section>
         <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tProjects("title")}</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
@@ -95,11 +105,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact">
-        <h2 className="mb-4 text-[32px] font-semibold tracking-[-0.01em]">{tContact("title")}</h2>
-        <p className="mb-6 max-w-prose" style={{ color: "var(--color-text-muted)" }}>{tContact("intro")}</p>
-        <SocialLinks />
-      </section>
+      <Contact />
     </div>
   );
 }

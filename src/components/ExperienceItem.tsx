@@ -3,7 +3,7 @@ import type { Experience } from "@/content/experience";
 type ExperienceItemProps = {
   experience: Experience;
   role: string;
-  description: string;
+  description: string[];
 };
 
 export function ExperienceItem({ experience, role, description }: ExperienceItemProps) {
@@ -20,9 +20,11 @@ export function ExperienceItem({ experience, role, description }: ExperienceItem
           {experience.period}
         </p>
       </div>
-      <p className="mt-2" style={{ color: "var(--color-text-muted)" }}>
-        {description}
-      </p>
+      <ul className="mt-2 list-disc space-y-1 pl-5" style={{ color: "var(--color-text-muted)" }}>
+        {description.map((line) => (
+          <li key={line}>{line}</li>
+        ))}
+      </ul>
     </div>
   );
 }

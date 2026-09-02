@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { archivo } from "@/styles/fonts";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { TopNav } from "@/components/layout/TopNav";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
 
@@ -40,7 +41,8 @@ export default async function LocaleLayout({
     <html lang={locale} className={archivo.variable}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 py-10 md:flex-row md:items-start md:gap-10 md:px-[10%] md:py-14 lg:gap-16">
+          <TopNav />
+          <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 pb-10 pt-24 md:flex-row md:items-start md:gap-10 md:px-10 md:pb-14 md:pt-24 lg:px-12 lg:gap-16">
             <Sidebar />
             <SmoothScroll>
               <main className="w-full min-w-0">{children}</main>

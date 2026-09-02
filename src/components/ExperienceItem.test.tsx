@@ -8,7 +8,7 @@ const entry: Experience = {
   role: { en: "UI/UX Designer", id: "UI/UX Designer" },
   place: "Demo Studio",
   period: "2024 — Present",
-  description: { en: "Demo description.", id: "Deskripsi demo." },
+  description: { en: ["Demo description."], id: ["Deskripsi demo."] },
 };
 
 describe("ExperienceItem", () => {

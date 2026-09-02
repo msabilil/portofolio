@@ -10,18 +10,20 @@
   },
   "about": {
     "title": "Tentang",
-    "bio": "Bio placeholder — tambahkan paragraf singkat tentang latar belakang dan fokus desainmu di sini."
+    "bio": "Fresh graduate dari Universitas Komputer Indonesia, jurusan Teknik Informatika. Memiliki pengalaman satu tahun di bidang UI/UX design dan mahir menggunakan tools seperti Figma dan Balsamiq. Saat ini mengikuti program bootcamp untuk memperdalam skill UI/UX. Berpikir empatik dan kritis dengan kemampuan interpersonal yang baik, serta ingin mengembangkan karier sebagai UI/UX Designer & Researcher."
   },
   "skills": {
     "title": "Keahlian",
-    "toolsHeading": "Tools",
+    "toolsHeading": "Technical skills",
     "softHeading": "Soft skill",
+    "languagesHeading": "Bahasa",
     "tools": {
       "figma": "Figma",
-      "balsamiq": "Balsamiq",
-      "googleStitch": "Google Stitch",
-      "claudeDesign": "Claude Design",
-      "deepseek": "DeepSeek"
+      "microsoftOffice": "Microsoft Office",
+      "researching": "Riset",
+      "prototyping": "Prototyping",
+      "wireframing": "Wireframing",
+      "uxWriting": "UX Writing"
     },
     "soft": {
       "creative": "Creative",
@@ -31,9 +33,18 @@
       "criticalThinking": "Critical thinking",
       "analyticalThinking": "Analytical thinking",
       "problemSolving": "Problem solving",
-      "curiosity": "Curiosity",
-      "initiative": "Initiative"
+      "curiosity": "Curiosity"
+    },
+    "languages": {
+      "english": "Inggris (Menengah)",
+      "indonesian": "Bahasa Indonesia (Native)"
     }
+  },
+  "nav": {
+    "home": "Beranda",
+    "experience": "Pengalaman",
+    "projects": "Proyek",
+    "tools": "Tools"
   },
   "experience": {
     "title": "Pengalaman"

@@ -10,18 +10,20 @@
   },
   "about": {
     "title": "About",
-    "bio": "Placeholder bio — add a short paragraph about your background and design focus here."
+    "bio": "A fresh graduate from Komputer Indonesia University majoring in Informatics Engineering. With one year experience in UI/UX design and proficiency in tools such as Figma and Balsamiq. Currently participating in a bootcamp program to deepen skills in UI/UX. An empathetic and critical thinker with good interpersonal skills who is eager to develop a career as a UI/UX Designer & Researcher."
   },
   "skills": {
     "title": "Skills",
-    "toolsHeading": "Tools",
+    "toolsHeading": "Technical skills",
     "softHeading": "Soft skills",
+    "languagesHeading": "Languages",
     "tools": {
       "figma": "Figma",
-      "balsamiq": "Balsamiq",
-      "googleStitch": "Google Stitch",
-      "claudeDesign": "Claude Design",
-      "deepseek": "DeepSeek"
+      "microsoftOffice": "Microsoft Office",
+      "researching": "Researching",
+      "prototyping": "Prototyping",
+      "wireframing": "Wireframing",
+      "uxWriting": "UX Writing"
     },
     "soft": {
       "creative": "Creative",
@@ -31,9 +33,18 @@
       "criticalThinking": "Critical thinking",
       "analyticalThinking": "Analytical thinking",
       "problemSolving": "Problem solving",
-      "curiosity": "Curiosity",
-      "initiative": "Initiative"
+      "curiosity": "Curiosity"
+    },
+    "languages": {
+      "english": "English (Intermediate)",
+      "indonesian": "Bahasa Indonesia (Native)"
     }
+  },
+  "nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
+    "tools": "Tools"
   },
   "experience": {
     "title": "Experience"
