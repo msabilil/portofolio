@@ -20,7 +20,7 @@ export const projects: Project[] = [
     },
     tags: ["Mobile App", "UI/UX"],
     cover: "/assets/projects/Recyclean.png",
-    link: "https://www.figma.com/design/vtF1lh4iuZiF7idTMvfE79/Recyclean?node-id=15-637&t=r5MeSTKeFUcNAPkv-1",
+    link: "https://www.figma.com/design/vtF1lh4iuZiF7idTMvfE79/Recyclean?node-id=17-2336&p=f&m=draw",
   },
   {
     slug: "arutalalab",
