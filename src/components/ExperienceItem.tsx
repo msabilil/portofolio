@@ -14,7 +14,7 @@ export function ExperienceItem({ experience, role, description }: ExperienceItem
           {role} <span style={{ color: "var(--color-text-muted)" }}>· {experience.place}</span>
         </p>
         <p
-          className="text-xs uppercase tracking-wide tabular-nums"
+          className="font-mono text-xs uppercase tracking-wide tabular-nums"
           style={{ color: "var(--color-text-muted)" }}
         >
           {experience.period}

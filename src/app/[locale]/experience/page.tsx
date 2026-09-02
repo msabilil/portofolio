@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { experience } from "@/content/experience";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { Contact } from "@/components/layout/Contact";
+import { SectionHeading } from "@/components/layout/SectionHeading";
 
 export default function ExperiencePage() {
   const locale = useLocale() as "en" | "id";
@@ -10,7 +11,7 @@ export default function ExperiencePage() {
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
       <section className="fade-in-up">
-        <h1 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{t("title")}</h1>
+        <SectionHeading number="01" title={t("title")} />
         <div>
           {experience.map((entry) => (
             <ExperienceItem
@@ -23,7 +24,7 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <Contact />
+      <Contact number="02" />
     </div>
   );
 }

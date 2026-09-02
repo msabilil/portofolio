@@ -11,7 +11,7 @@ function CoverPlaceholder({ title }: { title: string }) {
   return (
     <div
       aria-hidden="true"
-      className="flex h-full w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--color-border)]"
+      className="flex h-full w-full items-center justify-center"
       style={{
         background:
           "repeating-linear-gradient(135deg, var(--color-bg-subtle) 0 2px, transparent 2px 14px)",
@@ -27,17 +27,24 @@ export function ProjectCard({ project, description, viewLabel }: ProjectCardProp
     <article
       className="group rounded-[var(--radius-md)] border border-[var(--color-border)] p-4 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--color-text-muted)] hover:shadow-[var(--shadow-md)]"
     >
-      <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)]">
-        {project.cover ? (
-          <Image
-            src={project.cover}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-[var(--dur-base)] group-hover:scale-105"
-          />
-        ) : (
-          <CoverPlaceholder title={project.title} />
-        )}
+      <div className="mb-3 overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)]">
+        <div className="flex items-center gap-1.5 border-b border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-3 py-2">
+          <span className="h-2 w-2 rounded-full border border-[var(--color-text-muted)]" />
+          <span className="h-2 w-2 rounded-full border border-[var(--color-text-muted)]" />
+          <span className="h-2 w-2 rounded-full border border-[var(--color-text-muted)]" />
+        </div>
+        <div className="relative aspect-[4/3]">
+          {project.cover ? (
+            <Image
+              src={project.cover}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-[var(--dur-base)] group-hover:scale-105"
+            />
+          ) : (
+            <CoverPlaceholder title={project.title} />
+          )}
+        </div>
       </div>
       <h3 className="font-semibold">{project.title}</h3>
       <p style={{ color: "var(--color-text-muted)" }}>{description}</p>
@@ -56,7 +63,7 @@ export function ProjectCard({ project, description, viewLabel }: ProjectCardProp
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-block underline underline-offset-4 transition-opacity duration-[var(--dur-fast)] hover:opacity-70"
+          className="mt-3 inline-block underline underline-offset-4 transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-accent)]"
         >
           {viewLabel}
         </a>

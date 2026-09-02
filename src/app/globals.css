@@ -7,6 +7,7 @@
   --color-text-muted: #6e6e6e;
   --color-border: #e6e6e4;
   --color-hover: #000000;
+  --color-accent: #a3572a;
 
   --container-max: 1200px;
   --sidebar-w: 300px;
@@ -29,10 +30,13 @@
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
   --font-sans: var(--font-archivo);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--color-text);
   font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 }

@@ -6,6 +6,8 @@ import { ExperienceItem } from "@/components/ExperienceItem";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillTag } from "@/components/SkillTag";
 import { Contact } from "@/components/layout/Contact";
+import { SectionHeading } from "@/components/layout/SectionHeading";
+import { Doodle } from "@/components/layout/Doodle";
 import { Link } from "@/i18n/navigation";
 
 const TOOL_KEYS = ["figma", "microsoftOffice", "researching", "prototyping", "wireframing", "uxWriting"] as const;
@@ -31,22 +33,26 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
-      <section className="fade-in-up">
+      <section className="fade-in-up relative">
+        <Doodle className="pointer-events-none absolute -right-6 -top-4 hidden h-32 w-32 md:block" />
         <p style={{ color: "var(--color-text-muted)" }}>{tHome("greeting")}</p>
         <h1 className="text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
           {profile.name}
         </h1>
         <p className="mt-2 text-lg" style={{ color: "var(--color-text-muted)" }}>{tHome("tagline")}</p>
         <p className="mt-6 max-w-prose">{tAbout("bio")}</p>
-        <Link href="/projects" className="mt-6 inline-block underline underline-offset-4">
+        <Link
+          href="/projects"
+          className="mt-6 inline-block underline underline-offset-4 transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-accent)]"
+        >
           {tHome("cta")}
         </Link>
       </section>
 
       <section>
-        <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tSkills("title")}</h2>
+        <SectionHeading number="02" title={tSkills("title")} />
         <div className="mb-8">
-          <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
+          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {tSkills("toolsHeading")}
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -56,7 +62,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mb-8">
-          <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
+          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {tSkills("softHeading")}
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -66,7 +72,7 @@ export default function HomePage() {
           </div>
         </div>
         <div>
-          <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
+          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {tSkills("languagesHeading")}
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -78,7 +84,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tExperience("title")}</h2>
+        <SectionHeading number="03" title={tExperience("title")} />
         <div>
           {experience.map((entry) => (
             <ExperienceItem
@@ -92,7 +98,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{tProjects("title")}</h2>
+        <SectionHeading number="04" title={tProjects("title")} />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard
@@ -105,7 +111,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Contact />
+      <Contact number="05" />
     </div>
   );
 }

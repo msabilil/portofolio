@@ -3,7 +3,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { archivo } from "@/styles/fonts";
+import { archivo, jetbrainsMono } from "@/styles/fonts";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { TopNav } from "@/components/layout/TopNav";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -38,7 +38,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={archivo.variable}>
+    <html lang={locale} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <TopNav />

@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { projects } from "@/content/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Contact } from "@/components/layout/Contact";
+import { SectionHeading } from "@/components/layout/SectionHeading";
 
 export default function ProjectsPage() {
   const locale = useLocale() as "en" | "id";
@@ -10,7 +11,7 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
       <section className="fade-in-up">
-        <h1 className="mb-8 text-[32px] font-semibold tracking-[-0.01em]">{t("title")}</h1>
+        <SectionHeading number="01" title={t("title")} />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard
@@ -23,7 +24,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <Contact />
+      <Contact number="02" />
     </div>
   );
 }
