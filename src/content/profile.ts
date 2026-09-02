@@ -5,11 +5,12 @@ export type SocialLink = {
   href: string;
 };
 
-// linkedin/instagram belum ada URL terverifikasi — tambahkan saat sudah ada.
+// instagram belum ada URL terverifikasi — tambahkan saat sudah ada.
 export const profile = {
   name: "Muhammad Sabilil Fajri",
   social: [
     { id: "email", href: "mailto:muhamadfajri943@gmail.com" },
     { id: "github", href: "https://github.com/msabilil" },
+    { id: "linkedin", href: "https://www.linkedin.com/in/muhammad-sabilil-fajri/" },
   ] as SocialLink[],
 };

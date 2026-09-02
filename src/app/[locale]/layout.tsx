@@ -39,6 +39,14 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}",
+          }}
+        />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <TopNav />

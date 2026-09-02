@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
       <section className="fade-in-up">
-        <SectionHeading number="01" title={t("title")} />
+        <SectionHeading title={t("title")} />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard
@@ -24,7 +24,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <Contact number="02" />
+      <Contact />
     </div>
   );
 }

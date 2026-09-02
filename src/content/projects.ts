@@ -12,6 +12,16 @@ export type Project = {
 // otomatis pakai placeholder monokrom.
 export const projects: Project[] = [
   {
+    slug: "recyclean",
+    title: "RecyClean",
+    description: {
+      en: "A waste-management companion app concept — UI/UX exploration covering splash screen and core wireframes to help users sort and schedule recycling.",
+      id: "Konsep aplikasi pendamping pengelolaan sampah — eksplorasi UI/UX mencakup splash screen dan wireframe inti untuk membantu pengguna memilah dan menjadwalkan daur ulang.",
+    },
+    tags: ["Mobile App", "UI/UX"],
+    cover: "/assets/projects/Recyclean.png",
+  },
+  {
     slug: "arutalalab",
     title: "ArutalaLab",
     description: {

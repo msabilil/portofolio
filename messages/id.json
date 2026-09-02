@@ -1,7 +1,10 @@
 {
   "sidebar": {
     "roleLabel": "UI/UX Designer",
-    "languageLabel": "Bahasa"
+    "languageLabel": "Bahasa",
+    "themeLabel": "Tema",
+    "lightLabel": "Terang",
+    "darkLabel": "Gelap"
   },
   "home": {
     "greeting": "Hai, saya",

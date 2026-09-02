@@ -22,7 +22,7 @@ export default function ToolsPage() {
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
       <section className="fade-in-up">
-        <SectionHeading number="01" title={t("title")} />
+        <SectionHeading title={t("title")} />
         <div className="mb-8">
           <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {t("toolsHeading")}
@@ -55,7 +55,7 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      <Contact number="02" />
+      <Contact />
     </div>
   );
 }

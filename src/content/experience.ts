@@ -3,6 +3,7 @@ export type Experience = {
   role: { en: string; id: string };
   place: string;
   period: string;
+  logo: string;
   description: { en: string[]; id: string[] };
 };
 
@@ -12,6 +13,7 @@ export const experience: Experience[] = [
     role: { en: "Fullstack Developer", id: "Fullstack Developer" },
     place: "ArutalaLab — Bandung, Indonesia",
     period: "Aug 2022 — Present",
+    logo: "/assets/logos/arutalalab.png",
     description: {
       en: [
         "Collaborated with the design team to create 3 wireframe designs for web.",
@@ -30,6 +32,7 @@ export const experience: Experience[] = [
     role: { en: "Software Engineer", id: "Software Engineer" },
     place: "PT. Indera Sae Pratama — Bandung, Indonesia",
     period: "Jan 2022 — Jul 2022",
+    logo: "/assets/logos/indera-sae-pratama.png",
     description: {
       en: [
         "Conduct user research through usability testing to inform UI/UX design decisions.",

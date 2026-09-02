@@ -8,7 +8,6 @@ import { SkillTag } from "@/components/SkillTag";
 import { Contact } from "@/components/layout/Contact";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { Doodle } from "@/components/layout/Doodle";
-import { Link } from "@/i18n/navigation";
 
 const TOOL_KEYS = ["figma", "microsoftOffice", "researching", "prototyping", "wireframing", "uxWriting"] as const;
 const SOFT_KEYS = [
@@ -39,18 +38,11 @@ export default function HomePage() {
         <h1 className="text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
           {profile.name}
         </h1>
-        <p className="mt-2 text-lg" style={{ color: "var(--color-text-muted)" }}>{tHome("tagline")}</p>
         <p className="mt-6 max-w-prose">{tAbout("bio")}</p>
-        <Link
-          href="/projects"
-          className="mt-6 inline-block underline underline-offset-4 transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-accent)]"
-        >
-          {tHome("cta")}
-        </Link>
       </section>
 
       <section>
-        <SectionHeading number="02" title={tSkills("title")} />
+        <SectionHeading title={tSkills("title")} />
         <div className="mb-8">
           <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
             {tSkills("toolsHeading")}
@@ -84,7 +76,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <SectionHeading number="03" title={tExperience("title")} />
+        <SectionHeading title={tExperience("title")} />
         <div>
           {experience.map((entry) => (
             <ExperienceItem
@@ -98,7 +90,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <SectionHeading number="04" title={tProjects("title")} />
+        <SectionHeading title={tProjects("title")} />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard
@@ -111,7 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Contact number="05" />
+      <Contact />
     </div>
   );
 }
