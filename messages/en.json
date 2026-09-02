@@ -4,7 +4,8 @@
     "languageLabel": "Language",
     "themeLabel": "Theme",
     "lightLabel": "Light",
-    "darkLabel": "Dark"
+    "darkLabel": "Dark",
+    "downloadCv": "Download CV"
   },
   "home": {
     "greeting": "Hi, I'm",

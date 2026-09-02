@@ -4,7 +4,8 @@
     "languageLabel": "Bahasa",
     "themeLabel": "Tema",
     "lightLabel": "Terang",
-    "darkLabel": "Gelap"
+    "darkLabel": "Gelap",
+    "downloadCv": "Unduh CV"
   },
   "home": {
     "greeting": "Hai, saya",
