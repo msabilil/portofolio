@@ -23,9 +23,10 @@ export function LanguageToggle() {
           aria-current={code === locale ? "true" : undefined}
           onClick={() => router.replace(pathname, { locale: code })}
           className={
-            code === locale
-              ? "rounded-full bg-[var(--color-accent)] px-3 py-1 text-xs font-semibold text-white"
-              : "rounded-full px-3 py-1 text-xs text-[var(--color-text-muted)] transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-text)]"
+            "flex h-10 w-10 items-center justify-center rounded-full text-xs font-semibold transition-colors duration-[var(--dur-fast)] " +
+            (code === locale
+              ? "bg-[var(--color-accent)] text-white"
+              : "text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]")
           }
         >
           {code.toUpperCase()}
