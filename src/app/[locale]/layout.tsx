@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { routing } from "@/i18n/routing";
 import { archivo, inter, jetbrainsMono, spaceGrotesk } from "@/styles/fonts";
 import { TopNav } from "@/components/layout/TopNav";
+import { SpaceBackground } from "@/components/layout/SpaceBackground";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
 
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
+          <SpaceBackground />
           <TopNav theme={theme} />
           <SmoothScroll>
             <main className="w-full min-w-0">{children}</main>

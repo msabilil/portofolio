@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Particles, { ParticlesProvider } from "@tsparticles/react";
 import type { Engine } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
@@ -14,32 +13,6 @@ type HeroSpaceProps = {
   ctaLabel: string;
   connectLabel: string;
 };
-
-// Full-bleed AI-generated background (nebula, planets, astronaut, and
-// rocket all baked into one image) — replaces the earlier hand-built
-// canvas nebula, CSS planets, and SVG rocket. The tsparticles starfield
-// stays layered on top for a bit of drifting/twinkling motion the
-// static image alone doesn't have.
-//
-// `fill` + object-cover always spans the section edge-to-edge at
-// whatever height the responsive min-height below sets — object-contain
-// kept the image uncropped but pillarboxed (empty bars left/right)
-// whenever the section's width:height ratio didn't match the image's
-// own 16:9, which loses full-width for a wide hero far more often than
-// it avoids a modest top/bottom crop.
-function HeroBackground() {
-  return (
-    <Image
-      src="/assets/hero/space-background.jpg"
-      alt=""
-      aria-hidden="true"
-      fill
-      priority
-      sizes="100vw"
-      className="-z-20 object-cover"
-    />
-  );
-}
 
 async function initStarfield(engine: Engine) {
   await loadSlim(engine);
@@ -154,7 +127,6 @@ function HeroDecorativeAssets() {
 export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
     <section className="hero-space fade-in-up relative isolate min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
-      <HeroBackground />
       <HeroStarfield />
       <HeroDecorativeAssets />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
@@ -173,7 +145,7 @@ export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: H
             </Link>
             <a
               href="#contact"
-              className="rounded-full border border-[var(--accent-purple)] px-6 py-2.5 font-medium text-[var(--accent-purple)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+              className="rounded-full border border-[var(--accent-purple)] bg-white/5 px-6 py-2.5 font-medium text-[var(--accent-purple)] backdrop-blur-md transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
             >
               {connectLabel}
             </a>
