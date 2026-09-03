@@ -99,7 +99,7 @@ function HeroAstronaut() {
 
 export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
-    <section className="hero-space fade-in-up relative isolate flex flex-col items-center gap-10 overflow-hidden rounded-[var(--radius-md)] px-6 py-16 sm:flex-row sm:justify-between sm:px-12 sm:py-20">
+    <section className="hero-space fade-in-up relative isolate flex flex-col items-center gap-10 overflow-hidden px-6 py-16 sm:flex-row sm:justify-between sm:px-12 sm:py-20 md:px-10 lg:px-12">
       <HeroStarfield />
       <HeroRocket />
       <div className="relative z-10 max-w-xl text-center sm:text-left">

@@ -1,11 +1,9 @@
 {
   "sidebar": {
-    "roleLabel": "Full Stack Developer",
     "languageLabel": "Language",
     "themeLabel": "Theme",
     "lightLabel": "Light",
-    "darkLabel": "Dark",
-    "downloadCv": "Download CV"
+    "darkLabel": "Dark"
   },
   "home": {
     "greeting": "Hi, I'm",

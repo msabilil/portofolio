@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   const t = useTranslations("projects");
 
   return (
-    <div className="flex flex-col gap-24 py-12 md:py-16">
+    <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col gap-24 px-6 py-12 md:px-10 md:py-16 lg:px-12">
       <section className="fade-in-up">
         <SectionHeading title={t("title")} />
         <ProjectsFilterGrid

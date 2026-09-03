@@ -40,7 +40,7 @@ export default function HomePage() {
   const tCertifications = useTranslations("certifications");
 
   return (
-    <div className="flex flex-col gap-24 py-12 md:py-16">
+    <>
       <HeroSpace
         name={profile.name}
         greeting={tHome("greeting")}
@@ -48,7 +48,7 @@ export default function HomePage() {
         ctaLabel={tHome("cta")}
         connectLabel={tHome("connect")}
       />
-
+      <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col gap-24 px-6 py-12 md:px-10 md:py-16 lg:px-12">
       <Reveal className="block">
         <section>
           <SectionHeading title={tAbout("title")} />
@@ -175,6 +175,7 @@ export default function HomePage() {
       </Reveal>
 
       <Contact />
-    </div>
+      </div>
+    </>
   );
 }

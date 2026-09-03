@@ -1,11 +1,9 @@
 {
   "sidebar": {
-    "roleLabel": "Full Stack Developer",
     "languageLabel": "Bahasa",
     "themeLabel": "Tema",
     "lightLabel": "Terang",
-    "darkLabel": "Gelap",
-    "downloadCv": "Unduh CV"
+    "darkLabel": "Gelap"
   },
   "home": {
     "greeting": "Hai, saya",

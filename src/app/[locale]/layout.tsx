@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { routing } from "@/i18n/routing";
 import { archivo, jetbrainsMono } from "@/styles/fonts";
-import { Sidebar } from "@/components/layout/Sidebar";
 import { TopNav } from "@/components/layout/TopNav";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
@@ -44,13 +43,10 @@ export default async function LocaleLayout({
     <html lang={locale} data-theme={theme} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <TopNav />
-          <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col items-stretch gap-6 px-6 pb-10 pt-24 md:flex-row md:items-start md:gap-10 md:px-10 md:pb-14 md:pt-24 lg:px-12 lg:gap-16">
-            <Sidebar theme={theme} />
-            <SmoothScroll>
-              <main className="w-full min-w-0">{children}</main>
-            </SmoothScroll>
-          </div>
+          <TopNav theme={theme} />
+          <SmoothScroll>
+            <main className="w-full min-w-0">{children}</main>
+          </SmoothScroll>
         </NextIntlClientProvider>
       </body>
     </html>
