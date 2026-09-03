@@ -7,7 +7,7 @@ export function Contact() {
   const t = useTranslations("contact");
 
   return (
-    <section className="relative">
+    <section id="contact" className="relative">
       <Doodle className="pointer-events-none absolute -right-4 top-0 hidden h-28 w-28 sm:block" />
       <SectionHeading title={t("title")} />
       <p className="mb-6 max-w-prose" style={{ color: "var(--color-text-muted)" }}>{t("intro")}</p>

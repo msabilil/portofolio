@@ -12,7 +12,7 @@ import { CertificationItem } from "@/components/CertificationItem";
 import { CoreExpertise } from "@/components/CoreExpertise";
 import { Contact } from "@/components/layout/Contact";
 import { SectionHeading } from "@/components/layout/SectionHeading";
-import { Doodle } from "@/components/layout/Doodle";
+import { HeroSpace } from "@/components/layout/HeroSpace";
 import { Reveal } from "@/components/layout/Reveal";
 import { getIconSlug } from "@/lib/techIcons";
 
@@ -41,16 +41,13 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col gap-24 py-12 md:py-16">
-      <section className="fade-in-up relative">
-        <Doodle className="pointer-events-none absolute -right-6 -top-4 hidden h-32 w-32 md:block" />
-        <p style={{ color: "var(--color-text-muted)" }}>{tHome("greeting")}</p>
-        <h1 className="text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
-          {profile.name}
-        </h1>
-        <p className="mt-3 max-w-prose text-lg" style={{ color: "var(--color-text)" }}>
-          {tHome("tagline")}
-        </p>
-      </section>
+      <HeroSpace
+        name={profile.name}
+        greeting={tHome("greeting")}
+        tagline={tHome("tagline")}
+        ctaLabel={tHome("cta")}
+        connectLabel={tHome("connect")}
+      />
 
       <Reveal className="block">
         <section>

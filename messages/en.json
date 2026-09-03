@@ -10,7 +10,8 @@
   "home": {
     "greeting": "Hi, I'm",
     "tagline": "I design interfaces, build the product behind them, and make sure both hold up under real use.",
-    "cta": "View projects"
+    "cta": "View projects",
+    "connect": "Connect"
   },
   "about": {
     "title": "About Me",
