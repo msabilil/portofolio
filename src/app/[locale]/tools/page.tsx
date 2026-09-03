@@ -2,17 +2,17 @@ import { useTranslations } from "next-intl";
 import { SkillTag } from "@/components/SkillTag";
 import { Contact } from "@/components/layout/Contact";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { getIconSlug } from "@/lib/techIcons";
 
-const TOOL_KEYS = ["figma", "microsoftOffice", "researching", "prototyping", "wireframing", "uxWriting"] as const;
+const PROFICIENT_KEYS = ["javascript", "typescript", "html5", "css3", "nextjs", "react", "php", "mysql", "nosql", "git"] as const;
+const FAMILIAR_KEYS = ["vuejs", "elysiajs", "postgresql", "swagger", "postman", "cicdTesting"] as const;
 const SOFT_KEYS = [
-  "creative",
-  "innovative",
+  "computationalThinking",
   "communication",
-  "interpersonal",
-  "criticalThinking",
   "analyticalThinking",
+  "criticalThinking",
   "problemSolving",
-  "curiosity",
+  "teamwork",
 ] as const;
 const LANGUAGE_KEYS = ["english", "indonesian"] as const;
 
@@ -25,12 +25,24 @@ export default function ToolsPage() {
         <SectionHeading title={t("title")} />
         <div className="mb-8">
           <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
-            {t("toolsHeading")}
+            {t("proficientHeading")}
           </h3>
           <div className="flex flex-wrap gap-2">
-            {TOOL_KEYS.map((key) => (
-              <SkillTag key={key} label={t(`tools.${key}`)} />
-            ))}
+            {PROFICIENT_KEYS.map((key) => {
+              const label = t(`proficient.${key}`);
+              return <SkillTag key={key} label={label} icon={getIconSlug(label)} />;
+            })}
+          </div>
+        </div>
+        <div className="mb-8">
+          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
+            {t("familiarHeading")}
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {FAMILIAR_KEYS.map((key) => {
+              const label = t(`familiar.${key}`);
+              return <SkillTag key={key} label={label} icon={getIconSlug(label)} />;
+            })}
           </div>
         </div>
         <div className="mb-8">

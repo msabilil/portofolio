@@ -1,6 +1,6 @@
 {
   "sidebar": {
-    "roleLabel": "UI/UX Designer",
+    "roleLabel": "Full Stack Developer",
     "languageLabel": "Bahasa",
     "themeLabel": "Tema",
     "lightLabel": "Terang",
@@ -9,35 +9,61 @@
   },
   "home": {
     "greeting": "Hai, saya",
-    "tagline": "Saya merancang antarmuka yang jelas dan manusiawi.",
+    "tagline": "Saya merancang antarmuka, membangun produk di baliknya, dan memastikan keduanya tetap kuat dipakai.",
     "cta": "Lihat proyek"
   },
   "about": {
-    "title": "Tentang",
-    "bio": "Fresh graduate dari Universitas Komputer Indonesia, jurusan Teknik Informatika. Memiliki pengalaman satu tahun di bidang UI/UX design dan mahir menggunakan tools seperti Figma dan Balsamiq. Saat ini mengikuti program bootcamp untuk memperdalam skill UI/UX. Berpikir empatik dan kritis dengan kemampuan interpersonal yang baik, serta ingin mengembangkan karier sebagai UI/UX Designer & Researcher."
+    "title": "Tentang Saya",
+    "bio": "Saya suka membawa produk dari ide kasar sampai jadi sesuatu yang bisa langsung dipakai orang — mulai dari sketsa antarmuka, membangunnya, sampai memastikan gak gampang rusak dipakai beneran. Sebagian besar kerjaan itu ada di sistem entertainment, keuangan, dan penjadwalan produksi, kerja bareng langsung sama orang yang bakal makai."
+  },
+  "expertise": {
+    "title": "Keahlian Inti",
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Mengubah requirement yang ambigu jadi antarmuka yang gampang dimengerti — riset pengguna, wireframe, dan prototipe hi-fi di Figma, disempurnakan lewat kolaborasi langsung dengan product manager dan stakeholder non-teknis."
+    },
+    "webdev": {
+      "title": "Web Development",
+      "description": "Membangun produk end-to-end dengan Next.js, React, TypeScript, PHP, dan Express — dari skema database dan REST API sampai antarmuka yang rapi dan responsif, dikontainerkan dengan Docker dan dirilis lewat CI/CD."
+    },
+    "qa": {
+      "title": "Quality Assurance",
+      "description": "Menangkap bug sebelum ketemu user — test case manual terstruktur dengan prioritas dan expected result yang jelas, bug report detail berikut screenshot dan video, plus automated test pakai Jest dan Playwright."
+    }
   },
   "skills": {
     "title": "Keahlian",
-    "toolsHeading": "Technical skills",
+    "proficientHeading": "Proficient",
+    "familiarHeading": "Familiar",
     "softHeading": "Soft skill",
     "languagesHeading": "Bahasa",
-    "tools": {
-      "figma": "Figma",
-      "microsoftOffice": "Microsoft Office",
-      "researching": "Riset",
-      "prototyping": "Prototyping",
-      "wireframing": "Wireframing",
-      "uxWriting": "UX Writing"
+    "proficient": {
+      "javascript": "JavaScript",
+      "typescript": "TypeScript",
+      "html5": "HTML5",
+      "css3": "CSS3",
+      "nextjs": "Next.js",
+      "react": "React",
+      "php": "PHP",
+      "mysql": "MySQL",
+      "nosql": "NoSQL (Firestore)",
+      "git": "Git"
+    },
+    "familiar": {
+      "vuejs": "Vue.js",
+      "elysiajs": "ElysiaJS",
+      "postgresql": "PostgreSQL",
+      "swagger": "Swagger",
+      "postman": "Postman",
+      "cicdTesting": "CI/CD dasar & automation testing"
     },
     "soft": {
-      "creative": "Creative",
-      "innovative": "Innovative",
-      "communication": "Communication",
-      "interpersonal": "Interpersonal",
-      "criticalThinking": "Critical thinking",
-      "analyticalThinking": "Analytical thinking",
-      "problemSolving": "Problem solving",
-      "curiosity": "Curiosity"
+      "computationalThinking": "Berpikir komputasional",
+      "communication": "Komunikasi",
+      "analyticalThinking": "Berpikir analitis",
+      "criticalThinking": "Berpikir kritis",
+      "problemSolving": "Pemecahan masalah",
+      "teamwork": "Kerja tim"
     },
     "languages": {
       "english": "Inggris (Menengah)",
@@ -55,7 +81,22 @@
   },
   "projects": {
     "title": "Proyek",
-    "viewLink": "Lihat"
+    "viewLink": "Lihat",
+    "empty": "Belum ada proyek di kategori ini.",
+    "filter": {
+      "all": "Semua",
+      "uiux": "UI/UX",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "QA"
+    }
+  },
+  "education": {
+    "title": "Pendidikan"
+  },
+  "certifications": {
+    "title": "Sertifikasi",
+    "certificateLabel": "Sertifikat"
   },
   "contact": {
     "title": "Kontak",
@@ -67,6 +108,7 @@
   },
   "social": {
     "emailLabel": "Email",
+    "phoneLabel": "Telepon",
     "githubLabel": "GitHub",
     "linkedinLabel": "LinkedIn",
     "instagramLabel": "Instagram"

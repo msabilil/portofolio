@@ -1,0 +1,31 @@
+import type { Certification } from "@/content/certifications";
+
+type CertificationItemProps = {
+  entry: Certification;
+  locale: "en" | "id";
+  certificateLabel: string;
+};
+
+export function CertificationItem({ entry, locale, certificateLabel }: CertificationItemProps) {
+  return (
+    <div className="flex flex-col gap-1 border-b py-6 last:border-b-0" style={{ borderColor: "var(--color-border)" }}>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="font-semibold">
+          {entry.title[locale]} <span style={{ color: "var(--color-text-muted)" }}>· {entry.issuer}</span>
+        </p>
+        <p
+          className="font-mono text-xs uppercase tracking-wide tabular-nums"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          {entry.period}
+        </p>
+      </div>
+      <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
+        {certificateLabel}: {entry.certificate}
+      </p>
+      <p className="mt-1 text-sm" style={{ color: "var(--color-text-muted)" }}>
+        {entry.coursework[locale].join(" · ")}
+      </p>
+    </div>
+  );
+}

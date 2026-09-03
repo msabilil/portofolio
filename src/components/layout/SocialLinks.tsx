@@ -4,6 +4,7 @@ import type { SocialLinkId } from "@/content/profile";
 
 const LABEL_KEYS: Record<SocialLinkId, string> = {
   email: "emailLabel",
+  phone: "phoneLabel",
   github: "githubLabel",
   linkedin: "linkedinLabel",
   instagram: "instagramLabel",
@@ -14,6 +15,20 @@ function EmailIcon() {
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
       <rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
       <path d="M2.5 5l6.5 5 6.5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path
+        d="M4 2.5h2.5l1 3.5-1.6 1.4a8.5 8.5 0 0 0 4.7 4.7l1.4-1.6 3.5 1v2.5c0 .8-.7 1.4-1.5 1.3C7.5 14.7 3.3 10.5 2.7 4c-.1-.8.5-1.5 1.3-1.5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -53,6 +68,7 @@ function InstagramIcon() {
 
 const ICONS: Record<SocialLinkId, () => React.JSX.Element> = {
   email: EmailIcon,
+  phone: PhoneIcon,
   github: GithubIcon,
   linkedin: LinkedinIcon,
   instagram: InstagramIcon,
@@ -60,10 +76,13 @@ const ICONS: Record<SocialLinkId, () => React.JSX.Element> = {
 
 const BRAND_COLORS: Record<SocialLinkId, string> = {
   email: "#EA4335",
+  phone: "#25D366",
   github: "var(--color-text)",
   linkedin: "#0A66C2",
   instagram: "#E4405F",
 };
+
+const NO_BLANK_TARGET: SocialLinkId[] = ["email", "phone"];
 
 export function SocialLinks() {
   const t = useTranslations("social");
@@ -72,12 +91,13 @@ export function SocialLinks() {
     <ul className="flex gap-4">
       {profile.social.map((link) => {
         const Icon = ICONS[link.id];
+        const sameTab = NO_BLANK_TARGET.includes(link.id);
         return (
           <li key={link.id}>
             <a
               href={link.href}
-              target={link.id === "email" ? undefined : "_blank"}
-              rel={link.id === "email" ? undefined : "noopener noreferrer"}
+              target={sameTab ? undefined : "_blank"}
+              rel={sameTab ? undefined : "noopener noreferrer"}
               aria-label={t(LABEL_KEYS[link.id])}
               style={{ color: BRAND_COLORS[link.id] }}
               className="block transition-[opacity,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:opacity-75"

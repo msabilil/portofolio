@@ -6,7 +6,7 @@ describe("profile data", () => {
     expect(profile.name.length).toBeGreaterThan(0);
     expect(profile.social.length).toBeGreaterThan(0);
     for (const link of profile.social) {
-      expect(["email", "github", "linkedin", "instagram"]).toContain(link.id);
+      expect(["email", "phone", "github", "linkedin", "instagram"]).toContain(link.id);
       expect(link.href.length).toBeGreaterThan(0);
     }
   });

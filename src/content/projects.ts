@@ -1,10 +1,14 @@
+export type ProjectCategory = "ui-ux" | "frontend" | "backend" | "qa";
+
 export type Project = {
   slug: string;
   title: string;
   description: { en: string; id: string };
+  categories: ProjectCategory[];
   tags: string[];
   cover?: string; // path relatif ke public/assets/projects/<slug>/ — opsional, ada fallback visual
   link?: string;
+  period?: string;
 };
 
 // Tambah project baru di sini. Cover (opsional) diambil dari
@@ -18,6 +22,7 @@ export const projects: Project[] = [
       en: "A waste-management companion app concept — UI/UX exploration covering splash screen and core wireframes to help users sort and schedule recycling.",
       id: "Konsep aplikasi pendamping pengelolaan sampah — eksplorasi UI/UX mencakup splash screen dan wireframe inti untuk membantu pengguna memilah dan menjadwalkan daur ulang.",
     },
+    categories: ["ui-ux"],
     tags: ["Mobile App", "UI/UX"],
     cover: "/assets/projects/Recyclean.png",
     link: "https://www.figma.com/design/vtF1lh4iuZiF7idTMvfE79/Recyclean?node-id=17-2336&p=f&m=draw",
@@ -29,6 +34,7 @@ export const projects: Project[] = [
       en: "An IT services platform bringing together training, tech talent placement, and custom software development under one product.",
       id: "Platform layanan IT yang menggabungkan pelatihan, penyaluran talenta teknologi, dan pengembangan software custom dalam satu produk.",
     },
+    categories: ["frontend", "backend"],
     tags: ["Next.js", "TypeScript"],
     link: "https://arutalalab.vercel.app",
   },
@@ -36,19 +42,22 @@ export const projects: Project[] = [
     slug: "penjadwalan-produksi",
     title: "Production Scheduling System",
     description: {
-      en: "A web app for planning and tracking production schedules, built to replace a manual spreadsheet-based workflow.",
-      id: "Aplikasi web untuk merencanakan dan melacak jadwal produksi, dibuat untuk menggantikan alur kerja manual berbasis spreadsheet.",
+      en: "A thesis project: a multi-role production scheduling system that digitized the order-to-production workflow across sales, design, and production teams, with automated time estimation based on design specs and machine capacity replacing manual guesswork.",
+      id: "Proyek skripsi: sistem penjadwalan produksi multi-role yang mendigitalkan alur order-ke-produksi lintas tim sales, desain, dan produksi, dengan estimasi waktu otomatis berbasis spesifikasi desain dan kapasitas mesin, menggantikan perkiraan manual.",
     },
-    tags: ["PHP", "Web App"],
+    categories: ["ui-ux", "frontend", "backend"],
+    tags: ["PHP", "MySQL", "Tailwind CSS", "Web App"],
     link: "https://github.com/msabilil/penjadwalan-produksi-tmu",
+    period: "Feb 2025 — Aug 2025",
   },
   {
     slug: "mental-health-app",
     title: "Mental Health App",
     description: {
-      en: "An Android app concept for tracking mood and mental well-being day to day.",
-      id: "Konsep aplikasi Android untuk melacak suasana hati dan kesejahteraan mental sehari-hari.",
+      en: "A mental well-being Android app for tracking daily mood and habits.",
+      id: "Aplikasi Android untuk melacak suasana hati dan kebiasaan harian demi kesejahteraan mental.",
     },
+    categories: ["frontend"],
     tags: ["Kotlin", "Android"],
     link: "https://github.com/msabilil/MentalHealth",
   },

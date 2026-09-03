@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { Project } from "@/content/projects";
+import { SkillTag } from "@/components/SkillTag";
+import { getIconSlug } from "@/lib/techIcons";
 
 type ProjectCardProps = {
   project: Project;
@@ -46,15 +48,22 @@ export function ProjectCard({ project, description, viewLabel }: ProjectCardProp
           )}
         </div>
       </div>
-      <h3 className="font-semibold">{project.title}</h3>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="font-semibold">{project.title}</h3>
+        {project.period && (
+          <p
+            className="font-mono text-xs uppercase tracking-wide tabular-nums"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            {project.period}
+          </p>
+        )}
+      </div>
       <p style={{ color: "var(--color-text-muted)" }}>{description}</p>
       <ul className="mt-2 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
-          <li
-            key={tag}
-            className="rounded-full border border-[var(--color-border)] px-2 py-1 text-xs"
-          >
-            {tag}
+          <li key={tag}>
+            <SkillTag label={tag} icon={getIconSlug(tag)} />
           </li>
         ))}
       </ul>

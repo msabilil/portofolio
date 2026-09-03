@@ -27,7 +27,7 @@ export function Sidebar({ theme }: { theme: "light" | "dark" }) {
       <a
         href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
         download
-        className="shrink-0 whitespace-nowrap rounded-full bg-[var(--color-accent)] px-4 py-2 text-center text-sm font-semibold text-white transition-opacity duration-[var(--dur-fast)] hover:opacity-90 md:w-full"
+        className="shrink-0 whitespace-nowrap rounded-full bg-[var(--color-accent)] px-4 py-2 text-center text-sm font-semibold text-white transition-[opacity,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] hover:opacity-90 active:scale-[0.97] md:w-full"
       >
         {t("downloadCv")}
       </a>

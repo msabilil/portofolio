@@ -1,6 +1,6 @@
 {
   "sidebar": {
-    "roleLabel": "UI/UX Designer",
+    "roleLabel": "Full Stack Developer",
     "languageLabel": "Language",
     "themeLabel": "Theme",
     "lightLabel": "Light",
@@ -9,35 +9,61 @@
   },
   "home": {
     "greeting": "Hi, I'm",
-    "tagline": "I design clear, human interfaces.",
+    "tagline": "I design interfaces, build the product behind them, and make sure both hold up under real use.",
     "cta": "View projects"
   },
   "about": {
-    "title": "About",
-    "bio": "A fresh graduate from Komputer Indonesia University majoring in Informatics Engineering. With one year experience in UI/UX design and proficiency in tools such as Figma and Balsamiq. Currently participating in a bootcamp program to deepen skills in UI/UX. An empathetic and critical thinker with good interpersonal skills who is eager to develop a career as a UI/UX Designer & Researcher."
+    "title": "About Me",
+    "bio": "I like taking a product from a rough idea to something people can actually click through — sketching the interface, building it, and making sure it doesn't fall apart under real use. Most of that has been on entertainment, finance, and production-scheduling systems, working closely with the people who'll actually use them."
+  },
+  "expertise": {
+    "title": "Core Expertise",
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Turning ambiguous requirements into interfaces people actually understand — user research, wireframes, and high-fidelity prototypes in Figma, refined through direct collaboration with product managers and non-technical stakeholders."
+    },
+    "webdev": {
+      "title": "Web Development",
+      "description": "End-to-end product builds with Next.js, React, TypeScript, PHP, and Express — from database schema and REST APIs to polished, responsive interfaces, containerized with Docker and shipped through CI/CD."
+    },
+    "qa": {
+      "title": "Quality Assurance",
+      "description": "Catching what breaks before users do — structured manual test cases with clear priority and expected results, detailed bug reports with screenshots and video, plus automated tests with Jest and Playwright."
+    }
   },
   "skills": {
     "title": "Skills",
-    "toolsHeading": "Technical skills",
+    "proficientHeading": "Proficient",
+    "familiarHeading": "Familiar",
     "softHeading": "Soft skills",
     "languagesHeading": "Languages",
-    "tools": {
-      "figma": "Figma",
-      "microsoftOffice": "Microsoft Office",
-      "researching": "Researching",
-      "prototyping": "Prototyping",
-      "wireframing": "Wireframing",
-      "uxWriting": "UX Writing"
+    "proficient": {
+      "javascript": "JavaScript",
+      "typescript": "TypeScript",
+      "html5": "HTML5",
+      "css3": "CSS3",
+      "nextjs": "Next.js",
+      "react": "React",
+      "php": "PHP",
+      "mysql": "MySQL",
+      "nosql": "NoSQL (Firestore)",
+      "git": "Git"
+    },
+    "familiar": {
+      "vuejs": "Vue.js",
+      "elysiajs": "ElysiaJS",
+      "postgresql": "PostgreSQL",
+      "swagger": "Swagger",
+      "postman": "Postman",
+      "cicdTesting": "CI/CD basics & automated testing"
     },
     "soft": {
-      "creative": "Creative",
-      "innovative": "Innovative",
+      "computationalThinking": "Computational thinking",
       "communication": "Communication",
-      "interpersonal": "Interpersonal",
-      "criticalThinking": "Critical thinking",
       "analyticalThinking": "Analytical thinking",
+      "criticalThinking": "Critical thinking",
       "problemSolving": "Problem solving",
-      "curiosity": "Curiosity"
+      "teamwork": "Teamwork"
     },
     "languages": {
       "english": "English (Intermediate)",
@@ -55,7 +81,22 @@
   },
   "projects": {
     "title": "Projects",
-    "viewLink": "View"
+    "viewLink": "View",
+    "empty": "No projects in this category yet.",
+    "filter": {
+      "all": "All",
+      "uiux": "UI/UX",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "QA"
+    }
+  },
+  "education": {
+    "title": "Education"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "certificateLabel": "Certificate"
   },
   "contact": {
     "title": "Contact",
@@ -67,6 +108,7 @@
   },
   "social": {
     "emailLabel": "Email",
+    "phoneLabel": "Phone",
     "githubLabel": "GitHub",
     "linkedinLabel": "LinkedIn",
     "instagramLabel": "Instagram"

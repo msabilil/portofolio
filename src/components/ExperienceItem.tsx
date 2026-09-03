@@ -1,4 +1,6 @@
 import type { Experience } from "@/content/experience";
+import { SkillTag } from "@/components/SkillTag";
+import { getIconSlug } from "@/lib/techIcons";
 
 type ExperienceItemProps = {
   experience: Experience;
@@ -33,6 +35,13 @@ export function ExperienceItem({ experience, role, description }: ExperienceItem
             <li key={line}>{line}</li>
           ))}
         </ul>
+        {experience.skills && experience.skills.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {experience.skills.map((skill) => (
+              <SkillTag key={skill} label={skill} icon={getIconSlug(skill)} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

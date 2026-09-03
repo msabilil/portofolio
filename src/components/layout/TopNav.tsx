@@ -43,7 +43,7 @@ export function TopNav() {
               href={href}
               aria-current={isActive ? "page" : undefined}
               className={
-                "group relative flex h-12 w-12 items-center justify-center rounded-full transition-colors duration-[var(--dur-fast)] " +
+                "group relative flex h-12 w-12 items-center justify-center rounded-full transition-[background-color,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] active:scale-[0.97] " +
                 (isActive
                   ? "bg-[var(--color-accent)] text-white"
                   : "text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]")
@@ -63,7 +63,7 @@ export function TopNav() {
                 {ICONS[key]}
               </svg>
               <span
-                className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 -translate-y-1 whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--color-text)] px-2.5 py-1 text-xs text-[var(--color-bg)] opacity-0 shadow-[var(--shadow-sm)] transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+                className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 -translate-y-1 whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--color-text)] px-2.5 py-1 text-xs text-[var(--color-bg)] opacity-0 shadow-[var(--shadow-sm)] transition-[opacity,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] group-hover:translate-y-0 group-hover:opacity-100"
               >
                 {t(key)}
               </span>

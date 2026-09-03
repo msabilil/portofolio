@@ -40,7 +40,7 @@ export function ThemeToggle({ initialTheme }: { initialTheme: Theme }) {
           aria-current={value === theme ? "true" : undefined}
           onClick={() => applyTheme(value)}
           className={
-            "flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-[var(--dur-fast)] " +
+            "flex h-10 w-10 items-center justify-center rounded-full transition-[background-color,color,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] active:scale-[0.97] " +
             (value === theme
               ? "bg-[var(--color-accent)] text-white"
               : "text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]")

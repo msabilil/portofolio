@@ -6,6 +6,7 @@ import { SocialLinks } from "./SocialLinks";
 const messages = {
   social: {
     emailLabel: "Email",
+    phoneLabel: "Phone",
     githubLabel: "GitHub",
     linkedinLabel: "LinkedIn",
     instagramLabel: "Instagram",

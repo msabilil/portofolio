@@ -15,6 +15,7 @@ const project: Project = {
   slug: "demo",
   title: "Demo Project",
   description: { en: "A demo project.", id: "Proyek demo." },
+  categories: ["ui-ux"],
   tags: ["UI", "Figma"],
   cover: "/assets/projects/demo/cover.jpg",
   link: "https://example.com",
