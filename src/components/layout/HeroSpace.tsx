@@ -29,7 +29,7 @@ function HeroBackground() {
       fill
       priority
       sizes="100vw"
-      className="-z-20 object-cover"
+      className="-z-20 object-contain"
     />
   );
 }
