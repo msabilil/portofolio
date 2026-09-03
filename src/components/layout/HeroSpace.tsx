@@ -139,13 +139,13 @@ export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: H
           <div className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start">
             <Link
               href="/projects"
-              className="rounded-full bg-gradient-to-r from-[var(--accent-cyan)] to-[#67e8f9] px-6 py-2.5 font-medium text-[#05060f] shadow-[0_0_20px_var(--accent-cyan-glow)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_28px_var(--accent-cyan-glow)]"
+              className="rounded-full bg-gradient-to-r from-[#00f0ff] to-[#00a3ff] px-6 py-2.5 font-medium text-[#05060f] shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,240,255,0.8)]"
             >
               {ctaLabel}
             </Link>
             <a
               href="#contact"
-              className="rounded-full border border-[var(--accent-purple)] bg-white/5 px-6 py-2.5 font-medium text-[var(--accent-purple)] backdrop-blur-md transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+              className="rounded-full border border-[var(--accent-purple)] bg-white/5 px-6 py-2.5 font-medium text-[var(--accent-purple)] backdrop-blur-md transition-[transform,background-color,color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-purple)] hover:text-white hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]"
             >
               {connectLabel}
             </a>

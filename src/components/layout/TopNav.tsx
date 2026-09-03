@@ -21,7 +21,7 @@ export function TopNav({ theme }: { theme: "light" | "dark" }) {
 
   return (
     <header className="sticky top-4 z-50 flex justify-center px-4">
-      <div className="glass-card flex w-full max-w-[var(--container-max)] flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-full px-6 py-2.5 shadow-[0_0_24px_rgba(34,211,238,0.15)]">
+      <div className="glass-nav flex w-full max-w-[var(--container-max)] flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-full px-6 py-2.5">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/assets/photos/itsme.jpg"
@@ -46,7 +46,7 @@ export function TopNav({ theme }: { theme: "light" | "dark" }) {
                 className={
                   "rounded-full px-3.5 py-1.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-[var(--dur-fast)] sm:px-4 " +
                   (isActive
-                    ? "bg-[var(--accent-cyan)] text-[#05060f] shadow-[0_0_16px_var(--accent-cyan-glow)]"
+                    ? "bg-gradient-to-r from-[#00f0ff] to-[#00a3ff] text-[#05060f] shadow-[0_0_15px_rgba(0,240,255,0.6)]"
                     : "text-[var(--color-text-muted)] hover:bg-white/5 hover:text-white")
                 }
               >
