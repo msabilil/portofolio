@@ -20,16 +20,22 @@ type HeroSpaceProps = {
 // canvas nebula, CSS planets, and SVG rocket. The tsparticles starfield
 // stays layered on top for a bit of drifting/twinkling motion the
 // static image alone doesn't have.
+//
+// Rendered at its natural aspect ratio (width 100%, height auto) rather
+// than `fill` + object-fit — the section's height simply becomes
+// whatever the image needs at full width, so nothing is ever cropped
+// or letterboxed.
 function HeroBackground() {
   return (
     <Image
       src="/assets/hero/space-background.jpg"
       alt=""
       aria-hidden="true"
-      fill
+      width={1365}
+      height={768}
       priority
       sizes="100vw"
-      className="-z-20 object-contain"
+      className="-z-20 h-auto w-full"
     />
   );
 }
@@ -77,26 +83,28 @@ function HeroStarfield() {
 
 export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
-    <section className="hero-space fade-in-up relative isolate flex min-h-[560px] flex-col items-center justify-center overflow-hidden px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
+    <section className="hero-space fade-in-up relative isolate overflow-hidden">
       <HeroBackground />
       <HeroStarfield />
-      <div className="relative z-10 max-w-xl text-center sm:text-left">
-        <p className="text-[var(--neon-cyan)]">{greeting}</p>
-        <h1 className="mt-2 text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">{name}</h1>
-        <p className="mt-4 text-lg text-white/80">{tagline}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start">
-          <Link
-            href="/projects"
-            className="rounded-full bg-[var(--neon-cyan)] px-6 py-2.5 font-medium text-[#0b0d17] shadow-[0_0_20px_rgba(0,240,255,0.55)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(0,240,255,0.8)]"
-          >
-            {ctaLabel}
-          </Link>
-          <a
-            href="#contact"
-            className="rounded-full border border-[var(--neon-purple)] px-6 py-2.5 font-medium text-[var(--neon-purple-text)] transition-transform duration-[var(--dur-fast)] hover:-translate-y-0.5"
-          >
-            {connectLabel}
-          </a>
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
+        <div className="max-w-xl text-center sm:text-left">
+          <p className="text-[var(--neon-cyan)]">{greeting}</p>
+          <h1 className="mt-2 text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">{name}</h1>
+          <p className="mt-4 text-lg text-white/80">{tagline}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start">
+            <Link
+              href="/projects"
+              className="rounded-full bg-[var(--neon-cyan)] px-6 py-2.5 font-medium text-[#0b0d17] shadow-[0_0_20px_rgba(0,240,255,0.55)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(0,240,255,0.8)]"
+            >
+              {ctaLabel}
+            </Link>
+            <a
+              href="#contact"
+              className="rounded-full border border-[var(--neon-purple)] px-6 py-2.5 font-medium text-[var(--neon-purple-text)] transition-transform duration-[var(--dur-fast)] hover:-translate-y-0.5"
+            >
+              {connectLabel}
+            </a>
+          </div>
         </div>
       </div>
     </section>
