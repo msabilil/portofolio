@@ -21,10 +21,12 @@ type HeroSpaceProps = {
 // stays layered on top for a bit of drifting/twinkling motion the
 // static image alone doesn't have.
 //
-// `fill` + object-contain shows the whole image with no cropping; the
-// section's own responsive min-height (below) is what keeps the Hero a
-// sensible height on narrow screens, instead of collapsing to the
-// image's raw 16:9 ratio (too short for the headline on mobile).
+// `fill` + object-cover always spans the section edge-to-edge at
+// whatever height the responsive min-height below sets — object-contain
+// kept the image uncropped but pillarboxed (empty bars left/right)
+// whenever the section's width:height ratio didn't match the image's
+// own 16:9, which loses full-width for a wide hero far more often than
+// it avoids a modest top/bottom crop.
 function HeroBackground() {
   return (
     <Image
@@ -34,7 +36,7 @@ function HeroBackground() {
       fill
       priority
       sizes="100vw"
-      className="-z-20 object-contain"
+      className="-z-20 object-cover"
     />
   );
 }
