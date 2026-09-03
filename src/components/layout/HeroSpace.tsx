@@ -21,21 +21,20 @@ type HeroSpaceProps = {
 // stays layered on top for a bit of drifting/twinkling motion the
 // static image alone doesn't have.
 //
-// Rendered at its natural aspect ratio (width 100%, height auto) rather
-// than `fill` + object-fit — the section's height simply becomes
-// whatever the image needs at full width, so nothing is ever cropped
-// or letterboxed.
+// `fill` + object-contain shows the whole image with no cropping; the
+// section's own responsive min-height (below) is what keeps the Hero a
+// sensible height on narrow screens, instead of collapsing to the
+// image's raw 16:9 ratio (too short for the headline on mobile).
 function HeroBackground() {
   return (
     <Image
       src="/assets/hero/space-background.jpg"
       alt=""
       aria-hidden="true"
-      width={1365}
-      height={768}
+      fill
       priority
       sizes="100vw"
-      className="-z-20 h-auto w-full"
+      className="-z-20 object-contain"
     />
   );
 }
@@ -83,7 +82,7 @@ function HeroStarfield() {
 
 export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
-    <section className="hero-space fade-in-up relative isolate overflow-hidden">
+    <section className="hero-space fade-in-up relative isolate min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
       <HeroBackground />
       <HeroStarfield />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
