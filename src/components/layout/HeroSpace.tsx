@@ -1,7 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
+import type { Engine } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 import { Link } from "@/i18n/navigation";
+import { prefersReducedMotion } from "@/components/SmoothScroll";
 
 type HeroSpaceProps = {
   name: string;
@@ -13,8 +17,9 @@ type HeroSpaceProps = {
 
 // Full-bleed AI-generated background (nebula, planets, astronaut, and
 // rocket all baked into one image) — replaces the earlier hand-built
-// canvas nebula, CSS planets, tsparticles starfield, SVG rocket, and
-// separately-animated astronaut PNG.
+// canvas nebula, CSS planets, and SVG rocket. The tsparticles starfield
+// stays layered on top for a bit of drifting/twinkling motion the
+// static image alone doesn't have.
 function HeroBackground() {
   return (
     <Image
@@ -29,10 +34,52 @@ function HeroBackground() {
   );
 }
 
+async function initStarfield(engine: Engine) {
+  await loadSlim(engine);
+}
+
+function HeroStarfield() {
+  const reducedMotion = prefersReducedMotion();
+
+  return (
+    <ParticlesProvider init={initStarfield}>
+      <Particles
+        id="hero-starfield"
+        className="absolute inset-0 -z-10"
+        options={{
+          fullScreen: false,
+          background: { color: "transparent" },
+          fpsLimit: 60,
+          particles: {
+            number: { value: 150 },
+            color: { value: ["#ffffff", "#00f0ff"] },
+            opacity: {
+              value: { min: 0.2, max: 0.9 },
+              animation: { enable: !reducedMotion, speed: 0.6, sync: false },
+            },
+            size: { value: { min: 0.3, max: 2.2 } },
+            move: {
+              enable: !reducedMotion,
+              speed: 0.2,
+              direction: "none",
+              random: true,
+              outModes: { default: "out" },
+            },
+          },
+          interactivity: {
+            events: { onHover: { enable: false }, onClick: { enable: false } },
+          },
+        }}
+      />
+    </ParticlesProvider>
+  );
+}
+
 export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
     <section className="hero-space fade-in-up relative isolate flex min-h-[560px] flex-col items-center justify-center overflow-hidden px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
       <HeroBackground />
+      <HeroStarfield />
       <div className="relative z-10 max-w-xl text-center sm:text-left">
         <p className="text-[var(--neon-cyan)]">{greeting}</p>
         <h1 className="mt-2 text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">{name}</h1>
