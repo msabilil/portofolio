@@ -1,4 +1,3 @@
-// src/components/layout/HeroSpace.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -82,8 +81,8 @@ function HeroAstronaut() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="relative order-first w-full max-w-[360px] shrink-0 sm:order-last">
-      <div ref={tiltRef} className="hero-float relative aspect-square w-full">
+    <div ref={wrapperRef} className="hero-float relative w-full max-w-[360px] shrink-0 sm:order-last">
+      <div ref={tiltRef} className="relative aspect-square w-full">
         <Image
           src="/assets/hero/astronaut.png"
           alt=""
@@ -116,7 +115,7 @@ export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: H
           </Link>
           <a
             href="#contact"
-            className="rounded-full border border-[var(--neon-purple)] px-6 py-2.5 font-medium text-[var(--neon-purple)] transition-transform duration-[var(--dur-fast)] hover:-translate-y-0.5"
+            className="rounded-full border border-[var(--neon-purple)] px-6 py-2.5 font-medium text-[var(--neon-purple-text)] transition-transform duration-[var(--dur-fast)] hover:-translate-y-0.5"
           >
             {connectLabel}
           </a>

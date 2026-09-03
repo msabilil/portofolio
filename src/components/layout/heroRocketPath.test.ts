@@ -4,8 +4,8 @@ import { computeRocketTransform } from "./heroRocketPath";
 describe("computeRocketTransform", () => {
   it("starts at the beginning of the path at elapsed=0", () => {
     const { x, y } = computeRocketTransform(0, 6);
-    expect(x).toBeCloseTo(-1.4);
-    expect(y).toBeCloseTo(-1);
+    expect(x).toBeCloseTo(-2.2);
+    expect(y).toBeCloseTo(-2.0);
   });
 
   it("reaches the midpoint of the path at half the loop duration", () => {
@@ -31,5 +31,19 @@ describe("computeRocketTransform", () => {
   it("always returns the same fixed bank angle", () => {
     expect(computeRocketTransform(0).rotationZ).toBe(-0.5);
     expect(computeRocketTransform(4.2).rotationZ).toBe(-0.5);
+  });
+
+  it("keeps both path endpoints beyond the camera's visible frustum", () => {
+    // 4 * tan(20deg) at z=0, camera fov 40, distance 4, plus the model's own
+    // scaled half-extent (~0.24) so the loop reset happens off-screen.
+    const VISIBLE_HALF_EXTENT = 4 * Math.tan((20 * Math.PI) / 180);
+
+    const start = computeRocketTransform(0, 6);
+    const nearEnd = computeRocketTransform(5.99, 6); // just before it wraps back to start
+
+    expect(Math.abs(start.x)).toBeGreaterThan(VISIBLE_HALF_EXTENT);
+    expect(Math.abs(start.y)).toBeGreaterThan(VISIBLE_HALF_EXTENT);
+    expect(Math.abs(nearEnd.x)).toBeGreaterThan(VISIBLE_HALF_EXTENT);
+    expect(Math.abs(nearEnd.y)).toBeGreaterThan(VISIBLE_HALF_EXTENT);
   });
 });

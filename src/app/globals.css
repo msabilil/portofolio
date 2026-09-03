@@ -112,6 +112,8 @@ html {
 .hero-space {
   --neon-cyan: #00f0ff;
   --neon-purple: #9d4edd;
+  --neon-purple-text: #c77dff;
+  --focus-ring: 2px solid var(--neon-cyan);
   background: linear-gradient(180deg, #0b0d17, #151932);
   color: #f5f5f4;
 }
