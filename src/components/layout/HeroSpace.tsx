@@ -92,7 +92,7 @@ function HeroDecorativeAssets() {
         loading="lazy"
         className="hero-asset-float-a pointer-events-none absolute -z-10 hidden sm:block"
         style={{
-          top: "var(--planet-3-top)",
+          bottom: "var(--planet-3-bottom)",
           right: "var(--planet-3-right)",
           width: "var(--planet-3-width)",
         }}
@@ -112,12 +112,11 @@ function HeroDecorativeAssets() {
         src="/assets/hero/astronaut.png"
         alt=""
         loading="eager"
-        className="hero-asset-float-b pointer-events-none absolute -z-10"
+        className="hero-asset-float-b pointer-events-none absolute -z-10 left-1/2 max-w-[62vw] sm:max-w-none"
         style={{
           top: "var(--astronaut-top)",
-          right: "var(--astronaut-right)",
           width: "var(--astronaut-width)",
-          transform: "translateY(-50%)",
+          transform: "translateX(-50%)",
         }}
       />
     </>
@@ -129,14 +128,14 @@ export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: H
     <section className="hero-space fade-in-up relative isolate min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
       <HeroStarfield />
       <HeroDecorativeAssets />
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
-        <div className="max-w-xl text-center sm:text-left">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-start px-6 pb-16 pt-28 sm:px-12 sm:pt-32 md:px-10 lg:px-12">
+        <div className="max-w-xl text-center">
           <p className="font-medium text-[var(--accent-cyan)]">{greeting}</p>
           <h1 className="font-heading text-glow mt-2 text-[36px] font-bold uppercase leading-[1.15] tracking-[-0.01em] text-white sm:text-[48px]">
             {name}
           </h1>
           <p className="mt-4 text-lg text-[var(--color-text-muted)]">{tagline}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start">
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               href="/projects"
               className="rounded-full bg-gradient-to-r from-[#00f0ff] to-[#00a3ff] px-6 py-2.5 font-medium text-[#05060f] shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,240,255,0.8)]"

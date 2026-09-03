@@ -151,22 +151,23 @@ html {
   color: var(--color-text);
 
   /* Decorative layer positions — change these to reposition the PNGs
-     without touching the component markup. */
-  --astronaut-top: 45%;
-  --astronaut-right: 28%;
-  --astronaut-width: 380px;
-  --rocket-top: 12%;
+     without touching the component markup. Astronaut is horizontally
+     centered (left: 50% + translateX(-50%) in the component), so it
+     only takes a top offset here, no left/right. */
+  --astronaut-top: 46%;
+  --astronaut-width: 340px;
+  --rocket-top: 10%;
   --rocket-right: 6%;
   --rocket-width: 140px;
-  --planet-1-top: 38%;
-  --planet-1-left: 4%;
+  --planet-1-top: 40%;
+  --planet-1-left: 5%;
   --planet-1-width: 150px;
   --planet-2-top: 8%;
-  --planet-2-left: 10%;
-  --planet-2-width: 70px;
-  --planet-3-top: 78%;
-  --planet-3-right: 14%;
-  --planet-3-width: 60px;
+  --planet-2-left: 16%;
+  --planet-2-width: 64px;
+  --planet-3-bottom: 5%;
+  --planet-3-right: -3%;
+  --planet-3-width: 220px;
 }
 
 @keyframes hero-asset-float-a {
