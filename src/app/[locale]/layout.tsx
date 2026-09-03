@@ -4,7 +4,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { routing } from "@/i18n/routing";
-import { archivo, jetbrainsMono } from "@/styles/fonts";
+import { archivo, inter, jetbrainsMono, spaceGrotesk } from "@/styles/fonts";
 import { TopNav } from "@/components/layout/TopNav";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
@@ -40,7 +40,11 @@ export default async function LocaleLayout({
   const theme = cookieStore.get("theme")?.value === "dark" ? "dark" : "light";
 
   return (
-    <html lang={locale} data-theme={theme} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang={locale}
+      data-theme={theme}
+      className={`${archivo.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
       <body>
         <NextIntlClientProvider messages={messages}>
           <TopNav theme={theme} />

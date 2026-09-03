@@ -26,9 +26,7 @@ function CoverPlaceholder({ title }: { title: string }) {
 
 export function ProjectCard({ project, description, viewLabel }: ProjectCardProps) {
   return (
-    <article
-      className="group rounded-[var(--radius-md)] border border-[var(--color-border)] p-4 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--color-text-muted)] hover:shadow-[var(--shadow-md)]"
-    >
+    <article className="glass-card group rounded-[var(--radius-md)] p-4 transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--accent-cyan)] hover:shadow-[0_0_28px_var(--accent-cyan-glow)]">
       <div className="mb-3 overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)]">
         <div className="flex items-center gap-1.5 border-b border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-3 py-2">
           <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />

@@ -9,9 +9,10 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { key: "home", href: "/" },
-  { key: "experience", href: "/experience" },
-  { key: "projects", href: "/projects" },
-  { key: "tools", href: "/tools" },
+  { key: "about", href: "/#about" },
+  { key: "skills", href: "/#skills" },
+  { key: "projects", href: "/#projects" },
+  { key: "contact", href: "/#contact" },
 ] as const;
 
 export function TopNav({ theme }: { theme: "light" | "dark" }) {
@@ -19,17 +20,19 @@ export function TopNav({ theme }: { theme: "light" | "dark" }) {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/90 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-3 md:px-10 lg:px-12">
-        <Link href="/" className="flex shrink-0 items-center gap-3">
+    <header className="sticky top-4 z-50 flex justify-center px-4">
+      <div className="glass-card flex w-full max-w-[var(--container-max)] flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-full px-6 py-2.5 shadow-[0_0_24px_rgba(34,211,238,0.15)]">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/assets/photos/itsme.jpg"
             alt=""
-            width={36}
-            height={36}
-            className="rounded-full border border-[var(--color-border)] object-cover object-[center_20%]"
+            width={32}
+            height={32}
+            className="rounded-full border border-[var(--border-glow)] object-cover object-[center_20%]"
           />
-          <span className="font-semibold tracking-[-0.01em]">{profile.name}</span>
+          <span className="font-heading text-sm font-semibold uppercase tracking-[0.04em] text-white">
+            {profile.name}
+          </span>
         </Link>
 
         <nav aria-label="Section navigation" className="flex items-center gap-1">
@@ -41,10 +44,10 @@ export function TopNav({ theme }: { theme: "light" | "dark" }) {
                 href={href}
                 aria-current={isActive ? "page" : undefined}
                 className={
-                  "rounded-full px-4 py-2 text-sm font-medium transition-colors duration-[var(--dur-fast)] " +
+                  "rounded-full px-3.5 py-1.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-[var(--dur-fast)] sm:px-4 " +
                   (isActive
-                    ? "bg-[var(--color-accent)] text-white"
-                    : "text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]")
+                    ? "bg-[var(--accent-cyan)] text-[#05060f] shadow-[0_0_16px_var(--accent-cyan-glow)]"
+                    : "text-[var(--color-text-muted)] hover:bg-white/5 hover:text-white")
                 }
               >
                 {t(key)}

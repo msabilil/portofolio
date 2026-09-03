@@ -82,26 +82,98 @@ function HeroStarfield() {
   );
 }
 
+// Decorative PNG layers over the nebula background. The files don't
+// exist yet — the user is supplying them — so these quietly render
+// nothing (empty alt, no broken-image chrome) until each path is
+// filled in. Position/size for each comes from the --astronaut-*,
+// --rocket-*, --planet-*-* custom properties on .hero-space (see
+// globals.css) so they can be moved without touching this file.
+function HeroDecorativeAssets() {
+  return (
+    <>
+      <img
+        src="/assets/hero/planet-2.png"
+        alt=""
+        loading="lazy"
+        className="hero-asset-float-c pointer-events-none absolute -z-10 hidden sm:block"
+        style={{
+          top: "var(--planet-2-top)",
+          left: "var(--planet-2-left)",
+          width: "var(--planet-2-width)",
+        }}
+      />
+      <img
+        src="/assets/hero/planet-1.png"
+        alt=""
+        loading="lazy"
+        className="hero-asset-float-b pointer-events-none absolute -z-10 hidden sm:block"
+        style={{
+          top: "var(--planet-1-top)",
+          left: "var(--planet-1-left)",
+          width: "var(--planet-1-width)",
+        }}
+      />
+      <img
+        src="/assets/hero/planet-3.png"
+        alt=""
+        loading="lazy"
+        className="hero-asset-float-a pointer-events-none absolute -z-10 hidden sm:block"
+        style={{
+          top: "var(--planet-3-top)",
+          right: "var(--planet-3-right)",
+          width: "var(--planet-3-width)",
+        }}
+      />
+      <img
+        src="/assets/hero/rocket.png"
+        alt=""
+        loading="eager"
+        className="hero-asset-float-a pointer-events-none absolute -z-10"
+        style={{
+          top: "var(--rocket-top)",
+          right: "var(--rocket-right)",
+          width: "var(--rocket-width)",
+        }}
+      />
+      <img
+        src="/assets/hero/astronaut.png"
+        alt=""
+        loading="eager"
+        className="hero-asset-float-b pointer-events-none absolute -z-10"
+        style={{
+          top: "var(--astronaut-top)",
+          right: "var(--astronaut-right)",
+          width: "var(--astronaut-width)",
+          transform: "translateY(-50%)",
+        }}
+      />
+    </>
+  );
+}
+
 export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
     <section className="hero-space fade-in-up relative isolate min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
       <HeroBackground />
       <HeroStarfield />
+      <HeroDecorativeAssets />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-16 sm:items-start sm:justify-center sm:px-12 sm:py-20 md:px-10 lg:px-12">
         <div className="max-w-xl text-center sm:text-left">
-          <p className="text-[var(--neon-cyan)]">{greeting}</p>
-          <h1 className="mt-2 text-[42px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[52px]">{name}</h1>
-          <p className="mt-4 text-lg text-white/80">{tagline}</p>
+          <p className="font-medium text-[var(--accent-cyan)]">{greeting}</p>
+          <h1 className="font-heading text-glow mt-2 text-[36px] font-bold uppercase leading-[1.15] tracking-[-0.01em] text-white sm:text-[48px]">
+            {name}
+          </h1>
+          <p className="mt-4 text-lg text-[var(--color-text-muted)]">{tagline}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start">
             <Link
               href="/projects"
-              className="rounded-full bg-[var(--neon-cyan)] px-6 py-2.5 font-medium text-[#0b0d17] shadow-[0_0_20px_rgba(0,240,255,0.55)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(0,240,255,0.8)]"
+              className="rounded-full bg-gradient-to-r from-[var(--accent-cyan)] to-[#67e8f9] px-6 py-2.5 font-medium text-[#05060f] shadow-[0_0_20px_var(--accent-cyan-glow)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_28px_var(--accent-cyan-glow)]"
             >
               {ctaLabel}
             </Link>
             <a
               href="#contact"
-              className="rounded-full border border-[var(--neon-purple)] px-6 py-2.5 font-medium text-[var(--neon-purple-text)] transition-transform duration-[var(--dur-fast)] hover:-translate-y-0.5"
+              className="rounded-full border border-[var(--accent-purple)] px-6 py-2.5 font-medium text-[var(--accent-purple)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
             >
               {connectLabel}
             </a>

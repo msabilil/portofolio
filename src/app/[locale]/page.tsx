@@ -50,7 +50,7 @@ export default function HomePage() {
       />
       <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col gap-24 px-6 py-12 md:px-10 md:py-16 lg:px-12">
       <Reveal className="block">
-        <section>
+        <section id="about">
           <SectionHeading title={tAbout("title")} />
           <p className="max-w-prose" style={{ color: "var(--color-text-muted)" }}>
             {tAbout("bio")}
@@ -59,8 +59,8 @@ export default function HomePage() {
       </Reveal>
 
       <Reveal className="block">
-        <section>
-          <SectionHeading title={tExpertise("title")} />
+        <section id="skills">
+          <SectionHeading title={tExpertise("title")} glow center />
           <div className="mb-10">
             <CoreExpertise
               items={{
@@ -132,8 +132,8 @@ export default function HomePage() {
       </Reveal>
 
       <Reveal className="block">
-        <section>
-          <SectionHeading title={tProjects("title")} />
+        <section id="projects">
+          <SectionHeading title={tProjects("title")} glow center />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {projects.map((project) => (
               <ProjectCard

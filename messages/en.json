@@ -71,9 +71,10 @@
   },
   "nav": {
     "home": "Home",
-    "experience": "Experience",
+    "about": "About",
+    "skills": "Skills",
     "projects": "Projects",
-    "tools": "Tools"
+    "contact": "Contact"
   },
   "experience": {
     "title": "Experience"

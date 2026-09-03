@@ -71,9 +71,10 @@
   },
   "nav": {
     "home": "Beranda",
-    "experience": "Pengalaman",
+    "about": "Tentang",
+    "skills": "Keahlian",
     "projects": "Proyek",
-    "tools": "Tools"
+    "contact": "Kontak"
   },
   "experience": {
     "title": "Pengalaman"

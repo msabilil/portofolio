@@ -61,9 +61,9 @@ export function CoreExpertise({ items }: CoreExpertiseProps) {
       {KEYS.map((key) => (
         <div
           key={key}
-          className="flex flex-col rounded-[var(--radius-md)] border border-[var(--color-border)] p-6 transition-[transform,border-color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--color-text-muted)] hover:shadow-[var(--shadow-md)]"
+          className="glass-card flex flex-col rounded-[var(--radius-md)] p-6 transition-[transform,border-color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--accent-cyan)] hover:shadow-[0_0_28px_var(--accent-cyan-glow)]"
         >
-          <div style={{ color: "var(--color-accent)" }}>
+          <div style={{ color: "var(--accent-cyan)" }}>
             <ExpertiseIcon variant={key} />
           </div>
           <h3 className="mt-4 font-semibold">{items[key].title}</h3>
