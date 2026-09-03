@@ -7,8 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { prefersReducedMotion } from "@/components/SmoothScroll";
 
 type HeroSpaceProps = {
-  name: string;
-  greeting: string;
+  headline: string;
   tagline: string;
   ctaLabel: string;
   connectLabel: string;
@@ -123,16 +122,15 @@ function HeroDecorativeAssets() {
   );
 }
 
-export function HeroSpace({ name, greeting, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
+export function HeroSpace({ headline, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
   return (
     <section className="hero-space fade-in-up relative isolate min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
       <HeroStarfield />
       <HeroDecorativeAssets />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-start px-6 pb-16 pt-28 sm:px-12 sm:pt-32 md:px-10 lg:px-12">
         <div className="max-w-xl text-center">
-          <p className="font-medium text-[var(--accent-cyan)]">{greeting}</p>
-          <h1 className="font-heading text-glow mt-2 text-[36px] font-bold uppercase leading-[1.15] tracking-[-0.01em] text-white sm:text-[48px]">
-            {name}
+          <h1 className="font-heading text-glow text-[36px] font-bold uppercase leading-[1.15] tracking-[-0.01em] text-white sm:text-[48px]">
+            {headline}
           </h1>
           <p className="mt-4 text-lg text-[var(--color-text-muted)]">{tagline}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">

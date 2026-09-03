@@ -1,5 +1,4 @@
 import { useLocale, useTranslations } from "next-intl";
-import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { experience } from "@/content/experience";
 import { education } from "@/content/education";
@@ -42,8 +41,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSpace
-        name={profile.name}
-        greeting={tHome("greeting")}
+        headline={tHome("headline")}
         tagline={tHome("tagline")}
         ctaLabel={tHome("cta")}
         connectLabel={tHome("connect")}
