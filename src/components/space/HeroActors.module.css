@@ -1,0 +1,244 @@
+/* Constant orbit + counter-rotation: the track is elliptical, the PNG stays round.
+   Durations are long-form ambient motion, not UI response timings. No per-frame JS. */
+.orbit {
+  --period: 108s;
+  --phase: 0s;
+  --flatten: 0.34;
+  --inclination: -12deg;
+  --planet-size: 135px;
+  position: absolute;
+  top: calc(40% + 15px);
+  left: 50%;
+  width: 82%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(var(--inclination)) scaleY(var(--flatten));
+  pointer-events: none;
+  z-index: 1;
+}
+.blue {
+  --period: 148s;
+  --phase: -74s;
+  --flatten: 0.3;
+  --inclination: 16deg;
+  --planet-size: 105px;
+  width: 77%;
+}
+.orbit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: none;
+  border-radius: 50%;
+}
+.rotor {
+  width: 100%;
+  height: 100%;
+  animation: orbit-turn var(--period) linear var(--phase) infinite;
+}
+.slot {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: var(--planet-size);
+  height: var(--planet-size);
+  transform: translate(-50%, -50%);
+}
+.counter {
+  width: 100%;
+  height: 100%;
+  animation: orbit-counter var(--period) linear var(--phase) infinite;
+}
+.upright {
+  width: 100%;
+  height: 100%;
+  transform: scaleY(calc(1 / var(--flatten))) rotate(calc(-1 * var(--inclination)));
+}
+.actor {
+  display: block;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  pointer-events: auto;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform var(--dur-fast) ease;
+}
+.actor:disabled { cursor: default; }
+.actor:focus-visible { outline-color: var(--amber); }
+.planet { width: 100%; height: 100%; border-radius: 50%; }
+.planet img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.planetHalo {
+  position: absolute;
+  inset: -9%;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 22px #89deeb26;
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+}
+.planet[aria-pressed="true"] .planetHalo { opacity: 0.7; }
+
+/* The zero-height traveler translates by its route width, never by the PNG width.
+   Hop, heading, hover and shadow each own a transform to avoid competing effects. */
+.moonRoute {
+  --astronaut-size: clamp(170px, 16vw, 230px);
+  --edge: clamp(24px, 8vw, 125px);
+  --roam-period: 48s;
+  --hop-period: 8s;
+  --start-phase: -21s;
+  position: absolute;
+  left: var(--edge);
+  /* Keep the traveler inside the first viewport even when the hero keeps
+     its readable minimum height on short screens. */
+  bottom: 40px;
+  width: calc(100% - var(--edge) * 2 - var(--astronaut-size));
+  height: var(--astronaut-size);
+  z-index: 2;
+  pointer-events: none;
+}
+.traveler {
+  width: 100%;
+  height: 100%;
+  /* Constant drift: no acceleration through the middle of the lunar route. */
+  animation: lunar-traverse var(--roam-period) linear var(--start-phase) infinite alternate;
+}
+.hop {
+  position: absolute;
+  bottom: 0;
+  width: var(--astronaut-size);
+  animation: lunar-hop var(--hop-period) linear var(--start-phase) infinite;
+}
+.astronaut { width: 100%; border-radius: 45%; }
+.heading {
+  display: block;
+  animation: lunar-heading calc(var(--roam-period) * 2) linear var(--start-phase) infinite;
+}
+.heading img { display: block; width: 100%; height: auto; pointer-events: none; }
+.shadow {
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: var(--astronaut-size);
+  height: 17px;
+  border-radius: 50%;
+  background: #14243a30;
+  animation: lunar-shadow var(--hop-period) linear var(--start-phase) infinite;
+}
+.greeting {
+  display: block;
+  position: absolute;
+  bottom: 10%;
+  right: -5%;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 7px 10px;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  white-space: nowrap;
+  transform: rotate(-7deg);
+  opacity: 0.85;
+  transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease;
+}
+.orbit[data-running="false"] .rotor,
+.orbit[data-running="false"] .counter,
+.moonRoute[data-running="false"] .traveler,
+.moonRoute[data-running="false"] .hop,
+.moonRoute[data-running="false"] .heading,
+.moonRoute[data-running="false"] .shadow,
+.orbit:has(:focus-visible) .rotor,
+.orbit:has(:focus-visible) .counter,
+.moonRoute:has(:focus-visible) .traveler,
+.moonRoute:has(:focus-visible) .hop,
+.moonRoute:has(:focus-visible) .heading,
+.moonRoute:has(:focus-visible) .shadow {
+  animation-play-state: paused;
+}
+@keyframes orbit-turn { to { transform: rotate(360deg); } }
+@keyframes orbit-counter { to { transform: rotate(-360deg); } }
+@keyframes lunar-traverse {
+  from { transform: translate3d(0, 18px, 0); }
+  to { transform: translate3d(100%, -24px, 0); }
+}
+@keyframes lunar-hop {
+  0%, 100% { transform: translateY(0) rotate(0deg); animation-timing-function: var(--ease-out); }
+  8% { transform: translateY(3%) rotate(-3deg); animation-timing-function: var(--ease-out); }
+  42% { transform: translateY(-22%) rotate(4deg); animation-timing-function: var(--ease-in-out); }
+  66% { transform: translateY(-24%) rotate(1deg); animation-timing-function: var(--ease-in-out); }
+}
+@keyframes lunar-shadow {
+  0%, 8%, 100% { transform: scaleX(0.55); opacity: 0.65; animation-timing-function: var(--ease-out); }
+  42%, 66% { transform: scaleX(0.8); opacity: 0.25; animation-timing-function: var(--ease-in-out); }
+}
+@keyframes lunar-heading {
+  /* The source pose faces left: mirror it on the rightward leg, not the return. */
+  0%, 49% { transform: rotateZ(5deg) rotateY(180deg); }
+  50%, 99% { transform: rotateZ(-5deg) rotateY(0deg); }
+  100% { transform: rotateZ(5deg) rotateY(-180deg); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .planet:not(:disabled):hover { transform: rotate(9deg) scale(1.06); }
+  .planet:not(:disabled):hover .planetHalo { opacity: 0.8; }
+  .astronaut:not(:disabled):hover { transform: translateY(-4%) rotate(-5deg); }
+  .astronaut:not(:disabled):hover .greeting { transform: translateY(-12%) rotate(3deg); opacity: 1; }
+}
+@media (pointer: coarse) {
+  .actor:not(:disabled):active { transform: scale(0.97); transition-duration: 150ms; }
+}
+@media (max-width: 800px) {
+  /* Keep the entire orbit above the description and CTA on narrow screens. */
+  .orbit { --planet-size: 64px; --flatten: 0.38; --inclination: -8deg; width: 76%; top: 255px; }
+  .blue { --planet-size: 54px; --flatten: 0.4; --inclination: 14deg; width: 71%; }
+  .moonRoute { --astronaut-size: 150px; --edge: 24px; bottom: 110px; }
+  .greeting { right: -2%; font-size: 6px; padding: 6px; }
+  .shadow { height: 12px; }
+}
+@media (max-width: 380px) {
+  .moonRoute { --astronaut-size: 128px; --edge: 18px; bottom: 100px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rotor, .counter, .traveler, .hop, .heading, .shadow { animation: none; }
+  .blue .rotor { transform: rotate(180deg); }
+  .blue .counter { transform: rotate(-180deg); }
+  .traveler { transform: translate3d(75%, -14px, 0); }
+  .shadow { transform: scaleX(0.55); opacity: 0.5; }
+  .actor, .greeting { transition: none; }
+}
+
+/* Responsive lunar staging. The 1920px composition stays as the reference;
+   shorter viewport bands lift only the actors that would otherwise sit below
+   the first fold. */
+@media (min-width: 1800px) {
+  .moonRoute { bottom: 40px; }
+}
+@media (min-width: 1400px) and (max-width: 1799px) {
+  .moonRoute { bottom: 95px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .moonRoute { bottom: 90px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .moonRoute { bottom: 95px; }
+}
+@media (max-width: 767px) {
+  .moonRoute { bottom: 80px; }
+}
+@media (max-width: 767px) and (max-height: 800px) {
+  .moonRoute { bottom: 95px; }
+}
+
+/* On compact screens the title occupies two lines, so the orbit sits lower
+   to keep both planets framing the copy instead of crowding its top edge. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .orbit { top: 255px; }
+}
+@media (max-width: 767px) {
+  .orbit { top: 255px; }
+}
+@media (max-width: 767px) and (max-height: 800px) {
+  .orbit { top: 255px; }
+}

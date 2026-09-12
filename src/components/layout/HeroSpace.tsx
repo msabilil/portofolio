@@ -1,154 +1,129 @@
 "use client";
-
-import Particles, { ParticlesProvider } from "@tsparticles/react";
-import type { Engine } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim";
-import { Link } from "@/i18n/navigation";
-import { prefersReducedMotion } from "@/components/SmoothScroll";
-
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useLocale } from "next-intl";
+import { Icon } from "@/components/space/Icon";
+import { useSceneActivity } from "@/components/space/useSceneActivity";
+import { HeroPlanets, LunarAstronaut } from "@/components/space/HeroActors";
+const RocketLaunch = dynamic(
+  () => import("./RocketLaunch").then((m) => m.RocketLaunch),
+  { ssr: false },
+);
 type HeroSpaceProps = {
-  headline: string;
-  tagline: string;
+  title: string;
+  description: string;
   ctaLabel: string;
   connectLabel: string;
 };
-
-async function initStarfield(engine: Engine) {
-  await loadSlim(engine);
-}
-
-function HeroStarfield() {
-  const reducedMotion = prefersReducedMotion();
-
+export function HeroSpace({
+  title,
+  description,
+  ctaLabel,
+  connectLabel,
+}: HeroSpaceProps) {
+  const id = useLocale() === "id";
+  const { ref, active, reduced } = useSceneActivity<HTMLElement>();
+  const [playing, setPlaying] = useState(true);
+  const [paused, setPaused] = useState(false);
   return (
-    <ParticlesProvider init={initStarfield}>
-      <Particles
-        id="hero-starfield"
-        className="absolute inset-0 -z-10"
-        options={{
-          fullScreen: false,
-          background: { color: "transparent" },
-          fpsLimit: 60,
-          particles: {
-            number: { value: 150 },
-            color: { value: ["#ffffff", "#00f0ff"] },
-            opacity: {
-              value: { min: 0.2, max: 0.9 },
-              animation: { enable: !reducedMotion, speed: 0.6, sync: false },
-            },
-            size: { value: { min: 0.3, max: 2.2 } },
-            move: {
-              enable: !reducedMotion,
-              speed: 0.2,
-              direction: "none",
-              random: true,
-              outModes: { default: "out" },
-            },
-          },
-          interactivity: {
-            events: { onHover: { enable: false }, onClick: { enable: false } },
-          },
-        }}
-      />
-    </ParticlesProvider>
-  );
-}
-
-// Decorative PNG layers over the nebula background. The files don't
-// exist yet — the user is supplying them — so these quietly render
-// nothing (empty alt, no broken-image chrome) until each path is
-// filled in. Position/size for each comes from the --astronaut-*,
-// --rocket-*, --planet-*-* custom properties on .hero-space (see
-// globals.css) so they can be moved without touching this file.
-function HeroDecorativeAssets() {
-  return (
-    <>
-      <img
-        src="/assets/hero/planet-2.png"
-        alt=""
-        loading="lazy"
-        className="hero-asset-float-c pointer-events-none absolute -z-10 hidden sm:block"
-        style={{
-          top: "var(--planet-2-top)",
-          left: "var(--planet-2-left)",
-          width: "var(--planet-2-width)",
-        }}
-      />
-      <img
-        src="/assets/hero/planet-1.png"
-        alt=""
-        loading="lazy"
-        className="hero-asset-float-b pointer-events-none absolute -z-10 hidden sm:block"
-        style={{
-          top: "var(--planet-1-top)",
-          left: "var(--planet-1-left)",
-          width: "var(--planet-1-width)",
-        }}
-      />
-      <img
-        src="/assets/hero/planet-3.png"
-        alt=""
-        loading="lazy"
-        className="hero-asset-float-a pointer-events-none absolute -z-10 hidden sm:block"
-        style={{
-          bottom: "var(--planet-3-bottom)",
-          right: "var(--planet-3-right)",
-          width: "var(--planet-3-width)",
-        }}
-      />
-      <img
-        src="/assets/hero/rocket.png"
-        alt=""
-        loading="eager"
-        className="hero-asset-float-a pointer-events-none absolute -z-10"
-        style={{
-          top: "var(--rocket-top)",
-          right: "var(--rocket-right)",
-          width: "var(--rocket-width)",
-        }}
-      />
-      <img
-        src="/assets/hero/astronaut.png"
-        alt=""
-        loading="eager"
-        className="hero-asset-float-b pointer-events-none absolute -z-10 left-1/2 max-w-[62vw] sm:max-w-none"
-        style={{
-          top: "var(--astronaut-top)",
-          width: "var(--astronaut-width)",
-          transform: "translateX(-50%)",
-        }}
-      />
-    </>
-  );
-}
-
-export function HeroSpace({ headline, tagline, ctaLabel, connectLabel }: HeroSpaceProps) {
-  return (
-    <section className="hero-space fade-in-up relative isolate min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
-      <HeroStarfield />
-      <HeroDecorativeAssets />
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-start px-6 pb-16 pt-28 sm:px-12 sm:pt-32 md:px-10 lg:px-12">
-        <div className="max-w-xl text-center">
-          <h1 className="font-heading text-glow text-[36px] font-bold uppercase leading-[1.15] tracking-[-0.01em] text-white sm:text-[48px]">
-            {headline}
-          </h1>
-          <p className="mt-4 text-lg text-[var(--color-text-muted)]">{tagline}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/projects"
-              className="rounded-full bg-gradient-to-r from-[#00f0ff] to-[#00a3ff] px-6 py-2.5 font-medium text-[#05060f] shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-[transform,box-shadow] duration-[var(--dur-fast)] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,240,255,0.8)]"
-            >
-              {ctaLabel}
-            </Link>
-            <a
-              href="#contact"
-              className="rounded-full border border-[var(--accent-purple)] bg-white/5 px-6 py-2.5 font-medium text-[var(--accent-purple)] backdrop-blur-md transition-[transform,background-color,color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-purple)] hover:text-white hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]"
-            >
-              {connectLabel}
-            </a>
-          </div>
+    <section
+      id="home"
+      ref={ref}
+      className="hero-space"
+      data-active={active && !paused}
+    >
+      <div className="hero-nebula" aria-hidden="true" />
+      <div className="star-map" aria-hidden="true" />
+      <HeroPlanets reduced={reduced} active={active && !paused} />
+      <div className="hero-copy container">
+        <h1 aria-label={title}>
+          <span>PORTFOLIO</span>{" "}
+          <span className="hero-title-accent">
+            SPACE
+            <span className="title-spark" aria-hidden="true">
+              ✦
+            </span>
+          </span>
+        </h1>
+        <p className="hero-description">{description}</p>
+        <div className="hero-actions">
+          <a className="button button-cyan" href="#projects">
+            {ctaLabel}
+            <Icon name="arrow" />
+          </a>
+          <a className="button button-light" href="#contact">
+            {connectLabel}
+            <Icon name="mail" />
+          </a>
+          <a
+            className="hero-cv"
+            href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {id ? "Lihat CV" : "View CV"} <Icon name="arrow" width="16" />
+          </a>
         </div>
       </div>
+      <div className="hero-bottom container">
+        <p className="hero-coordinate eyebrow">
+          BDG, INDONESIA
+          <br />
+          <span>06°55′ S / 107°36′ E</span>
+        </p>
+        <a className="scroll-cue" href="#about">
+          <Icon name="down" />
+          <span>{id ? "MULAI EKSPLORASI" : "SCROLL TO EXPLORE"}</span>
+        </a>
+        <div className="motion-controls">
+          {!reduced && (
+            <button
+              className="tiny-control"
+              type="button"
+              aria-pressed={paused}
+              onClick={() => setPaused(!paused)}
+            >
+              {paused
+                ? id
+                  ? "Lanjutkan gerakan"
+                  : "Resume motion"
+                : id
+                  ? "Jeda gerakan"
+                  : "Pause motion"}
+            </button>
+          )}
+          {!reduced && (
+            <button
+              className="tiny-control"
+              type="button"
+              aria-pressed={playing}
+              onClick={() => setPlaying(!playing)}
+            >
+              {playing
+                ? id
+                  ? "Parkir roket"
+                  : "Park rocket"
+                : id
+                  ? "Mainkan roket ↗"
+                  : "Play with rocket ↗"}
+            </button>
+          )}
+        </div>
+      </div>
+      <div className="lunar-horizon" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
+      <LunarAstronaut reduced={reduced} active={active && !paused} />
+      <div className="lunar-flag" aria-hidden="true">
+        <span className="flag-logo">
+          <Image src="/assets/logos/logo-msf.png" alt="" fill sizes="58px" />
+        </span>
+      </div>
+      {playing && !reduced && <RocketLaunch active={active && !paused} eventSource={ref} />}
     </section>
   );
 }

@@ -1,18 +1,21 @@
 {
   "sidebar": {
-    "languageLabel": "Bahasa",
-    "themeLabel": "Tema",
-    "lightLabel": "Terang",
-    "darkLabel": "Gelap"
+    "languageLabel": "Bahasa"
   },
   "home": {
-    "headline": "Exploring Digital Frontier",
-    "tagline": "Creative Developer & UX Explorer",
+    "title": "Portfolio Space",
+    "description": "Ruang visual untuk menjelajahi perjalanan saya",
     "cta": "Lihat proyek",
     "connect": "Hubungi"
   },
+  "opening": {
+    "skip": "Lewati",
+    "description": "Menjelajahi semesta karya…",
+    "progressLabel": "Persiapan perjalanan",
+    "launching": "Menuju orbit…"
+  },
   "about": {
-    "title": "Tentang Saya",
+    "title": "Halo, saya Muhammad Sabilil Fajri",
     "bio": "Saya suka membawa produk dari ide kasar sampai jadi sesuatu yang bisa langsung dipakai orang — mulai dari sketsa antarmuka, membangunnya, sampai memastikan gak gampang rusak dipakai beneran. Sebagian besar kerjaan itu ada di sistem entertainment, keuangan, dan penjadwalan produksi, kerja bareng langsung sama orang yang bakal makai."
   },
   "expertise": {
@@ -32,6 +35,7 @@
   },
   "skills": {
     "title": "Keahlian",
+    "galaxyTitle": "Skill Galaxy",
     "proficientHeading": "Proficient",
     "familiarHeading": "Familiar",
     "softHeading": "Soft skill",

@@ -1,80 +1,54 @@
-import Image from "next/image";
 import type { Project } from "@/content/projects";
-import { SkillTag } from "@/components/SkillTag";
-import { getIconSlug } from "@/lib/techIcons";
-
+import { ProjectPreview } from "@/components/space/ProjectPreview";
+import { Icon } from "@/components/space/Icon";
 type ProjectCardProps = {
   project: Project;
   description: string;
   viewLabel: string;
+  locale?: "en" | "id";
 };
-
-function CoverPlaceholder({ title }: { title: string }) {
+export function ProjectCard({
+  project,
+  description,
+  viewLabel,
+  locale = "en",
+}: ProjectCardProps) {
+  const known = [
+    "recyclean",
+    "arutalalab",
+    "penjadwalan-produksi",
+    "mental-health-app",
+  ].includes(project.slug);
   return (
-    <div
-      aria-hidden="true"
-      className="flex h-full w-full items-center justify-center"
-      style={{
-        background:
-          "repeating-linear-gradient(135deg, var(--color-bg-subtle) 0 2px, transparent 2px 14px)",
-      }}
-    >
-      <span className="text-4xl font-semibold text-[var(--color-border)]">{title.charAt(0)}</span>
-    </div>
-  );
-}
-
-export function ProjectCard({ project, description, viewLabel }: ProjectCardProps) {
-  return (
-    <article className="glass-card group rounded-[var(--radius-md)] p-4 transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--accent-cyan)] hover:shadow-[0_0_28px_var(--accent-cyan-glow)]">
-      <div className="mb-3 overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)]">
-        <div className="flex items-center gap-1.5 border-b border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-3 py-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+    <article className="gallery-card panel">
+      {known || project.cover ? (
+        <ProjectPreview project={project} locale={locale} />
+      ) : (
+        <div className="project-preview preview-arutala" aria-hidden="true">
+          <span className="mood-art text-5xl">{project.title.charAt(0)}</span>
         </div>
-        <div className="relative aspect-[4/3]">
-          {project.cover ? (
-            <Image
-              src={project.cover}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-[var(--dur-base)] group-hover:scale-105"
-            />
-          ) : (
-            <CoverPlaceholder title={project.title} />
-          )}
-        </div>
-      </div>
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-semibold">{project.title}</h3>
-        {project.period && (
-          <p
-            className="font-mono text-xs uppercase tracking-wide tabular-nums"
-            style={{ color: "var(--color-text-muted)" }}
+      )}
+      <div className="gallery-card-body">
+        <h3>{project.title}</h3>
+        {project.period && <p className="eyebrow">{project.period}</p>}
+        <p>{description}</p>
+        <ul className="tag-list">
+          {project.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-button"
           >
-            {project.period}
-          </p>
+            {viewLabel}
+            <Icon name="arrow" width="18" />
+          </a>
         )}
       </div>
-      <p style={{ color: "var(--color-text-muted)" }}>{description}</p>
-      <ul className="mt-2 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <li key={tag}>
-            <SkillTag label={tag} icon={getIconSlug(tag)} />
-          </li>
-        ))}
-      </ul>
-      {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-block underline underline-offset-4 transition-colors duration-[var(--dur-fast)] hover:text-[var(--color-accent)]"
-        >
-          {viewLabel}
-        </a>
-      )}
     </article>
   );
 }

@@ -2,16 +2,23 @@ import { useLocale, useTranslations } from "next-intl";
 import { projects } from "@/content/projects";
 import { ProjectsFilterGrid } from "@/components/ProjectsFilterGrid";
 import { Contact } from "@/components/layout/Contact";
-import { SectionHeading } from "@/components/layout/SectionHeading";
-
+import { Link } from "@/i18n/navigation";
 export default function ProjectsPage() {
   const locale = useLocale() as "en" | "id";
   const t = useTranslations("projects");
-
   return (
-    <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col gap-24 px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32 lg:px-12">
-      <section className="fade-in-up">
-        <SectionHeading title={t("title")} />
+    <div className="subpage lunar-section">
+      <div className="container">
+        <Link href="/" className="text-button">
+          ←{" "}
+          {locale === "id"
+            ? "Kembali ke ruang utama"
+            : "Back to the main space"}
+        </Link>
+        <div className="subpage-heading">
+          <span className="eyebrow">MISSION ARCHIVE / 04 PROJECTS</span>
+          <h1>{locale === "id" ? "Semua proyek." : "The project gallery."}</h1>
+        </div>
         <ProjectsFilterGrid
           projects={projects}
           locale={locale}
@@ -25,8 +32,7 @@ export default function ProjectsPage() {
             qa: t("filter.qa"),
           }}
         />
-      </section>
-
+      </div>
       <Contact />
     </div>
   );

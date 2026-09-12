@@ -1,72 +1,54 @@
-import { useTranslations } from "next-intl";
-import { SkillTag } from "@/components/SkillTag";
+import { useLocale, useTranslations } from "next-intl";
+import { TechSection } from "@/components/space/TechSection";
 import { Contact } from "@/components/layout/Contact";
-import { SectionHeading } from "@/components/layout/SectionHeading";
-import { getIconSlug } from "@/lib/techIcons";
-
-const PROFICIENT_KEYS = ["javascript", "typescript", "html5", "css3", "nextjs", "react", "php", "mysql", "nosql", "git"] as const;
-const FAMILIAR_KEYS = ["vuejs", "elysiajs", "postgresql", "swagger", "postman", "cicdTesting"] as const;
-const SOFT_KEYS = [
-  "computationalThinking",
-  "communication",
-  "analyticalThinking",
-  "criticalThinking",
-  "problemSolving",
-  "teamwork",
-] as const;
-const LANGUAGE_KEYS = ["english", "indonesian"] as const;
-
+import { Link } from "@/i18n/navigation";
 export default function ToolsPage() {
+  const id = useLocale() === "id";
   const t = useTranslations("skills");
-
   return (
-    <div className="mx-auto flex w-full max-w-[var(--container-max)] flex-col gap-24 px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32 lg:px-12">
-      <section className="fade-in-up">
-        <SectionHeading title={t("title")} />
-        <div className="mb-8">
-          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
-            {t("proficientHeading")}
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {PROFICIENT_KEYS.map((key) => {
-              const label = t(`proficient.${key}`);
-              return <SkillTag key={key} label={label} icon={getIconSlug(label)} />;
-            })}
-          </div>
+    <div className="subpage lunar-section">
+      <div className="container">
+        <Link href="/" className="text-button">
+          ← {id ? "Kembali ke ruang utama" : "Back to the main space"}
+        </Link>
+        <div className="subpage-heading">
+          <span className="eyebrow">TOOLS & TECHNOLOGIES</span>
+          <h1>{id ? "Perangkat eksplorasi." : "The exploration toolkit."}</h1>
         </div>
-        <div className="mb-8">
-          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
-            {t("familiarHeading")}
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {FAMILIAR_KEYS.map((key) => {
-              const label = t(`familiar.${key}`);
-              return <SkillTag key={key} label={label} icon={getIconSlug(label)} />;
-            })}
-          </div>
+        <div className="human-skills">
+          <span className="eyebrow">{t("proficientHeading")}</span>
+          <p>
+            {[
+              "javascript",
+              "typescript",
+              "html5",
+              "css3",
+              "nextjs",
+              "react",
+              "php",
+              "mysql",
+              "nosql",
+              "git",
+            ]
+              .map((key) => t("proficient." + key))
+              .join(" · ")}
+          </p>
+          <span className="eyebrow">{t("familiarHeading")}</span>
+          <p>
+            {[
+              "vuejs",
+              "elysiajs",
+              "postgresql",
+              "swagger",
+              "postman",
+              "cicdTesting",
+            ]
+              .map((key) => t("familiar." + key))
+              .join(" · ")}
+          </p>
         </div>
-        <div className="mb-8">
-          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
-            {t("softHeading")}
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {SOFT_KEYS.map((key) => (
-              <SkillTag key={key} label={t(`soft.${key}`)} />
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3 className="mb-3 font-mono text-sm uppercase tracking-wide" style={{ color: "var(--color-text-muted)" }}>
-            {t("languagesHeading")}
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {LANGUAGE_KEYS.map((key) => (
-              <SkillTag key={key} label={t(`languages.${key}`)} />
-            ))}
-          </div>
-        </div>
-      </section>
-
+      </div>
+      <TechSection />
       <Contact />
     </div>
   );

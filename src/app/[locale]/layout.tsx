@@ -2,18 +2,19 @@ import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
 import { routing } from "@/i18n/routing";
-import { archivo, inter, jetbrainsMono, spaceGrotesk } from "@/styles/fonts";
+import { inter, jetbrainsMono, spaceGrotesk } from "@/styles/fonts";
 import { TopNav } from "@/components/layout/TopNav";
 import { SpaceBackground } from "@/components/layout/SpaceBackground";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { SpaceIntro } from "@/components/space/SpaceIntro";
 import "../globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Muhamad Fajri — UI/UX Designer",
-    description: "Portfolio of Muhamad Fajri, UI/UX designer.",
+    title: "Portfolio Space — Muhammad Sabilil Fajri",
+    description:
+      "UI/UX design, web development and quality assurance by Muhammad Sabilil Fajri, Bandung, Indonesia.",
     alternates: {
       languages: { en: "/en", id: "/id" },
     },
@@ -37,21 +38,24 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
-  const cookieStore = await cookies();
-  const theme = cookieStore.get("theme")?.value === "dark" ? "dark" : "light";
 
   return (
     <html
       lang={locale}
-      data-theme={theme}
-      className={`${archivo.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <a className="skip-link" href="#main-content">
+          {locale === "id" ? "Lewati ke konten" : "Skip to content"}
+        </a>
         <NextIntlClientProvider messages={messages}>
+          <SpaceIntro />
           <SpaceBackground />
-          <TopNav theme={theme} />
+          <TopNav />
           <SmoothScroll>
-            <main className="w-full min-w-0">{children}</main>
+            <main id="main-content" className="w-full min-w-0" tabIndex={-1}>
+              {children}
+            </main>
           </SmoothScroll>
         </NextIntlClientProvider>
       </body>

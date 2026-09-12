@@ -1,18 +1,21 @@
 {
   "sidebar": {
-    "languageLabel": "Language",
-    "themeLabel": "Theme",
-    "lightLabel": "Light",
-    "darkLabel": "Dark"
+    "languageLabel": "Language"
   },
   "home": {
-    "headline": "Exploring Digital Frontier",
-    "tagline": "Creative Developer & UX Explorer",
+    "title": "Portfolio Space",
+    "description": "A visual space to explore my journey",
     "cta": "View projects",
     "connect": "Connect"
   },
+  "opening": {
+    "skip": "Skip intro",
+    "description": "Exploring a universe of work…",
+    "progressLabel": "Journey preparation",
+    "launching": "Entering orbit…"
+  },
   "about": {
-    "title": "About Me",
+    "title": "Hi, I'm Muhammad Sabilil Fajri",
     "bio": "I like taking a product from a rough idea to something people can actually click through — sketching the interface, building it, and making sure it doesn't fall apart under real use. Most of that has been on entertainment, finance, and production-scheduling systems, working closely with the people who'll actually use them."
   },
   "expertise": {
@@ -32,6 +35,7 @@
   },
   "skills": {
     "title": "Skills",
+    "galaxyTitle": "Skill Galaxy",
     "proficientHeading": "Proficient",
     "familiarHeading": "Familiar",
     "softHeading": "Soft skills",
