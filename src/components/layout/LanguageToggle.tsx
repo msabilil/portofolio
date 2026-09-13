@@ -1,11 +1,8 @@
 "use client";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
+import { locales, useAppLocale } from "@/i18n/LocaleProvider";
 export function LanguageToggle() {
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
+  const { locale, setLocale } = useAppLocale();
   const t = useTranslations("sidebar");
   return (
     <div
@@ -13,14 +10,12 @@ export function LanguageToggle() {
       role="group"
       aria-label={t("languageLabel")}
     >
-      {routing.locales.map((code) => (
+      {locales.map((code) => (
         <button
           key={code}
           type="button"
           aria-pressed={code === locale}
-          onClick={() =>
-            router.replace(pathname + window.location.hash, { locale: code })
-          }
+          onClick={() => setLocale(code)}
         >
           {code.toUpperCase()}
         </button>

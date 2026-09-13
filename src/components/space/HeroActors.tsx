@@ -25,7 +25,6 @@ function Planet({ variant, reduced, active }: ActorProps & { variant: "jupiter" 
                 disabled={reduced}
                 onClick={() => setHeld(value => !value)}
               >
-                <span className={styles.planetHalo} aria-hidden="true" />
                 <Image
                   src={`/assets/hero/planet-${variant === "jupiter" ? "1" : "3"}.png`}
                   alt=""

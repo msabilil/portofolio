@@ -5,7 +5,7 @@ import { certifications } from "@/content/certifications";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
 import { CertificationItem } from "@/components/CertificationItem";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { Icon } from "./Icon";
 export function JourneySection() {
   const locale = useLocale() as "en" | "id";

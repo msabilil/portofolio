@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageToggle } from "./LanguageToggle";
 import { Icon } from "@/components/space/Icon";
 const NAV_ITEMS = [

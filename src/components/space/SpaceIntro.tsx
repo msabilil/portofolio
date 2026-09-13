@@ -6,10 +6,12 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type RefObject,
+  type SyntheticEvent,
 } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 import styles from "./SpaceIntro.module.css";
 
 type Phase = "sweep" | "loading" | "departing" | "done";
@@ -23,7 +25,6 @@ export function SpaceIntro() {
 }
 
 function Opening() {
-  const t = useTranslations("opening");
   const dialog = useRef<HTMLDialogElement>(null);
   const [phase, setPhase] = useState<Phase>("sweep");
   const [progress, setProgress] = useState(0);
@@ -41,11 +42,9 @@ function Opening() {
     if (!modal) return;
     // Cover the server-rendered page before hydration, then use the modal layer.
     modal.close();
-    if (finished || hasEntered || window.location.hash || window.scrollY > 0)
-      return;
+    if (finished || hasEntered || window.location.hash || window.scrollY > 0) return;
 
     modal.showModal();
-    modal.dataset.running = "true";
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -54,11 +53,9 @@ function Opening() {
     const background = new window.Image();
     background.src = "/assets/hero/space-background.jpg";
     const images = Array.from(
-      document.querySelectorAll<HTMLImageElement>(
-        "#home img, [data-space-intro] img",
-      ),
+      document.querySelectorAll<HTMLImageElement>("#home img, [data-space-intro] img"),
     );
-    // Reuse the actual optimized image URLs; unavailable assets cannot block entry.
+
     void Promise.allSettled([
       document.fonts.ready,
       background.decode(),
@@ -67,14 +64,21 @@ function Opening() {
       if (!cancelled) assetsSettled = true;
     });
 
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const sweepDuration = reduced ? 0 : 1300;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const loadingDuration = reduced ? 180 : 1500;
     const departureDuration = reduced ? 0 : 750;
     const started = performance.now();
+    let loadingStarted: number | undefined = reduced ? started : undefined;
     let departureStarted: number | undefined;
+
+    // The final image reveal owns the handoff. A separate wall-clock timer
+    // can cut off CSS motion when rendering is delayed or the tab is busy.
+    const reveal = modal.querySelector<HTMLElement>("[data-space-reveal]");
+    const beginLoading = () => {
+      loadingStarted ??= performance.now();
+    };
+    reveal?.addEventListener("animationend", beginLoading);
+    modal.dataset.running = "true";
 
     const timer = window.setInterval(() => {
       const elapsed = performance.now() - started;
@@ -85,28 +89,27 @@ function Opening() {
         }
         return;
       }
-      if (elapsed < sweepDuration) return;
+      if (loadingStarted === undefined) {
+        // Still allow entry if browser animation events are unavailable.
+        if (elapsed < 6000) return;
+        beginLoading();
+      }
 
-      const loadingElapsed = elapsed - sweepDuration;
-      if (
-        (assetsSettled && loadingElapsed >= loadingDuration) ||
-        elapsed >= 6000
-      ) {
+      const loadingElapsed = performance.now() - loadingStarted!;
+      if ((assetsSettled && loadingElapsed >= loadingDuration) || loadingElapsed >= 6000) {
         setProgress(100);
         setPhase("departing");
         departureStarted = elapsed;
       } else {
         setPhase("loading");
-        // Progress follows the intro sequence, rather than claiming byte progress.
-        setProgress(
-          Math.min(94, Math.round((loadingElapsed / loadingDuration) * 94)),
-        );
+        setProgress(Math.min(94, Math.round((loadingElapsed / loadingDuration) * 94)));
       }
     }, 40);
 
     return () => {
       cancelled = true;
       window.clearInterval(timer);
+      reveal?.removeEventListener("animationend", beginLoading);
       delete modal.dataset.running;
       modal.close();
       document.body.style.overflow = previousOverflow;
@@ -116,31 +119,56 @@ function Opening() {
   if (finished) return null;
 
   return (
+    <IntroDialog
+      dialog={dialog}
+      phase={phase}
+      progress={progress}
+      onCancel={(event) => {
+        event.preventDefault();
+        finish();
+      }}
+    />
+  );
+}
+
+type IntroDialogProps = {
+  dialog?: RefObject<HTMLDialogElement | null>;
+  phase: Phase;
+  progress: number;
+  running?: boolean;
+  onCancel?: (event: SyntheticEvent<HTMLDialogElement>) => void;
+};
+
+function IntroDialog({
+  dialog,
+  phase,
+  progress,
+  running = false,
+  onCancel,
+}: IntroDialogProps) {
+  const t = useTranslations("opening");
+
+  return (
     <>
       <noscript>
-        <style>
-          {"dialog[data-space-intro] { display: none !important; }"}
-        </style>
+        <style>{"dialog[data-space-intro] { display: none !important; }"}</style>
       </noscript>
       <dialog
         ref={dialog}
         open
         data-space-intro
+        data-running={running ? "true" : undefined}
         data-phase={phase}
         className={styles.screen}
         aria-label={t("progressLabel")}
-        onCancel={(event) => {
-          event.preventDefault();
-          finish();
-        }}
+        onCancel={onCancel}
       >
         <div className={styles.atmosphere} aria-hidden="true">
           <div className={styles.outerLayer} />
           <div className={styles.middleLayer} />
-          <div className={styles.spaceLayer}>
-            <div className={styles.nebula} />
-          </div>
         </div>
+
+        <div className={styles.spaceBackground} data-space-reveal aria-hidden="true" />
 
         <div className={styles.stars} aria-hidden="true">
           {Array.from({ length: 48 }, (_, index) => (
@@ -161,7 +189,6 @@ function Opening() {
 
         <div className={styles.content} aria-hidden={phase === "sweep"}>
           <div className={styles.emblem} aria-hidden="true">
-            <span className={styles.orbit} />
             <span className={styles.logo}>
               <Image
                 src="/assets/logos/logo-msf.png"
@@ -173,8 +200,7 @@ function Opening() {
               />
             </span>
           </div>
-          <h2 className={styles.title}>PORTFOLIO SPACE</h2>
-          <p className={styles.name}>Muhammad Sabilil Fajri</p>
+          <h2 className={styles.title}>Muhammad Sabilil Fajri</h2>
           <p className={styles.description} role="status">
             {phase === "departing" ? t("launching") : t("description")}
           </p>
@@ -194,10 +220,6 @@ function Opening() {
             </span>
           </div>
         </div>
-
-        <button type="button" className={styles.skip} onClick={finish}>
-          {t("skip")}
-        </button>
       </dialog>
     </>
   );

@@ -16,7 +16,10 @@
   overflow: hidden;
   overscroll-behavior: contain;
   color: var(--paper-light);
-  background: #071b2f;
+  /* Start below the atmosphere; the final sweep reveals the loading image. */
+  background:
+    radial-gradient(ellipse at 50% 110%, #f2fcff 0%, #d5f1fa 24%, transparent 65%),
+    linear-gradient(#257bb6, #77c9e5 65%, #d5f1fa);
   isolation: isolate;
 }
 .screen[open] {
@@ -24,7 +27,7 @@
   place-items: center;
 }
 .screen::backdrop {
-  background: #071b2f;
+  background: #257bb6;
 }
 .atmosphere {
   position: absolute;
@@ -35,8 +38,7 @@
 
 /* Three curved atmospheric rims sweep up in succession, then leave deep space. */
 .outerLayer,
-.middleLayer,
-.spaceLayer {
+.middleLayer {
   position: absolute;
   top: 0;
   left: -30%;
@@ -55,32 +57,32 @@
   border-top: 3px solid #d0ffffb3;
   box-shadow: 0 -12px 48px #89deeb38;
 }
-.spaceLayer {
-  overflow: hidden;
-  background: radial-gradient(
-    ellipse at 50% 52%,
-    #20445d,
-    #112c45 45%,
-    #0b2037 75%
-  );
-  border-top: 2px solid #89deeb99;
-  box-shadow: 0 -18px 54px #89deeb33;
-}
 .screen[data-running] .outerLayer {
   animation: atmosphere-rise 1000ms cubic-bezier(0.3, 0, 0.25, 1) both;
 }
 .screen[data-running] .middleLayer {
   animation: atmosphere-rise 1100ms 80ms cubic-bezier(0.3, 0, 0.25, 1) both;
 }
-.screen[data-running] .spaceLayer {
-  animation: atmosphere-rise 1100ms 160ms cubic-bezier(0.3, 0, 0.25, 1) both;
-}
-.nebula {
+/* Reveal the stationary image along the final atmospheric rim. The same
+   viewport-sized layer stays in place when loading starts, avoiding a cut. */
+.spaceBackground {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: url("/assets/hero/space-background.jpg") center / cover;
-  opacity: 0.13;
-  mix-blend-mode: screen;
+  background-position: 50% 50%;
+}
+.screen[data-phase="sweep"] .spaceBackground {
+  clip-path: inset(calc(100% + 32vh) -30% -64vh round 80vw 80vw 0 0 / 26vh 26vh 0 0);
+}
+.screen[data-phase="sweep"][data-running] .spaceBackground {
+  /* Keep the completed reveal attached during loading, so changing phase
+     cannot remove its mask or restart the image. Match the blue rims' ellipse. */
+  animation: space-uncover 1100ms 160ms cubic-bezier(0.3, 0, 0.25, 1) both;
+}
+.screen[data-phase="loading"] .spaceBackground,
+.screen[data-phase="departing"] .spaceBackground {
+  animation: loading-space-drift 52s ease-in-out infinite alternate;
 }
 .stars {
   position: absolute;
@@ -128,8 +130,8 @@
 .emblem {
   position: relative;
   width: 300px;
-  height: 160px;
-  margin-bottom: 32px;
+  height: 132px;
+  margin-bottom: 0;
 }
 .logo {
   position: absolute;
@@ -145,45 +147,13 @@
   height: 300px;
   filter: drop-shadow(0 8px 16px #00000030);
 }
-.orbit {
-  position: absolute;
-  inset: -25px -26px;
-  border: 1px solid #89deeb40;
-  border-radius: 50%;
-  transform: rotate(-18deg);
-}
-.orbit::before,
-.orbit::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -4px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 14px #89deeb90;
-}
-.orbit::after {
-  top: 50%;
-  left: auto;
-  right: -4px;
-  width: 5px;
-  height: 5px;
-  background: var(--amber);
-}
 .title {
   margin: 0;
   font-size: clamp(1.9rem, 4.5vw, 3.8rem);
   line-height: 1.1;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.03em;
   font-weight: 700;
   text-wrap: balance;
-}
-.name {
-  margin: 14px 0 0;
-  color: #c3d7e2;
-  font-size: 13px;
 }
 .description {
   margin: 30px 0 0;
@@ -222,26 +192,6 @@
     monospace;
   font-variant-numeric: tabular-nums;
 }
-.skip {
-  position: absolute;
-  z-index: 2;
-  top: max(24px, env(safe-area-inset-top));
-  right: max(24px, env(safe-area-inset-right));
-  min-height: 44px;
-  padding: 8px 16px;
-  border: 1px solid #ffffff40;
-  border-radius: 10px;
-  color: #e0e8e9;
-  background: #071b2f30;
-  font-size: 12px;
-}
-.skip:hover {
-  background: #ffffff18;
-}
-.skip:focus-visible {
-  outline: 3px solid var(--amber);
-  outline-offset: 5px;
-}
 .screen[data-phase="departing"] {
   animation: reveal 750ms ease-in both;
 }
@@ -267,6 +217,22 @@
   }
   to {
     transform: translateY(-30vh);
+  }
+}
+@keyframes space-uncover {
+  from {
+    clip-path: inset(calc(100% + 32vh) -30% -64vh round 80vw 80vw 0 0 / 26vh 26vh 0 0);
+  }
+  to {
+    clip-path: inset(-30vh -30% -2vh round 80vw 80vw 0 0 / 26vh 26vh 0 0);
+  }
+}
+@keyframes loading-space-drift {
+  from {
+    background-position: 48% 52%;
+  }
+  to {
+    background-position: 52% 48%;
   }
 }
 @keyframes arrive {
@@ -322,31 +288,21 @@
 @media (max-width: 600px) {
   .emblem {
     width: 240px;
-    height: 128px;
-    margin-bottom: 28px;
+    height: 108px;
+    margin-bottom: 0;
   }
   .logo img {
     width: 240px;
     height: 240px;
     top: -56px;
   }
-  .orbit {
-    inset: -16px -10px;
-  }
   .title {
     font-size: clamp(1.6rem, 6.5vw, 2.5rem);
-  }
-  .name {
-    font-size: 11px;
-  }
-  .skip {
-    top: 18px;
-    right: 18px;
   }
 }
 @media (max-height: 480px) {
   .emblem {
-    margin-bottom: 12px;
+    margin-bottom: 0;
     height: 90px;
   }
   .logo img {
@@ -367,9 +323,15 @@
     transition: none !important;
   }
   .outerLayer,
-  .middleLayer,
-  .spaceLayer {
+  .middleLayer {
     transform: translateY(-30vh);
+  }
+  .screen[data-phase="sweep"] .spaceBackground {
+    clip-path: none;
+  }
+  .screen[data-phase="loading"] .spaceBackground,
+  .screen[data-phase="departing"] .spaceBackground {
+    animation: none;
   }
   .screen[data-phase="loading"] .content,
   .screen[data-phase="departing"] .content {

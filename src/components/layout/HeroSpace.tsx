@@ -6,6 +6,7 @@ import { useLocale } from "next-intl";
 import { Icon } from "@/components/space/Icon";
 import { useSceneActivity } from "@/components/space/useSceneActivity";
 import { HeroPlanets, LunarAstronaut } from "@/components/space/HeroActors";
+import { HeroStars } from "@/components/space/HeroStars";
 const RocketLaunch = dynamic(
   () => import("./RocketLaunch").then((m) => m.RocketLaunch),
   { ssr: false },
@@ -34,7 +35,7 @@ export function HeroSpace({
       data-active={active && !paused}
     >
       <div className="hero-nebula" aria-hidden="true" />
-      <div className="star-map" aria-hidden="true" />
+      <HeroStars />
       <HeroPlanets reduced={reduced} active={active && !paused} />
       <div className="hero-copy container">
         <h1 aria-label={title}>

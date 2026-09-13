@@ -6,7 +6,7 @@ import {
   type Project,
   type ProjectCategory,
 } from "@/content/projects";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { ProjectPreview } from "./ProjectPreview";
 import { Icon } from "./Icon";
 const featured = ["recyclean", "penjadwalan-produksi", "arutalalab"].map(

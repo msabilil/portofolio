@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { profile } from "@/content/profile";
 import { Icon } from "./Icon";
 const tabs = ["uiux", "webdev", "qa"] as const;
@@ -9,9 +9,43 @@ export function ProfileSection() {
   const id = useLocale() === "id";
   const about = useTranslations("about");
   const t = useTranslations("expertise");
+  const sectionRef = useRef<HTMLElement>(null);
+  const expertiseRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState(0);
   const [floating, setFloating] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const [expertiseRevealed, setExpertiseRevealed] = useState(false);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setRevealed(true);
+        observer.disconnect();
+      },
+      // Wait until the section is comfortably in view so the sequence follows
+      // the user's scroll instead of starting while only its lower edge peeks in.
+      { threshold: 0.28, rootMargin: "0px 0px -64px 0px" },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const panel = expertiseRef.current;
+    if (!panel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setExpertiseRevealed(true);
+        observer.disconnect();
+      },
+      { threshold: 0.22, rootMargin: "0px 0px -120px 0px" },
+    );
+    observer.observe(panel);
+    return () => observer.disconnect();
+  }, []);
   function onKey(event: KeyboardEvent, index: number) {
     const next =
       event.key === "ArrowRight"
@@ -30,7 +64,20 @@ export function ProfileSection() {
     }
   }
   return (
-    <section id="about" className="lunar-section profile-section">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="lunar-section profile-section"
+      data-revealed={revealed ? "true" : undefined}
+    >
+      <div className="profile-craters" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
       <div className="container">
         <div className="section-topline">
           <span className="eyebrow">
@@ -83,7 +130,11 @@ export function ProfileSection() {
               Sabilil Fajri<span className="cyan-dot">.</span>
             </h2>
             <p className="body-copy">{about("bio")}</p>
-            <div className="expertise-panel panel">
+            <div
+              ref={expertiseRef}
+              className="expertise-panel panel"
+              data-expertise-revealed={expertiseRevealed ? "true" : undefined}
+            >
               <div
                 role="tablist"
                 aria-label={t("title")}
@@ -140,6 +191,12 @@ export function ProfileSection() {
             </a>
           </div>
         </div>
+      </div>
+      <div className="lunar-horizon profile-lunar-horizon" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <i />
       </div>
     </section>
   );

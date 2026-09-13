@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { projects } from "@/content/projects";
 import { experience } from "@/content/experience";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { Icon } from "./Icon";
 const groups = [
   {

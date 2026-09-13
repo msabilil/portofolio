@@ -371,13 +371,22 @@ a {
 }
 .hero-nebula {
   position: absolute;
-  inset: -5%;
+  inset: 0;
   z-index: -3;
-  background:
-    linear-gradient(#132b4680, #132b46b8),
-    url("/assets/hero/space-background.jpg") center/cover;
-  opacity: 0.32;
-  animation: nebula-drift 40s ease-in-out infinite alternate;
+  background: url("/assets/hero/space-background.jpg") center/cover;
+  background-position: 50% 50%;
+  animation: hero-space-drift 46s ease-in-out infinite alternate;
+}
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-stars > div,
+.hero-stars canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 .star-map {
   position: absolute;
@@ -716,9 +725,12 @@ a {
     translate: 0 -16px;
   }
 }
-@keyframes nebula-drift {
+@keyframes hero-space-drift {
+  from {
+    background-position: 48% 52%;
+  }
   to {
-    transform: scale(1.07) translate3d(-1%, 1%, 0);
+    background-position: 52% 48%;
   }
 }
 .lunar-section {
@@ -727,8 +739,124 @@ a {
   background-size: 12px 12px;
 }
 .profile-section {
-  padding: 95px 0 120px;
   position: relative;
+  isolation: isolate;
+  z-index: 2;
+  overflow-x: clip;
+  overflow-y: visible;
+  padding: 95px 0 95px;
+  background-color: #e7e8dd;
+  background-image: none;
+}
+.profile-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.profile-craters {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.72;
+}
+.profile-craters i {
+  position: absolute;
+  display: block;
+  border: 2px solid #b8c2bc;
+  border-radius: 50%;
+  background: #d4d9d0;
+  box-shadow: inset 8px 5px 0 #c1c9c0;
+}
+.profile-craters i:nth-child(1) {
+  width: 92px;
+  height: 38px;
+  top: 16%;
+  left: 6%;
+  transform: rotate(-12deg);
+}
+.profile-craters i:nth-child(2) {
+  width: 54px;
+  height: 26px;
+  top: 9%;
+  left: 44%;
+  transform: rotate(18deg);
+}
+.profile-craters i:nth-child(3) {
+  width: 118px;
+  height: 48px;
+  top: 25%;
+  right: 6%;
+  transform: rotate(-8deg);
+}
+.profile-craters i:nth-child(4) {
+  width: 44px;
+  height: 21px;
+  top: 56%;
+  left: 29%;
+  transform: rotate(14deg);
+}
+.profile-craters i:nth-child(5) {
+  width: 84px;
+  height: 32px;
+  top: 70%;
+  right: 29%;
+  transform: rotate(-18deg);
+}
+.profile-craters i:nth-child(6) {
+  width: 52px;
+  height: 24px;
+  top: 78%;
+  left: 10%;
+  transform: rotate(11deg);
+}
+.profile-section[data-revealed="true"] .profile-card {
+  animation: profile-card-land 720ms var(--ease-out) both;
+}
+.profile-section .section-topline {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-16px);
+}
+.profile-section .profile-story {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.profile-section[data-revealed="true"] .section-topline {
+  animation: profile-topline-reveal 560ms var(--ease-out) both;
+}
+.profile-section[data-revealed="true"] .profile-story {
+  animation: profile-story-rise 620ms 80ms var(--ease-out) both;
+}
+.profile-section[data-revealed="true"] .profile-story h2 {
+  animation: profile-heading-rise 560ms 150ms var(--ease-out) both;
+}
+.profile-section[data-revealed="true"] .profile-card .photo-frame > img {
+  animation: profile-image-develop 680ms 120ms var(--ease-out) both;
+}
+.profile-section .expertise-panel {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.profile-section .expertise-panel[data-expertise-revealed="true"] {
+  animation: profile-panel-settle 560ms 250ms var(--ease-out) both;
+}
+.profile-section[data-revealed="true"] .profile-lunar-horizon {
+  animation: profile-lunar-horizon-rise 820ms 220ms var(--ease-out) both;
+}
+.profile-section .profile-lunar-horizon {
+  position: absolute;
+  z-index: 0;
+  right: auto;
+  bottom: -115px;
+  left: -15%;
+  width: 130%;
+  height: 120px;
+  border: 0;
+  background: #e7e8dd;
+  box-shadow: inset 0 15px 0 #ffffff60;
+  transform: scaleY(-1) rotate(3deg);
+  transform-origin: center;
 }
 .section-topline {
   display: flex;
@@ -882,13 +1010,16 @@ a {
   transform: translateY(-10px) rotate(-2deg);
 }
 .projects-section {
-  padding: 100px 0 120px;
+  position: relative;
+  z-index: 1;
+  margin-top: -92px;
+  padding: 270px 0 120px;
   background: #dfebea;
   background-image:
     linear-gradient(#14243a06 1px, transparent 1px),
     linear-gradient(90deg, #14243a06 1px, transparent 1px);
   background-size: 40px 40px;
-  border-block: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
 }
 .section-heading-row {
   display: flex;
@@ -1910,6 +2041,78 @@ a {
 .fade-in-up {
   animation: appear 0.45s var(--ease-out) both;
 }
+@keyframes profile-topline-reveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+@keyframes profile-card-land {
+  from {
+    opacity: 0;
+    transform: translateY(28px) rotate(-7deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-3deg);
+  }
+}
+@keyframes profile-story-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes profile-heading-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes profile-image-develop {
+  from {
+    opacity: 0.45;
+    clip-path: inset(0 0 100% 0 round 15px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 round 15px);
+  }
+}
+@keyframes profile-panel-settle {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes profile-lunar-horizon-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scaleY(-1) rotate(3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(-1) rotate(3deg);
+  }
+}
 @keyframes appear {
   from {
     opacity: 0.3;
@@ -2120,7 +2323,11 @@ a {
     padding-top: 70px;
   }
   .profile-section {
-    padding-bottom: 80px;
+    padding-bottom: 95px;
+  }
+  .profile-section .profile-lunar-horizon {
+    bottom: -70px;
+    height: 100px;
   }
   .section-topline {
     margin-bottom: 35px;
@@ -2164,7 +2371,8 @@ a {
     font-size: clamp(2.4rem, 5.5vw, 3.5rem);
   }
   .projects-section {
-    padding: 70px 0 80px;
+    margin-top: -62px;
+    padding: 190px 0 80px;
   }
   .featured-project {
     position: relative;
@@ -2801,6 +3009,13 @@ a {
     transform: rotate(-3deg);
   }
   .profile-grid[data-floating="true"] .expertise-panel {
+    transform: none;
+  }
+  .profile-section .section-topline,
+  .profile-section .profile-story,
+  .profile-section .expertise-panel {
+    opacity: 1;
+    visibility: visible;
     transform: none;
   }
 }
