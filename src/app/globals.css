@@ -865,11 +865,8 @@ a {
   box-shadow: 3px 3px 0 var(--ink);
   color: var(--ink);
 }
-.section-topline > :first-child {
+.section-topline > *:first-child {
   background: var(--amber);
-}
-.section-topline > :last-child {
-  background: var(--cyan);
 }
 .section-topline .eyebrow,
 .section-topline .text-button {
@@ -1019,12 +1016,6 @@ a {
   font-size: 12px;
   line-height: 1.9;
   color: var(--color-text-muted);
-}
-.profile-grid[data-floating="true"] .profile-card {
-  transform: translateY(-22px) rotate(5deg);
-}
-.profile-grid[data-floating="true"] .expertise-panel {
-  transform: translateY(-10px) rotate(-2deg);
 }
 .projects-section {
   position: relative;
@@ -2577,9 +2568,6 @@ a {
   .section-topline > .eyebrow {
     font-size: 8px;
   }
-  .gravity-toggle {
-    font-size: 10px;
-  }
   .profile-grid {
     grid-template-columns: 1fr;
     gap: 55px;
@@ -2913,13 +2901,6 @@ a {
   .section-topline .eyebrow {
     font-size: 7px;
     letter-spacing: 0.08em;
-  }
-  .gravity-toggle {
-    font-size: 9px;
-    gap: 6px;
-  }
-  .gravity-toggle svg {
-    width: 14px;
   }
   .profile-card {
     max-width: 290px;
@@ -3283,15 +3264,6 @@ a {
   .featured-project {
     position: relative;
     top: auto;
-  }
-  .gravity-toggle {
-    display: none;
-  }
-  .profile-grid[data-floating="true"] .profile-card {
-    transform: rotate(-3deg);
-  }
-  .profile-grid[data-floating="true"] .expertise-panel {
-    transform: none;
   }
   .profile-section .section-topline,
   .profile-section .profile-story,

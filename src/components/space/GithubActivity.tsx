@@ -60,7 +60,6 @@ export function GithubActivity() {
         <div className="activity-panel panel">
           <div className="section-topline activity-topline">
             <span className="eyebrow">04 / {id ? "JEJAK DI GITHUB" : "GITHUB LOG"}</span>
-            <span className="eyebrow">{id ? "AKTIVITAS AKUN" : "ACCOUNT ACTIVITY"}</span>
           </div>
           <div className="activity-heading">
             <div>

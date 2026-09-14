@@ -54,7 +54,6 @@ export function JourneySection() {
           <span className="eyebrow">
             05 / {id ? "CATATAN PERJALANAN" : "THE FLIGHT LOG"}
           </span>
-          <span className="eyebrow">2021 → {id ? "SEKARANG" : "PRESENT"}</span>
         </div>
         <div className="section-heading-row">
           <h2>

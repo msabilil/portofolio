@@ -12,7 +12,6 @@ export function ProfileSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const expertiseRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState(0);
-  const [floating, setFloating] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [expertiseRevealed, setExpertiseRevealed] = useState(false);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
@@ -83,22 +82,8 @@ export function ProfileSection() {
           <span className="eyebrow">
             01 / {id ? "KENALI PENJELAJAHNYA" : "MEET THE EXPLORER"}
           </span>
-          <button
-            className="text-button gravity-toggle"
-            onClick={() => setFloating(!floating)}
-            aria-pressed={floating}
-          >
-            <Icon name="orbit" width="18" />
-            {floating
-              ? id
-                ? "Kembalikan gravitasi"
-                : "Restore gravity"
-              : id
-                ? "Coba gravitasi nol"
-                : "Try zero gravity"}
-          </button>
         </div>
-        <div className="profile-grid" data-floating={floating}>
+        <div className="profile-grid">
           <div className="profile-card panel">
             <div className="photo-frame">
               <Image

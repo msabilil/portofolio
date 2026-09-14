@@ -47,7 +47,6 @@ export function Contact() {
           <span className="eyebrow">
             06 / {id ? "BUKA KOMUNIKASI" : "OPEN A CHANNEL"}
           </span>
-          <Icon name="star" />
         </div>
         <div className="section-heading-row">
           <h2>

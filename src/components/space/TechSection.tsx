@@ -70,10 +70,6 @@ export function TechSection() {
           <span className="eyebrow">
             03 / {id ? "PERALATAN MISI" : "MISSION TOOLKIT"}
           </span>
-          <Link href="/tools" className="text-button">
-            {id ? "Lihat semua keahlian" : "View all skills"}
-            <Icon name="arrow" width="18" />
-          </Link>
         </div>
         <div className="section-heading-row">
           <h2>

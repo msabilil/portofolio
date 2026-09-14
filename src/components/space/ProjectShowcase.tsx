@@ -92,9 +92,6 @@ export function ProjectShowcase() {
           <span className="eyebrow">
             02 / {id ? "MISI PILIHAN" : "SELECTED MISSIONS"}
           </span>
-          <span className="eyebrow">
-            {id ? "DESAIN → KODE → UJI" : "DESIGN → BUILD → TEST"}
-          </span>
         </div>
         <div className="section-heading-row">
           <div>
