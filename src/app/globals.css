@@ -825,17 +825,17 @@ a {
 .profile-section .expertise-panel[data-expertise-revealed="true"] {
   animation: profile-panel-settle 560ms 250ms var(--ease-out) both;
 }
-.profile-section[data-revealed="true"] .profile-lunar-horizon {
-  animation: profile-lunar-horizon-rise 820ms 220ms var(--ease-out) both;
+.profile-section[data-revealed="true"] .profile-moon-bridge {
+  animation: profile-moon-bridge-rise 820ms 220ms var(--ease-out) both;
 }
-.profile-section .profile-lunar-horizon {
+.profile-section .profile-moon-bridge {
   position: absolute;
   z-index: 0;
   right: auto;
   bottom: -145px;
   left: -15%;
   width: 130%;
-  height: 240px;
+  height: 140px;
   border: 0;
   border-radius: 50%;
   background: #e7e8dd;
@@ -2319,7 +2319,7 @@ a {
     transform: translateY(0);
   }
 }
-@keyframes profile-lunar-horizon-rise {
+@keyframes profile-moon-bridge-rise {
   from {
     opacity: 0;
     transform: translateY(28px) scaleY(-1) rotate(3deg);
@@ -2557,9 +2557,9 @@ a {
   .profile-section {
     padding-bottom: 95px;
   }
-  .profile-section .profile-lunar-horizon {
+  .profile-section .profile-moon-bridge {
     bottom: -115px;
-    height: 185px;
+    height: 110px;
   }
   .section-topline {
     margin-bottom: 35px;

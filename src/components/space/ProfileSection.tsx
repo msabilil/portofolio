@@ -190,7 +190,7 @@ export function ProfileSection() {
           </div>
         </div>
       </div>
-      <div className="lunar-horizon profile-lunar-horizon" aria-hidden="true">
+      <div className="lunar-horizon profile-moon-bridge" aria-hidden="true">
         <i />
         <i />
         <i />
