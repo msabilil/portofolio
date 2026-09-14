@@ -951,9 +951,13 @@ a {
   color: var(--color-text-muted);
 }
 .profile-cv {
-  margin: 0 8px 10px;
-  padding-top: 11px;
+  margin: 0 8px 11px;
+  padding: 9px 12px;
   border-top: 1px solid #bdc8c4;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--cyan);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 .profile-story h2 {
   font-size: clamp(2.5rem, 4.3vw, 4rem);
