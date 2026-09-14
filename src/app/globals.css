@@ -832,10 +832,10 @@ a {
   position: absolute;
   z-index: 0;
   right: auto;
-  bottom: -145px;
+  bottom: -120px;
   left: -15%;
   width: 130%;
-  height: 140px;
+  height: 170px;
   border: 0;
   border-radius: 50%;
   background: #e7e8dd;
@@ -2558,8 +2558,8 @@ a {
     padding-bottom: 95px;
   }
   .profile-section .profile-moon-bridge {
-    bottom: -115px;
-    height: 110px;
+    bottom: -95px;
+    height: 135px;
   }
   .section-topline {
     margin-bottom: 35px;
