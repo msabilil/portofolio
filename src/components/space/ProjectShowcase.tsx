@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState, useEffect, type KeyboardEvent } from "react";
+import Image from "next/image";
 import { useLocale } from "next-intl";
 import {
   projects,
@@ -9,6 +10,7 @@ import {
 import Link from "next/link";
 import { ProjectPreview } from "./ProjectPreview";
 import { Icon } from "./Icon";
+import { useSceneActivity } from "./useSceneActivity";
 const featured = ["recyclean", "penjadwalan-produksi", "arutalalab"].map(
   (slug) => projects.find((project) => project.slug === slug)!,
 );
@@ -16,6 +18,7 @@ export function ProjectShowcase() {
   const locale = useLocale() as "en" | "id";
   const id = locale === "id";
   const [selected, setSelected] = useState<Project | null>(null);
+  const { ref, active } = useSceneActivity<HTMLElement>();
   const [filter, setFilter] = useState<ProjectCategory | "all">("all");
   const dialog = useRef<HTMLDialogElement>(null);
   function containFocus(event: KeyboardEvent<HTMLDialogElement>) {
@@ -50,26 +53,61 @@ export function ProjectShowcase() {
     (p) => filter === "all" || p.categories.includes(filter),
   );
   return (
-    <section id="projects" className="projects-section">
+    <section
+      id="projects"
+      ref={ref}
+      className="projects-section"
+      data-active={active ? "true" : undefined}
+    >
+      <div className="space-stage space-stage-missions" aria-hidden="true">
+        <span className="space-comets">
+          <i />
+          <i />
+          <i />
+          <i />
+        </span>
+        <Image
+          className="missions-planet missions-neptune"
+          src="/assets/photos/3d/neptune.png"
+          alt=""
+          width={1600}
+          height={1600}
+          sizes="(max-width: 800px) 38vw, 300px"
+          unoptimized
+          loading="lazy"
+        />
+        <Image
+          className="missions-planet missions-mars"
+          src="/assets/photos/3d/mars.png"
+          alt=""
+          width={560}
+          height={560}
+          sizes="(max-width: 800px) 34vw, 25vw"
+          unoptimized
+          loading="lazy"
+        />
+      </div>
       <div className="container">
         <div className="section-topline">
           <span className="eyebrow">
             02 / {id ? "MISI PILIHAN" : "SELECTED MISSIONS"}
           </span>
-          <span className="eyebrow">DESIGN → DEVELOP → TEST</span>
+          <span className="eyebrow">
+            {id ? "DESAIN → KODE → UJI" : "DESIGN → BUILD → TEST"}
+          </span>
         </div>
         <div className="section-heading-row">
           <div>
             <h2>
-              {id ? "Ide yang jadi" : "Ideas made"}
+              {id ? "Dari kebutuhan" : "From a problem"}
               <br />
-              <span className="marker">{id ? "nyata." : "real."}</span>
+              <span className="marker">{id ? "menjadi karya." : "to a project."}</span>
             </h2>
           </div>
           <p>
             {id
-              ? "Pilihan karya dari eksplorasi desain hingga sistem yang menyelesaikan masalah sehari-hari."
-              : "Selected work, from design explorations to systems that solve everyday problems."}
+              ? "Setiap proyek berangkat dari kebutuhan yang berbeda. Jelajahi desain aplikasi, alur produksi, dan layanan digital yang pernah saya kerjakan."
+              : "Each project starts with a different need. Explore the app designs, production workflows, and digital services I’ve worked on."}
           </p>
         </div>
         <div className="project-stack">
@@ -80,7 +118,7 @@ export function ProjectShowcase() {
             >
               <div className="feature-visual">
                 <div className="project-index eyebrow">
-                  MISSION / 0{index + 1}
+                  {id ? "MISI" : "MISSION"} / 0{index + 1}
                   <span>↗</span>
                 </div>
                 <ProjectPreview project={project} locale={locale} />
@@ -101,7 +139,7 @@ export function ProjectShowcase() {
                     className="button button-ink"
                     onClick={() => setSelected(project)}
                   >
-                    {id ? "Jelajahi proyek" : "Explore project"}
+                    {id ? "Lihat detail proyek" : "View project details"}
                     <Icon name="arrow" />
                   </button>
                   {project.link && (
@@ -130,15 +168,15 @@ export function ProjectShowcase() {
           <div className="archive-heading">
             <div>
               <span className="eyebrow">
-                {id ? "ARSIP EKSPLORASI" : "EXPLORATION ARCHIVE"}
+                {id ? "ARSIP PROYEK" : "PROJECT ARCHIVE"}
               </span>
               <h3>
-                {id ? "Semua proyek" : "The project index"}
+                {id ? "Semua proyek" : "All projects"}
                 <span> ({projects.length.toString().padStart(2, "0")})</span>
               </h3>
             </div>
             <Link href="/projects" className="text-button">
-              {id ? "Buka galeri" : "Open gallery"}
+              {id ? "Lihat galeri proyek" : "View project gallery"}
               <Icon name="arrow" width="18" />
             </Link>
           </div>
@@ -190,8 +228,8 @@ export function ProjectShowcase() {
             ) : (
               <p className="empty-state">
                 {id
-                  ? "Belum ada proyek mandiri di kategori ini. Pengalaman QA ada pada bagian perjalanan."
-                  : "No standalone projects in this category yet. Find QA work in my journey below."}
+                  ? "Belum ada proyek terpisah di kategori ini. Cerita tentang pengujian aplikasi ada di section 05, Catatan Perjalanan."
+                  : "There’s no standalone project in this category yet. You can find my application testing work in section 05, The Flight Log."}
               </p>
             )}
           </div>
@@ -246,8 +284,8 @@ export function ProjectShowcase() {
               </div>
               <p className="project-note">
                 {id
-                  ? "Dokumentasi dan detail implementasi tersedia pada tautan proyek. Visual berlabel ilustrasi konsep bukan tangkapan layar produk."
-                  : "Explore the project link for documentation and implementation details. Visuals labelled concept illustration are not product screenshots."}
+                  ? "Buka tautan di bawah untuk menjelajahi proyek lebih lanjut. Visual berlabel ilustrasi konsep menjelaskan gagasan atau alur, bukan tangkapan layar produk."
+                  : "Follow the link below to explore the project further. Visuals labelled concept illustration explain an idea or workflow; they are not product screenshots."}
               </p>
               {selected.link && (
                 <a
@@ -256,7 +294,11 @@ export function ProjectShowcase() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {id ? "Buka sumber proyek" : "Open project source"}
+                  {selected.link.includes("figma.com")
+                    ? id ? "Lihat desain di Figma" : "View design in Figma"
+                    : selected.link.includes("github.com")
+                      ? id ? "Lihat kode di GitHub" : "View code on GitHub"
+                      : id ? "Kunjungi website" : "Visit website"}
                   <Icon name="arrow" />
                 </a>
               )}

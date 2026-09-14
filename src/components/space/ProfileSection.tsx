@@ -115,7 +115,7 @@ export function ProfileSection() {
               </span>
             </div>
             <div className="profile-id">
-              <span className="eyebrow">CREW ID / MSF—001</span>
+              <span className="eyebrow">{id ? "ID KRU" : "CREW ID"} / MSF—001</span>
               <Icon name="orbit" />
               <p>Muhammad Sabilil Fajri</p>
               <span>Bandung, Indonesia · UTC+7</span>
@@ -184,9 +184,7 @@ export function ProfileSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {id
-                ? "Kenali perjalanan saya — lihat CV"
-                : "Get the full story — view my CV"}
+              {id ? "Baca CV saya" : "Read my CV"}
               <Icon name="arrow" width="18" />
             </a>
           </div>

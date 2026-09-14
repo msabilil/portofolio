@@ -19,8 +19,8 @@ export const projects: Project[] = [
     slug: "recyclean",
     title: "RecyClean",
     description: {
-      en: "A waste-management companion app concept — UI/UX exploration covering splash screen and core wireframes to help users sort and schedule recycling.",
-      id: "Konsep aplikasi pendamping pengelolaan sampah — eksplorasi UI/UX mencakup splash screen dan wireframe inti untuk membantu pengguna memilah dan menjadwalkan daur ulang.",
+      en: "A UI/UX exploration to help people sort waste and plan their recycling. This app concept covers the splash screen and wireframes for its key workflows.",
+      id: "Eksplorasi UI/UX untuk membantu orang memilah sampah dan merencanakan daur ulang. Konsep ini mencakup layar pembuka serta wireframe alur utama aplikasi.",
     },
     categories: ["ui-ux"],
     tags: ["Mobile App", "UI/UX"],
@@ -31,8 +31,8 @@ export const projects: Project[] = [
     slug: "arutalalab",
     title: "ArutalaLab",
     description: {
-      en: "An IT services platform bringing together training, tech talent placement, and custom software development under one product.",
-      id: "Platform layanan IT yang menggabungkan pelatihan, penyaluran talenta teknologi, dan pengembangan software custom dalam satu produk.",
+      en: "A platform bringing together training, tech talent placement, and custom software development. The project connects ArutalaLab’s three services in one web experience.",
+      id: "Platform yang menyatukan pelatihan, penyaluran talenta teknologi, dan pengembangan perangkat lunak sesuai kebutuhan. Proyek ini menghubungkan ketiga layanan ArutalaLab dalam satu pengalaman web.",
     },
     categories: ["frontend", "backend"],
     tags: ["Next.js", "TypeScript"],
@@ -42,8 +42,8 @@ export const projects: Project[] = [
     slug: "penjadwalan-produksi",
     title: "Production Scheduling System",
     description: {
-      en: "A thesis project: a multi-role production scheduling system that digitized the order-to-production workflow across sales, design, and production teams, with automated time estimation based on design specs and machine capacity replacing manual guesswork.",
-      id: "Proyek skripsi: sistem penjadwalan produksi multi-role yang mendigitalkan alur order-ke-produksi lintas tim sales, desain, dan produksi, dengan estimasi waktu otomatis berbasis spesifikasi desain dan kapasitas mesin, menggantikan perkiraan manual.",
+      en: "A thesis project connecting sales, design, and production teams in a shared scheduling system. Production time is estimated from design specifications and machine capacity, replacing manual guesswork.",
+      id: "Sistem penjadwalan produksi untuk proyek skripsi yang menghubungkan tim sales, desain, dan produksi. Estimasi waktu dihitung dari spesifikasi desain dan kapasitas mesin, menggantikan perkiraan manual.",
     },
     categories: ["ui-ux", "frontend", "backend"],
     tags: ["PHP", "MySQL", "Tailwind CSS", "Web App"],
@@ -54,8 +54,8 @@ export const projects: Project[] = [
     slug: "mental-health-app",
     title: "Mental Health App",
     description: {
-      en: "A mental well-being Android app for tracking daily mood and habits.",
-      id: "Aplikasi Android untuk melacak suasana hati dan kebiasaan harian demi kesejahteraan mental.",
+      en: "An Android app for keeping track of daily moods and habits.",
+      id: "Aplikasi Android untuk mencatat suasana hati dan kebiasaan harian.",
     },
     categories: ["frontend"],
     tags: ["Kotlin", "Android"],

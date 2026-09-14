@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2000" viewBox="0 0 1600 2000" preserveAspectRatio="none">
+  <!-- Original vector atmosphere, drawn for the portfolio's illustrated Neptune.
+       Broad flowing cloud bands inherit the existing moon's flat graphic style. -->
+  <g fill="none">
+    <path d="M-120 64C260 230 1030 238 1740 30" stroke="#397b95" stroke-width="92"/>
+    <path d="M-100 90C370 274 1090 230 1700 62" stroke="#245d7c" stroke-opacity=".45" stroke-width="7"/>
+    <path d="M-120 232C490 430 1190 206 1740 210" stroke="#173e58" stroke-opacity=".38" stroke-width="44"/>
+    <path d="M-100 462C460 588 1120 324 1720 398" stroke="#397b95" stroke-opacity=".45" stroke-width="114"/>
+    <path d="M-100 535C520 630 1130 411 1700 471" stroke="#397b95" stroke-opacity=".45" stroke-width="6"/>
+    <path d="M-100 765C420 681 1040 759 1700 587" stroke="#173e58" stroke-opacity=".32" stroke-width="82"/>
+    <path d="M-120 949C420 841 1040 1029 1740 817" stroke="#397b95" stroke-opacity=".58" stroke-width="138"/>
+    <path d="M-120 1015C430 912 1100 1087 1740 885" stroke="#397b95" stroke-opacity=".45" stroke-width="9"/>
+    <path d="M-100 1290C420 1081 1140 1369 1720 1115" stroke="#173e58" stroke-opacity=".3" stroke-width="67"/>
+    <path d="M-100 1500C590 1304 1090 1536 1730 1380" stroke="#397b95" stroke-opacity=".55" stroke-width="130"/>
+    <path d="M-120 1580C520 1400 1150 1612 1710 1460" stroke="#397b95" stroke-opacity=".45" stroke-width="8"/>
+    <path d="M-100 1823C490 1560 1110 1850 1720 1670" stroke="#173e58" stroke-opacity=".38" stroke-width="66"/>
+    <path d="M-100 1860C390 1760 1170 2000 1720 1820" stroke="#397b95" stroke-width="98"/>
+    <path d="M-100 1923C490 1810 1120 2060 1710 1880" stroke="#245d7c" stroke-opacity=".4" stroke-width="8"/>
+  </g>
+</svg>

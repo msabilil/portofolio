@@ -1,4 +1,4 @@
-// Simple Icons slugs (https://simpleicons.org) keyed by exact tag/skill label.
+// Local PNG asset names keyed by exact tag/skill label.
 // Unmapped labels just render without an icon — no build-time dependency needed.
 const TECH_ICON_SLUGS: Record<string, string> = {
   "Next.js": "nextdotjs",
@@ -25,6 +25,8 @@ const TECH_ICON_SLUGS: Record<string, string> = {
   "NoSQL (Firestore)": "firebase",
   Swagger: "swagger",
   Postman: "postman",
+  Playwright: "playwright",
+  ElysiaJS: "elysia",
 };
 
 export function getIconSlug(tag: string): string | undefined {
@@ -32,5 +34,5 @@ export function getIconSlug(tag: string): string | undefined {
 }
 
 export function iconUrl(slug: string): string {
-  return `https://cdn.simpleicons.org/${slug}`;
+  return `/assets/skills/${slug}.png`;
 }

@@ -8,6 +8,7 @@ import { JourneySection } from "@/components/space/JourneySection";
 import { ProfileSection } from "@/components/space/ProfileSection";
 import { ProjectShowcase } from "@/components/space/ProjectShowcase";
 import { TechSection } from "@/components/space/TechSection";
+import { NeptuneSurface } from "@/components/space/NeptuneSurface";
 
 export default function HomePage() {
   const t = useTranslations("home");
@@ -16,8 +17,10 @@ export default function HomePage() {
       <HeroSpace title={t("title")} description={t("description")} ctaLabel={t("cta")} connectLabel={t("connect")} />
       <ProfileSection />
       <ProjectShowcase />
-      <TechSection />
-      <GithubActivity />
+      <NeptuneSurface>
+        <TechSection />
+        <GithubActivity />
+      </NeptuneSurface>
       <JourneySection />
       <Contact />
     </>

@@ -3,11 +3,18 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { projects } from "@/content/projects";
 import { experience } from "@/content/experience";
+import { getIconSlug } from "@/lib/techIcons";
+import { TechLogo } from "@/components/TechLogo";
 import Link from "next/link";
 import { Icon } from "./Icon";
 const groups = [
   {
-    name: "Interface",
+    name: "UI/UX Design",
+    icon: "star" as const,
+    tech: ["Figma"],
+  },
+  {
+    name: "Web Development",
     icon: "code" as const,
     tech: [
       "JavaScript",
@@ -18,12 +25,6 @@ const groups = [
       "CSS3",
       "Tailwind CSS",
       "Vue.js",
-    ],
-  },
-  {
-    name: "Server & data",
-    icon: "globe" as const,
-    tech: [
       "PHP",
       "Express",
       "MySQL",
@@ -35,29 +36,16 @@ const groups = [
     ],
   },
   {
-    name: "Design & quality",
-    icon: "star" as const,
-    tech: ["Figma", "Jest", "Playwright", "Postman", "Swagger"],
-  },
-  {
-    name: "Delivery",
+    name: "Dev Ops",
     icon: "orbit" as const,
     tech: ["Git", "Docker", "GitHub Actions"],
   },
+  {
+    name: "Quality Assurance",
+    icon: "check" as const,
+    tech: ["Jest", "Playwright", "Postman", "Swagger"],
+  },
 ];
-const initials: Record<string, string> = {
-  JavaScript: "JS",
-  TypeScript: "TS",
-  React: "⚛",
-  "Next.js": "N",
-  HTML5: "H5",
-  CSS3: "C3",
-  "Tailwind CSS": "≈",
-  "Vue.js": "V",
-  PostgreSQL: "PG",
-  "NoSQL (Firestore)": "FS",
-  "GitHub Actions": "GH",
-};
 export function TechSection() {
   const id = useLocale() === "id";
   const locale = id ? "id" : "en";
@@ -74,26 +62,29 @@ export function TechSection() {
   );
   return (
     <section id="skills" className="lunar-section tech-section">
+      <div className="toolkit-backdrop" aria-hidden="true">
+        <div className="toolkit-neptune" />
+      </div>
       <div className="container">
         <div className="section-topline">
           <span className="eyebrow">
             03 / {id ? "PERALATAN MISI" : "MISSION TOOLKIT"}
           </span>
           <Link href="/tools" className="text-button">
-            {id ? "Daftar lengkap" : "Full skill list"}
+            {id ? "Lihat semua keahlian" : "View all skills"}
             <Icon name="arrow" width="18" />
           </Link>
         </div>
         <div className="section-heading-row">
           <h2>
-            {id ? "Di balik" : "Behind the"}
+            {id ? "Perangkat di" : "The tools"}
             <br />
-            <span className="marker">{id ? "layar." : "screens."}</span>
+            <span className="marker">{id ? "balik karya." : "behind the work."}</span>
           </h2>
           <p>
             {id
-              ? "Perangkat yang saya gunakan untuk mendesain, membangun, menguji, dan merilis. Pilih teknologi untuk melihat konteks penggunaannya."
-              : "The tools I use to design, build, test, and ship. Select a technology to see where it fits."}
+              ? "Dari Figma hingga pengujian otomatis, inilah perangkat yang mendukung proses saya. Pilih salah satunya untuk melihat kaitannya dengan proyek dan pengalaman kerja."
+              : "From Figma to automated testing, these tools support my process. Select one to see how it connects to my projects and work experience."}
           </p>
         </div>
         <div className="tech-layout">
@@ -109,7 +100,7 @@ export function TechSection() {
                   aria-pressed={group === value}
                   onClick={() => setGroup(value)}
                 >
-                  {value === "all" ? (id ? "Semua" : "All systems") : value}
+                  {value === "all" ? (id ? "Semua kategori" : "All categories") : value}
                 </button>
               ))}
             </div>
@@ -132,9 +123,7 @@ export function TechSection() {
                           aria-pressed={selected === tech}
                           onClick={() => setSelected(tech)}
                         >
-                          <span className="tech-monogram" aria-hidden="true">
-                            {initials[tech] || tech.slice(0, 2)}
-                          </span>
+                          <TechLogo slug={getIconSlug(tech)} />
                           <span>{tech}</span>
                         </button>
                       ))}
@@ -144,15 +133,15 @@ export function TechSection() {
             </div>
           </div>
           <aside className="tech-inspector panel" aria-live="polite">
-            <span className="eyebrow">SYSTEM INSPECTOR</span>
+            <span className="eyebrow">{id ? "DALAM PRAKTIK" : "IN PRACTICE"}</span>
             <div className="inspector-icon" aria-hidden="true">
-              {initials[selected] || selected.slice(0, 2)}
+              <TechLogo slug={getIconSlug(selected)} size={42} />
             </div>
             <h3>{selected}</h3>
             <p>
               {id
-                ? "Konteks penggunaan dalam karya dan pengalaman saya."
-                : "Where this tool appears in my work and experience."}
+                ? "Contoh penggunaan perangkat ini dalam pekerjaan saya."
+                : "Examples of how I’ve used this tool in my work."}
             </p>
             <div className="inspector-evidence">
               {relatedProjects.map((p) => (
@@ -179,15 +168,15 @@ export function TechSection() {
               {!relatedProjects.length && !relatedExperience.length && (
                 <p>
                   {id
-                    ? "Bagian dari perangkat belajar dan pengembangan saya. Belum ada contoh proyek terpisah yang dipublikasikan di sini."
-                    : "Part of my learning and development toolkit. A separate project example is not published here yet."}
+                    ? "Perangkat ini masuk dalam proses belajar dan eksplorasi saya. Contoh proyeknya belum ditampilkan di sini."
+                    : "This tool is part of my learning and exploration. A project example hasn’t been added here yet."}
                 </p>
               )}
             </div>
             <span className="inspector-footer eyebrow">
               {id
-                ? "KONTEKS NYATA, BUKAN SKOR PERSENTASE"
-                : "REAL CONTEXT, NOT A PERCENTAGE SCORE"}
+                ? "BAGIAN DARI PROSES SAYA"
+                : "PART OF MY PROCESS"}
             </span>
           </aside>
         </div>

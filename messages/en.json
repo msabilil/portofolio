@@ -16,21 +16,21 @@
   },
   "about": {
     "title": "Hi, I'm Muhammad Sabilil Fajri",
-    "bio": "I like taking a product from a rough idea to something people can actually click through — sketching the interface, building it, and making sure it doesn't fall apart under real use. Most of that has been on entertainment, finance, and production-scheduling systems, working closely with the people who'll actually use them."
+    "bio": "I design interfaces, build web applications, and test how they work. My experience spans finance, production scheduling, and ERP systems, with one shared focus: understanding the workflows of the people who use them."
   },
   "expertise": {
     "title": "Core Expertise",
     "uiux": {
       "title": "UI/UX Design",
-      "description": "Turning ambiguous requirements into interfaces people actually understand — user research, wireframes, and high-fidelity prototypes in Figma, refined through direct collaboration with product managers and non-technical stakeholders."
+      "description": "Understanding user workflows, mapping wireframes, and making prototypes in Figma. I develop the designs through conversations with product teams and feedback from users."
     },
     "webdev": {
       "title": "Web Development",
-      "description": "End-to-end product builds with Next.js, React, TypeScript, PHP, and Express — from database schema and REST APIs to polished, responsive interfaces, containerized with Docker and shipped through CI/CD."
+      "description": "Connecting interfaces, APIs, and databases into working web applications. I also handle deployment so the features I build can be tried and used."
     },
     "qa": {
       "title": "Quality Assurance",
-      "description": "Catching what breaks before users do — structured manual test cases with clear priority and expected results, detailed bug reports with screenshots and video, plus automated tests with Jest and Playwright."
+      "description": "Testing key workflows, investigating bugs, and checking fixes. Automated tests with Jest and Playwright help me check changes before an application is released."
     }
   },
   "skills": {
@@ -38,7 +38,7 @@
     "galaxyTitle": "Skill Galaxy",
     "proficientHeading": "Proficient",
     "familiarHeading": "Familiar",
-    "softHeading": "Soft skills",
+    "softHeading": "Working together",
     "languagesHeading": "Languages",
     "proficient": {
       "javascript": "JavaScript",
