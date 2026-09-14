@@ -120,6 +120,15 @@ export function ProfileSection() {
               <p>Muhammad Sabilil Fajri</p>
               <span>Bandung, Indonesia · UTC+7</span>
             </div>
+            <a
+              className="text-button profile-cv"
+              href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {id ? "Baca CV saya" : "Read my CV"}
+              <Icon name="arrow" width="18" />
+            </a>
           </div>
           <div className="profile-story">
             <h2>
@@ -178,15 +187,6 @@ export function ProfileSection() {
                 </div>
               </div>
             </div>
-            <a
-              className="text-button"
-              href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {id ? "Baca CV saya" : "Read my CV"}
-              <Icon name="arrow" width="18" />
-            </a>
           </div>
         </div>
       </div>

@@ -950,6 +950,11 @@ a {
   font-size: 10px;
   color: var(--color-text-muted);
 }
+.profile-cv {
+  margin: 0 8px 10px;
+  padding-top: 11px;
+  border-top: 1px solid #bdc8c4;
+}
 .profile-story h2 {
   font-size: clamp(2.5rem, 4.3vw, 4rem);
   line-height: 1.07;
