@@ -1928,8 +1928,24 @@ a {
 }
 .inspector-evidence a {
   display: block;
-  padding: 15px 0;
-  border-top: 1px solid #d2d8cb;
+  padding: 12px;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: background 0.18s, transform 0.18s;
+}
+.inspector-evidence {
+  display: grid;
+  gap: 11px;
+}
+.tech-section .inspector-evidence-card {
+  border-color: var(--ink);
+}
+.inspector-evidence-card--project {
+  background: #d9f4f2;
+}
+.inspector-evidence-card--experience {
+  background: #fff1c7;
 }
 .inspector-evidence a .eyebrow {
   font-size: 8px;
@@ -1944,7 +1960,16 @@ a {
   line-height: 1.5;
 }
 .inspector-evidence a:hover strong {
-  text-decoration: underline;
+  text-decoration: none;
+}
+.inspector-evidence a:hover {
+  transform: translate(-1px, -1px);
+}
+.inspector-evidence-card--project:hover {
+  background: #c7ece8;
+}
+.inspector-evidence-card--experience:hover {
+  background: #ffe17a;
 }
 .inspector-evidence small {
   font-size: 10px;
