@@ -1638,14 +1638,6 @@ a {
 .tech-section .human-skills p {
   color: #c5d5df;
 }
-.tech-section .filter-row button:not([aria-pressed="true"]) {
-  color: var(--paper-light);
-  border-color: #91acb8;
-  background: #0b20396b;
-}
-.tech-section .tech-group h3 .eyebrow {
-  color: #b9d0d6;
-}
 .tech-section .human-skills {
   border-color: #8aaab86b;
 }
@@ -1657,58 +1649,173 @@ a {
 }
 .tech-layout {
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 40px;
+  gap: 28px;
   align-items: start;
 }
-.tech-layout > div > .filter-row {
-  margin-top: 0;
+.tech-category-area > .eyebrow,
+.tech-layer-label {
+  display: block;
+  color: #b9d0d6;
+  margin-bottom: 12px;
 }
-.tech-groups {
+.tech-category-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
 }
-.tech-group h3 {
+.tech-category-grid button {
+  display: flex;
+  min-height: 74px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #8aaab8a8;
+  border-radius: 8px;
+  background: #081b30b8;
+  color: var(--paper-light);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.tech-category-grid button:hover {
+  border-color: #d9edf3;
+  transform: translateY(-2px);
+}
+.tech-category-grid button[aria-selected="true"] {
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.tech-category-grid button svg {
+  flex: 0 0 auto;
+}
+.tech-category-grid button small {
+  margin-left: auto;
+  padding: 3px 5px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 8px;
+  line-height: 1;
+}
+.tech-group {
+  min-height: 0;
+  padding: 30px;
+  border: 2px solid #35c6fb;
+  border-radius: 22px;
+  background: #061d36e8;
+  box-shadow: 4px 4px 0 #07111f;
+}
+.tech-layer-heading {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 13px;
-  margin-bottom: 15px;
-  letter-spacing: -0.02em;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #89c9e06b;
 }
-.tech-group h3 .eyebrow {
-  margin-left: auto;
-  color: #727e82;
+.tech-layer-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tech-layer-number,
+.tech-layer-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  padding: 5px 11px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+.tech-layer-status {
+  min-height: 22px;
+  padding: 4px 9px;
+  font-size: 8px;
+}
+.tech-layer-heading .eyebrow {
+  color: #8cd5ef;
+}
+.tech-group h3 {
+  margin: 20px 0 7px;
+  color: var(--paper-light);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.045em;
+}
+.tech-group > p {
+  max-width: 650px;
+  margin-bottom: 20px;
+  color: #bad5e2;
+  font-size: 13px;
 }
 .tech-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
 }
 .tech-buttons button {
-  min-height: 84px;
+  min-height: 54px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 5px;
-  border: 1px solid #afbbb8;
-  border-radius: 12px;
-  background: #fffef799;
-  font-size: 10px;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #a3c6d0;
+  border-radius: 8px;
+  background: #102c47;
+  color: var(--paper-light);
+  font-size: 11px;
+  font-weight: 700;
   transition:
     background 0.18s,
     transform 0.18s;
 }
 .tech-buttons button:hover {
+  border-color: #d9edf3;
+  background: #143955;
   transform: translateY(-3px);
 }
 .tech-buttons button[aria-pressed="true"] {
-  border: 2px solid var(--ink);
-  background: var(--cyan);
-  box-shadow: 3px 3px 0 var(--ink);
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.tech-layer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid #89c9e06b;
+  color: #b9d0d6;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 10px;
+}
+.tech-layer-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 11px;
+  border: 1px solid #9fd8ed;
+  border-radius: 7px;
+  color: var(--paper-light);
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+}
+.tech-layer-footer a:hover {
+  background: #143955;
 }
 .tech-inspector {
   position: sticky;
@@ -3064,9 +3171,18 @@ a {
   .tech-groups {
     gap: 26px 16px;
   }
+  .tech-group {
+    min-height: 116px;
+  }
+  .tech-group h3 {
+    width: 98px;
+    flex-basis: 98px;
+    padding: 14px 10px;
+  }
   .tech-buttons {
     grid-template-columns: 1fr 1fr;
     gap: 7px;
+    padding: 10px;
   }
   .tech-buttons button {
     font-size: 9px;
@@ -3323,5 +3439,67 @@ a {
 @media (max-width: 480px) {
   .lunar-flag {
     height: 82px;
+  }
+}
+
+/* Tech stack layer: responsive overrides for the selected-category layout. */
+@media (max-width: 1100px) {
+  .tech-layout {
+    grid-template-columns: 1fr;
+  }
+  .tech-category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .tech-group {
+    padding: 24px;
+  }
+  .tech-buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-category-grid {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 3px 8px;
+    scroll-snap-type: x mandatory;
+  }
+  .tech-category-grid button {
+    min-width: 155px;
+    scroll-snap-align: start;
+  }
+  .tech-group {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .tech-layer-heading {
+    padding-bottom: 13px;
+  }
+  .tech-group h3 {
+    width: auto;
+    flex-basis: auto;
+    padding: 0;
+    margin-top: 17px;
+    font-size: clamp(1.75rem, 9vw, 2.25rem);
+  }
+  .tech-group > p {
+    font-size: 12px;
+  }
+  .tech-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 0;
+  }
+  .tech-buttons button {
+    min-height: 52px;
+    padding: 9px;
+    font-size: 10px;
+  }
+  .tech-layer-footer {
+    margin-top: 18px;
   }
 }
