@@ -3551,3 +3551,16 @@ a {
     margin-top: 18px;
   }
 }
+
+/* Final Tech Layer palette: warm at rest, cyan only after a deliberate choice. */
+.tech-section .tech-buttons button {
+  background: #fff1c7;
+}
+
+.tech-section .tech-buttons button:hover {
+  background: var(--amber);
+}
+
+.tech-section .tech-buttons button[aria-pressed="true"] {
+  background: var(--cyan);
+}
