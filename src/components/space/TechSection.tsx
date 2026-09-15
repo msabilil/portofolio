@@ -78,6 +78,33 @@ const allGroup = {
 
 const categoryGroups = [allGroup, ...groups];
 
+const techDescriptions: Record<string, string> = {
+  Figma: "UI Design",
+  JavaScript: "Scripting Core",
+  TypeScript: "Type-Safe Code",
+  React: "Component UI",
+  "Next.js": "App Framework",
+  HTML5: "Semantic Markup",
+  CSS3: "Visual Styling",
+  "Tailwind CSS": "Utility CSS",
+  "Vue.js": "Progressive UI",
+  PHP: "Server Runtime",
+  Express: "API Framework",
+  ElysiaJS: "Type-Safe API",
+  MySQL: "Relational Data",
+  PostgreSQL: "SQL Database",
+  Prisma: "Data ORM",
+  Redis: "Cache Store",
+  "NoSQL (Firestore)": "Cloud NoSQL",
+  Git: "Version Control",
+  Docker: "Containers",
+  "GitHub Actions": "CI/CD Workflow",
+  Jest: "Unit Testing",
+  Playwright: "Browser Testing",
+  Postman: "API Client",
+  Swagger: "API Docs",
+};
+
 export function TechSection() {
   const id = useLocale() === "id";
   const locale = id ? "id" : "en";
@@ -139,13 +166,13 @@ export function TechSection() {
                 >
                   <Icon name={group.icon} width="20" />
                   <span className="tech-category-copy">
-                    <span>
+                    <strong>
                       {group.name === "all"
                         ? id
                           ? "Semua Stack"
                           : "All Stack"
                         : group.name}
-                    </span>
+                    </strong>
                     <small>{group.tech.length.toString().padStart(2, "0")}</small>
                   </span>
                 </button>
@@ -182,7 +209,10 @@ export function TechSection() {
                     onClick={() => setSelected(tech)}
                   >
                     <TechLogo slug={getIconSlug(tech)} />
-                    <span>{tech}</span>
+                    <span className="tech-stack-copy">
+                      <strong>{tech}</strong>
+                      <small>{techDescriptions[tech]}</small>
+                    </span>
                   </button>
                 ))}
               </div>
