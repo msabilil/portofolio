@@ -1700,6 +1700,12 @@ a {
   font-size: 8px;
   line-height: 1;
 }
+.tech-layer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(245px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
 .tech-group {
   min-height: 0;
   padding: 30px;
@@ -1816,6 +1822,33 @@ a {
 }
 .tech-layer-footer a:hover {
   background: #143955;
+}
+.tech-section .tech-inspector {
+  position: sticky;
+  top: 110px;
+  padding: 26px;
+  border: 1px solid #8ccce1;
+  border-radius: 16px;
+  background: #08213bd9;
+  color: var(--paper-light);
+  box-shadow: 4px 4px 0 #07111f;
+}
+.tech-section .tech-inspector > .eyebrow {
+  color: #8cd5ef;
+}
+.tech-section .tech-inspector > p,
+.tech-section .inspector-evidence small {
+  color: #bad5e2;
+}
+.tech-section .inspector-evidence a {
+  border-color: #89c9e06b;
+}
+.tech-section .inspector-evidence a .eyebrow,
+.tech-section .inspector-footer {
+  color: #8cd5ef;
+}
+.tech-section .inspector-footer {
+  border-color: #89c9e06b;
 }
 .tech-inspector {
   position: sticky;
@@ -3453,8 +3486,14 @@ a {
 }
 
 @media (max-width: 800px) {
+  .tech-layer-layout {
+    grid-template-columns: 1fr;
+  }
   .tech-group {
     padding: 24px;
+  }
+  .tech-section .tech-inspector {
+    position: static;
   }
   .tech-buttons {
     grid-template-columns: repeat(3, minmax(0, 1fr));
