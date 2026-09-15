@@ -74,14 +74,32 @@ const groups = [
   },
 ];
 
+const allGroup = {
+  name: "all",
+  icon: "orbit" as const,
+  tech: [...new Set(groups.flatMap((group) => group.tech))],
+  description: {
+    id: "Rangkuman teknologi yang saya gunakan dari desain hingga pengiriman aplikasi.",
+    en: "An overview of the technology I use from design through application delivery.",
+  },
+};
+
+const categoryGroups = [allGroup, ...groups];
+
 export function TechSection() {
   const id = useLocale() === "id";
   const locale = id ? "id" : "en";
   const t = useTranslations("skills");
-  const [activeGroupName, setActiveGroupName] = useState("Front End");
-  const [selected, setSelected] = useState("TypeScript");
+  const [activeGroupName, setActiveGroupName] = useState("all");
+  const [selected, setSelected] = useState("Figma");
   const activeGroup =
-    groups.find((group) => group.name === activeGroupName) ?? groups[0];
+    categoryGroups.find((group) => group.name === activeGroupName) ?? allGroup;
+  const activeGroupLabel =
+    activeGroup.name === "all"
+      ? id
+        ? "Semua Stack"
+        : "All Stack"
+      : activeGroup.name;
   const relatedProjects = projects.filter(
     (project) =>
       project.tags.includes(selected) ||
@@ -93,9 +111,6 @@ export function TechSection() {
 
   return (
     <section id="skills" className="lunar-section tech-section">
-      <div className="toolkit-backdrop" aria-hidden="true">
-        <div className="toolkit-neptune" />
-      </div>
       <div className="container">
         <div className="section-topline">
           <span className="eyebrow">03 / TECH STACK</span>
@@ -118,7 +133,7 @@ export function TechSection() {
               role="tablist"
               aria-label={id ? "Kategori tech stack" : "Tech stack categories"}
             >
-              {groups.map((group) => (
+              {categoryGroups.map((group) => (
                 <button
                   key={group.name}
                   type="button"
@@ -131,7 +146,13 @@ export function TechSection() {
                   }}
                 >
                   <Icon name={group.icon} width="20" />
-                  <span>{group.name}</span>
+                  <span>
+                    {group.name === "all"
+                      ? id
+                        ? "Semua Stack"
+                        : "All Stack"
+                      : group.name}
+                  </span>
                   <small>{group.tech.length.toString().padStart(2, "0")}</small>
                 </button>
               ))}
@@ -150,13 +171,13 @@ export function TechSection() {
               <div className="tech-layer-heading">
                 <div>
                   <span className="tech-layer-number">
-                    {String(groups.indexOf(activeGroup) + 1).padStart(2, "0")}
+                    {String(categoryGroups.indexOf(activeGroup)).padStart(2, "0")}
                   </span>
-                  <span className="eyebrow">/ {activeGroup.name}</span>
+                  <span className="eyebrow">/ {activeGroupLabel}</span>
                 </div>
                 <span className="tech-layer-status">{id ? "DIPILIH" : "SELECTED"}</span>
               </div>
-              <h3 id="tech-layer-title">{activeGroup.name}</h3>
+              <h3 id="tech-layer-title">{activeGroupLabel}</h3>
               <p>{id ? activeGroup.description.id : activeGroup.description.en}</p>
               <div className="tech-buttons">
                 {activeGroup.tech.map((tech) => (
