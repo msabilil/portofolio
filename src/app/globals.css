@@ -1666,6 +1666,22 @@ a {
   border: 1px solid currentColor;
   border-radius: 8px;
 }
+.tech-category-button--all svg {
+  background: #ffe17a;
+  color: #675000;
+}
+.tech-category-button--ui svg {
+  background: #cceffa;
+  color: #116b90;
+}
+.tech-category-button--data svg {
+  background: #d9f1dc;
+  color: #257247;
+}
+.tech-category-button--ops svg {
+  background: #eadfff;
+  color: #69469c;
+}
 .tech-category-copy {
   display: contents;
 }
@@ -1899,10 +1915,10 @@ a {
   border-radius: 4px;
   background: var(--amber);
   color: var(--ink);
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   line-height: 1.1;
 }
 .tech-inspector > p {

@@ -12,6 +12,7 @@ import { Icon } from "./Icon";
 const groups = [
   {
     name: "UI/UX & Front End",
+    tone: "ui",
     icon: "panels" as const,
     tech: [
       "Figma",
@@ -31,6 +32,7 @@ const groups = [
   },
   {
     name: "Back End & Database",
+    tone: "data",
     icon: "database" as const,
     tech: [
       "PHP",
@@ -49,6 +51,7 @@ const groups = [
   },
   {
     name: "DevOps & Tools",
+    tone: "ops",
     icon: "workflow" as const,
     tech: [
       "Git",
@@ -68,6 +71,7 @@ const groups = [
 
 const allGroup = {
   name: "all",
+  tone: "all",
   icon: "blocks" as const,
   tech: [...new Set(groups.flatMap((group) => group.tech))],
   description: {
@@ -233,6 +237,7 @@ export function TechSection() {
                 <button
                   key={group.name}
                   type="button"
+                  className={`tech-category-button tech-category-button--${group.tone}`}
                   role="tab"
                   aria-selected={activeGroup.name === group.name}
                   aria-controls="tech-layer"
