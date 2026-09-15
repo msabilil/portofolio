@@ -1,13 +1,24 @@
 "use client";
+
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { projects } from "@/content/projects";
-import { experience } from "@/content/experience";
 import Link from "next/link";
+import { getIconSlug } from "@/lib/techIcons";
+import { TechLogo } from "@/components/TechLogo";
 import { Icon } from "./Icon";
+
 const groups = [
   {
-    name: "Interface",
+    name: "UI/UX",
+    icon: "star" as const,
+    tech: ["Figma"],
+    description: {
+      id: "Merancang alur, antarmuka, dan prototipe yang berangkat dari kebutuhan pengguna.",
+      en: "Designing flows, interfaces, and prototypes around user needs.",
+    },
+  },
+  {
+    name: "Front End",
     icon: "code" as const,
     tech: [
       "JavaScript",
@@ -19,177 +30,143 @@ const groups = [
       "Tailwind CSS",
       "Vue.js",
     ],
+    description: {
+      id: "Membangun antarmuka web yang cepat, responsif, dan mudah digunakan.",
+      en: "Building fast, responsive web interfaces that are easy to use.",
+    },
   },
   {
-    name: "Server & data",
-    icon: "globe" as const,
-    tech: [
-      "PHP",
-      "Express",
-      "MySQL",
-      "PostgreSQL",
-      "Prisma",
-      "Redis",
-      "NoSQL (Firestore)",
-      "ElysiaJS",
-    ],
+    name: "Back End",
+    icon: "code" as const,
+    tech: ["PHP", "Express", "ElysiaJS"],
+    description: {
+      id: "Mengembangkan layanan aplikasi, API, dan logika yang menopang pengalaman pengguna.",
+      en: "Developing application services, APIs, and the logic behind the user experience.",
+    },
   },
   {
-    name: "Design & quality",
-    icon: "star" as const,
-    tech: ["Figma", "Jest", "Playwright", "Postman", "Swagger"],
-  },
-  {
-    name: "Delivery",
+    name: "Database",
     icon: "orbit" as const,
-    tech: ["Git", "Docker", "GitHub Actions"],
+    tech: ["MySQL", "PostgreSQL", "Prisma", "Redis", "NoSQL (Firestore)"],
+    description: {
+      id: "Menyusun data yang rapi, aman, dan siap mendukung kebutuhan aplikasi.",
+      en: "Structuring reliable data layers that support application needs.",
+    },
+  },
+  {
+    name: "DevOps & Tools",
+    icon: "check" as const,
+    tech: [
+      "Git",
+      "Docker",
+      "GitHub Actions",
+      "Jest",
+      "Playwright",
+      "Postman",
+      "Swagger",
+    ],
+    description: {
+      id: "Menjaga proses pengembangan, pengujian, dan pengiriman aplikasi tetap andal.",
+      en: "Keeping development, testing, and delivery workflows reliable.",
+    },
   },
 ];
-const initials: Record<string, string> = {
-  JavaScript: "JS",
-  TypeScript: "TS",
-  React: "⚛",
-  "Next.js": "N",
-  HTML5: "H5",
-  CSS3: "C3",
-  "Tailwind CSS": "≈",
-  "Vue.js": "V",
-  PostgreSQL: "PG",
-  "NoSQL (Firestore)": "FS",
-  "GitHub Actions": "GH",
-};
+
 export function TechSection() {
   const id = useLocale() === "id";
-  const locale = id ? "id" : "en";
   const t = useTranslations("skills");
-  const [selected, setSelected] = useState("React");
-  const [group, setGroup] = useState("all");
-  const relatedProjects = projects.filter(
-    (p) =>
-      p.tags.includes(selected) ||
-      (selected === "Figma" && p.categories.includes("ui-ux")),
-  );
-  const relatedExperience = experience.filter((e) =>
-    e.skills?.includes(selected),
-  );
+  const [activeGroupName, setActiveGroupName] = useState("Front End");
+  const [selected, setSelected] = useState("TypeScript");
+  const activeGroup =
+    groups.find((group) => group.name === activeGroupName) ?? groups[0];
+
   return (
     <section id="skills" className="lunar-section tech-section">
+      <div className="toolkit-backdrop" aria-hidden="true">
+        <div className="toolkit-neptune" />
+      </div>
       <div className="container">
         <div className="section-topline">
-          <span className="eyebrow">
-            03 / {id ? "PERALATAN MISI" : "MISSION TOOLKIT"}
-          </span>
-          <Link href="/tools" className="text-button">
-            {id ? "Daftar lengkap" : "Full skill list"}
-            <Icon name="arrow" width="18" />
-          </Link>
+          <span className="eyebrow">03 / TECH STACK</span>
         </div>
         <div className="section-heading-row">
           <h2>
-            {id ? "Di balik" : "Behind the"}
-            <br />
-            <span className="marker">{id ? "layar." : "screens."}</span>
+            Tech Stack <span className="marker">&amp; Tools</span>
           </h2>
           <p>
             {id
-              ? "Perangkat yang saya gunakan untuk mendesain, membangun, menguji, dan merilis. Pilih teknologi untuk melihat konteks penggunaannya."
-              : "The tools I use to design, build, test, and ship. Select a technology to see where it fits."}
+              ? "Teknologi dan tools yang saya gunakan untuk membangun aplikasi web dan menjaga proses pengembangannya."
+              : "The technology and tools I use to build web applications and support their delivery."}
           </p>
         </div>
         <div className="tech-layout">
-          <div>
+          <div className="tech-category-area">
+            <span className="eyebrow">{id ? "KATEGORI" : "CATEGORIES"}</span>
             <div
-              className="filter-row"
-              role="group"
-              aria-label={id ? "Kategori teknologi" : "Technology categories"}
+              className="tech-category-grid"
+              role="tablist"
+              aria-label={id ? "Kategori tech stack" : "Tech stack categories"}
             >
-              {["all", ...groups.map((g) => g.name)].map((value) => (
+              {groups.map((group) => (
                 <button
-                  key={value}
-                  aria-pressed={group === value}
-                  onClick={() => setGroup(value)}
+                  key={group.name}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeGroup.name === group.name}
+                  aria-controls="tech-layer"
+                  onClick={() => {
+                    setActiveGroupName(group.name);
+                    setSelected(group.tech[0]);
+                  }}
                 >
-                  {value === "all" ? (id ? "Semua" : "All systems") : value}
+                  <Icon name={group.icon} width="20" />
+                  <span>{group.name}</span>
+                  <small>{group.tech.length.toString().padStart(2, "0")}</small>
                 </button>
               ))}
             </div>
-            <div className="tech-groups">
-              {groups
-                .filter((g) => group === "all" || group === g.name)
-                .map((g) => (
-                  <div key={g.name} className="tech-group">
-                    <h3>
-                      <Icon name={g.icon} width="17" />
-                      <span>{g.name}</span>
-                      <span className="eyebrow">
-                        {g.tech.length.toString().padStart(2, "0")}
-                      </span>
-                    </h3>
-                    <div className="tech-buttons">
-                      {g.tech.map((tech) => (
-                        <button
-                          key={tech}
-                          aria-pressed={selected === tech}
-                          onClick={() => setSelected(tech)}
-                        >
-                          <span className="tech-monogram" aria-hidden="true">
-                            {initials[tech] || tech.slice(0, 2)}
-                          </span>
-                          <span>{tech}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-            </div>
           </div>
-          <aside className="tech-inspector panel" aria-live="polite">
-            <span className="eyebrow">SYSTEM INSPECTOR</span>
-            <div className="inspector-icon" aria-hidden="true">
-              {initials[selected] || selected.slice(0, 2)}
+          <span className="tech-layer-label eyebrow">
+            {id ? "DAFTAR KATEGORI & LAYER" : "CATEGORY & LAYER LIST"}
+          </span>
+          <section
+            id="tech-layer"
+            className="tech-group"
+            aria-live="polite"
+            aria-labelledby="tech-layer-title"
+          >
+            <div className="tech-layer-heading">
+              <div>
+                <span className="tech-layer-number">
+                  {String(groups.indexOf(activeGroup) + 1).padStart(2, "0")}
+                </span>
+                <span className="eyebrow">/ {activeGroup.name}</span>
+              </div>
+              <span className="tech-layer-status">{id ? "DIPILIH" : "SELECTED"}</span>
             </div>
-            <h3>{selected}</h3>
-            <p>
-              {id
-                ? "Konteks penggunaan dalam karya dan pengalaman saya."
-                : "Where this tool appears in my work and experience."}
-            </p>
-            <div className="inspector-evidence">
-              {relatedProjects.map((p) => (
-                <Link href="/#projects" key={p.slug}>
-                  <span className="eyebrow">{id ? "PROYEK" : "PROJECT"}</span>
-                  <strong>
-                    {p.title}
-                    <Icon name="arrow" width="16" />
-                  </strong>
-                </Link>
+            <h3 id="tech-layer-title">{activeGroup.name}</h3>
+            <p>{id ? activeGroup.description.id : activeGroup.description.en}</p>
+            <div className="tech-buttons">
+              {activeGroup.tech.map((tech) => (
+                <button
+                  key={tech}
+                  type="button"
+                  aria-pressed={selected === tech}
+                  onClick={() => setSelected(tech)}
+                >
+                  <TechLogo slug={getIconSlug(tech)} />
+                  <span>{tech}</span>
+                </button>
               ))}
-              {relatedExperience.map((e) => (
-                <Link href="/#journey" key={e.id}>
-                  <span className="eyebrow">
-                    {id ? "PENGALAMAN" : "EXPERIENCE"}
-                  </span>
-                  <strong>
-                    {e.role[locale]}
-                    <Icon name="arrow" width="16" />
-                  </strong>
-                  <small>{e.place.split(" — ")[0]}</small>
-                </Link>
-              ))}
-              {!relatedProjects.length && !relatedExperience.length && (
-                <p>
-                  {id
-                    ? "Bagian dari perangkat belajar dan pengembangan saya. Belum ada contoh proyek terpisah yang dipublikasikan di sini."
-                    : "Part of my learning and development toolkit. A separate project example is not published here yet."}
-                </p>
-              )}
             </div>
-            <span className="inspector-footer eyebrow">
-              {id
-                ? "KONTEKS NYATA, BUKAN SKOR PERSENTASE"
-                : "REAL CONTEXT, NOT A PERCENTAGE SCORE"}
-            </span>
-          </aside>
+            <footer className="tech-layer-footer">
+              <span>{activeGroup.tech.length} {id ? "Teknologi" : "Technologies"}</span>
+              <Link href="/#projects">
+                {id ? "Detail Layer" : "Layer Details"}
+                <Icon name="arrow" width="15" />
+              </Link>
+            </footer>
+          </section>
         </div>
         <div className="human-skills">
           <span className="eyebrow">{t("softHeading")}</span>

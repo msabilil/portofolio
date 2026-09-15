@@ -388,22 +388,6 @@ a {
   width: 100% !important;
   height: 100% !important;
 }
-.star-map {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.55;
-  background-image:
-    radial-gradient(circle, #f9f7e8 1px, transparent 1.5px),
-    radial-gradient(circle, #8ecee3 1px, transparent 1.5px);
-  background-size:
-    123px 101px,
-    213px 173px;
-  background-position:
-    20px 60px,
-    80px 10px;
-}
 .hero-copy {
   position: relative;
   z-index: 3;
@@ -841,18 +825,19 @@ a {
 .profile-section .expertise-panel[data-expertise-revealed="true"] {
   animation: profile-panel-settle 560ms 250ms var(--ease-out) both;
 }
-.profile-section[data-revealed="true"] .profile-lunar-horizon {
-  animation: profile-lunar-horizon-rise 820ms 220ms var(--ease-out) both;
+.profile-section[data-revealed="true"] .profile-moon-bridge {
+  animation: profile-moon-bridge-rise 820ms 220ms var(--ease-out) both;
 }
-.profile-section .profile-lunar-horizon {
+.profile-section .profile-moon-bridge {
   position: absolute;
   z-index: 0;
   right: auto;
-  bottom: -115px;
+  bottom: -80px;
   left: -15%;
   width: 130%;
-  height: 120px;
+  height: 170px;
   border: 0;
+  border-radius: 50%;
   background: #e7e8dd;
   box-shadow: inset 0 15px 0 #ffffff60;
   transform: scaleY(-1) rotate(3deg);
@@ -862,10 +847,30 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #14243a28;
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   margin-bottom: 50px;
+}
+.section-topline > * {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 11px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--ink);
+}
+.section-topline > *:first-child {
+  background: var(--amber);
+}
+.section-topline .eyebrow,
+.section-topline .text-button {
+  color: var(--ink);
 }
 .profile-grid {
   display: grid;
@@ -942,6 +947,15 @@ a {
   font-size: 10px;
   color: var(--color-text-muted);
 }
+.profile-cv {
+  margin: 0 8px 11px;
+  padding: 9px 12px;
+  border-top: 1px solid #bdc8c4;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--cyan);
+  box-shadow: 3px 3px 0 var(--ink);
+}
 .profile-story h2 {
   font-size: clamp(2.5rem, 4.3vw, 4rem);
   line-height: 1.07;
@@ -1003,23 +1017,139 @@ a {
   line-height: 1.9;
   color: var(--color-text-muted);
 }
-.profile-grid[data-floating="true"] .profile-card {
-  transform: translateY(-22px) rotate(5deg);
-}
-.profile-grid[data-floating="true"] .expertise-panel {
-  transform: translateY(-10px) rotate(-2deg);
-}
 .projects-section {
   position: relative;
   z-index: 1;
   margin-top: -92px;
   padding: 270px 0 120px;
-  background: #dfebea;
-  background-image:
-    linear-gradient(#14243a06 1px, transparent 1px),
-    linear-gradient(90deg, #14243a06 1px, transparent 1px);
-  background-size: 40px 40px;
-  border-bottom: 2px solid var(--ink);
+  overflow: clip;
+  background: url("/assets/hero/space-background.jpg") center/cover fixed;
+  color: var(--paper-light);
+}
+.projects-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.projects-section .section-heading-row > p {
+  color: #c5d5df;
+}
+.projects-section .marker::after {
+  background: var(--cyan);
+}
+.space-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.missions-planet {
+  position: absolute !important;
+  height: auto !important;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px #0208148c);
+}
+.missions-planet-three {
+  width: min(78vw, 960px) !important;
+  top: 3%;
+  right: -18%;
+  opacity: 0.88;
+}
+.missions-neptune {
+  width: min(24vw, 300px) !important;
+  top: 3%;
+  right: -18%;
+  opacity: 1;
+  filter: none;
+  transform: rotate(-8deg);
+}
+.missions-mars {
+  width: min(27vw, 360px) !important;
+  top: 56%;
+  left: -8%;
+  opacity: 0.64;
+}
+.journey-section .missions-planet {
+  filter: none;
+}
+.journey-section .missions-planet-three {
+  width: min(16vw, 180px) !important;
+  top: 4%;
+  right: 5%;
+  opacity: 1;
+}
+.journey-section .missions-neptune {
+  top: 4%;
+  right: 5%;
+}
+.space-comets {
+  position: absolute;
+  inset: 0;
+}
+.space-comets i {
+  position: absolute;
+  top: -8%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #ffffff 0 24%, #d9fbff 31%, #79d9e8 62%, #16627d 76%);
+  box-shadow: 0 0 7px 2px #d8fbff, 0 0 22px 6px #4bbdcc66;
+  opacity: 0;
+  transform: translate3d(0, 0, 0) rotate(35deg);
+  animation: comet-cross 8.5s linear infinite;
+  animation-play-state: paused;
+}
+.space-comets i::before {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 180px;
+  height: 20px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #8ce5ef30 45%, #e9fdff 100%);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  filter: blur(2px);
+  transform: translateY(-50%);
+  transform-origin: right center;
+}
+.space-comets i::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #c8f8ffb8);
+  filter: blur(1px);
+  transform: translateY(-50%);
+}
+.space-comets i:nth-child(1) { left: 7%; animation-delay: -0.8s; }
+.space-comets i:nth-child(2) { left: 24%; animation-delay: -3.5s; }
+.space-comets i:nth-child(3) { left: 49%; animation-delay: -5.9s; }
+.space-comets i:nth-child(4) { left: 72%; animation-delay: -8.1s; }
+.projects-section[data-active="true"] .space-comets i,
+.journey-section[data-active="true"] .space-comets i {
+  animation-play-state: running;
+}
+@keyframes comet-cross {
+  0% {
+    opacity: 0;
+    transform: translate3d(-18vw, -16vh, 0) scale(0.55) rotate(35deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0.92;
+    transform: translate3d(34vw, 38vh, 0) scale(1.08) rotate(35deg);
+  }
+  82% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(112vw, 116vh, 0) scale(0.78) rotate(35deg);
+  }
 }
 .section-heading-row {
   display: flex;
@@ -1476,68 +1606,216 @@ a {
   margin-bottom: 25px;
 }
 .tech-section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   padding: 100px 0 60px;
+  background: url("/assets/hero/space-background.jpg") center/cover;
+  color: var(--paper-light);
+}
+.tech-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.toolkit-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.toolkit-neptune {
+  position: absolute;
+  width: min(24vw, 300px);
+  aspect-ratio: 1;
+  right: -3%;
+  top: 8%;
+  background: url("/assets/photos/3d/neptune.png") center / contain no-repeat;
+  opacity: 1;
+  transform: rotate(-8deg);
+}
+.tech-section .section-heading-row > p,
+.tech-section .human-skills p {
+  color: #c5d5df;
+}
+.tech-section .human-skills {
+  border-color: #8aaab86b;
+}
+.activity-topline {
+  margin-bottom: 30px;
+}
+.activity-topline .eyebrow:last-child {
+  color: #62716d;
 }
 .tech-layout {
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 40px;
+  gap: 28px;
   align-items: start;
 }
-.tech-layout > div > .filter-row {
-  margin-top: 0;
+.tech-category-area > .eyebrow,
+.tech-layer-label {
+  display: block;
+  color: #b9d0d6;
+  margin-bottom: 12px;
 }
-.tech-groups {
+.tech-category-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
 }
-.tech-group h3 {
+.tech-category-grid button {
+  display: flex;
+  min-height: 74px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #8aaab8a8;
+  border-radius: 8px;
+  background: #081b30b8;
+  color: var(--paper-light);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.tech-category-grid button:hover {
+  border-color: #d9edf3;
+  transform: translateY(-2px);
+}
+.tech-category-grid button[aria-selected="true"] {
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.tech-category-grid button svg {
+  flex: 0 0 auto;
+}
+.tech-category-grid button small {
+  margin-left: auto;
+  padding: 3px 5px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 8px;
+  line-height: 1;
+}
+.tech-group {
+  min-height: 0;
+  padding: 30px;
+  border: 2px solid #35c6fb;
+  border-radius: 22px;
+  background: #061d36e8;
+  box-shadow: 4px 4px 0 #07111f;
+}
+.tech-layer-heading {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 13px;
-  margin-bottom: 15px;
-  letter-spacing: -0.02em;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #89c9e06b;
 }
-.tech-group h3 .eyebrow {
-  margin-left: auto;
-  color: #727e82;
+.tech-layer-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tech-layer-number,
+.tech-layer-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  padding: 5px 11px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+.tech-layer-status {
+  min-height: 22px;
+  padding: 4px 9px;
+  font-size: 8px;
+}
+.tech-layer-heading .eyebrow {
+  color: #8cd5ef;
+}
+.tech-group h3 {
+  margin: 20px 0 7px;
+  color: var(--paper-light);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.045em;
+}
+.tech-group > p {
+  max-width: 650px;
+  margin-bottom: 20px;
+  color: #bad5e2;
+  font-size: 13px;
 }
 .tech-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
 }
 .tech-buttons button {
-  min-height: 84px;
+  min-height: 54px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 5px;
-  border: 1px solid #afbbb8;
-  border-radius: 12px;
-  background: #fffef799;
-  font-size: 10px;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #a3c6d0;
+  border-radius: 8px;
+  background: #102c47;
+  color: var(--paper-light);
+  font-size: 11px;
+  font-weight: 700;
   transition:
     background 0.18s,
     transform 0.18s;
 }
 .tech-buttons button:hover {
+  border-color: #d9edf3;
+  background: #143955;
   transform: translateY(-3px);
 }
 .tech-buttons button[aria-pressed="true"] {
-  border: 2px solid var(--ink);
-  background: var(--cyan);
-  box-shadow: 3px 3px 0 var(--ink);
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
 }
-.tech-monogram {
-  font-size: 22px;
+.tech-layer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid #89c9e06b;
+  color: #b9d0d6;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 10px;
+}
+.tech-layer-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 11px;
+  border: 1px solid #9fd8ed;
+  border-radius: 7px;
+  color: var(--paper-light);
   font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 10px;
   font-weight: 700;
-  line-height: 1.2;
+}
+.tech-layer-footer a:hover {
+  background: #143955;
 }
 .tech-inspector {
   position: sticky;
@@ -1727,19 +2005,28 @@ a {
 .journey-section {
   position: relative;
   isolation: isolate;
-  background: #132b46;
+  background: url("/assets/hero/space-background.jpg") center/cover fixed;
   color: var(--paper-light);
   padding: 100px 0 120px;
   overflow: clip;
 }
+.journey-section > .container {
+  position: relative;
+  z-index: 1;
+}
 .journey-section .section-topline {
-  border-color: #7b9cac40;
+  border-color: var(--ink);
+}
+.journey-section .section-heading-row {
+  display: block;
 }
 .journey-section .section-heading-row > p {
   color: #b8ccd8;
+  max-width: 620px;
+  margin-top: 24px;
 }
 .journey-section .marker::after {
-  background: #2b6c80;
+  background: var(--cyan);
 }
 .journey-layout {
   display: grid;
@@ -1777,12 +2064,6 @@ a {
   font-size: 8px;
   letter-spacing: 0.1em;
 }
-.journey-aside > p {
-  max-width: 220px;
-  font-size: 13px;
-  margin: 34px 0 22px;
-  color: #bfd0d8;
-}
 .timeline {
   position: relative;
   display: flex;
@@ -1790,13 +2071,22 @@ a {
   gap: 32px;
   padding-left: 30px;
 }
-.timeline::before {
+.timeline::before,
+.timeline::after {
   content: "";
   position: absolute;
   top: 20px;
   bottom: 0;
   left: 0;
+}
+.timeline::before {
   border-left: 1px dashed #8aaab86b;
+}
+.timeline::after {
+  width: 2px;
+  background: var(--cyan);
+  box-shadow: 0 0 12px #89deeb;
+  transform-origin: top;
 }
 .timeline-card {
   position: relative;
@@ -1815,6 +2105,34 @@ a {
   position: absolute;
   left: -37px;
   top: 30px;
+}
+@supports (animation-timeline: view()) {
+  .timeline::after {
+    transform: scaleY(0);
+    animation: timeline-line linear both;
+    animation-timeline: view(block 10% 90%);
+  }
+  .timeline-card {
+    animation: timeline-card-enter linear both;
+    animation-timeline: view(block 80% 20%);
+    animation-range: entry 0% cover 32%;
+  }
+  .timeline-card::before {
+    animation: timeline-dot-light linear both;
+    animation-timeline: view(block 70% 20%);
+  }
+}
+@keyframes timeline-line {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes timeline-card-enter {
+  from { opacity: 0.45; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes timeline-dot-light {
+  from { transform: scale(0.82); box-shadow: 0 0 0 4px #426079; }
+  to { transform: scale(1); box-shadow: 0 0 0 6px #89deeb66; }
 }
 .timeline-label {
   display: flex;
@@ -1846,6 +2164,11 @@ a {
 }
 .timeline-card img {
   background: white;
+}
+.skill-tag img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
 }
 .skill-tag {
   display: inline-flex;
@@ -2103,7 +2426,7 @@ a {
     transform: translateY(0);
   }
 }
-@keyframes profile-lunar-horizon-rise {
+@keyframes profile-moon-bridge-rise {
   from {
     opacity: 0;
     transform: translateY(28px) scaleY(-1) rotate(3deg);
@@ -2122,6 +2445,22 @@ a {
     opacity: 1;
     transform: none;
   }
+}
+@supports (animation-timeline: view()) {
+  .projects-section .section-heading-row,
+  .projects-section .featured-project,
+  .projects-section .project-archive,
+  .tech-section .section-heading-row,
+  .tech-section .tech-layout,
+  .tech-section .human-skills {
+    animation: section-scroll-settle linear both;
+    animation-timeline: view(block 86% 12%);
+    animation-range: entry 0% cover 30%;
+  }
+}
+@keyframes section-scroll-settle {
+  from { opacity: 0.48; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @media (min-width: 1500px) {
   .hero-copy h1 {
@@ -2325,19 +2664,16 @@ a {
   .profile-section {
     padding-bottom: 95px;
   }
-  .profile-section .profile-lunar-horizon {
-    bottom: -70px;
-    height: 100px;
+  .profile-section .profile-moon-bridge {
+    bottom: -65px;
+    height: 135px;
   }
   .section-topline {
     margin-bottom: 35px;
-    padding-bottom: 20px;
+    padding: 0;
   }
   .section-topline > .eyebrow {
     font-size: 8px;
-  }
-  .gravity-toggle {
-    font-size: 10px;
   }
   .profile-grid {
     grid-template-columns: 1fr;
@@ -2373,6 +2709,42 @@ a {
   .projects-section {
     margin-top: -62px;
     padding: 190px 0 80px;
+  }
+  .missions-planet-three {
+    width: 135vw !important;
+    top: 12%;
+    right: -48%;
+    opacity: 0.82;
+  }
+  .missions-neptune {
+    width: 38vw !important;
+    top: 23%;
+    right: -8%;
+  }
+  .journey-section .missions-planet-three {
+    width: 112px !important;
+    top: 18%;
+    right: -4%;
+  }
+  .journey-section .missions-neptune {
+    top: 18%;
+    right: -4%;
+  }
+  .missions-mars {
+    width: 44vw !important;
+    top: 63%;
+    left: -18%;
+    opacity: 0.44;
+  }
+  .space-comets i {
+    width: 8px;
+    height: 8px;
+  }
+  .toolkit-neptune {
+    width: 38vw;
+    top: 23%;
+    right: -8%;
+    opacity: 1;
   }
   .featured-project {
     position: relative;
@@ -2637,13 +3009,6 @@ a {
     font-size: 7px;
     letter-spacing: 0.08em;
   }
-  .gravity-toggle {
-    font-size: 9px;
-    gap: 6px;
-  }
-  .gravity-toggle svg {
-    width: 14px;
-  }
   .profile-card {
     max-width: 290px;
   }
@@ -2696,7 +3061,9 @@ a {
     font-size: 41px;
   }
   .projects-section .section-topline > .eyebrow:last-child {
-    display: none;
+    display: inline-flex;
+    font-size: 6px;
+    letter-spacing: 0.05em;
   }
   .featured-project {
     padding: 12px;
@@ -2804,9 +3171,18 @@ a {
   .tech-groups {
     gap: 26px 16px;
   }
+  .tech-group {
+    min-height: 116px;
+  }
+  .tech-group h3 {
+    width: 98px;
+    flex-basis: 98px;
+    padding: 14px 10px;
+  }
   .tech-buttons {
     grid-template-columns: 1fr 1fr;
     gap: 7px;
+    padding: 10px;
   }
   .tech-buttons button {
     font-size: 9px;
@@ -2998,18 +3374,12 @@ a {
     animation: none !important;
     transition: none !important;
   }
+  .timeline::after {
+    transform: scaleY(1) !important;
+  }
   .featured-project {
     position: relative;
     top: auto;
-  }
-  .gravity-toggle {
-    display: none;
-  }
-  .profile-grid[data-floating="true"] .profile-card {
-    transform: rotate(-3deg);
-  }
-  .profile-grid[data-floating="true"] .expertise-panel {
-    transform: none;
   }
   .profile-section .section-topline,
   .profile-section .profile-story,
@@ -3069,5 +3439,67 @@ a {
 @media (max-width: 480px) {
   .lunar-flag {
     height: 82px;
+  }
+}
+
+/* Tech stack layer: responsive overrides for the selected-category layout. */
+@media (max-width: 1100px) {
+  .tech-layout {
+    grid-template-columns: 1fr;
+  }
+  .tech-category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .tech-group {
+    padding: 24px;
+  }
+  .tech-buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-category-grid {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 3px 8px;
+    scroll-snap-type: x mandatory;
+  }
+  .tech-category-grid button {
+    min-width: 155px;
+    scroll-snap-align: start;
+  }
+  .tech-group {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .tech-layer-heading {
+    padding-bottom: 13px;
+  }
+  .tech-group h3 {
+    width: auto;
+    flex-basis: auto;
+    padding: 0;
+    margin-top: 17px;
+    font-size: clamp(1.75rem, 9vw, 2.25rem);
+  }
+  .tech-group > p {
+    font-size: 12px;
+  }
+  .tech-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 0;
+  }
+  .tech-buttons button {
+    min-height: 52px;
+    padding: 9px;
+    font-size: 10px;
+  }
+  .tech-layer-footer {
+    margin-top: 18px;
   }
 }

@@ -13,8 +13,8 @@ export default function ToolsPage() {
       <div className="container">
         <Link href="/" className="text-button">← {id ? "Kembali ke ruang utama" : "Back to the main space"}</Link>
         <div className="subpage-heading">
-          <span className="eyebrow">TOOLS & TECHNOLOGIES</span>
-          <h1>{id ? "Perangkat eksplorasi." : "The exploration toolkit."}</h1>
+          <span className="eyebrow">TECH STACK</span>
+          <h1>{id ? "Tech stack eksplorasi." : "The exploration tech stack."}</h1>
         </div>
         <div className="human-skills">
           <span className="eyebrow">{t("proficientHeading")}</span>
