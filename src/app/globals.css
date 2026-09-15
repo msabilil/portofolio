@@ -1646,6 +1646,7 @@ a {
   font-size: 11px;
   font-weight: 700;
   text-align: center;
+  box-shadow: 3px 3px 0 var(--ink);
   transition: background 0.18s, border-color 0.18s, transform 0.18s;
 }
 .tech-category-grid button:hover {
@@ -1661,8 +1662,17 @@ a {
 .tech-category-grid button svg {
   flex: 0 0 auto;
 }
-.tech-category-grid button small {
-  margin: 0;
+.tech-category-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+.tech-category-copy > span {
+  min-width: 0;
+}
+.tech-category-copy small {
   padding: 3px 5px;
   border: 1px solid currentColor;
   border-radius: 4px;
@@ -1682,7 +1692,7 @@ a {
   border: 2px solid var(--ink);
   border-radius: 22px;
   background: var(--paper-light);
-  box-shadow: 5px 5px 0 var(--cyan);
+  box-shadow: 5px 5px 0 var(--amber);
 }
 .tech-layer-heading {
   display: flex;
@@ -1747,7 +1757,7 @@ a {
   padding: 10px 12px;
   border: 1px solid var(--ink);
   border-radius: 8px;
-  background: var(--paper);
+  background: var(--amber);
   color: var(--ink);
   font-size: 11px;
   font-weight: 700;
@@ -1756,12 +1766,12 @@ a {
     transform 0.18s;
 }
 .tech-buttons button:hover {
-  background: var(--color-bg-subtle);
+  background: #f2cb5e;
   transform: translateY(-3px);
 }
 .tech-buttons button[aria-pressed="true"] {
   border-color: var(--ink);
-  background: var(--amber);
+  background: var(--cyan);
   color: var(--ink);
   box-shadow: 2px 2px 0 var(--ink);
 }
@@ -1800,7 +1810,7 @@ a {
   border-radius: 16px;
   background: var(--paper-light);
   color: var(--ink);
-  box-shadow: 5px 5px 0 var(--cyan);
+  box-shadow: 5px 5px 0 var(--amber);
 }
 .tech-section .tech-inspector > .eyebrow {
   color: var(--color-accent);
