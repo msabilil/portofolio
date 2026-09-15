@@ -13,10 +13,41 @@ const paths = {
   globe:
     "M2 12h20M12 2c6 5 6 15 0 20-6-5-6-15 0-20ZM22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
 } as const;
+
+const compoundIcons = {
+  blocks: (
+    <>
+      <path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2" />
+      <rect x="14" y="2" width="8" height="8" rx="1" />
+    </>
+  ),
+  panels: (
+    <>
+      <rect width="18" height="18" x="3" y="3" rx="2" />
+      <path d="M3 9h18M9 21V9" />
+    </>
+  ),
+  database: (
+    <>
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5M3 12A9 3 0 0 0 21 12" />
+    </>
+  ),
+  workflow: (
+    <>
+      <rect width="8" height="8" x="3" y="3" rx="2" />
+      <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+      <rect width="8" height="8" x="13" y="13" rx="2" />
+    </>
+  ),
+} as const;
+
+type IconName = keyof typeof paths | keyof typeof compoundIcons;
+
 export function Icon({
   name,
   ...props
-}: SVGProps<SVGSVGElement> & { name: keyof typeof paths }) {
+}: SVGProps<SVGSVGElement> & { name: IconName }) {
   return (
     <svg
       width="22"
@@ -30,7 +61,9 @@ export function Icon({
       aria-hidden="true"
       {...props}
     >
-      <path d={paths[name]} />
+      {name in compoundIcons
+        ? compoundIcons[name as keyof typeof compoundIcons]
+        : <path d={paths[name as keyof typeof paths]} />}
     </svg>
   );
 }

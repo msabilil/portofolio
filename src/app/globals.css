@@ -1627,22 +1627,25 @@ a {
 }
 .tech-category-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(140px, 180px));
+  justify-content: start;
   gap: 10px;
 }
 .tech-category-grid button {
   display: flex;
-  min-height: 74px;
+  min-height: 116px;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
   border: 2px solid var(--ink);
   border-radius: 8px;
   background: var(--paper-light);
   color: var(--ink);
   font-size: 11px;
   font-weight: 700;
-  text-align: left;
+  text-align: center;
   transition: background 0.18s, border-color 0.18s, transform 0.18s;
 }
 .tech-category-grid button:hover {
@@ -1659,7 +1662,7 @@ a {
   flex: 0 0 auto;
 }
 .tech-category-grid button small {
-  margin-left: auto;
+  margin: 0;
   padding: 3px 5px;
   border: 1px solid currentColor;
   border-radius: 4px;
