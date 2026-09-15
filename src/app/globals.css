@@ -1785,38 +1785,14 @@ a {
   box-shadow: 2px 2px 0 var(--ink);
 }
 .tech-stack-copy {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  display: block;
   min-width: 0;
   text-align: left;
 }
 .tech-stack-copy strong {
-  flex: 0 0 auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.tech-stack-copy small {
-  flex: 0 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  padding: 2px 4px;
-  border: 1px solid #b99d51;
-  border-radius: 3px;
-  background: #fff8dc;
-  color: #4f4730;
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 7px;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.tech-buttons button[aria-pressed="true"] .tech-stack-copy small {
-  border-color: #3e8299;
-  background: #d9f4f2;
-  color: #204d5d;
 }
 .tech-layer-footer {
   display: flex;
@@ -1896,6 +1872,27 @@ a {
 .tech-inspector h3 {
   font-size: 30px;
   line-height: 1.2;
+}
+.tech-inspector .inspector-tech-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.inspector-tech-title small {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 7px;
+  border: 1px solid #b99d51;
+  border-radius: 4px;
+  background: #fff1c7;
+  color: #4f4730;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
 }
 .tech-inspector > p {
   font-size: 12px;
