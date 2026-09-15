@@ -324,7 +324,11 @@ export function TechSection() {
               </p>
               <div className="inspector-evidence">
                 {relatedProjects.map((project) => (
-                  <Link href="/#projects" key={project.slug}>
+                  <Link
+                    href="/#projects"
+                    key={project.slug}
+                    className="inspector-evidence-card inspector-evidence-card--project"
+                  >
                     <span className="eyebrow">{id ? "PROYEK" : "PROJECT"}</span>
                     <strong>
                       {project.title}
@@ -333,7 +337,11 @@ export function TechSection() {
                   </Link>
                 ))}
                 {relatedExperience.map((entry) => (
-                  <Link href="/#journey" key={entry.id}>
+                  <Link
+                    href="/#journey"
+                    key={entry.id}
+                    className="inspector-evidence-card inspector-evidence-card--experience"
+                  >
                     <span className="eyebrow">{id ? "PENGALAMAN" : "EXPERIENCE"}</span>
                     <strong>
                       {entry.role[locale]}
