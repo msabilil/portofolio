@@ -288,6 +288,7 @@ export function TechSection() {
                     <TechLogo slug={getIconSlug(tech)} />
                     <span className="tech-stack-copy">
                       <strong>{tech}</strong>
+                      <small>{techDescriptions[tech].label[locale]}</small>
                     </span>
                   </button>
                 ))}
