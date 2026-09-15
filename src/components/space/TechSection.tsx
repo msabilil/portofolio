@@ -138,14 +138,16 @@ export function TechSection() {
                   }}
                 >
                   <Icon name={group.icon} width="20" />
-                  <span>
-                    {group.name === "all"
-                      ? id
-                        ? "Semua Stack"
-                        : "All Stack"
-                      : group.name}
+                  <span className="tech-category-copy">
+                    <span>
+                      {group.name === "all"
+                        ? id
+                          ? "Semua Stack"
+                          : "All Stack"
+                        : group.name}
+                    </span>
+                    <small>{group.tech.length.toString().padStart(2, "0")}</small>
                   </span>
-                  <small>{group.tech.length.toString().padStart(2, "0")}</small>
                 </button>
               ))}
             </div>
