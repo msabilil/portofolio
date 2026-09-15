@@ -11,18 +11,10 @@ import { Icon } from "./Icon";
 
 const groups = [
   {
-    name: "UI/UX",
-    icon: "star" as const,
-    tech: ["Figma"],
-    description: {
-      id: "Merancang alur, antarmuka, dan prototipe yang berangkat dari kebutuhan pengguna.",
-      en: "Designing flows, interfaces, and prototypes around user needs.",
-    },
-  },
-  {
-    name: "Front End",
-    icon: "code" as const,
+    name: "UI/UX & Front End",
+    icon: "panels" as const,
     tech: [
+      "Figma",
       "JavaScript",
       "TypeScript",
       "React",
@@ -33,31 +25,31 @@ const groups = [
       "Vue.js",
     ],
     description: {
-      id: "Membangun antarmuka web yang cepat, responsif, dan mudah digunakan.",
-      en: "Building fast, responsive web interfaces that are easy to use.",
+      id: "Merancang alur dan membangun antarmuka web yang cepat, responsif, dan mudah digunakan.",
+      en: "Designing flows and building fast, responsive web interfaces that are easy to use.",
     },
   },
   {
-    name: "Back End",
-    icon: "code" as const,
-    tech: ["PHP", "Express", "ElysiaJS"],
+    name: "Back End & Database",
+    icon: "database" as const,
+    tech: [
+      "PHP",
+      "Express",
+      "ElysiaJS",
+      "MySQL",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "NoSQL (Firestore)",
+    ],
     description: {
-      id: "Mengembangkan layanan aplikasi, API, dan logika yang menopang pengalaman pengguna.",
-      en: "Developing application services, APIs, and the logic behind the user experience.",
-    },
-  },
-  {
-    name: "Database",
-    icon: "orbit" as const,
-    tech: ["MySQL", "PostgreSQL", "Prisma", "Redis", "NoSQL (Firestore)"],
-    description: {
-      id: "Menyusun data yang rapi, aman, dan siap mendukung kebutuhan aplikasi.",
-      en: "Structuring reliable data layers that support application needs.",
+      id: "Mengembangkan API, layanan aplikasi, dan data layer yang aman serta andal.",
+      en: "Developing reliable APIs, application services, and secure data layers.",
     },
   },
   {
     name: "DevOps & Tools",
-    icon: "check" as const,
+    icon: "workflow" as const,
     tech: [
       "Git",
       "Docker",
@@ -76,7 +68,7 @@ const groups = [
 
 const allGroup = {
   name: "all",
-  icon: "orbit" as const,
+  icon: "blocks" as const,
   tech: [...new Set(groups.flatMap((group) => group.tech))],
   description: {
     id: "Rangkuman teknologi yang saya gunakan dari desain hingga pengiriman aplikasi.",
