@@ -110,7 +110,7 @@ export function TechSection() {
   const locale = id ? "id" : "en";
   const t = useTranslations("skills");
   const [activeGroupName, setActiveGroupName] = useState("all");
-  const [selected, setSelected] = useState("Figma");
+  const [selected, setSelected] = useState<string | null>(null);
   const activeGroup =
     categoryGroups.find((group) => group.name === activeGroupName) ?? allGroup;
   const activeGroupLabel =
@@ -119,14 +119,16 @@ export function TechSection() {
         ? "Semua Stack"
         : "All Stack"
       : activeGroup.name;
-  const relatedProjects = projects.filter(
-    (project) =>
-      project.tags.includes(selected) ||
-      (selected === "Figma" && project.categories.includes("ui-ux")),
-  );
-  const relatedExperience = experience.filter((entry) =>
-    entry.skills?.includes(selected),
-  );
+  const relatedProjects = selected
+    ? projects.filter(
+        (project) =>
+          project.tags.includes(selected) ||
+          (selected === "Figma" && project.categories.includes("ui-ux")),
+      )
+    : [];
+  const relatedExperience = selected
+    ? experience.filter((entry) => entry.skills?.includes(selected))
+    : [];
 
   return (
     <section id="skills" className="lunar-section tech-section">
@@ -161,7 +163,7 @@ export function TechSection() {
                   aria-controls="tech-layer"
                   onClick={() => {
                     setActiveGroupName(group.name);
-                    setSelected(group.tech[0]);
+                    setSelected(null);
                   }}
                 >
                   <Icon name={group.icon} width="20" />
@@ -227,13 +229,13 @@ export function TechSection() {
             <aside className="tech-inspector panel" aria-live="polite">
               <span className="eyebrow">{id ? "DALAM PRAKTIK" : "IN PRACTICE"}</span>
               <div className="inspector-icon" aria-hidden="true">
-                <TechLogo slug={getIconSlug(selected)} size={42} />
+                {selected && <TechLogo slug={getIconSlug(selected)} size={42} />}
               </div>
-              <h3>{selected}</h3>
+              <h3>{selected ?? (id ? "Pilih teknologi" : "Select a technology")}</h3>
               <p>
                 {id
-                  ? "Contoh penggunaan teknologi ini dalam pekerjaan saya."
-                  : "Examples of how I have used this technology in my work."}
+                  ? "Pilih satu teknologi untuk melihat konteks penggunaannya dalam pekerjaan saya."
+                  : "Select a technology to see how it appears in my work."}
               </p>
               <div className="inspector-evidence">
                 {relatedProjects.map((project) => (
@@ -255,7 +257,7 @@ export function TechSection() {
                     <small>{entry.place.split(" — ")[0]}</small>
                   </Link>
                 ))}
-                {!relatedProjects.length && !relatedExperience.length && (
+                {selected && !relatedProjects.length && !relatedExperience.length && (
                   <p>
                     {id
                       ? "Teknologi ini masuk dalam proses belajar dan eksplorasi saya. Contoh proyeknya belum ditampilkan di sini."
