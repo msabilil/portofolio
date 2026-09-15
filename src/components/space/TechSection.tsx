@@ -83,99 +83,99 @@ const techDescriptions: Record<
   { label: { id: string; en: string }; detail: { id: string; en: string } }
 > = {
   Figma: {
-    label: { id: "Desain UI & alur", en: "UI & flow design" },
+    label: { id: "UI & UX flow", en: "UI & UX flow" },
     detail: { id: "Merancang antarmuka, prototipe, dan alur pengguna sebelum implementasi.", en: "Designing interfaces, prototypes, and user flows before implementation." },
   },
   JavaScript: {
-    label: { id: "Interaksi browser", en: "Browser interactions" },
+    label: { id: "Interactivity", en: "Interactivity" },
     detail: { id: "Menjalankan logika dan interaksi dinamis langsung di browser.", en: "Powering dynamic logic and interactions directly in the browser." },
   },
   TypeScript: {
-    label: { id: "Kode lebih aman", en: "Safer code" },
+    label: { id: "Type-safe code", en: "Type-safe code" },
     detail: { id: "Mencegah kesalahan lebih awal dengan tipe statis dan kontrak data yang jelas.", en: "Catching errors early with static types and clear data contracts." },
   },
   React: {
-    label: { id: "UI berbasis komponen", en: "Component-based UI" },
+    label: { id: "Component UI", en: "Component UI" },
     detail: { id: "Membangun antarmuka interaktif dari komponen yang dapat digunakan kembali.", en: "Building interactive interfaces from reusable components." },
   },
   "Next.js": {
-    label: { id: "Web cepat & SEO", en: "Fast, SEO-ready web" },
+    label: { id: "Web & SEO", en: "Web & SEO" },
     detail: { id: "Merender aplikasi web cepat dengan routing, server rendering, dan optimasi SEO.", en: "Rendering fast web apps with routing, server rendering, and SEO optimization." },
   },
   HTML5: {
-    label: { id: "Struktur semantik", en: "Semantic structure" },
+    label: { id: "Semantic markup", en: "Semantic markup" },
     detail: { id: "Menyusun konten yang semantik, mudah diakses, dan ramah mesin pencari.", en: "Structuring content semantically for accessibility and search engines." },
   },
   CSS3: {
-    label: { id: "Tampilan responsif", en: "Responsive styling" },
+    label: { id: "Responsive styling", en: "Responsive styling" },
     detail: { id: "Mengatur tata letak, visual, dan responsivitas antarmuka di berbagai layar.", en: "Controlling interface layout, visuals, and responsiveness across screens." },
   },
   "Tailwind CSS": {
-    label: { id: "Styling berbasis utility", en: "Utility-first styling" },
+    label: { id: "Utility CSS", en: "Utility CSS" },
     detail: { id: "Menyusun styling yang konsisten dengan utility class dan token desain.", en: "Composing consistent styling with utility classes and design tokens." },
   },
   "Vue.js": {
-    label: { id: "UI progresif", en: "Progressive UI" },
+    label: { id: "Reactive UI", en: "Reactive UI" },
     detail: { id: "Membangun antarmuka reaktif secara bertahap, dari widget hingga aplikasi penuh.", en: "Building reactive interfaces progressively, from widgets to full applications." },
   },
   PHP: {
-    label: { id: "Logika server", en: "Server logic" },
+    label: { id: "Server logic", en: "Server logic" },
     detail: { id: "Menangani logika aplikasi, permintaan server, dan integrasi data di backend.", en: "Handling application logic, server requests, and data integration on the backend." },
   },
   Express: {
-    label: { id: "API HTTP ringan", en: "Lean HTTP APIs" },
+    label: { id: "HTTP API", en: "HTTP API" },
     detail: { id: "Membangun API HTTP yang ringan dengan middleware dan routing yang fleksibel.", en: "Building lightweight HTTP APIs with flexible middleware and routing." },
   },
   ElysiaJS: {
-    label: { id: "API type-safe", en: "Type-safe APIs" },
+    label: { id: "Type-safe API", en: "Type-safe API" },
     detail: { id: "Membuat API cepat dengan validasi dan tipe end-to-end yang aman.", en: "Creating fast APIs with safe end-to-end validation and types." },
   },
   MySQL: {
-    label: { id: "Data relasional", en: "Relational data" },
+    label: { id: "Transactional DB", en: "Transactional DB" },
     detail: { id: "Menyimpan dan mengelola data relasional yang terstruktur dengan query SQL.", en: "Storing and managing structured relational data with SQL queries." },
   },
   PostgreSQL: {
-    label: { id: "Query data kompleks", en: "Complex data queries" },
+    label: { id: "Advanced SQL", en: "Advanced SQL" },
     detail: { id: "Menangani data relasional dan query kompleks dengan fitur SQL yang kaya.", en: "Handling relational data and complex queries with rich SQL features." },
   },
   Prisma: {
-    label: { id: "Skema & migrasi aman", en: "Safe schema & migrations" },
+    label: { id: "Type-safe ORM", en: "Type-safe ORM" },
     detail: { id: "Mendukung migrasi database yang aman, pemodelan skema deklaratif, dan query yang optimal.", en: "Supporting safe database migrations, declarative schema modeling, and optimized queries." },
   },
   Redis: {
-    label: { id: "Cache data cepat", en: "Fast data cache" },
+    label: { id: "In-memory cache", en: "In-memory cache" },
     detail: { id: "Mempercepat aplikasi dengan cache, session store, dan pekerjaan berbasis antrean.", en: "Speeding up applications with caching, session storage, and queue-based work." },
   },
   "NoSQL (Firestore)": {
-    label: { id: "Data cloud real-time", en: "Real-time cloud data" },
+    label: { id: "NoSQL & real-time", en: "NoSQL & real-time" },
     detail: { id: "Menyimpan data dokumen di cloud dengan sinkronisasi real-time.", en: "Storing document data in the cloud with real-time synchronization." },
   },
   Git: {
-    label: { id: "Riwayat & kolaborasi", en: "History & collaboration" },
+    label: { id: "Version control", en: "Version control" },
     detail: { id: "Melacak perubahan kode, mengelola branch, dan berkolaborasi dengan aman.", en: "Tracking code changes, managing branches, and collaborating safely." },
   },
   Docker: {
-    label: { id: "Runtime konsisten", en: "Consistent runtime" },
+    label: { id: "Consistent runtime", en: "Consistent runtime" },
     detail: { id: "Menjalankan aplikasi dalam container agar lingkungan pengembangan dan rilis konsisten.", en: "Running applications in containers for consistent development and release environments." },
   },
   "GitHub Actions": {
-    label: { id: "Otomasi CI/CD", en: "CI/CD automation" },
+    label: { id: "CI/CD automation", en: "CI/CD automation" },
     detail: { id: "Mengotomatiskan build, test, dan deployment setiap ada perubahan kode.", en: "Automating builds, tests, and deployments for every code change." },
   },
   Jest: {
-    label: { id: "Uji logika kode", en: "Test code logic" },
+    label: { id: "Unit testing", en: "Unit testing" },
     detail: { id: "Memverifikasi unit dan logika aplikasi secara cepat dan terisolasi.", en: "Verifying application units and logic quickly in isolation." },
   },
   Playwright: {
-    label: { id: "Uji alur browser", en: "Test browser flows" },
+    label: { id: "Browser E2E", en: "Browser E2E" },
     detail: { id: "Menguji alur pengguna end-to-end pada browser nyata secara otomatis.", en: "Automatically testing end-to-end user flows in real browsers." },
   },
   Postman: {
-    label: { id: "Uji & koleksi API", en: "Test & collect APIs" },
+    label: { id: "API testing", en: "API testing" },
     detail: { id: "Menguji endpoint, menyimpan koleksi request, dan memeriksa respons API.", en: "Testing endpoints, saving request collections, and inspecting API responses." },
   },
   Swagger: {
-    label: { id: "Spesifikasi API", en: "API specification" },
+    label: { id: "API specification", en: "API specification" },
     detail: { id: "Mendokumentasikan kontrak API agar endpoint mudah dipahami dan diintegrasikan.", en: "Documenting API contracts so endpoints are easy to understand and integrate." },
   },
 };
