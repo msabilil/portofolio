@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import { projects } from "@/content/projects";
+import { experience } from "@/content/experience";
 import { getIconSlug } from "@/lib/techIcons";
 import { TechLogo } from "@/components/TechLogo";
 import { Icon } from "./Icon";
@@ -74,11 +76,20 @@ const groups = [
 
 export function TechSection() {
   const id = useLocale() === "id";
+  const locale = id ? "id" : "en";
   const t = useTranslations("skills");
   const [activeGroupName, setActiveGroupName] = useState("Front End");
   const [selected, setSelected] = useState("TypeScript");
   const activeGroup =
     groups.find((group) => group.name === activeGroupName) ?? groups[0];
+  const relatedProjects = projects.filter(
+    (project) =>
+      project.tags.includes(selected) ||
+      (selected === "Figma" && project.categories.includes("ui-ux")),
+  );
+  const relatedExperience = experience.filter((entry) =>
+    entry.skills?.includes(selected),
+  );
 
   return (
     <section id="skills" className="lunar-section tech-section">
@@ -129,44 +140,89 @@ export function TechSection() {
           <span className="tech-layer-label eyebrow">
             {id ? "DAFTAR KATEGORI & LAYER" : "CATEGORY & LAYER LIST"}
           </span>
-          <section
-            id="tech-layer"
-            className="tech-group"
-            aria-live="polite"
-            aria-labelledby="tech-layer-title"
-          >
-            <div className="tech-layer-heading">
-              <div>
-                <span className="tech-layer-number">
-                  {String(groups.indexOf(activeGroup) + 1).padStart(2, "0")}
-                </span>
-                <span className="eyebrow">/ {activeGroup.name}</span>
+          <div className="tech-layer-layout">
+            <section
+              id="tech-layer"
+              className="tech-group"
+              aria-live="polite"
+              aria-labelledby="tech-layer-title"
+            >
+              <div className="tech-layer-heading">
+                <div>
+                  <span className="tech-layer-number">
+                    {String(groups.indexOf(activeGroup) + 1).padStart(2, "0")}
+                  </span>
+                  <span className="eyebrow">/ {activeGroup.name}</span>
+                </div>
+                <span className="tech-layer-status">{id ? "DIPILIH" : "SELECTED"}</span>
               </div>
-              <span className="tech-layer-status">{id ? "DIPILIH" : "SELECTED"}</span>
-            </div>
-            <h3 id="tech-layer-title">{activeGroup.name}</h3>
-            <p>{id ? activeGroup.description.id : activeGroup.description.en}</p>
-            <div className="tech-buttons">
-              {activeGroup.tech.map((tech) => (
-                <button
-                  key={tech}
-                  type="button"
-                  aria-pressed={selected === tech}
-                  onClick={() => setSelected(tech)}
-                >
-                  <TechLogo slug={getIconSlug(tech)} />
-                  <span>{tech}</span>
-                </button>
-              ))}
-            </div>
-            <footer className="tech-layer-footer">
-              <span>{activeGroup.tech.length} {id ? "Teknologi" : "Technologies"}</span>
-              <Link href="/#projects">
-                {id ? "Detail Layer" : "Layer Details"}
-                <Icon name="arrow" width="15" />
-              </Link>
-            </footer>
-          </section>
+              <h3 id="tech-layer-title">{activeGroup.name}</h3>
+              <p>{id ? activeGroup.description.id : activeGroup.description.en}</p>
+              <div className="tech-buttons">
+                {activeGroup.tech.map((tech) => (
+                  <button
+                    key={tech}
+                    type="button"
+                    aria-pressed={selected === tech}
+                    onClick={() => setSelected(tech)}
+                  >
+                    <TechLogo slug={getIconSlug(tech)} />
+                    <span>{tech}</span>
+                  </button>
+                ))}
+              </div>
+              <footer className="tech-layer-footer">
+                <span>{activeGroup.tech.length} {id ? "Teknologi" : "Technologies"}</span>
+                <Link href="/#projects">
+                  {id ? "Detail Layer" : "Layer Details"}
+                  <Icon name="arrow" width="15" />
+                </Link>
+              </footer>
+            </section>
+            <aside className="tech-inspector panel" aria-live="polite">
+              <span className="eyebrow">{id ? "DALAM PRAKTIK" : "IN PRACTICE"}</span>
+              <div className="inspector-icon" aria-hidden="true">
+                <TechLogo slug={getIconSlug(selected)} size={42} />
+              </div>
+              <h3>{selected}</h3>
+              <p>
+                {id
+                  ? "Contoh penggunaan teknologi ini dalam pekerjaan saya."
+                  : "Examples of how I have used this technology in my work."}
+              </p>
+              <div className="inspector-evidence">
+                {relatedProjects.map((project) => (
+                  <Link href="/#projects" key={project.slug}>
+                    <span className="eyebrow">{id ? "PROYEK" : "PROJECT"}</span>
+                    <strong>
+                      {project.title}
+                      <Icon name="arrow" width="16" />
+                    </strong>
+                  </Link>
+                ))}
+                {relatedExperience.map((entry) => (
+                  <Link href="/#journey" key={entry.id}>
+                    <span className="eyebrow">{id ? "PENGALAMAN" : "EXPERIENCE"}</span>
+                    <strong>
+                      {entry.role[locale]}
+                      <Icon name="arrow" width="16" />
+                    </strong>
+                    <small>{entry.place.split(" — ")[0]}</small>
+                  </Link>
+                ))}
+                {!relatedProjects.length && !relatedExperience.length && (
+                  <p>
+                    {id
+                      ? "Teknologi ini masuk dalam proses belajar dan eksplorasi saya. Contoh proyeknya belum ditampilkan di sini."
+                      : "This technology is part of my learning and exploration. A project example has not been added here yet."}
+                  </p>
+                )}
+              </div>
+              <span className="inspector-footer eyebrow">
+                {id ? "BAGIAN DARI PROSES SAYA" : "PART OF MY PROCESS"}
+              </span>
+            </aside>
+          </div>
         </div>
         <div className="human-skills">
           <span className="eyebrow">{t("softHeading")}</span>
