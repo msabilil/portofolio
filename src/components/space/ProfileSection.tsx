@@ -12,7 +12,6 @@ export function ProfileSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const expertiseRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState(0);
-  const [floating, setFloating] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [expertiseRevealed, setExpertiseRevealed] = useState(false);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
@@ -83,22 +82,8 @@ export function ProfileSection() {
           <span className="eyebrow">
             01 / {id ? "KENALI PENJELAJAHNYA" : "MEET THE EXPLORER"}
           </span>
-          <button
-            className="text-button gravity-toggle"
-            onClick={() => setFloating(!floating)}
-            aria-pressed={floating}
-          >
-            <Icon name="orbit" width="18" />
-            {floating
-              ? id
-                ? "Kembalikan gravitasi"
-                : "Restore gravity"
-              : id
-                ? "Coba gravitasi nol"
-                : "Try zero gravity"}
-          </button>
         </div>
-        <div className="profile-grid" data-floating={floating}>
+        <div className="profile-grid">
           <div className="profile-card panel">
             <div className="photo-frame">
               <Image
@@ -115,11 +100,20 @@ export function ProfileSection() {
               </span>
             </div>
             <div className="profile-id">
-              <span className="eyebrow">CREW ID / MSF—001</span>
+              <span className="eyebrow">{id ? "ID KRU" : "CREW ID"} / MSF—001</span>
               <Icon name="orbit" />
               <p>Muhammad Sabilil Fajri</p>
               <span>Bandung, Indonesia · UTC+7</span>
             </div>
+            <a
+              className="text-button profile-cv"
+              href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {id ? "Baca CV saya" : "Read my CV"}
+              <Icon name="arrow" width="18" />
+            </a>
           </div>
           <div className="profile-story">
             <h2>
@@ -178,21 +172,10 @@ export function ProfileSection() {
                 </div>
               </div>
             </div>
-            <a
-              className="text-button"
-              href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {id
-                ? "Kenali perjalanan saya — lihat CV"
-                : "Get the full story — view my CV"}
-              <Icon name="arrow" width="18" />
-            </a>
           </div>
         </div>
       </div>
-      <div className="lunar-horizon profile-lunar-horizon" aria-hidden="true">
+      <div className="lunar-horizon profile-moon-bridge" aria-hidden="true">
         <i />
         <i />
         <i />

@@ -58,14 +58,16 @@ export function GithubActivity() {
     <section ref={ref} className="activity-section lunar-section">
       <div className="container">
         <div className="activity-panel panel">
+          <div className="section-topline activity-topline">
+            <span className="eyebrow">04 / {id ? "JEJAK DI GITHUB" : "GITHUB LOG"}</span>
+          </div>
           <div className="activity-heading">
             <div>
-              <span className="eyebrow">04 / GITHUB TRANSMISSION</span>
-              <h2>{id ? "Sedikit demi sedikit." : "One commit at a time."}</h2>
+              <h2>{id ? "Jejak di balik karya." : "A look at the process."}</h2>
               <p>
                 {id
-                  ? "Jejak aktivitas publik @msabilil di GitHub."
-                  : "A little window into @msabilil’s public GitHub activity."}
+                  ? "Sebagian proses belajar dan pengembangan saya tercatat di GitHub. Berikut aktivitas akun @msabilil pada periode yang ditampilkan."
+                  : "GitHub holds part of my learning and development process. Here’s the activity on @msabilil during the period shown."}
               </p>
             </div>
             <a
@@ -74,7 +76,7 @@ export function GithubActivity() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub
+              {id ? "Lihat GitHub" : "View GitHub"}
               <Icon name="arrow" />
             </a>
           </div>
@@ -148,8 +150,8 @@ export function GithubActivity() {
             <div className="activity-error" role="status">
               <p>
                 {id
-                  ? "Sinyal belum tersambung. Data GitHub sedang tidak tersedia."
-                  : "No signal yet. GitHub activity is currently unavailable."}
+                  ? "Aktivitas GitHub belum bisa dimuat. Coba lagi atau buka profil melalui tautan di atas."
+                  : "GitHub activity couldn’t be loaded. Try again or visit my profile using the link above."}
               </p>
               <button
                 className="text-button"
@@ -163,13 +165,13 @@ export function GithubActivity() {
             </div>
           ) : (
             <div className="activity-loading" role="status">
-              {id ? "Menghubungkan ke GitHub…" : "Connecting to GitHub…"}
+              {id ? "Memuat aktivitas GitHub…" : "Loading GitHub activity…"}
             </div>
           )}
           <p className="activity-source">
             {id
-              ? "Sumber: GitHub melalui GitHub Contributions API. Kontribusi tidak hanya berupa commit."
-              : "Source: GitHub via GitHub Contributions API. Contributions include more than commits."}
+              ? "Sumber: GitHub Contributions API. Grafik ini menunjukkan aktivitas akun, bukan keseluruhan pekerjaan atau ukuran kualitas kode."
+              : "Source: GitHub Contributions API. This chart shows account activity, not the full scope of my work or a measure of code quality."}
           </p>
         </div>
       </div>

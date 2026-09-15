@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+debug.log
 
 # debug
 npm-debug.log*
@@ -35,6 +36,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Windows system cache
+%SystemDrive%/ProgramData/Microsoft/Windows/Caches
 
 # typescript
 *.tsbuildinfo
@@ -51,3 +55,4 @@ next-env.d.ts
 
 /.worktrees
 .superdesign
+.claude/skills/superdesign
