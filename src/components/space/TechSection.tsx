@@ -288,7 +288,6 @@ export function TechSection() {
                     <TechLogo slug={getIconSlug(tech)} />
                     <span className="tech-stack-copy">
                       <strong>{tech}</strong>
-                      <small>{techDescriptions[tech].label[locale]}</small>
                     </span>
                   </button>
                 ))}
@@ -306,7 +305,10 @@ export function TechSection() {
               <div className="inspector-icon" aria-hidden="true">
                 {selected && <TechLogo slug={getIconSlug(selected)} size={42} />}
               </div>
-              <h3>{selected ?? (id ? "Pilih teknologi" : "Select a technology")}</h3>
+              <h3 className="inspector-tech-title">
+                <span>{selected ?? (id ? "Pilih teknologi" : "Select a technology")}</span>
+                {selected && <small>{techDescriptions[selected].label[locale]}</small>}
+              </h3>
               <p>
                 {selected
                   ? techDescriptions[selected].detail[locale]
