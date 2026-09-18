@@ -11,7 +11,7 @@ menjadi acuan untuk urutan konten, UX Writing, Information Architecture, evidenc
 recruiter summary.
 
 Tambahan wajib untuk setiap case study adalah bagian `In a nutshell`. Bagian ini memberi konteks
-singkat sebelum pembaca masuk ke snapshot dan detail proses.
+singkat setelah hero dan snapshot, sebelum pembaca masuk ke detail proses.
 
 Skill `design-taste-frontend` dipakai sebagai guardrail frontend. Arah visualnya adalah portfolio
 detail yang tenang, rapi, nyaman dibaca, dan mendukung isi. Halaman tidak perlu terlihat seperti
@@ -75,7 +75,7 @@ didukung evidence lebih baik dihilangkan atau ditandai unavailable daripada diis
 
 ### Bentuk
 
-- Letakkan setelah value proposition dan sebelum snapshot.
+- Letakkan setelah hero yang mencakup value proposition, project links, dan snapshot.
 - Gunakan 2 sampai 3 paragraf pendek.
 - Gunakan bahasa naratif yang konkret, bukan slogan.
 - Boleh menggunakan bahasa Inggris jika locale project adalah Inggris.
@@ -131,6 +131,12 @@ Target baru:
 - Hero mencakup title, value proposition, project links, dan project facts.
 - Project facts tetap ditampilkan di dalam hero, tetapi jangan menambahkan heading `Snapshot`.
 - `In a nutshell` adalah section terpisah setelah hero, bukan bagian dari hero.
+- Mulai dari `In a nutshell` sampai `Recruiter Summary`, gunakan layout dua kolom: sidebar
+  navigasi sederhana di kiri dan seluruh isi case study di kolom baca utama sebelah kanan.
+- Sidebar desktop bersifat sticky agar pembaca selalu memiliki orientasi saat membaca halaman panjang.
+  Gunakan anchor link native, tanpa nomor section, progress bar, atau dekorasi tambahan.
+- Pada mobile, sidebar berubah menjadi navigasi horizontal yang dapat digeser dan berada di atas isi,
+  sehingga urutan baca tetap natural dan tidak membuat halaman melebar.
 - `The Problem`, `Approach & Architecture`, `Results & Performance Benchmarks`, dan
   `Code & Artifact Deep Dive` menggunakan heading biasa tanpa nomor.
 - Menghapus nomor juga berarti menghapus background, panel, pseudo-element, atau dekorasi yang hanya
@@ -210,9 +216,8 @@ Dokumen ini berlaku terutama untuk:
 - `src/components/case-study/CaseStudyPage.module.css`: typography, spacing, layout, dan responsive
   behavior.
 
-Implementasi berikutnya sebaiknya menghapus ketergantungan pada prop `number` di `CaseSection`,
-menghapus eyebrow case study di hero, dan menambahkan field `inANutshell` pada content model.
-Perubahan tersebut belum dilakukan oleh dokumen ini.
+Implementasi saat ini tidak menggunakan prop `number` di `CaseSection`, tidak memiliki eyebrow case
+study di hero, dan mendukung field `inANutshell` pada content model.
 
 ## Checklist sebelum dianggap selesai
 
@@ -220,6 +225,8 @@ Perubahan tersebut belum dilakukan oleh dokumen ini.
 - [ ] Tidak ada `PROJECT CASE STUDY` atau label sejenis di atas title.
 - [ ] Hero mencakup title, value proposition, links, dan project facts.
 - [ ] `In a nutshell` berada sebagai section terpisah setelah hero.
+- [ ] Mulai dari `In a nutshell` sampai bawah, isi berada di kolom kanan dengan sidebar navigasi di kiri.
+- [ ] Sidebar sticky di desktop dan berubah menjadi navigasi horizontal di mobile.
 - [ ] Tidak ada heading `Snapshot`.
 - [ ] Tidak ada nomor section di atas atau di samping heading.
 - [ ] Tidak ada background atau decorative panel sisa dari nomor section.

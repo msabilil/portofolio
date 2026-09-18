@@ -61,6 +61,21 @@ export function CaseStudyPage({ study, locale: requestedLocale }: CaseStudyPageP
 
         </section>
 
+        <div className={styles.readingLayout}>
+          <aside className={styles.sidebar} aria-label={id ? "Navigasi isi project" : "Project contents navigation"}>
+            <p className={styles.sidebarLabel}>{id ? "Di halaman ini" : "On this page"}</p>
+            <nav className={styles.sidebarNav}>
+              {study.inANutshell && <a href="#case-study-in-a-nutshell">In a nutshell</a>}
+              <a href="#case-study-problem">{id ? "Masalah" : "The Problem"}</a>
+              <a href="#case-study-approach">{id ? "Pendekatan dan Arsitektur" : "Approach and Architecture"}</a>
+              <a href="#case-study-results">{id ? "Hasil dan Benchmark" : "Results and Benchmarks"}</a>
+              <a href="#case-study-deep-dive">Code and Artifact Deep Dive</a>
+              <a href="#case-study-impact">{id ? "Dampak" : "Impact"}</a>
+              <a href="#recruiter-summary">{id ? "Ringkasan Recruiter" : "Recruiter Summary"}</a>
+            </nav>
+          </aside>
+
+          <div className={styles.readingContent}>
         {study.inANutshell && (
           <section className={styles.nutshell} aria-labelledby="case-study-in-a-nutshell">
             <h2 id="case-study-in-a-nutshell">In a nutshell</h2>
@@ -175,6 +190,8 @@ export function CaseStudyPage({ study, locale: requestedLocale }: CaseStudyPageP
           </ul>
           <p><strong>Impact:</strong> {text(study.recruiterSummary.impact)}</p>
         </section>
+          </div>
+        </div>
       </div>
     </article>
   );

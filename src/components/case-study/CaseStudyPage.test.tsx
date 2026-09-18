@@ -36,5 +36,10 @@ describe("CaseStudyPage", () => {
     expect(screen.getByRole("heading", { name: "In a nutshell" })).toBeInTheDocument();
     expect(screen.getByText(/PT Thursina Mediana Utama, a publishing and printing company/)).toBeInTheDocument();
     expect(screen.getByText(/prioritize schedules based on deadlines/)).toBeInTheDocument();
+
+    const sidebar = screen.getByRole("complementary", { name: "Project contents navigation" });
+    expect(sidebar).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "In a nutshell" })).toHaveAttribute("href", "#case-study-in-a-nutshell");
+    expect(screen.getByRole("link", { name: "Recruiter Summary" })).toHaveAttribute("href", "#recruiter-summary");
   });
 });
