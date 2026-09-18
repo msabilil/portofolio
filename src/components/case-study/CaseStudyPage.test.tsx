@@ -35,7 +35,7 @@ describe("CaseStudyPage", () => {
 
     expect(screen.getByRole("heading", { name: "In a nutshell" })).toBeInTheDocument();
     expect(screen.getByText(/PT Thursina Mediana Utama, a publishing and printing company/)).toBeInTheDocument();
-    expect(screen.getByText(/prioritize schedules based on deadlines/)).toBeInTheDocument();
+    expect(screen.getByText(/expected completion date for each order/)).toBeInTheDocument();
 
     const sidebar = screen.getByRole("complementary", { name: "Project contents navigation" });
     expect(sidebar).toBeInTheDocument();
