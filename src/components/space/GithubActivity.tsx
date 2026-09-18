@@ -3,6 +3,19 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import { Icon } from "./Icon";
 import { parseContributions, type Contribution } from "@/lib/contributions";
+
+function contributionMessage(day: Contribution, id: boolean) {
+  if (day.count === 0) {
+    return id
+      ? `Tidak ada kontribusi pada ${day.date}`
+      : `No contributions on ${day.date}`;
+  }
+
+  return id
+    ? `${day.count} kontribusi pada ${day.date}`
+    : `${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`;
+}
+
 export function GithubActivity() {
   const id = useLocale() === "id";
   const ref = useRef<HTMLElement>(null);
@@ -30,10 +43,9 @@ export function GithubActivity() {
     let disposed = false;
     async function fetchActivity() {
       try {
-        const response = await fetch(
-          "https://github-contributions-api.jogruber.de/v4/msabilil?y=last",
-          { signal: controller.signal },
-        );
+        const response = await fetch("/api/github/contributions", {
+          signal: controller.signal,
+        });
         if (!response.ok) throw new Error("Activity unavailable");
         const parsed = parseContributions(await response.json());
         if (!disposed) {
@@ -102,7 +114,9 @@ export function GithubActivity() {
               >
                 <div
                   className="heatmap"
-                  role="img"
+                  role="grid"
+                  aria-rowcount={7}
+                  aria-colcount={Math.ceil(days.length / 7)}
                   aria-label={
                     id
                       ? total +
@@ -120,13 +134,12 @@ export function GithubActivity() {
                   {days.map((day) => (
                     <span
                       key={day.date}
+                      className="heatmap-day"
+                      role="gridcell"
+                      tabIndex={0}
                       data-level={day.level}
-                      title={
-                        day.date +
-                        ": " +
-                        day.count +
-                        (id ? " kontribusi" : " contributions")
-                      }
+                      aria-label={contributionMessage(day, id)}
+                      data-tooltip={contributionMessage(day, id)}
                     />
                   ))}
                 </div>

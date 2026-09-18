@@ -7,11 +7,16 @@ import {
   type Project,
   type ProjectCategory,
 } from "@/content/projects";
+import { getCaseStudy } from "@/content/caseStudies";
 import Link from "next/link";
 import { ProjectPreview } from "./ProjectPreview";
 import { Icon } from "./Icon";
 import { useSceneActivity } from "./useSceneActivity";
-const featured = ["recyclean", "penjadwalan-produksi", "arutalalab"].map(
+const featured = [
+  "penjadwalan-produksi",
+  "financial-management-system",
+  "edutive-learning-management-system",
+].map(
   (slug) => projects.find((project) => project.slug === slug)!,
 );
 export function ProjectShowcase() {
@@ -132,13 +137,13 @@ export function ProjectShowcase() {
                   ))}
                 </ul>
                 <div className="feature-links">
-                  <button
+                  <Link
+                    href={`/projects/${project.slug}`}
                     className="button button-ink"
-                    onClick={() => setSelected(project)}
                   >
                     {id ? "Lihat detail proyek" : "View project details"}
                     <Icon name="arrow" />
-                  </button>
+                  </Link>
                   {project.link && (
                     <a
                       className="text-button"
@@ -205,22 +210,37 @@ export function ProjectShowcase() {
           <div aria-live="polite">
             {filtered.length ? (
               filtered.map((project) => (
-                <button
-                  key={project.slug}
-                  className="archive-row"
-                  onClick={() => setSelected(project)}
-                >
-                  <span className="archive-number">
-                    {(projects.indexOf(project) + 1)
-                      .toString()
-                      .padStart(2, "0")}
-                  </span>
-                  <strong>{project.title}</strong>
-                  <span className="archive-tags">
-                    {project.tags.slice(0, 2).join(" / ")}
-                  </span>
-                  <Icon name="arrow" />
-                </button>
+                getCaseStudy(project.slug) ? (
+                  <Link
+                    key={project.slug}
+                    href={`/projects/${project.slug}`}
+                    className="archive-row"
+                  >
+                    <span className="archive-number">
+                      {(projects.indexOf(project) + 1).toString().padStart(2, "0")}
+                    </span>
+                    <strong>{project.title}</strong>
+                    <span className="archive-tags">
+                      {project.tags.slice(0, 2).join(" / ")}
+                    </span>
+                    <Icon name="arrow" />
+                  </Link>
+                ) : (
+                  <button
+                    key={project.slug}
+                    className="archive-row"
+                    onClick={() => setSelected(project)}
+                  >
+                    <span className="archive-number">
+                      {(projects.indexOf(project) + 1).toString().padStart(2, "0")}
+                    </span>
+                    <strong>{project.title}</strong>
+                    <span className="archive-tags">
+                      {project.tags.slice(0, 2).join(" / ")}
+                    </span>
+                    <Icon name="arrow" />
+                  </button>
+                )
               ))
             ) : (
               <p className="empty-state">

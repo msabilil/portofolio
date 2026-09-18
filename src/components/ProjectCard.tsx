@@ -1,6 +1,8 @@
 import type { Project } from "@/content/projects";
+import { getCaseStudy } from "@/content/caseStudies";
 import { ProjectPreview } from "@/components/space/ProjectPreview";
 import { Icon } from "@/components/space/Icon";
+import Link from "next/link";
 type ProjectCardProps = {
   project: Project;
   description: string;
@@ -13,21 +15,9 @@ export function ProjectCard({
   viewLabel,
   locale = "en",
 }: ProjectCardProps) {
-  const known = [
-    "recyclean",
-    "arutalalab",
-    "penjadwalan-produksi",
-    "mental-health-app",
-  ].includes(project.slug);
   return (
     <article className="gallery-card panel">
-      {known || project.cover ? (
-        <ProjectPreview project={project} locale={locale} />
-      ) : (
-        <div className="project-preview preview-arutala" aria-hidden="true">
-          <span className="mood-art text-5xl">{project.title.charAt(0)}</span>
-        </div>
-      )}
+      <ProjectPreview project={project} locale={locale} />
       <div className="gallery-card-body">
         <h3>{project.title}</h3>
         {project.period && <p className="eyebrow">{project.period}</p>}
@@ -37,6 +27,12 @@ export function ProjectCard({
             <li key={tag}>{tag}</li>
           ))}
         </ul>
+        {getCaseStudy(project.slug) && (
+          <Link href={`/projects/${project.slug}`} className="button button-ink">
+            {locale === "id" ? "Baca case study" : "Read case study"}
+            <Icon name="arrow" width="18" />
+          </Link>
+        )}
         {project.link && (
           <a
             href={project.link}

@@ -28,17 +28,6 @@ export const projects: Project[] = [
     link: "https://www.figma.com/design/vtF1lh4iuZiF7idTMvfE79/Recyclean?node-id=17-2336&p=f&m=draw",
   },
   {
-    slug: "arutalalab",
-    title: "ArutalaLab",
-    description: {
-      en: "A platform bringing together training, tech talent placement, and custom software development. The project connects ArutalaLab’s three services in one web experience.",
-      id: "Platform yang menyatukan pelatihan, penyaluran talenta teknologi, dan pengembangan perangkat lunak sesuai kebutuhan. Proyek ini menghubungkan ketiga layanan ArutalaLab dalam satu pengalaman web.",
-    },
-    categories: ["frontend", "backend"],
-    tags: ["Next.js", "TypeScript"],
-    link: "https://arutalalab.vercel.app",
-  },
-  {
     slug: "penjadwalan-produksi",
     title: "Production Scheduling System",
     description: {
@@ -51,14 +40,44 @@ export const projects: Project[] = [
     period: "Feb 2025 — Aug 2025",
   },
   {
-    slug: "mental-health-app",
-    title: "Mental Health App",
+    slug: "financial-management-system",
+    title: "Financial Management System",
     description: {
-      en: "An Android app for keeping track of daily moods and habits.",
-      id: "Aplikasi Android untuk mencatat suasana hati dan kebiasaan harian.",
+      en: "A structured web system for digitizing transaction input, VAT calculations, journals, master data, and financial reporting.",
+      id: "Sistem web terstruktur untuk mendigitalisasi input transaksi, perhitungan PPN, jurnal, master data, dan laporan keuangan.",
     },
-    categories: ["frontend"],
-    tags: ["Kotlin", "Android"],
-    link: "https://github.com/msabilil/MentalHealth",
+    categories: ["ui-ux", "frontend", "backend"],
+    tags: ["Next.js", "TypeScript", "Firestore", "Figma"],
+    period: "Jul 2024 — Dec 2024",
+  },
+  {
+    slug: "edutive-learning-management-system",
+    title: "Edutive Learning Management System",
+    description: {
+      en: "A role-aware LMS connecting enrollment, classes, teaching, payments, attendance, exams, and report cards.",
+      id: "LMS berbasis peran yang menghubungkan registrasi, kelas, pengajaran, pembayaran, kehadiran, ujian, dan report card.",
+    },
+    categories: ["ui-ux", "frontend", "backend"],
+    tags: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Redis"],
+  },
+  {
+    slug: "tiveflow-operations-platform",
+    title: "Tiveflow Operations Platform",
+    description: {
+      en: "An operations platform connecting POS, inventory, branches, finance, budgeting, analytics, and online orders.",
+      id: "Platform operasional yang menghubungkan POS, inventory, cabang, finance, budgeting, analytics, dan online order.",
+    },
+    categories: ["frontend", "backend", "qa"],
+    tags: ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL"],
+  },
+  {
+    slug: "entertainment-operations-platform",
+    title: "Entertainment Operations Platform",
+    description: {
+      en: "A business platform for opportunities, events, production, talent, documents, transactions, and reporting.",
+      id: "Platform bisnis untuk peluang, event, produksi, talent, dokumen, transaksi, dan pelaporan.",
+    },
+    categories: ["frontend", "backend"],
+    tags: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Redis"],
   },
 ];
