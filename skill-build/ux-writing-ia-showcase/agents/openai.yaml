@@ -1,0 +1,7 @@
+interface:
+  display_name: "UX Writing + IA Showcase"
+  short_description: "Build UX Writing + IA portfolio case studies"
+  default_prompt: "Use $ux-writing-ia-showcase to turn this project into a recruiter-friendly UX Writing and Information Architecture case study."
+
+policy:
+  allow_implicit_invocation: true

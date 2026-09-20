@@ -11,8 +11,8 @@ export function Contact() {
   const [copyError, setCopyError] = useState(false);
   const [time, setTime] = useState("—:—");
   const topics = id
-    ? ["Diskusi proyek", "Kesempatan kerja", "Sekadar menyapa"]
-    : ["A project idea", "An opportunity", "Just saying hi"];
+    ? ["Diskusi proyek", "Peluang kerja", "Sekadar menyapa"]
+    : ["Project discussion", "Work opportunity", "Just saying hi"];
   useEffect(() => {
     const tick = () =>
       setTime(
@@ -47,26 +47,25 @@ export function Contact() {
           <span className="eyebrow">
             06 / {id ? "BUKA KOMUNIKASI" : "OPEN A CHANNEL"}
           </span>
-          <Icon name="star" />
         </div>
         <div className="section-heading-row">
           <h2>
-            {id ? "Punya ide" : "Something on"}
+            {id ? "Mari mulai" : "Let’s start"}
             <br />
-            <span className="marker">{id ? "di orbitmu?" : "your radar?"}</span>
+            <span className="marker">{id ? "percakapan." : "a conversation."}</span>
           </h2>
           <p>
             {id
-              ? "Mari bicarakan. Tentang produk baru, kolaborasi, atau hal menarik yang sedang kamu kerjakan."
-              : "Let’s talk. About a new product, a collaboration, or something interesting you’re working on."}
+              ? "Jika cara saya bekerja cocok dengan kebutuhanmu, mari berbincang. Ceritakan proyek, peluang kerja, atau ide yang ingin kamu bahas."
+              : "If the way I work fits what you need, let’s talk. Tell me about a project, a work opportunity, or an idea you’d like to discuss."}
           </p>
         </div>
         <div className="contact-bento">
           <div className="contact-main panel">
             <span className="eyebrow">
               {id
-                ? "PILIH TOPIK TRANSMISIMU"
-                : "WHAT’S YOUR TRANSMISSION ABOUT?"}
+                ? "INGIN MEMBAHAS APA?"
+                : "WHAT WOULD YOU LIKE TO DISCUSS?"}
             </span>
             <div
               className="filter-row"
@@ -84,9 +83,9 @@ export function Contact() {
               ))}
             </div>
             <h3>
-              {id ? "Ide bagus dimulai" : "Good things start"}
+              {id ? "Mulai dengan" : "Start with"}
               <br />
-              {id ? "dari satu halo." : "with a hello."}
+              {id ? "satu pesan." : "a message."}
             </h3>
             <a
               className="button button-ink"
@@ -97,7 +96,7 @@ export function Contact() {
                 encodeURIComponent(topics[topic] + " — Portfolio Space")
               }
             >
-              {id ? "Kirim pesan" : "Send a message"}
+              {id ? "Tulis email" : "Write an email"}
               <Icon name="arrow" />
             </a>
             <div className="email-copy">
@@ -105,7 +104,7 @@ export function Contact() {
               <button
                 className="icon-button"
                 onClick={copy}
-                aria-label={id ? "Salin email" : "Copy email"}
+                aria-label={id ? "Salin alamat email" : "Copy email address"}
               >
                 <Icon name={copied ? "check" : "copy"} width="18" />
               </button>
@@ -113,17 +112,17 @@ export function Contact() {
             <span className="copy-status" role="status">
               {copied
                 ? id
-                  ? "Email disalin."
-                  : "Email copied."
+                  ? "Alamat email disalin."
+                  : "Email address copied."
                 : copyError
                   ? id
-                    ? "Belum bisa menyalin. Pilih alamat email di atas."
-                    : "Couldn’t copy. Select the email address above."
+                    ? "Gagal menyalin. Pilih dan salin alamat email di atas."
+                    : "Couldn’t copy. Select and copy the email address above."
                   : ""}
             </span>
           </div>
           <div className="contact-location panel">
-            <span className="eyebrow">LOCAL TIME / EARTH</span>
+            <span className="eyebrow">{id ? "WAKTU DI BANDUNG" : "TIME IN BANDUNG"}</span>
             <div className="earth-orbit" aria-hidden="true">
               <Icon name="globe" width="100" height="100" />
             </div>
@@ -137,7 +136,7 @@ export function Contact() {
           </div>
           <div className="contact-social panel">
             <span className="eyebrow">
-              {id ? "FREKUENSI LAIN" : "OTHER FREQUENCIES"}
+              {id ? "CARA LAIN TERHUBUNG" : "MORE WAYS TO CONNECT"}
             </span>
             {profile.social
               .filter((link) => !["email"].includes(link.id))
@@ -174,8 +173,8 @@ export function Contact() {
             <br />
             <span>
               {id
-                ? "Dibuat di Bumi, untuk ide yang lebih jauh."
-                : "Made on Earth, for ideas beyond it."}
+                ? "Dibangun di Bandung, berangkat dari rasa ingin tahu."
+                : "Built in Bandung. Driven by curiosity."}
             </span>
           </p>
           <a className="text-button" href="#main-content">

@@ -1,0 +1,94 @@
+.world {
+  --neptune-ocean: #245d7c;
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
+  padding: 90px 0 65px;
+  overflow: clip;
+  background: #132b46 url("/assets/hero/space-background.jpg") center / cover fixed;
+  color: var(--paper-light);
+}
+
+/* Oversized elliptical rims echo the moon's 130%-wide illustrated horizon.
+   One layer spans both sections so the atmosphere never resets at their seam. */
+.surface {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -15%;
+  overflow: hidden;
+  pointer-events: none;
+  border: 2px solid var(--ink);
+  border-top: 0;
+  border-radius: 50% / 150px;
+  background: var(--neptune-ocean);
+  box-shadow:
+    inset 0 14px 0 #89deeb80,
+    inset 0 -18px 0 #14243a40;
+}
+
+.clouds {
+  position: absolute;
+  inset: 0;
+  background: url("/assets/space/neptune-cloud-bands.svg") center / 100% 100% no-repeat;
+}
+
+.world :global(.tech-section),
+.world :global(.activity-section) {
+  position: relative;
+  background: transparent;
+}
+
+.world :global(.toolkit-backdrop) {
+  display: none;
+}
+
+.world :global(.tech-section .section-heading-row > p),
+.world :global(.tech-section .human-skills p),
+.world :global(.tech-section .tech-group h3 .eyebrow) {
+  color: var(--paper-light);
+}
+
+.world :global(.tech-section .human-skills) {
+  border-color: #89deeb80;
+}
+
+.world :global(.tech-buttons button) {
+  color: var(--ink);
+  background: #e2f1ef;
+  border-color: #a7d5df;
+}
+
+.world :global(.tech-buttons button[aria-pressed="true"]) {
+  background: var(--cyan);
+  border-color: var(--ink);
+}
+
+.world :global(.filter-row button:not([aria-pressed="true"])) {
+  color: var(--paper-light);
+  background: #173e58;
+  border-color: #a7d5df;
+}
+
+.world :global(.filter-row button:hover:not([aria-pressed="true"])) {
+  color: var(--ink);
+  background: var(--cyan);
+}
+
+.world :global(.filter-row button:focus-visible),
+.world :global(.tech-buttons button:focus-visible) {
+  outline: 3px solid var(--amber);
+  outline-offset: 5px;
+}
+
+@media (max-width: 800px) {
+  .world {
+    padding: 65px 0 35px;
+  }
+
+  .surface {
+    border-radius: 50% / 95px;
+    box-shadow:
+      inset 0 9px 0 #89deeb80,
+      inset 0 -12px 0 #14243a40;
+  }
+}

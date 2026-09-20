@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Project } from "@/content/projects";
+
 export function ProjectPreview({
   project,
   locale = "en",
@@ -8,6 +9,7 @@ export function ProjectPreview({
   locale?: "en" | "id";
 }) {
   const id = locale === "id";
+
   if (project.cover)
     return (
       <div className="project-preview preview-recyclean">
@@ -25,19 +27,16 @@ export function ProjectPreview({
           />
         </div>
         <span className="preview-caption">
-          {id
-            ? "Dari kebiasaan kecil, untuk bumi."
-            : "Small habits. A healthier planet."}
+          {id ? "Dari kebiasaan kecil, untuk bumi." : "Small habits. A healthier planet."}
         </span>
       </div>
     );
+
   if (project.slug === "penjadwalan-produksi")
     return (
       <div className="project-preview preview-production">
         <span className="preview-meta">
-          {id
-            ? "PETA ALUR / ILUSTRASI KONSEP"
-            : "WORKFLOW / CONCEPT ILLUSTRATION"}
+          {id ? "PETA ALUR / ILUSTRASI KONSEP" : "WORKFLOW / CONCEPT ILLUSTRATION"}
         </span>
         <div className="workflow-window">
           <div className="window-bar">
@@ -50,22 +49,18 @@ export function ProjectPreview({
             <span className="eyebrow">
               {id ? "SATU ALUR KERJA TERHUBUNG" : "ONE CONNECTED WORKFLOW"}
             </span>
-            <h4>
-              {id ? "Dari order ke produksi." : "From order to production."}
-            </h4>
+            <h4>{id ? "Dari order ke produksi." : "From order to production."}</h4>
             <div className="workflow-steps">
               {["Sales", "Design", "Production"].map((label, i) => (
                 <div key={label}>
                   <span>0{i + 1}</span>
                   <strong>{label}</strong>
                   <small>
-                    {
-                      [
-                        id ? "Detail pesanan" : "Order details",
-                        id ? "Spesifikasi" : "Specifications",
-                        id ? "Jadwal mesin" : "Machine schedule",
-                      ][i]
-                    }
+                    {[
+                      id ? "Detail pesanan" : "Order details",
+                      id ? "Spesifikasi" : "Specifications",
+                      id ? "Jadwal mesin" : "Machine schedule",
+                    ][i]}
                   </small>
                 </div>
               ))}
@@ -80,51 +75,21 @@ export function ProjectPreview({
         </div>
       </div>
     );
-  if (project.slug === "arutalalab")
-    return (
-      <div className="project-preview preview-arutala">
-        <span className="preview-meta">
-          {id
-            ? "PETA LAYANAN / ILUSTRASI KONSEP"
-            : "SERVICE MAP / CONCEPT ILLUSTRATION"}
-        </span>
-        <div className="arutala-art">
-          <span className="arutala-symbol" aria-hidden="true">
-            a<span>↗</span>
-          </span>
-          <h4>
-            ArutalaLab<span>®</span>
-          </h4>
-          <p>
-            {id
-              ? "Teknologi. Talenta. Kolaborasi."
-              : "Technology. Talent. Together."}
-          </p>
-          <div className="service-orbits">
-            <span>Training</span>
-            <span>Tech talent</span>
-            <span>Software</span>
-          </div>
-        </div>
-      </div>
-    );
+
   return (
-    <div className="project-preview preview-mental">
+    <div className="project-preview preview-generic">
       <span className="preview-meta">
-        {id ? "ILUSTRASI KONSEP / ANDROID" : "CONCEPT ILLUSTRATION / ANDROID"}
+        {id ? "ILUSTRASI KONSEP / PROJECT" : "CONCEPT ILLUSTRATION / PROJECT"}
       </span>
-      <div className="mood-art">
-        <span className="mood-face" aria-hidden="true">
-          ☺
+      <div className="generic-art">
+        <span className="generic-mark" aria-hidden="true">
+          {project.title.charAt(0)}
         </span>
-        <h4>{id ? "Bagaimana harimu?" : "How are you, today?"}</h4>
+        <h4>{project.title}</h4>
         <p>
-          {id
-            ? "Ruang untuk suasana hati & kebiasaan."
-            : "A space for moods & daily habits."}
+          {id ? "Eksplorasi alur dan solusi digital." : "A focused digital solution exploration."}
         </p>
-        <div className="mood-dots" aria-hidden="true">
-          <i />
+        <div className="generic-dots" aria-hidden="true">
           <i />
           <i />
           <i />

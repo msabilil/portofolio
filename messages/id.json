@@ -16,21 +16,21 @@
   },
   "about": {
     "title": "Halo, saya Muhammad Sabilil Fajri",
-    "bio": "Saya suka membawa produk dari ide kasar sampai jadi sesuatu yang bisa langsung dipakai orang — mulai dari sketsa antarmuka, membangunnya, sampai memastikan gak gampang rusak dipakai beneran. Sebagian besar kerjaan itu ada di sistem entertainment, keuangan, dan penjadwalan produksi, kerja bareng langsung sama orang yang bakal makai."
+    "bio": "Saya merancang antarmuka, membangun aplikasi web, dan menguji cara kerjanya. Pengalaman saya mencakup sistem keuangan, penjadwalan produksi, dan ERP, dengan satu perhatian yang sama: memahami alur kerja orang yang menggunakannya."
   },
   "expertise": {
     "title": "Keahlian Inti",
     "uiux": {
       "title": "UI/UX Design",
-      "description": "Mengubah requirement yang ambigu jadi antarmuka yang gampang dimengerti — riset pengguna, wireframe, dan prototipe hi-fi di Figma, disempurnakan lewat kolaborasi langsung dengan product manager dan stakeholder non-teknis."
+      "description": "Memahami alur kerja pengguna, menyusun wireframe, dan membuat prototipe di Figma. Desain saya kembangkan melalui diskusi dengan tim produk dan masukan pengguna."
     },
     "webdev": {
       "title": "Web Development",
-      "description": "Membangun produk end-to-end dengan Next.js, React, TypeScript, PHP, dan Express — dari skema database dan REST API sampai antarmuka yang rapi dan responsif, dikontainerkan dengan Docker dan dirilis lewat CI/CD."
+      "description": "Menghubungkan antarmuka, API, dan basis data menjadi aplikasi web. Saya juga menangani deployment agar fitur yang dibangun dapat dicoba dan digunakan."
     },
     "qa": {
       "title": "Quality Assurance",
-      "description": "Menangkap bug sebelum ketemu user — test case manual terstruktur dengan prioritas dan expected result yang jelas, bug report detail berikut screenshot dan video, plus automated test pakai Jest dan Playwright."
+      "description": "Menguji alur utama, menelusuri bug, dan memeriksa perbaikan. Pengujian otomatis dengan Jest dan Playwright membantu saya mengecek perubahan sebelum aplikasi dirilis."
     }
   },
   "skills": {
@@ -38,7 +38,7 @@
     "galaxyTitle": "Skill Galaxy",
     "proficientHeading": "Proficient",
     "familiarHeading": "Familiar",
-    "softHeading": "Soft skill",
+    "softHeading": "Bekal kolaborasi",
     "languagesHeading": "Bahasa",
     "proficient": {
       "javascript": "JavaScript",
@@ -70,7 +70,7 @@
     },
     "languages": {
       "english": "Inggris (Menengah)",
-      "indonesian": "Bahasa Indonesia (Native)"
+      "indonesian": "Bahasa Indonesia (Bahasa ibu)"
     }
   },
   "nav": {
