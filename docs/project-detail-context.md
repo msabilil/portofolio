@@ -221,6 +221,22 @@ study di hero, dan mendukung field `inANutshell` pada content model.
 
 ## Checklist sebelum dianggap selesai
 
+### Pembaruan redesign, 18 September 2026
+
+- Referensi komposisi: artikel Bus and Shuttle tiket.design. Gunakan ritme editorialnya,
+  bukan warna kuning terang atau ukuran title yang sangat besar.
+- Hero berupa title/deskripsi dan fakta berdampingan di desktop, diikuti cover lebar.
+- Latar detail near-white; sidebar kiri tetap mulai dari In a nutshell sampai ringkasan.
+- Gambar dan data dummy diizinkan untuk melengkapi materi yang belum tersedia. Wajib diberi
+  caption ilustratif/dummy; tidak diklaim sebagai screenshot, prototype, atau bukti asli.
+- Cover AI dan contoh wireframe hanya untuk presentasi. Contoh tabel pesanan dipisahkan dari
+  simulasi historis 2023–2024. Angka hasil historis dan status estimated tidak diubah.
+- Diagram alur merupakan penyederhanaan untuk penjelasan, bukan DFD asli.
+- Gambar artefak dapat diperbesar dengan dialog native dan ditutup dengan Escape.
+- Navigasi global portfolio tidak termasuk lingkup penggantian identitas visual.
+
+### Pemeriksaan struktur
+
 - [ ] `h1` hanya berisi title project.
 - [ ] Tidak ada `PROJECT CASE STUDY` atau label sejenis di atas title.
 - [ ] Hero mencakup title, value proposition, links, dan project facts.
@@ -240,6 +256,6 @@ study di hero, dan mendukung field `inANutshell` pada content model.
 - [ ] Metric diberi status evidence dan tidak mengandung angka rekaan.
 - [ ] Link private atau unavailable diberi status yang jelas.
 - [ ] Theme, font, dan color token existing tetap konsisten.
-- [ ] Tidak ada fake screenshot, bento kosong, atau decorative label yang tidak memiliki fungsi.
+- [ ] Tidak ada screenshot rekaan yang diklaim asli, bento kosong, atau decorative label tanpa fungsi.
 - [ ] Copy telah dibaca ulang untuk menghapus kalimat yang terdengar seperti halusinasi atau slogan
   generik.
