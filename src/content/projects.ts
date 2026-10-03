@@ -31,8 +31,8 @@ export const projects: Project[] = [
     slug: "penjadwalan-produksi",
     title: "Production Scheduling System",
     description: {
-      en: "A thesis project connecting sales, design, and production teams in a shared scheduling system. Production time is estimated from design specifications and machine capacity, replacing manual guesswork.",
-      id: "Sistem penjadwalan produksi untuk proyek skripsi yang menghubungkan tim sales, desain, dan produksi. Estimasi waktu dihitung dari spesifikasi desain dan kapasitas mesin, menggantikan perkiraan manual.",
+      en: "A PHP thesis project that estimates production time and prioritizes print orders with Shortest Processing Time. Historical order data is used to simulate duration estimates and process-level schedules.",
+      id: "Proyek skripsi berbasis PHP untuk mengestimasi waktu produksi dan memprioritaskan pesanan dengan Shortest Processing Time. Data pesanan historis digunakan untuk menyimulasikan estimasi durasi dan jadwal per proses.",
     },
     categories: ["ui-ux", "frontend", "backend"],
     tags: ["PHP", "MySQL", "Tailwind CSS", "Web App"],

@@ -609,105 +609,148 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    slug: "penjadwalan-produksi",
-    privacy: "public-safe",
-    title: { id: "Production Scheduling System", en: "Production Scheduling System" },
-    pitch: {
-      id: "Mengubah penjadwalan manual menjadi workflow produksi berbasis estimasi untuk membantu supervisor menentukan prioritas dengan lebih jelas.",
-      en: "Turning manual scheduling into an estimation-led production workflow that helps supervisors make clearer priority decisions.",
+    "slug": "penjadwalan-produksi",
+    "privacy": "public-safe",
+    "title": {
+      "id": "Production Scheduling System",
+      "en": "Production Scheduling System"
     },
-    inANutshell: {
-      id: "PT Thursina Mediana Utama, perusahaan penerbitan dan percetakan, sebelumnya mengelola jadwal produksi menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor produksi kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada perhitungan waktu produksi dan tanggal selesai yang konsisten.\n\nSaya merancang dan mengembangkan sistem penjadwalan produksi yang menghitung estimasi durasi setiap pesanan dan tanggal selesai yang diperkirakan. Sistem ini membantu supervisor menyusun prioritas berdasarkan timeline produksi yang lebih terstruktur, bukan hanya berdasarkan tebakan manual.\n\nDengan menggunakan data historis 2023–2024, saya melakukan simulasi workflow penjadwalan. Dari sekitar 21 pesanan, 9 pesanan sebelumnya mengalami keterlambatan. Dalam simulasi, seluruh pesanan dapat diselesaikan tepat waktu. Karena hasil ini berasal dari simulasi, impact-nya dikategorikan sebagai estimasi, bukan hasil pengukuran produksi langsung.",
-      en: "PT Thursina Mediana Utama, a publishing and printing company, previously managed its production schedules using Excel and paper. When multiple orders accumulated, production supervisors had difficulty deciding which jobs should be prioritized because production duration and expected completion dates were not calculated consistently.\n\nI designed and developed a production scheduling system that calculates the estimated duration and expected completion date for each order. The system helps supervisors organize priorities using a more structured production timeline instead of relying only on manual guesswork.\n\nUsing historical data from 2023–2024, I simulated the scheduling workflow. In an approximate sample of 21 orders, 9 orders had previously been delayed. In the simulation, all orders were completed on time. Because this result came from a simulation, the impact is categorized as estimated rather than as a direct production measurement.",
+    "pitch": {
+      "id": "Dari Excel dan kertas ke prioritas produksi berbasis estimasi waktu dan Shortest Processing Time.",
+      "en": "From Excel and paper to production priorities based on time estimates and Shortest Processing Time."
     },
-    snapshot: {
-      role: { id: "Kontributor end-to-end untuk project skripsi", en: "End-to-end thesis project contributor" },
-      duration: { id: "Feb 2025 — Agu 2025", en: "Feb 2025 — Aug 2025" },
-      scope: { id: "Analisis, estimasi produksi, penjadwalan, prototype, implementasi, testing", en: "Analysis, production estimation, scheduling, prototyping, implementation, testing" },
-      stack: ["PHP", "MySQL", "Balsamiq", "Draw.io", "Tailwind CSS"],
-      type: { id: "Project skripsi", en: "Thesis project" },
+    "inANutshell": {
+      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSaya merancang dan mengembangkan sistem berbasis PHP yang menghitung estimasi durasi setiap pesanan dari waktu proses produksi yang terlibat. Estimasi ini menjadi dasar pengurutan pekerjaan dengan Shortest Processing Time (SPT), sehingga supervisor dapat menyusun prioritas dan melihat perkiraan tanggal selesai melalui timeline produksi.\n\nSaya menyimulasikan workflow menggunakan data historis 2023–2024. Contoh April 2024 memperlihatkan bagaimana spesifikasi pesanan diolah menjadi estimasi durasi, prioritas SPT, dan jadwal per proses.",
+      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nI designed and developed a PHP system that estimates each order’s duration from its production processes and calculates the expected completion date for each order. Shortest Processing Time (SPT) uses these estimates to order jobs, giving supervisors a structured production timeline for setting priorities.\n\nI simulated the workflow using historical data from 2023–2024. The April 2024 example shows how order specifications become duration estimates, SPT priorities, and process-level schedules."
     },
-    problem: {
-      id: "Penjadwalan produksi sebelumnya dilakukan menggunakan Excel dan kertas. Ketika pesanan menumpuk, supervisor produksi tidak memiliki dasar yang konsisten untuk membandingkan durasi produksi dan menentukan urutan pekerjaan. Kondisi ini menyebabkan keterlambatan produksi dan dapat memengaruhi kepuasan client.",
-      en: "Production scheduling was previously managed using Excel and paper. When orders accumulated, production supervisors had no consistent basis for comparing production duration and deciding the order of jobs. This contributed to production delays and could affect client satisfaction.",
-    },
-    informationArchitecture: {
-      id: "IA mengikuti alur Pesanan → Estimasi Produksi → Hitung Ulang jika diperlukan → Finalisasi Estimasi → Jadwal Produksi → Gantt Chart. Alur ini menghubungkan data pesanan, spesifikasi desain, durasi produksi, dan tanggal selesai yang diperkirakan.",
-      en: "The IA follows the flow from Production Orders → Production Estimation → Recalculation when needed → Estimation Finalization → Production Schedule → Gantt Chart. This connects order data, design specifications, production duration, and expected completion dates.",
-    },
-    uxWriting: [
-      {
-        context: { id: "Alur estimasi sampai penjadwalan", en: "Estimation-to-scheduling workflow" },
-        before: { id: "Penjadwalan melalui Excel dan kertas tanpa estimasi durasi yang konsisten.", en: "Scheduling through Excel and paper without consistent duration estimates." },
-        after: { id: "Estimasi Produksi → Hitung Ulang Estimasi → Finalisasi Estimasi → Jadwal Produksi.", en: "Production Estimation → Recalculate Estimate → Finalize Estimate → Production Schedule." },
-        reason: { id: "Membuat langkah dan status pekerjaan lebih mudah dipahami oleh setiap role yang terlibat.", en: "To make the workflow steps and job status easier for each involved role to understand." },
+    "snapshot": {
+      "role": {
+        "id": "Peneliti & pengembang sistem",
+        "en": "Researcher & system developer"
       },
-    ],
-    decisions: [
-      {
-        decision: { id: "Menggunakan estimasi durasi produksi sebagai dasar penjadwalan.", en: "Use estimated production duration as the basis for scheduling." },
-        alternative: { id: "Mengandalkan tebakan manual dari pengalaman supervisor.", en: "Rely on manual guesses from the supervisor's experience." },
-        reason: { id: "Supervisor memiliki dasar yang lebih konsisten untuk menentukan prioritas dan tanggal selesai yang diperkirakan.", en: "The supervisor gets a more consistent basis for setting priorities and expected completion dates." },
+      "duration": {
+        "id": "Feb 2025 — Agu 2025",
+        "en": "Feb 2025 — Aug 2025"
       },
-      {
-        decision: { id: "Memecah estimasi menjadi desain, plat, setup, mesin, QC, dan packing.", en: "Break the estimate into design, plate, setup, machine, QC, and packing stages." },
-        alternative: { id: "Menggunakan satu angka durasi tanpa rincian proses.", en: "Use one duration value without process-level details." },
-        reason: { id: "Rincian membuat hasil estimasi lebih mudah ditinjau dan dijelaskan.", en: "The breakdown makes the estimate easier to review and explain." },
+      "scope": {
+        "id": "Analisis, perancangan, implementasi, simulasi, pengujian",
+        "en": "Analysis, design, implementation, simulation, testing"
       },
-      {
-        decision: { id: "Menghitung tanggal selesai dari durasi produksi, bukan meminta deadline client sebagai input utama.", en: "Calculate the expected completion date from production duration instead of using a client deadline as the primary input." },
-        alternative: { id: "Menentukan tanggal selesai secara manual.", en: "Set the completion date manually." },
-        reason: { id: "Tanggal selesai dapat ditelusuri kembali ke perhitungan produksi yang digunakan sistem.", en: "The completion date can be traced back to the production calculation used by the system." },
-      },
-    ],
-    metrics: [
-      {
-        kind: "error-reduction",
-        label: { id: "Pesanan terlambat dalam simulasi", en: "Delayed orders in simulation" },
-        baseline: { id: "9 pesanan terlambat dari sekitar 21 pesanan pada data historis 2023–2024.", en: "9 delayed orders from an approximate sample of 21 historical orders from 2023–2024." },
-        after: { id: "0 pesanan terlambat dalam simulasi.", en: "0 delayed orders in the simulation." },
-        impact: { id: "Simulasi menunjukkan seluruh pesanan pada sample dapat diselesaikan tepat waktu.", en: "The simulation showed that all sampled orders could be completed on time." },
-        status: "estimated",
-        method: { id: "Simulasi menggunakan data pesanan historis; bukan pengukuran production secara langsung.", en: "Simulation using historical order data; not a direct production measurement." },
-      },
-      {
-        kind: "supporting",
-        label: { id: "Feedback supervisor produksi", en: "Production Supervisor feedback" },
-        impact: { id: "Supervisor menyampaikan bahwa proses penjadwalan menjadi lebih mudah dan singkat.", en: "The Production Supervisor reported that scheduling became easier and shorter." },
-        status: "qualitative",
-        method: { id: "Feedback kualitatif setelah testing pada role yang terlibat.", en: "Qualitative feedback after testing with the involved roles." },
-      },
-      {
-        kind: "supporting",
-        label: { id: "Testing berbasis role", en: "Role-based testing" },
-        impact: { id: "Workflow diuji pada setiap role yang terlibat dalam sistem.", en: "The workflow was tested with each role involved in the system." },
-        status: "qualitative",
-        method: { id: "Testing dilakukan pada alur dan kebutuhan masing-masing role.", en: "Testing covered the workflow and needs of each involved role." },
-      },
-    ],
-    links: [
-      { label: { id: "Repository", en: "Repository" }, status: "available", href: "https://github.com/msabilil/penjadwalan-produksi-tmu" },
-      { label: { id: "Live demo", en: "Live demo" }, status: "unavailable" },
-    ],
-    deepDive: [
-      {
-        label: { id: "Workflow estimasi dan penjadwalan", en: "Estimation and scheduling workflow" },
-        detail: { id: "Implementasi menghubungkan pesanan, rincian estimasi produksi, tanggal selesai yang diperkirakan, jadwal, dan Gantt Chart.", en: "The implementation connects orders, production estimate details, expected completion dates, schedules, and the Gantt Chart." },
-        status: "available",
-        href: "https://github.com/msabilil/penjadwalan-produksi-tmu",
-      },
-    ],
-    impact: { id: "Dalam simulasi menggunakan data historis 2023–2024, pesanan terlambat berkurang dari 9 pesanan menjadi 0 pada sample sekitar 21 pesanan. Hasil ini berstatus estimated karena belum berasal dari pengukuran production secara langsung.", en: "In a simulation using historical 2023–2024 data, delayed orders decreased from 9 orders to 0 in an approximate sample of 21 orders. This result is estimated because it did not come from direct production measurement." },
-    reflection: { id: "Jika dikerjakan kembali, saya akan membandingkan tanggal selesai hasil estimasi dengan tanggal selesai aktual dan memisahkan deadline dari client dengan tanggal selesai hasil perhitungan sistem.", en: "If I did it again, I would compare estimated completion dates with actual completion dates and separate client deadlines from system-calculated completion dates." },
-    recruiterSummary: {
-      problem: { id: "Mengganti penjadwalan berbasis Excel dan kertas yang sulit diprioritaskan ketika pesanan menumpuk.", en: "Replaced an Excel and paper-based scheduling workflow that became difficult to prioritize when orders accumulated." },
-      architecture: [
-        { id: "Menggunakan estimasi durasi produksi untuk menghitung tanggal selesai yang diperkirakan.", en: "Used production duration estimates to calculate expected completion dates." },
-        { id: "Memecah proses menjadi estimasi, hitung ulang, finalisasi, dan penjadwalan.", en: "Structured the workflow into estimation, recalculation, finalization, and scheduling." },
-        { id: "Menguji workflow pada setiap role yang terlibat.", en: "Tested the workflow with each involved role." },
+      "stack": [
+        "PHP",
+        "MySQL",
+        "Tailwind CSS",
+        "Balsamiq",
+        "Draw.io"
       ],
-      impact: { id: "Simulasi data historis 2023–2024 menunjukkan 9 pesanan terlambat menjadi 0 dari sample sekitar 21 pesanan. Impact status: estimated.", en: "A simulation using historical 2023–2024 data showed 9 delayed orders becoming 0 in an approximate sample of 21 orders. Impact status: estimated." },
+      "type": {
+        "id": "Proyek skripsi · PT Thursina Mediana Utama",
+        "en": "Thesis project · PT Thursina Mediana Utama"
+      }
     },
+    "problem": {
+      "id": "Penjadwalan produksi sebelumnya dilakukan menggunakan Excel dan kertas. Ketika pesanan menumpuk, supervisor tidak memiliki dasar yang konsisten untuk membandingkan durasi produksi dan menentukan urutan pekerjaan. Kondisi ini berkontribusi pada keterlambatan produksi dan dapat memengaruhi kepuasan klien.",
+      "en": "Production scheduling relied on Excel and paper. When orders accumulated, supervisors had no consistent basis for comparing production durations and deciding the job sequence. This contributed to delays and could affect client satisfaction."
+    },
+    "informationArchitecture": {
+      "id": "Alur sistem menghubungkan pesanan dan file cetak dengan estimasi, rincian waktu proses, serta jadwal produksi. Data desain dan mesin menjadi referensi perhitungan. Empat peran—administrator, staf penjualan, manajer penerbit, dan supervisor produksi—memiliki alur kerja masing-masing yang dipetakan melalui diagram konteks dan DFD.",
+      "en": "The system connects orders and print files to estimates, process durations, and production schedules. Design and machine data support the calculations. The context diagram and DFD map workflows for four roles: administrator, sales staff, publishing manager, and production supervisor."
+    },
+    "uxWriting": [],
+    "decisions": [
+      {
+        "decision": {
+          "id": "Mengestimasi waktu per proses",
+          "en": "Estimate time at the process level"
+        },
+        "alternative": {
+          "id": "Satu perkiraan durasi untuk seluruh pesanan.",
+          "en": "One duration estimate for the entire order."
+        },
+        "reason": {
+          "id": "Durasi desain, plat, setup, mesin, QC, dan packing dirinci agar total waktu produksi dapat ditinjau kembali.",
+          "en": "Design, plate, setup, machine, QC, and packing durations are broken down so the total production time can be reviewed."
+        }
+      },
+      {
+        "decision": {
+          "id": "Mengurutkan pekerjaan dengan SPT",
+          "en": "Sequence jobs with SPT"
+        },
+        "alternative": {
+          "id": "Urutan pekerjaan ditentukan tanpa aturan durasi yang konsisten.",
+          "en": "Sequence jobs without a consistent duration rule."
+        },
+        "reason": {
+          "id": "Shortest Processing Time memprioritaskan pekerjaan dengan estimasi durasi lebih pendek. Supervisor memiliki dasar yang konsisten untuk membandingkan pesanan.",
+          "en": "Shortest Processing Time prioritizes jobs with shorter estimated durations, giving supervisors a consistent basis for comparing orders."
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "kind": "supporting",
+        "label": {
+          "id": "Dokumentasi simulasi April 2024",
+          "en": "April 2024 simulation documentation"
+        },
+        "impact": {
+          "id": "Simulasi menghasilkan rincian durasi, perkiraan tanggal selesai, dan urutan produksi berbasis SPT. Dokumentasi April memuat 18 pesanan pada tabel sampel dan 14 pesanan pada Gantt estimasi; empat pesanan tidak ditampilkan pada Gantt. Perbandingan ini belum membuktikan jumlah keterlambatan atau bahwa seluruh pesanan selesai tepat waktu.",
+          "en": "The simulation produces duration breakdowns, expected completion dates, and an SPT-based production sequence. The April documentation includes 18 orders in the sample table and 14 in the estimation Gantt; four orders are absent from the Gantt. This comparison does not establish a late-order count or show that every order finished on time."
+        },
+        "status": "qualitative",
+        "method": {
+          "id": "Pencocokan tabel sampel, Gantt estimasi, dan cuplikan jadwal produksi.",
+          "en": "Comparison of the sample table, estimation Gantt, and production schedule excerpt."
+        }
+      }
+    ],
+    "links": [
+      {
+        "label": {
+          "id": "Repository",
+          "en": "Repository"
+        },
+        "status": "available",
+        "href": "https://github.com/msabilil/penjadwalan-produksi-tmu"
+      },
+      {
+        "label": {
+          "id": "Live demo",
+          "en": "Live demo"
+        },
+        "status": "unavailable"
+      }
+    ],
+    "deepDive": [],
+    "impact": {
+      "id": "Simulasi menghasilkan rincian durasi, perkiraan tanggal selesai, dan urutan produksi berbasis SPT. Dokumentasi April memuat 18 pesanan pada tabel sampel dan 14 pesanan pada Gantt estimasi; empat pesanan tidak ditampilkan pada Gantt. Perbandingan ini belum membuktikan jumlah keterlambatan atau bahwa seluruh pesanan selesai tepat waktu.",
+      "en": "The simulation produces duration breakdowns, expected completion dates, and an SPT-based production sequence. The April documentation includes 18 orders in the sample table and 14 in the estimation Gantt; four orders are absent from the Gantt. This comparison does not establish a late-order count or show that every order finished on time."
+    },
+    "reflection": {
+      "id": "Wawancara pengguna menunjukkan kebutuhan untuk menjelaskan perhitungan estimasi dengan lebih jelas dan menyesuaikan jadwal ketika terjadi penundaan atau gangguan produksi. Pengembangan berikutnya akan berfokus pada penjadwalan ulang dan pemantauan produksi secara langsung.",
+      "en": "User interviews highlighted the need for clearer explanations of estimate calculations and schedule adjustments when delays or production disruptions occur. Future development would focus on rescheduling and live production monitoring."
+    },
+    "recruiterSummary": {
+      "problem": {
+        "id": "Penjadwalan produksi sebelumnya dilakukan menggunakan Excel dan kertas. Ketika pesanan menumpuk, supervisor tidak memiliki dasar yang konsisten untuk membandingkan durasi produksi dan menentukan urutan pekerjaan. Kondisi ini berkontribusi pada keterlambatan produksi dan dapat memengaruhi kepuasan klien.",
+        "en": "Production scheduling relied on Excel and paper. When orders accumulated, supervisors had no consistent basis for comparing production durations and deciding the job sequence. This contributed to delays and could affect client satisfaction."
+      },
+      "architecture": [
+        {
+          "id": "Alur sistem menghubungkan pesanan dan file cetak dengan estimasi, rincian waktu proses, serta jadwal produksi. Data desain dan mesin menjadi referensi perhitungan. Empat peran—administrator, staf penjualan, manajer penerbit, dan supervisor produksi—memiliki alur kerja masing-masing yang dipetakan melalui diagram konteks dan DFD.",
+          "en": "The system connects orders and print files to estimates, process durations, and production schedules. Design and machine data support the calculations. The context diagram and DFD map workflows for four roles: administrator, sales staff, publishing manager, and production supervisor."
+        },
+        {
+          "id": "Shortest Processing Time memprioritaskan pekerjaan dengan estimasi durasi lebih pendek. Supervisor memiliki dasar yang konsisten untuk membandingkan pesanan.",
+          "en": "Shortest Processing Time prioritizes jobs with shorter estimated durations, giving supervisors a consistent basis for comparing orders."
+        }
+      ],
+      "impact": {
+        "id": "Simulasi menghasilkan rincian durasi, perkiraan tanggal selesai, dan urutan produksi berbasis SPT. Dokumentasi April memuat 18 pesanan pada tabel sampel dan 14 pesanan pada Gantt estimasi; empat pesanan tidak ditampilkan pada Gantt. Perbandingan ini belum membuktikan jumlah keterlambatan atau bahwa seluruh pesanan selesai tepat waktu.",
+        "en": "The simulation produces duration breakdowns, expected completion dates, and an SPT-based production sequence. The April documentation includes 18 orders in the sample table and 14 in the estimation Gantt; four orders are absent from the Gantt. This comparison does not establish a late-order count or show that every order finished on time."
+      }
+    }
   },
 ];
 

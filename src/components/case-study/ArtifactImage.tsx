@@ -9,11 +9,17 @@ export function ArtifactImage({
   alt,
   caption,
   locale,
+  width = 1440,
+  height = 960,
+  originalResolution = false,
 }: {
   src: string;
   alt: string;
   caption: string;
   locale: "id" | "en";
+  width?: number;
+  height?: number;
+  originalResolution?: boolean;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   return (
@@ -26,11 +32,11 @@ export function ArtifactImage({
         <Image
           src={src}
           alt={alt}
-          width={1440}
-          height={960}
+          width={width}
+          height={height}
+          unoptimized={originalResolution}
           sizes="(max-width: 900px) 100vw, 800px"
         />
-        <span>{locale === "id" ? "Perbesar gambar" : "Enlarge image"}</span>
       </button>
       <figcaption>{caption}</figcaption>
       <dialog
@@ -46,7 +52,14 @@ export function ArtifactImage({
             {locale === "id" ? "Tutup gambar" : "Close image"}
           </button>
         </form>
-        <Image src={src} alt={alt} width={1440} height={960} sizes="95vw" />
+        {originalResolution && (
+          <a className={styles.projectLink} href={src} target="_blank" rel="noopener noreferrer">
+            {locale === "id" ? "Buka gambar asli dalam tab baru" : "Open original image in a new tab"}
+          </a>
+        )}
+        <div className={originalResolution ? styles.originalImageViewport : undefined}>
+          <Image src={src} alt={alt} width={width} height={height} sizes="95vw" unoptimized={originalResolution} className={originalResolution ? styles.originalImage : undefined} />
+        </div>
         <p>{caption}</p>
       </dialog>
     </figure>

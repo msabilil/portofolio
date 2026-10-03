@@ -1,0 +1,138 @@
+{
+  "bpmn-cover": {
+    "width": 826,
+    "height": 189
+  },
+  "bpmn-print-machines": {
+    "width": 817,
+    "height": 143
+  },
+  "bpmn-product-orders": {
+    "width": 828,
+    "height": 448
+  },
+  "bpmn-production-estimation": {
+    "width": 827,
+    "height": 371
+  },
+  "bpmn-production-process": {
+    "width": 1341,
+    "height": 507
+  },
+  "bpmn-scheduling": {
+    "width": 824,
+    "height": 394
+  },
+  "context-diagram": {
+    "width": 529,
+    "height": 429
+  },
+  "dfd-design": {
+    "width": 529,
+    "height": 418
+  },
+  "dfd-estimation-calculation": {
+    "width": 529,
+    "height": 608
+  },
+  "dfd-estimation": {
+    "width": 529,
+    "height": 633
+  },
+  "dfd-machines": {
+    "width": 529,
+    "height": 418
+  },
+  "dfd-master-data": {
+    "width": 528,
+    "height": 299
+  },
+  "dfd-orders": {
+    "width": 528,
+    "height": 442
+  },
+  "dfd-overview": {
+    "width": 529,
+    "height": 643
+  },
+  "dfd-print-files": {
+    "width": 529,
+    "height": 410
+  },
+  "dfd-scheduling": {
+    "width": 529,
+    "height": 429
+  },
+  "dfd-transactions": {
+    "width": 529,
+    "height": 244
+  },
+  "dfd-users": {
+    "width": 529,
+    "height": 321
+  },
+  "erd": {
+    "width": 529,
+    "height": 350
+  },
+  "gantt-estimation-april": {
+    "width": 886,
+    "height": 377
+  },
+  "gantt-production-april": {
+    "width": 826,
+    "height": 504
+  },
+  "relational-schema": {
+    "width": 529,
+    "height": 810
+  },
+  "sample-april-1": {
+    "width": 1231,
+    "height": 708
+  },
+  "sample-april-2": {
+    "width": 1210,
+    "height": 709
+  },
+  "sample-april-3": {
+    "width": 1216,
+    "height": 285
+  },
+  "spt-method": {
+    "width": 827,
+    "height": 1069
+  },
+  "uat-design": {
+    "width": 2033,
+    "height": 3077
+  },
+  "uat-master-data": {
+    "width": 2057,
+    "height": 3077
+  },
+  "uat-orders": {
+    "width": 2032,
+    "height": 3077
+  },
+  "uat-scheduling": {
+    "width": 2059,
+    "height": 3077
+  },
+  "wireframe-order-detail": {
+    "width": 529,
+    "height": 333
+  },
+  "wireframe-orders": {
+    "width": 529,
+    "height": 333
+  },
+  "wireframe-print-files": {
+    "width": 529,
+    "height": 333
+  },
+  "wireframe-schedule": {
+    "width": 529,
+    "height": 333
+  }
+}

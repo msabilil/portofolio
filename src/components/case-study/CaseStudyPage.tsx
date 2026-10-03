@@ -7,6 +7,7 @@ import { useAppLocale, type Locale } from "@/i18n/LocaleProvider";
 import type { CaseStudy } from "@/content/caseStudies";
 import { getCaseStudyPresentation } from "@/content/caseStudyPresentation";
 import { ArtifactImage } from "./ArtifactImage";
+import { ProductionCaseStudy } from "./ProductionCaseStudy";
 import { CaseStudyNavigation } from "./CaseStudyNavigation";
 import styles from "./CaseStudyPage.module.css";
 
@@ -26,7 +27,18 @@ export function CaseStudyPage({
   const presentation = getCaseStudyPresentation(study.slug);
   const production = study.slug === "penjadwalan-produksi";
   const sections = useMemo(
-    () => [
+    () => production ? [
+      { id: "case-study-in-a-nutshell", label: "In a nutshell" },
+      { id: "case-study-problem", label: id ? "Masalah" : "The problem" },
+      { id: "case-study-approach", label: id ? "Pendekatan dan arsitektur" : "Approach and architecture" },
+      { id: "case-study-business-analysis", label: id ? "Analisis BPMN" : "BPMN analysis" },
+      { id: "case-study-results", label: id ? "Simulasi estimasi & SPT" : "Estimation & SPT simulation" },
+      { id: "case-study-impact", label: id ? "Hasil simulasi" : "Simulation results" },
+      { id: "case-study-system-design", label: id ? "Perancangan sistem" : "System design" },
+      { id: "case-study-prototype", label: "UI/UX prototype" },
+      { id: "case-study-validation", label: id ? "Pengujian & UAT" : "Testing & UAT" },
+      { id: "case-study-next", label: id ? "Pengembangan berikutnya" : "Future development" },
+    ] : [
       { id: "case-study-in-a-nutshell", label: "In a nutshell" },
       { id: "case-study-problem", label: id ? "Masalah" : "The problem" },
       {
@@ -47,7 +59,7 @@ export function CaseStudyPage({
         label: id ? "Ringkasan Recruiter" : "Recruiter Summary",
       },
     ],
-    [id],
+    [id, production],
   );
 
   return (
@@ -122,19 +134,20 @@ export function CaseStudyPage({
           </section>
         </section>
 
-        <figure className={styles.cover}>
+        <figure className={`${styles.cover} ${production ? styles.documentCover : ""}`}>
           <Image
-            src={presentation.cover}
-            alt={text(presentation.coverAlt)}
-            width={1440}
-            height={960}
+            src={production ? "/assets/projects/penjadwalan-produksi/gantt-estimation-april.png" : presentation.cover}
+            alt={production ? (id ? "Gantt estimasi pesanan April 2024" : "April 2024 order estimation Gantt") : text(presentation.coverAlt)}
+            width={production ? 886 : 1440}
+            height={production ? 377 : 960}
             sizes="(max-width: 900px) 100vw, 1160px"
             preload
+            unoptimized={production}
           />
           <figcaption>
-            {id
-              ? "Ilustrasi editorial dibuat dengan AI untuk konteks project, bukan dokumentasi perusahaan."
-              : "AI-generated editorial illustration for project context, not company documentation."}
+            {production ? (id ? "Estimasi pesanan · April 2024" : "Order estimates · April 2024") : id
+              ? "Ilustrasi konteks proyek · dibuat dengan AI"
+              : "Project context illustration · AI-generated"}
           </figcaption>
         </figure>
 
@@ -155,6 +168,7 @@ export function CaseStudyPage({
           </aside>
 
           <div className={styles.readingContent}>
+            {production ? <ProductionCaseStudy study={study} locale={locale} /> : <>
             {
               <section
                 className={styles.nutshell}
@@ -192,8 +206,8 @@ export function CaseStudyPage({
                   </ol>
                   <figcaption>
                     {id
-                      ? "Alur penjelasan yang disederhanakan untuk studi kasus ini, bukan DFD asli."
-                      : "Simplified explanatory flow for this case study, not the original DFD."}
+                      ? "Alur sistem · ringkasan"
+                      : "System flow · simplified"}
                   </figcaption>
                 </figure>
               </div>
@@ -295,8 +309,8 @@ export function CaseStudyPage({
                 }
                 caption={
                   id
-                    ? "Contoh dummy dibuat dengan AI untuk presentasi. Bukan prototype, screenshot, atau bukti pengujian asli."
-                    : "AI-generated dummy example for presentation. Not an original prototype, screenshot, or testing evidence."
+                    ? "Contoh ilustratif · dibuat dengan AI"
+                    : "Illustrative example · AI-generated"
                 }
                 locale={locale}
               />
@@ -304,8 +318,8 @@ export function CaseStudyPage({
                 <details className={styles.sampleDetails}>
                   <summary>
                     {id
-                      ? "Lihat contoh data penjadwalan"
-                      : "View sample scheduling data"}
+                      ? "Lihat lainnya: contoh data penjadwalan"
+                      : "View more: sample scheduling data"}
                   </summary>
                   <p className={styles.caption}>
                     {id
@@ -426,6 +440,7 @@ export function CaseStudyPage({
                 <strong>Impact:</strong> {text(study.recruiterSummary.impact)}
               </p>
             </section>
+            </>}
             <div className={styles.endLinks}>
               <Link className={styles.projectLink} href="/projects">
                 {id ? "Jelajahi project lainnya" : "Explore more projects"}

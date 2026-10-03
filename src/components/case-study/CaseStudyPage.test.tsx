@@ -61,20 +61,25 @@ describe("CaseStudyPage", () => {
       "href",
       "#case-study-in-a-nutshell",
     );
-    expect(
-      screen.getByRole("link", { name: "Recruiter Summary" }),
-    ).toHaveAttribute("href", "#recruiter-summary");
-    expect(
-      screen.getAllByText(/AI-generated dummy example/).length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getByText(/Dummy data, separate from the 2023/),
-    ).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Thesis documentation" })).not.toBeInTheDocument();
+    expect(screen.queryByText(/AI-generated dummy example/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Dummy data, separate from/)).not.toBeInTheDocument();
+    const approach = screen.getByRole("region", { name: "Approach and architecture" });
+    expect(within(approach).getByRole("heading", { name: "Business process analysis with BPMN" })).toBeInTheDocument();
+    expect(within(approach).getByRole("heading", { name: "Estimation and SPT calculation simulation" })).toBeInTheDocument();
+    expect(within(approach).getByRole("heading", { name: "System and database design" })).toBeInTheDocument();
+    expect(within(approach).getByRole("heading", { name: "Testing and user feedback" })).toBeInTheDocument();
+    const interviews = within(approach).getAllByRole("button", { name: /^Enlarge: UAT interview/ });
+    expect(interviews.filter((button) => !button.closest("details"))).toHaveLength(2);
+    expect(interviews.filter((button) => button.closest("details"))).toHaveLength(2);
+    const stageHeadings = within(approach).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
+    expect(stageHeadings.indexOf("Business process analysis with BPMN")).toBeLessThan(stageHeadings.indexOf("Estimation and SPT calculation simulation"));
+    expect(stageHeadings.indexOf("Estimation and SPT calculation simulation")).toBeLessThan(stageHeadings.indexOf("System and database design"));
     const facts = screen.getByRole("region", { name: "Project facts" });
     expect(facts.querySelector("dl")).not.toBeNull();
     expect(within(facts).queryByRole("heading")).not.toBeInTheDocument();
     const resultLink = screen.getByRole("link", {
-      name: "Results and benchmarks",
+      name: "Estimation & SPT simulation",
     });
     fireEvent.click(resultLink);
     expect(resultLink).toHaveAttribute("aria-current", "location");
