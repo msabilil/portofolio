@@ -119,8 +119,8 @@
 .greeting {
   display: block;
   position: absolute;
-  bottom: 10%;
-  right: -5%;
+  bottom: 90%;
+  right: 10%;
   border: 2px solid var(--ink);
   border-radius: 6px;
   padding: 7px 10px;
@@ -183,7 +183,7 @@
   .orbit { --planet-size: 64px; --flatten: 0.38; --inclination: -8deg; width: 76%; top: 255px; }
   .blue { --planet-size: 54px; --flatten: 0.4; --inclination: 14deg; width: 71%; }
   .moonRoute { --astronaut-size: 150px; --edge: 24px; bottom: 110px; }
-  .greeting { right: -2%; font-size: 6px; padding: 6px; }
+  .greeting { right: 10%; font-size: 6px; padding: 6px; }
   .shadow { height: 12px; }
 }
 @media (max-width: 380px) {

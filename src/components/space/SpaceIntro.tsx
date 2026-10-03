@@ -191,7 +191,7 @@ function IntroDialog({
           <div className={styles.emblem} aria-hidden="true">
             <span className={styles.logo}>
               <Image
-                src="/assets/logos/logo-msf.png"
+                src="/assets/logos/logo-msf-transparent.png"
                 alt=""
                 width={300}
                 height={300}
@@ -200,7 +200,6 @@ function IntroDialog({
               />
             </span>
           </div>
-          <h2 className={styles.title}>Muhammad Sabilil Fajri</h2>
           <p className={styles.description} role="status">
             {phase === "departing" ? t("launching") : t("description")}
           </p>

@@ -121,7 +121,7 @@ export function HeroSpace({
       <LunarAstronaut reduced={reduced} active={active && !paused} />
       <div className="lunar-flag" aria-hidden="true">
         <span className="flag-logo">
-          <Image src="/assets/logos/logo-msf.png" alt="" fill sizes="58px" />
+          <Image src="/assets/logos/logo-msf-transparent.png" alt="" fill sizes="58px" />
         </span>
       </div>
       {playing && !reduced && <RocketLaunch active={active && !paused} eventSource={ref} />}

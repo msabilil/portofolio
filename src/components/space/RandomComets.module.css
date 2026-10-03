@@ -1,0 +1,57 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.flight {
+  position: absolute;
+  opacity: 0;
+  animation: cross var(--comet-duration) linear both;
+}
+
+.comet {
+  display: block;
+  position: relative;
+  width: var(--comet-size);
+  height: var(--comet-size);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 15%, #dcfbff 40%, #79d9e8 70%, transparent);
+  box-shadow: 0 0 8px #d8fbff, 0 0 20px #4bbdcc80;
+  transform: rotate(var(--comet-angle));
+}
+
+.comet::before,
+.comet::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: var(--comet-tail);
+  height: calc(var(--comet-size) * 1.4);
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, #8ce5ef30 45%, #e9fdff);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  filter: blur(2px);
+}
+
+.comet::after {
+  width: calc(var(--comet-tail) * 0.7);
+  height: 2px;
+  filter: none;
+}
+
+@keyframes cross {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  12%, 65% { opacity: var(--comet-glow); }
+  100% { opacity: 0; transform: translate3d(var(--comet-dx), var(--comet-dy), 0); }
+}
+
+@media (max-width: 760px) {
+  .comet { scale: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer { display: none; }
+}

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useLocale } from "next-intl";
 import { profile } from "@/content/profile";
 import { Icon } from "@/components/space/Icon";
@@ -43,11 +44,6 @@ export function Contact() {
   return (
     <section id="contact" className="contact-section lunar-section">
       <div className="container">
-        <div className="section-topline">
-          <span className="eyebrow">
-            06 / {id ? "BUKA KOMUNIKASI" : "OPEN A CHANNEL"}
-          </span>
-        </div>
         <div className="section-heading-row">
           <h2>
             {id ? "Mari mulai" : "Let’s start"}
@@ -164,9 +160,10 @@ export function Contact() {
           </div>
         </div>
         <footer className="site-footer">
-          <a className="brand" href="#main-content">
-            <Icon name="orbit" />
-            <span>MSF.</span>
+          <a className="brand" href="#main-content" aria-label="Portfolio Space — MSF">
+            <span className="brand-logo" aria-hidden="true">
+              <Image src="/assets/logos/logo-msf-transparent.png" alt="" fill sizes="160px" />
+            </span>
           </a>
           <p>
             © {new Date().getFullYear()} Muhammad Sabilil Fajri

@@ -10,6 +10,7 @@ import { CertificationItem } from "@/components/CertificationItem";
 import Link from "next/link";
 import { Icon } from "./Icon";
 import { useSceneActivity } from "./useSceneActivity";
+import { RandomComets } from "./RandomComets";
 export function JourneySection() {
   const locale = useLocale() as "en" | "id";
   const id = locale === "id";
@@ -22,12 +23,7 @@ export function JourneySection() {
       data-active={active ? "true" : undefined}
     >
       <div className="space-stage space-stage-log" aria-hidden="true">
-        <span className="space-comets">
-          <i />
-          <i />
-          <i />
-          <i />
-        </span>
+        {active && <RandomComets />}
         <Image
           className="missions-planet missions-neptune"
           src="/assets/photos/3d/neptune.png"
@@ -50,11 +46,6 @@ export function JourneySection() {
         />
       </div>
       <div className="container">
-        <div className="section-topline">
-          <span className="eyebrow">
-            05 / {id ? "CATATAN PERJALANAN" : "THE FLIGHT LOG"}
-          </span>
-        </div>
         <div className="section-heading-row">
           <h2>
             {id ? "Belajar dari" : "Learning through"}

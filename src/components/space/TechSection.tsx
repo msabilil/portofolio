@@ -212,9 +212,6 @@ export function TechSection() {
   return (
     <section id="skills" className="lunar-section tech-section">
       <div className="container">
-        <div className="section-topline">
-          <span className="eyebrow">03 / TECH STACK</span>
-        </div>
         <div className="section-heading-row">
           <h2>
             Tech Stack <span className="marker">&amp; Tools</span>

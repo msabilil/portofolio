@@ -61,7 +61,7 @@ export function TopNav() {
           onClick={() => setOpen(false)}
         >
           <span className="brand-logo" aria-hidden="true">
-            <Image src="/assets/logos/logo-msf.png" alt="" fill sizes="180px" />
+            <Image src="/assets/logos/logo-msf-transparent.png" alt="" fill sizes="160px" />
           </span>
         </Link>
         <nav

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ProjectPreview } from "./ProjectPreview";
 import { Icon } from "./Icon";
 import { useSceneActivity } from "./useSceneActivity";
+import { RandomComets } from "./RandomComets";
 const featured = [
   "penjadwalan-produksi",
   "financial-management-system",
@@ -65,12 +66,7 @@ export function ProjectShowcase() {
       data-active={active ? "true" : undefined}
     >
       <div className="space-stage space-stage-missions" aria-hidden="true">
-        <span className="space-comets">
-          <i />
-          <i />
-          <i />
-          <i />
-        </span>
+        {active && <RandomComets />}
         <Image
           className="missions-planet missions-neptune"
           src="/assets/photos/3d/neptune.png"
@@ -93,11 +89,6 @@ export function ProjectShowcase() {
         />
       </div>
       <div className="container">
-        <div className="section-topline">
-          <span className="eyebrow">
-            02 / {id ? "MISI PILIHAN" : "SELECTED MISSIONS"}
-          </span>
-        </div>
         <div className="section-heading-row">
           <div>
             <h2>

@@ -70,9 +70,6 @@ export function GithubActivity() {
     <section ref={ref} className="activity-section lunar-section">
       <div className="container">
         <div className="activity-panel panel">
-          <div className="section-topline activity-topline">
-            <span className="eyebrow">04 / {id ? "JEJAK DI GITHUB" : "GITHUB LOG"}</span>
-          </div>
           <div className="activity-heading">
             <div>
               <h2>{id ? "Jejak di balik karya." : "A look at the process."}</h2>

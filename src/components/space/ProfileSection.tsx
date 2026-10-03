@@ -78,49 +78,36 @@ export function ProfileSection() {
         <i />
       </div>
       <div className="container">
-        <div className="section-topline">
-          <span className="eyebrow">
-            01 / {id ? "KENALI PENJELAJAHNYA" : "MEET THE EXPLORER"}
-          </span>
-        </div>
         <div className="profile-grid">
           <div className="profile-card panel">
             <div className="photo-frame">
               <Image
-                src="/assets/photos/itsme.jpg"
+                src="/assets/photos/profile-photo.png"
                 alt={profile.name}
                 width={480}
                 height={600}
                 sizes="(max-width: 760px) 85vw, 400px"
               />
               <span className="photo-tape" aria-hidden="true" />
-              <span className="photo-sticker">
-                <Icon name="star" />{" "}
-                {id ? "MANUSIA DI BALIK LAYAR" : "HUMAN BEHIND THE PIXELS"}
-              </span>
             </div>
             <div className="profile-id">
               <span className="eyebrow">{id ? "ID KRU" : "CREW ID"} / MSF—001</span>
-              <Icon name="orbit" />
+              <span className="brand-logo profile-id-logo" aria-hidden="true">
+                <Image
+                  src="/assets/logos/logo-msf-transparent.png"
+                  alt=""
+                  fill
+                  sizes="100px"
+                />
+              </span>
               <p>Muhammad Sabilil Fajri</p>
               <span>Bandung, Indonesia · UTC+7</span>
             </div>
-            <a
-              className="text-button profile-cv"
-              href="/assets/cv/muhammad-sabilil-fajri-cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {id ? "Baca CV saya" : "Read my CV"}
-              <Icon name="arrow" width="18" />
-            </a>
           </div>
           <div className="profile-story">
             <h2>
-              {id ? "Halo, saya" : "Hi, I’m"}
-              <br />
-              <span className="marker">Muhammad</span>
-              <br />
+              {id ? "Halo, saya " : "Hi, I’m "}
+              <span className="marker">Muhammad</span>{" "}
               Sabilil Fajri<span className="cyan-dot">.</span>
             </h2>
             <p className="body-copy">{about("bio")}</p>
