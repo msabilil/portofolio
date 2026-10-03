@@ -57,8 +57,8 @@ export function ArtifactImage({
             {locale === "id" ? "Buka gambar asli dalam tab baru" : "Open original image in a new tab"}
           </a>
         )}
-        <div className={originalResolution ? styles.originalImageViewport : undefined}>
-          <Image src={src} alt={alt} width={width} height={height} sizes="95vw" unoptimized={originalResolution} className={originalResolution ? styles.originalImage : undefined} />
+        <div className={styles.imageViewport}>
+          <Image src={src} alt={alt} width={width} height={height} sizes="95vw" unoptimized={originalResolution} />
         </div>
         <p>{caption}</p>
       </dialog>

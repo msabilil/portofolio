@@ -620,8 +620,8 @@ export const caseStudies: CaseStudy[] = [
       "en": "From Excel and paper to production priorities based on time estimates and Shortest Processing Time."
     },
     "inANutshell": {
-      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSaya merancang dan mengembangkan sistem berbasis PHP yang menghitung estimasi durasi setiap pesanan dari waktu proses produksi yang terlibat. Estimasi ini menjadi dasar pengurutan pekerjaan dengan Shortest Processing Time (SPT), sehingga supervisor dapat menyusun prioritas dan melihat perkiraan tanggal selesai melalui timeline produksi.\n\nSaya menyimulasikan workflow menggunakan data historis 2023–2024. Contoh April 2024 memperlihatkan bagaimana spesifikasi pesanan diolah menjadi estimasi durasi, prioritas SPT, dan jadwal per proses.",
-      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nI designed and developed a PHP system that estimates each order’s duration from its production processes and calculates the expected completion date for each order. Shortest Processing Time (SPT) uses these estimates to order jobs, giving supervisors a structured production timeline for setting priorities.\n\nI simulated the workflow using historical data from 2023–2024. The April 2024 example shows how order specifications become duration estimates, SPT priorities, and process-level schedules."
+      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSaya merancang dan mengembangkan sistem berbasis PHP yang menghitung estimasi durasi setiap pesanan dari waktu proses produksi yang terlibat. Estimasi ini menjadi dasar pengurutan pekerjaan dengan Shortest Processing Time (SPT), sehingga supervisor dapat menyusun prioritas dan melihat perkiraan tanggal selesai melalui timeline produksi.",
+      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nI designed and developed a PHP system that estimates each order’s duration from its production processes and calculates the expected completion date for each order. Shortest Processing Time (SPT) uses these estimates to order jobs, giving supervisors a structured production timeline for setting priorities."
     },
     "snapshot": {
       "role": {
@@ -633,8 +633,8 @@ export const caseStudies: CaseStudy[] = [
         "en": "Feb 2025 — Aug 2025"
       },
       "scope": {
-        "id": "Analisis, perancangan, implementasi, simulasi, pengujian",
-        "en": "Analysis, design, implementation, simulation, testing"
+        "id": "Analisis, perancangan, implementasi",
+        "en": "Analysis, design, implementation"
       },
       "stack": [
         "PHP",
@@ -687,24 +687,7 @@ export const caseStudies: CaseStudy[] = [
         }
       }
     ],
-    "metrics": [
-      {
-        "kind": "supporting",
-        "label": {
-          "id": "Dokumentasi simulasi April 2024",
-          "en": "April 2024 simulation documentation"
-        },
-        "impact": {
-          "id": "Simulasi menghasilkan rincian durasi, perkiraan tanggal selesai, dan urutan produksi berbasis SPT. Dokumentasi April memuat 18 pesanan pada tabel sampel dan 14 pesanan pada Gantt estimasi; empat pesanan tidak ditampilkan pada Gantt. Perbandingan ini belum membuktikan jumlah keterlambatan atau bahwa seluruh pesanan selesai tepat waktu.",
-          "en": "The simulation produces duration breakdowns, expected completion dates, and an SPT-based production sequence. The April documentation includes 18 orders in the sample table and 14 in the estimation Gantt; four orders are absent from the Gantt. This comparison does not establish a late-order count or show that every order finished on time."
-        },
-        "status": "qualitative",
-        "method": {
-          "id": "Pencocokan tabel sampel, Gantt estimasi, dan cuplikan jadwal produksi.",
-          "en": "Comparison of the sample table, estimation Gantt, and production schedule excerpt."
-        }
-      }
-    ],
+    "metrics": [],
     "links": [
       {
         "label": {
@@ -724,12 +707,12 @@ export const caseStudies: CaseStudy[] = [
     ],
     "deepDive": [],
     "impact": {
-      "id": "Simulasi menghasilkan rincian durasi, perkiraan tanggal selesai, dan urutan produksi berbasis SPT. Dokumentasi April memuat 18 pesanan pada tabel sampel dan 14 pesanan pada Gantt estimasi; empat pesanan tidak ditampilkan pada Gantt. Perbandingan ini belum membuktikan jumlah keterlambatan atau bahwa seluruh pesanan selesai tepat waktu.",
-      "en": "The simulation produces duration breakdowns, expected completion dates, and an SPT-based production sequence. The April documentation includes 18 orders in the sample table and 14 in the estimation Gantt; four orders are absent from the Gantt. This comparison does not establish a late-order count or show that every order finished on time."
+      "id": "Sistem menghubungkan pesanan, estimasi durasi, prioritas SPT, dan jadwal produksi dalam satu alur kerja.",
+      "en": "The system connects orders, duration estimates, SPT priorities, and production schedules in one workflow."
     },
     "reflection": {
-      "id": "Wawancara pengguna menunjukkan kebutuhan untuk menjelaskan perhitungan estimasi dengan lebih jelas dan menyesuaikan jadwal ketika terjadi penundaan atau gangguan produksi. Pengembangan berikutnya akan berfokus pada penjadwalan ulang dan pemantauan produksi secara langsung.",
-      "en": "User interviews highlighted the need for clearer explanations of estimate calculations and schedule adjustments when delays or production disruptions occur. Future development would focus on rescheduling and live production monitoring."
+      "id": "Pengembangan berikutnya akan berfokus pada penjelasan perhitungan estimasi, penjadwalan ulang ketika terjadi gangguan, dan pemantauan produksi secara langsung.",
+      "en": "Future development would focus on explaining estimate calculations, rescheduling during disruptions, and live production monitoring."
     },
     "recruiterSummary": {
       "problem": {
@@ -747,8 +730,8 @@ export const caseStudies: CaseStudy[] = [
         }
       ],
       "impact": {
-        "id": "Simulasi menghasilkan rincian durasi, perkiraan tanggal selesai, dan urutan produksi berbasis SPT. Dokumentasi April memuat 18 pesanan pada tabel sampel dan 14 pesanan pada Gantt estimasi; empat pesanan tidak ditampilkan pada Gantt. Perbandingan ini belum membuktikan jumlah keterlambatan atau bahwa seluruh pesanan selesai tepat waktu.",
-        "en": "The simulation produces duration breakdowns, expected completion dates, and an SPT-based production sequence. The April documentation includes 18 orders in the sample table and 14 in the estimation Gantt; four orders are absent from the Gantt. This comparison does not establish a late-order count or show that every order finished on time."
+        "id": "Sistem menghubungkan pesanan, estimasi durasi, prioritas SPT, dan jadwal produksi dalam satu alur kerja.",
+        "en": "The system connects orders, duration estimates, SPT priorities, and production schedules in one workflow."
       }
     }
   },

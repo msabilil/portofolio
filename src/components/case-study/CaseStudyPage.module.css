@@ -319,8 +319,9 @@
 }
 
 .imageDialog {
-  width: min(1200px, 95vw);
+  width: min(1440px, 95vw);
   max-width: 95vw;
+  box-sizing: border-box;
   max-height: 92dvh;
   padding: 24px;
   border: 0;
@@ -348,7 +349,10 @@
 .imageDialog img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
+  max-height: max(120px, calc(92dvh - 210px));
+  object-fit: contain;
 }
 .imageDialog p {
   font-size: 14px;
@@ -562,11 +566,7 @@
   background: white;
   border: 1px solid var(--case-line);
 }
-.resultNumber {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-}
+
 .subsection > .flow {
   margin-top: 28px;
 }
@@ -577,16 +577,10 @@
 .stageHeading {
   scroll-margin-top: 112px;
 }
-.originalImageViewport {
-  overflow: auto;
+.imageViewport {
+  max-width: 100%;
   margin-top: 16px;
-  max-height: 70dvh;
   background: white;
-}
-.imageDialog .originalImage {
-  width: auto;
-  max-width: none;
-  height: auto;
 }
 
 .artifactGallery {

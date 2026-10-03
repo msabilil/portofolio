@@ -32,11 +32,8 @@ export function CaseStudyPage({
       { id: "case-study-problem", label: id ? "Masalah" : "The problem" },
       { id: "case-study-approach", label: id ? "Pendekatan dan arsitektur" : "Approach and architecture" },
       { id: "case-study-business-analysis", label: id ? "Analisis BPMN" : "BPMN analysis" },
-      { id: "case-study-results", label: id ? "Simulasi estimasi & SPT" : "Estimation & SPT simulation" },
-      { id: "case-study-impact", label: id ? "Hasil simulasi" : "Simulation results" },
       { id: "case-study-system-design", label: id ? "Perancangan sistem" : "System design" },
       { id: "case-study-prototype", label: "UI/UX prototype" },
-      { id: "case-study-validation", label: id ? "Pengujian & UAT" : "Testing & UAT" },
       { id: "case-study-next", label: id ? "Pengembangan berikutnya" : "Future development" },
     ] : [
       { id: "case-study-in-a-nutshell", label: "In a nutshell" },
@@ -136,16 +133,16 @@ export function CaseStudyPage({
 
         <figure className={`${styles.cover} ${production ? styles.documentCover : ""}`}>
           <Image
-            src={production ? "/assets/projects/penjadwalan-produksi/gantt-estimation-april.png" : presentation.cover}
-            alt={production ? (id ? "Gantt estimasi pesanan April 2024" : "April 2024 order estimation Gantt") : text(presentation.coverAlt)}
-            width={production ? 886 : 1440}
-            height={production ? 377 : 960}
+            src={production ? "/assets/projects/penjadwalan-produksi/wireframe-schedule.png" : presentation.cover}
+            alt={production ? (id ? "Prototype jadwal produksi" : "Production schedule prototype") : text(presentation.coverAlt)}
+            width={production ? 529 : 1440}
+            height={production ? 333 : 960}
             sizes="(max-width: 900px) 100vw, 1160px"
             preload
             unoptimized={production}
           />
           <figcaption>
-            {production ? (id ? "Estimasi pesanan · April 2024" : "Order estimates · April 2024") : id
+            {production ? (id ? "Prototype jadwal produksi" : "Production schedule prototype") : id
               ? "Ilustrasi konteks proyek · dibuat dengan AI"
               : "Project context illustration · AI-generated"}
           </figcaption>
