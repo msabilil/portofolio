@@ -33,7 +33,7 @@ export function ProductionCaseStudy({ study, locale }: { study: CaseStudy; local
         <p>{text(study.problem)}</p>
       </Section>
       <Section name="approach" title={id ? "Pendekatan dan arsitektur" : "Approach and architecture"}>
-        <p>{id ? "Saya memulai dari analisis proses bisnis menggunakan BPMN, menentukan pendekatan estimasi dan prioritas kerja, lalu merancang sistem, database, serta antarmuka." : "I started with BPMN business process analysis, selected an approach to estimation and job priorities, then designed the system, database, and interface."}</p>
+        <p>{id ? "Pendekatan dimulai dari analisis proses bisnis melalui BPMN, dilanjutkan dengan penentuan metode estimasi dan prioritas kerja, lalu perancangan sistem, database, serta antarmuka." : "The approach starts with BPMN business process analysis, followed by the estimation and job-priority method, then the system, database, and interface design."}</p>
         <div className={styles.subsection}>
           <h3 id="case-study-business-analysis" className={styles.stageHeading}>{id ? "Analisis proses bisnis dengan BPMN" : "Business process analysis with BPMN"}</h3>
           <p>{id ? "BPMN memetakan alur penjadwalan dan pelaksanaan produksi, dari penyerahan pesanan serta file cetak kepada supervisor hingga persiapan mesin, pencetakan, finishing, dan pencatatan hasil." : "The BPMN diagrams map scheduling and production, from handing orders and print files to the supervisor through machine preparation, printing, finishing, and recording results."}</p>
@@ -56,6 +56,29 @@ export function ProductionCaseStudy({ study, locale }: { study: CaseStudy; local
           <h3 id="case-study-prototype" className={styles.stageHeading}>{id ? "Perancangan UI/UX" : "UI/UX design"}</h3>
           <p>{text(productionArtifactGroups[4].detail)}</p>
           {gallery(productionArtifactGroups[4].images)}
+        </div>
+      </Section>
+      <Section name="interface" title={id ? "Pengembangan" : "Development"}>
+        <p>{id ? "Tahap pengembangan menerapkan hasil analisis BPMN, rancangan database, dan wireframe ke dalam aplikasi web berbasis PHP dan MySQL." : "Development turns the BPMN analysis, database design, and wireframes into a PHP and MySQL web application."}</p>
+        <div className={styles.artifactGallery}>
+          <ArtifactImage
+            src="/assets/projects/penjadwalan-produksi/screen-schedule.png"
+            alt={id ? "Jadwal produksi detail per tanggal" : "Detailed production schedule by date"}
+            caption={id ? "Halaman Jadwal Produksi" : "Production Schedule Page"}
+            locale={locale}
+            width={1803}
+            height={953}
+            originalResolution
+          />
+          <ArtifactImage
+            src="/assets/projects/penjadwalan-produksi/screen-admin.png"
+            alt={id ? "Dashboard beranda administrator" : "Administrator home dashboard"}
+            caption={id ? "Beranda Administrator" : "Administrator Dashboard"}
+            locale={locale}
+            width={1838}
+            height={944}
+            originalResolution
+          />
         </div>
       </Section>
       <Section name="next" title={id ? "Pengembangan berikutnya" : "Future development"}>

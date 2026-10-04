@@ -620,8 +620,8 @@ export const caseStudies: CaseStudy[] = [
       "en": "From Excel and paper to production priorities based on time estimates and Shortest Processing Time."
     },
     "inANutshell": {
-      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSaya merancang dan mengembangkan sistem berbasis PHP yang menghitung estimasi durasi setiap pesanan dari waktu proses produksi yang terlibat. Estimasi ini menjadi dasar pengurutan pekerjaan dengan Shortest Processing Time (SPT), sehingga supervisor dapat menyusun prioritas dan melihat perkiraan tanggal selesai melalui timeline produksi.",
-      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nI designed and developed a PHP system that estimates each order’s duration from its production processes and calculates the expected completion date for each order. Shortest Processing Time (SPT) uses these estimates to order jobs, giving supervisors a structured production timeline for setting priorities."
+      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSistem berbasis PHP menghitung estimasi durasi setiap pesanan dari waktu proses produksi yang terlibat. Estimasi ini menjadi dasar pengurutan pekerjaan dengan Shortest Processing Time (SPT), sehingga supervisor dapat menyusun prioritas dan melihat perkiraan tanggal selesai melalui timeline produksi.",
+      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nThe PHP system estimates each order’s duration from its production processes and calculates the expected completion date for each order. Shortest Processing Time (SPT) uses these estimates to order jobs, giving supervisors a structured production timeline for setting priorities."
     },
     "snapshot": {
       "role": {
@@ -633,8 +633,8 @@ export const caseStudies: CaseStudy[] = [
         "en": "Feb 2025 — Aug 2025"
       },
       "scope": {
-        "id": "Analisis, perancangan, implementasi",
-        "en": "Analysis, design, implementation"
+        "id": "Analisis, perancangan, implementasi, pengujian",
+        "en": "Analysis, design, implementation, test"
       },
       "stack": [
         "PHP",
@@ -649,12 +649,12 @@ export const caseStudies: CaseStudy[] = [
       }
     },
     "problem": {
-      "id": "Penjadwalan produksi sebelumnya dilakukan menggunakan Excel dan kertas. Ketika pesanan menumpuk, supervisor tidak memiliki dasar yang konsisten untuk membandingkan durasi produksi dan menentukan urutan pekerjaan. Kondisi ini berkontribusi pada keterlambatan produksi dan dapat memengaruhi kepuasan klien.",
-      "en": "Production scheduling relied on Excel and paper. When orders accumulated, supervisors had no consistent basis for comparing production durations and deciding the job sequence. This contributed to delays and could affect client satisfaction."
+      "id": "Penjadwalan produksi sebelumnya dilakukan menggunakan Excel dan kertas. Ketika pesanan menumpuk, supervisor tidak memiliki dasar yang konsisten untuk menentukan urutan pekerjaan, misalnya saat memilih antara pesanan yang diperkirakan selesai dalam satu hari dan pesanan yang membutuhkan beberapa hari. Akibatnya, produksi bisa terlambat dan kepuasan klien berisiko menurun.",
+      "en": "Production scheduling relied on Excel and paper. When orders accumulated, supervisors had no consistent basis for deciding the job sequence, such as choosing between an order estimated to take one day and another requiring several days. This could delay production and reduce client satisfaction."
     },
     "informationArchitecture": {
-      "id": "Alur sistem menghubungkan pesanan dan file cetak dengan estimasi, rincian waktu proses, serta jadwal produksi. Data desain dan mesin menjadi referensi perhitungan. Empat peran—administrator, staf penjualan, manajer penerbit, dan supervisor produksi—memiliki alur kerja masing-masing yang dipetakan melalui diagram konteks dan DFD.",
-      "en": "The system connects orders and print files to estimates, process durations, and production schedules. Design and machine data support the calculations. The context diagram and DFD map workflows for four roles: administrator, sales staff, publishing manager, and production supervisor."
+      "id": "Sistem menyatukan pesanan, file cetak, estimasi, dan jadwal produksi. Data desain dan mesin mendukung perhitungan, sementara diagram konteks dan DFD memetakan alur empat peran.",
+      "en": "The system links orders, print files, estimates, and schedules. Design and machine data support calculations, while context and DFD diagrams map the four user roles."
     },
     "uxWriting": [],
     "decisions": [

@@ -1218,93 +1218,58 @@ a {
   min-height: 44px;
 }
 .preview-production {
-  background: #a7cbd8;
-  padding: 55px 24px 35px;
+  background: radial-gradient(circle at 88% 12%, #c7f6df, transparent 48%), #b7e2d3;
+  padding: 55px 24px 48px;
 }
-.workflow-window {
-  background: #fffdf7;
+.production-screen {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
   border: 1.5px solid var(--ink);
-  border-radius: 9px;
-  box-shadow: 6px 7px 0 #14243a25;
-  transform: rotate(-3deg);
+  border-radius: 10px;
+  box-shadow: 8px 9px 0 #14243a2b;
+  transform: rotate(-2deg);
+}
+.production-screen-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 12px;
+  border-bottom: 1px solid #d7e0dd;
+  background: #f3f7f4;
+}
+.production-screen-bar > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a9bdb3;
+}
+.production-screen-bar p {
+  margin-left: 9px;
+  color: #496256;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 8px;
+}
+.production-screen-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.85;
   overflow: hidden;
 }
-.window-bar {
-  display: flex;
-  gap: 4px;
-  padding: 9px 12px;
-  align-items: center;
-  background: #e6e9df;
-  border-bottom: 1.5px solid var(--ink);
+.production-screen-image img {
+  object-fit: cover;
+  object-position: left top;
 }
-.window-bar > span {
-  width: 5px;
-  height: 5px;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-}
-.window-bar p {
-  margin-left: 15px;
-  font-size: 7px;
+.production-preview-caption {
+  position: absolute;
+  right: 24px;
+  bottom: 15px;
+  color: #174d34;
   font-family: var(--font-jetbrains-mono), monospace;
-}
-.workflow-body {
-  padding: 24px 16px;
-}
-.workflow-body > .eyebrow {
-  font-size: 7px;
-}
-.workflow-body h4 {
-  font-size: 21px;
-  letter-spacing: -0.06em;
-  font-weight: 700;
-  margin: 9px 0 20px;
-}
-.workflow-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-}
-.workflow-steps > div {
-  border: 1px solid var(--ink);
-  border-radius: 6px;
-  padding: 9px 7px;
-  background: #e6efef;
-}
-.workflow-steps > div:nth-child(2) {
-  background: #fce6a3;
-}
-.workflow-steps > div:nth-child(3) {
-  background: #d8e9cf;
-}
-.workflow-steps span {
-  display: block;
-  font-size: 9px;
-  color: #50646b;
-  margin-bottom: 8px;
-}
-.workflow-steps strong {
-  display: block;
-  font-size: 10px;
-}
-.workflow-steps small {
-  display: block;
-  font-size: 7px;
-  margin-top: 4px;
-  line-height: 1.6;
-}
-.workflow-estimate {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   font-size: 8px;
-  line-height: 1.7;
-  border-top: 1px dashed #829c9f;
-  padding-top: 12px;
-  margin-top: 18px;
-}
-.workflow-estimate span {
-  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 .preview-generic {
   background: #dce6df;
@@ -3116,27 +3081,11 @@ a {
     font-size: 10px;
   }
   .preview-production {
-    padding: 45px 16px 25px;
+    padding: 45px 16px 35px;
   }
-  .workflow-body {
-    padding: 20px 12px;
-  }
-  .workflow-body h4 {
-    font-size: 18px;
-  }
-  .workflow-steps {
-    gap: 4px;
-  }
-  .workflow-steps > div {
-    padding: 7px 5px;
-  }
-  .workflow-steps strong {
-    font-size: 9px;
-  }
-  .workflow-steps small {
-    font-size: 6px;
-  }
-  .workflow-estimate {
+  .production-preview-caption {
+    right: 16px;
+    bottom: 11px;
     font-size: 7px;
   }
   .preview-meta {

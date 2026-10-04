@@ -34,6 +34,7 @@ export function CaseStudyPage({
       { id: "case-study-business-analysis", label: id ? "Analisis BPMN" : "BPMN analysis" },
       { id: "case-study-system-design", label: id ? "Perancangan sistem" : "System design" },
       { id: "case-study-prototype", label: "UI/UX prototype" },
+      { id: "case-study-interface", label: id ? "Tampilan aplikasi" : "Built interface" },
       { id: "case-study-next", label: id ? "Pengembangan berikutnya" : "Future development" },
     ] : [
       { id: "case-study-in-a-nutshell", label: "In a nutshell" },
@@ -60,7 +61,7 @@ export function CaseStudyPage({
   );
 
   return (
-    <article className={styles.page}>
+    <article className={styles.page} data-project={study.slug}>
       <div className={styles.container}>
         <Link href="/projects" className={styles.projectLink}>
           {id ? "Kembali ke galeri proyek" : "Back to project gallery"}
@@ -77,28 +78,33 @@ export function CaseStudyPage({
               className={styles.links}
               aria-label={id ? "Tautan project" : "Project links"}
             >
-              {study.links.map((link) =>
-                link.status === "available" && link.href ? (
+              {study.links.map((link) => {
+                const label = text(link.label);
+                const kind = link.label.en === "Repository"
+                  ? styles.repositoryLink
+                  : link.label.en === "Live demo"
+                    ? styles.liveDemoLink
+                    : styles.otherLink;
+                return link.status === "available" && link.href ? (
                   <a
                     key={link.label.en}
-                    className={styles.projectLink}
+                    className={`${styles.actionLink} ${kind}`}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {text(link.label)}
+                    {label}
                   </a>
                 ) : (
-                  <span key={link.label.en} className={styles.unavailable}>
-                    {text(link.label)}:{" "}
-                    {link.status === "private"
-                      ? "Private"
-                      : id
-                        ? "Belum tersedia"
-                        : "Unavailable"}
+                  <span
+                    key={link.label.en}
+                    className={`${styles.actionLink} ${kind} ${styles.disabledLink}`}
+                    aria-label={`${label}: ${link.status === "private" ? "Private" : id ? "Belum tersedia" : "Unavailable"}`}
+                  >
+                    <span>{label}{link.status === "private" ? " · Private" : ""}</span>
                   </span>
-                ),
-              )}
+                );
+              })}
             </div>
           </header>
 
@@ -131,22 +137,33 @@ export function CaseStudyPage({
           </section>
         </section>
 
-        <figure className={`${styles.cover} ${production ? styles.documentCover : ""}`}>
-          <Image
-            src={production ? "/assets/projects/penjadwalan-produksi/wireframe-schedule.png" : presentation.cover}
-            alt={production ? (id ? "Prototype jadwal produksi" : "Production schedule prototype") : text(presentation.coverAlt)}
-            width={production ? 529 : 1440}
-            height={production ? 333 : 960}
-            sizes="(max-width: 900px) 100vw, 1160px"
-            preload
-            unoptimized={production}
-          />
-          <figcaption>
-            {production ? (id ? "Prototype jadwal produksi" : "Production schedule prototype") : id
-              ? "Ilustrasi konteks proyek · dibuat dengan AI"
-              : "Project context illustration · AI-generated"}
-          </figcaption>
-        </figure>
+        {production ? (
+          <div className={styles.heroScreenshot}>
+            <ArtifactImage
+              src="/assets/projects/penjadwalan-produksi/screen-gantt.png"
+              alt={id ? "Gantt chart estimasi produksi pada aplikasi TMU" : "Production estimation Gantt chart in the TMU application"}
+              caption={id ? "Halaman Gantt Chart Estimasi" : "Estimation Gantt Chart Page"}
+              locale={locale}
+              width={1838}
+              height={948}
+              originalResolution
+            />
+          </div>
+        ) : (
+          <figure className={styles.cover}>
+            <Image
+              src={presentation.cover}
+              alt={text(presentation.coverAlt)}
+              width={1440}
+              height={960}
+              sizes="(max-width: 900px) 100vw, 1160px"
+              preload
+            />
+            <figcaption>
+              {id ? "Ilustrasi konteks proyek · dibuat dengan AI" : "Project context illustration · AI-generated"}
+            </figcaption>
+          </figure>
+        )}
 
         <div className={styles.readingLayout}>
           <aside

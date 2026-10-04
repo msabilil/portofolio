@@ -30,7 +30,7 @@ describe("CaseStudyPage", () => {
     expect(
       screen.getByRole("heading", { name: /Dampak/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Repository:\s*Private/i)).toBeInTheDocument();
+    expect(screen.getByText("Repository · Private")).toBeInTheDocument();
   });
 
   test("renders the production scheduling in a nutshell narrative", () => {
@@ -44,6 +44,8 @@ describe("CaseStudyPage", () => {
     expect(
       screen.getByRole("heading", { name: "In a nutshell" }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Live demo")).toBeInTheDocument();
+    expect(screen.queryByText("Live demo: Unavailable")).not.toBeInTheDocument();
     expect(
       screen.getByText(
         /PT Thursina Mediana Utama, a publishing and printing company/,

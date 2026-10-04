@@ -36,43 +36,25 @@ export function ProjectPreview({
     return (
       <div className="project-preview preview-production">
         <span className="preview-meta">
-          {id ? "PETA ALUR / ILUSTRASI KONSEP" : "WORKFLOW / CONCEPT ILLUSTRATION"}
+          {id ? "TAMPILAN APLIKASI" : "APP PREVIEW"}
         </span>
-        <div className="workflow-window">
-          <div className="window-bar">
-            <span />
-            <span />
-            <span />
-            <p>production.workspace</p>
+        <div className="production-screen">
+          <div className="production-screen-bar" aria-hidden="true">
+            <span /><span /><span />
+            <p>TMU / {id ? "estimasi produksi" : "production estimates"}</p>
           </div>
-          <div className="workflow-body">
-            <span className="eyebrow">
-              {id ? "SATU ALUR KERJA TERHUBUNG" : "ONE CONNECTED WORKFLOW"}
-            </span>
-            <h4>{id ? "Dari order ke produksi." : "From order to production."}</h4>
-            <div className="workflow-steps">
-              {["Sales", "Design", "Production"].map((label, i) => (
-                <div key={label}>
-                  <span>0{i + 1}</span>
-                  <strong>{label}</strong>
-                  <small>
-                    {[
-                      id ? "Detail pesanan" : "Order details",
-                      id ? "Spesifikasi" : "Specifications",
-                      id ? "Jadwal mesin" : "Machine schedule",
-                    ][i]}
-                  </small>
-                </div>
-              ))}
-            </div>
-            <div className="workflow-estimate">
-              <span>↳</span>
-              {id
-                ? "Estimasi waktu berbasis kapasitas mesin"
-                : "Time estimates based on machine capacity"}
-            </div>
+          <div className="production-screen-image">
+            <Image
+              src="/assets/projects/penjadwalan-produksi/screen-gantt.png"
+              alt={id ? "Tampilan Gantt estimasi produksi dalam aplikasi TMU" : "TMU application's production estimation Gantt chart"}
+              fill
+              sizes="(max-width: 760px) 90vw, 620px"
+            />
           </div>
         </div>
+        <span className="production-preview-caption">
+          {id ? "GANTT ESTIMASI" : "ESTIMATION GANTT"}
+        </span>
       </div>
     );
 

@@ -60,7 +60,7 @@ export const productionArtifactGroups = [
   },
   {
     label: { id: "UI/UX · wireframe supervisor produksi", en: "UI/UX · production supervisor wireframes" },
-    detail: { id: "Empat rancangan layar menjelaskan pencarian pesanan, detail transaksi, status file cetak, dan timeline jadwal. Ini adalah prototype, bukan screenshot implementasi.", en: "Four screen designs explain order search, transaction details, print file status, and the schedule timeline. These are prototypes, rather than implementation screenshots." },
+    detail: { id: "Alur supervisor dipetakan dari pencarian pesanan, pemeriksaan detail dan file cetak, hingga peninjauan jadwal. Urutan langkah ini menjadi dasar wireframe sebelum implementasi.", en: "The supervisor workflow maps order search, detail and print-file review, and schedule review. This sequence forms the basis for the wireframes before implementation." },
     images: [
       ["wireframe-orders", "Daftar pesanan", "Order list"],
       ["wireframe-order-detail", "Detail transaksi", "Transaction detail"],
