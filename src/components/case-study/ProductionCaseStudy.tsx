@@ -59,7 +59,16 @@ export function ProductionCaseStudy({ study, locale }: { study: CaseStudy; local
         </div>
       </Section>
       <Section name="interface" title={id ? "Pengembangan" : "Development"}>
-        <p>{id ? "Tahap pengembangan menerapkan hasil analisis BPMN, rancangan database, dan wireframe ke dalam aplikasi web berbasis PHP dan MySQL." : "Development turns the BPMN analysis, database design, and wireframes into a PHP and MySQL web application."}</p>
+        <p>{id ? "Saya mengembangkan seluruh aplikasi, dari halaman per peran dan interaksi pengguna hingga fungsi perhitungan PHP serta penyimpanan MySQL." : "I built the whole application, from role-specific pages and user interactions to the PHP calculation functions and MySQL data model."}</p>
+        <div className={styles.subsection}>
+          <h3 id="case-study-frontend" className={styles.stageHeading}>Frontend</h3>
+          <p>{id ? "Halaman PHP dirender di server dengan layout dan navigasi sesuai empat peran. HTML, Tailwind CSS, CSS tambahan, dan JavaScript membentuk formulir serta interaksi tanpa lapisan API terpisah." : "Server-rendered PHP pages use layouts and navigation for four roles. HTML, Tailwind CSS, additional CSS, and JavaScript provide forms and interactions without a separate API layer."}</p>
+          <ul className={styles.implementationList}>
+            <li>{id ? "Staf penjualan mencatat dan mencari pesanan, memilih desain, serta membuka detail dan dokumen pesanan untuk dicetak melalui browser." : "Sales staff enter and search orders, select designs, and open order details and browser-printable order documents."}</li>
+            <li>{id ? "Supervisor meninjau rincian estimasi, membuka dialog hitung ulang untuk mengubah jumlah pekerja, lalu memfinalisasi estimasi." : "Supervisors review estimate details, use a recalculation dialog to adjust worker counts, and finalize estimates."}</li>
+            <li>{id ? "Jadwal dikelompokkan per tanggal dengan filter rentang tanggal; Gantt bulanan memperlihatkan estimasi waktu pesanan." : "The schedule groups orders by date with a date-range filter; a monthly Gantt shows order time estimates."}</li>
+          </ul>
+        </div>
         <div className={styles.artifactGallery}>
           <ArtifactImage
             src="/assets/projects/penjadwalan-produksi/screen-schedule.png"
@@ -79,6 +88,16 @@ export function ProductionCaseStudy({ study, locale }: { study: CaseStudy; local
             height={944}
             originalResolution
           />
+        </div>
+        <div className={styles.subsection}>
+          <h3 id="case-study-backend" className={styles.stageHeading}>Backend</h3>
+          <p>{id ? "Fungsi PHP menghubungkan pesanan, desain, mesin, estimasi, dan jadwal dalam MySQL. Sesi login dan pemeriksaan role membatasi halaman; helper permission mengatur aksi pada resource yang didukung." : "PHP functions connect orders, designs, machines, estimates, and schedules in MySQL. Login sessions and role checks restrict pages; permission helpers govern supported resource actions."}</p>
+          <ul className={styles.implementationList}>
+            <li>{id ? "Estimasi membaca spesifikasi desain dan jumlah pesanan, memilih mesin sesuai kebutuhan cetak dan finishing, lalu menjumlahkan waktu desain, plat, setup, mesin, QC, dan packing. Nilai total dikonversi menjadi menit, jam, hari, dan tanggal perkiraan selesai." : "Estimation reads design specifications and order quantity, selects printing and finishing machines, then sums design, plate, setup, machine, QC, and packing times. The total is converted to minutes, hours, days, and an expected completion date."}</li>
+            <li>{id ? "Estimasi dan rincian parameter disimpan bersama dalam transaksi PDO; supervisor dapat menghitung ulang dengan jumlah desainer, pekerja QC, dan pekerja packing yang diubah." : "The estimate and its calculation parameters are saved together in a PDO transaction; supervisors can recalculate with adjusted designer, QC, and packing worker counts."}</li>
+            <li>{id ? "Perhitungan jadwal mengurutkan tanggal pesanan lebih dulu dan durasi lebih singkat dalam tanggal yang sama. Setelah waktu desain dan satu hari persiapan, jumlah cetak dialokasikan ke kapasitas harian yang tersisa; kelebihannya dilanjutkan pada hari berikutnya." : "Schedule calculation sorts by order date first and shorter duration within the same date. After design time and one preparation day, print quantity fills remaining daily capacity; any remainder moves to subsequent days."}</li>
+          </ul>
+          <p>{id ? "Kode backend juga menyediakan detail proses per mesin dan pemeriksaan bentrok waktu. Fungsi tersebut terpisah dari alokasi kapasitas harian pada halaman jadwal yang ditampilkan di atas." : "The backend also includes machine-level process details and time-conflict checks. Those functions are separate from the daily-capacity allocation shown in the schedule page above."}</p>
         </div>
       </Section>
       <Section name="next" title={id ? "Pengembangan berikutnya" : "Future development"}>

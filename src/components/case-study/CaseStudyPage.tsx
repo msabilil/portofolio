@@ -5,9 +5,11 @@ import Image from "next/image";
 import { useMemo, type ReactNode } from "react";
 import { useAppLocale, type Locale } from "@/i18n/LocaleProvider";
 import type { CaseStudy } from "@/content/caseStudies";
+import { fullStackCaseStudyDetails } from "@/content/fullStackCaseStudyDetails";
 import { getCaseStudyPresentation } from "@/content/caseStudyPresentation";
 import { ArtifactImage } from "./ArtifactImage";
 import { ProductionCaseStudy } from "./ProductionCaseStudy";
+import { FullStackCaseStudy } from "./FullStackCaseStudy";
 import { CaseStudyNavigation } from "./CaseStudyNavigation";
 import styles from "./CaseStudyPage.module.css";
 
@@ -26,15 +28,18 @@ export function CaseStudyPage({
   const text = (value: { id: string; en: string }) => value[locale];
   const presentation = getCaseStudyPresentation(study.slug);
   const production = study.slug === "penjadwalan-produksi";
+  const fullStack = study.slug in fullStackCaseStudyDetails;
   const sections = useMemo(
-    () => production ? [
+    () => production || fullStack ? [
       { id: "case-study-in-a-nutshell", label: "In a nutshell" },
       { id: "case-study-problem", label: id ? "Masalah" : "The problem" },
       { id: "case-study-approach", label: id ? "Pendekatan dan arsitektur" : "Approach and architecture" },
-      { id: "case-study-business-analysis", label: id ? "Analisis BPMN" : "BPMN analysis" },
+      { id: "case-study-business-analysis", label: production ? (id ? "Analisis BPMN" : "BPMN analysis") : (id ? "Analisis alur kerja" : "Workflow analysis") },
       { id: "case-study-system-design", label: id ? "Perancangan sistem" : "System design" },
-      { id: "case-study-prototype", label: "UI/UX prototype" },
-      { id: "case-study-interface", label: id ? "Tampilan aplikasi" : "Built interface" },
+      { id: "case-study-prototype", label: id ? "Perancangan UI/UX" : "UI/UX design" },
+      { id: "case-study-interface", label: id ? "Pengembangan" : "Development" },
+      { id: "case-study-frontend", label: "Frontend" },
+      { id: "case-study-backend", label: "Backend" },
       { id: "case-study-next", label: id ? "Pengembangan berikutnya" : "Future development" },
     ] : [
       { id: "case-study-in-a-nutshell", label: "In a nutshell" },
@@ -57,7 +62,7 @@ export function CaseStudyPage({
         label: id ? "Ringkasan Recruiter" : "Recruiter Summary",
       },
     ],
-    [id, production],
+    [id, production, fullStack],
   );
 
   return (
@@ -182,7 +187,7 @@ export function CaseStudyPage({
           </aside>
 
           <div className={styles.readingContent}>
-            {production ? <ProductionCaseStudy study={study} locale={locale} /> : <>
+            {production ? <ProductionCaseStudy study={study} locale={locale} /> : fullStack ? <FullStackCaseStudy study={study} locale={locale} /> : <>
             {
               <section
                 className={styles.nutshell}

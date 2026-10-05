@@ -5,7 +5,7 @@ import { LocaleProvider } from "@/i18n/LocaleProvider";
 import { CaseStudyPage } from "./CaseStudyPage";
 
 describe("CaseStudyPage", () => {
-  test("renders the hybrid case study sections without decorative numbering", () => {
+  test("renders the financial case study in the production case study structure", () => {
     const study = getCaseStudy("financial-management-system");
     render(
       <LocaleProvider>
@@ -27,10 +27,49 @@ describe("CaseStudyPage", () => {
     expect(
       screen.getByRole("heading", { name: /Arsitektur/i }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: /Dampak/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Analisis alur kerja" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Perancangan sistem dan data" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Perancangan UI/UX" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Frontend" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Backend" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Pengembangan berikutnya" })).toBeInTheDocument();
     expect(screen.getByText("Repository · Private")).toBeInTheDocument();
+  });
+
+  test.each([
+    "financial-management-system",
+    "edutive-learning-management-system",
+    "tiveflow-operations-platform",
+    "entertainment-operations-platform",
+  ])("uses the shared frontend/backend structure for %s", (slug) => {
+    const study = getCaseStudy(slug)!;
+    const { unmount } = render(
+      <LocaleProvider>
+        <CaseStudyPage study={study} locale="en" />
+      </LocaleProvider>,
+    );
+
+    const headings = screen.getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent);
+    expect(headings).toEqual([
+      "In a nutshell",
+      "The problem",
+      "Approach and architecture",
+      "Development",
+      "Future development",
+    ]);
+    const approach = screen.getByRole("region", { name: "Approach and architecture" });
+    expect(within(approach).getByRole("heading", { name: "Workflow analysis" })).toBeInTheDocument();
+    expect(within(approach).getByRole("heading", { name: "System and data design" })).toBeInTheDocument();
+    expect(within(approach).getByRole("heading", { name: "UI/UX design" })).toBeInTheDocument();
+    const development = screen.getByRole("region", { name: "Development" });
+    expect(within(development).getByRole("heading", { name: "Frontend" })).toBeInTheDocument();
+    expect(within(development).getByRole("heading", { name: "Backend" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Frontend" })).toHaveAttribute("href", "#case-study-frontend");
+    expect(screen.getByRole("link", { name: "Backend" })).toHaveAttribute("href", "#case-study-backend");
+    if (slug === "tiveflow-operations-platform") {
+      expect(within(development).getByText(/does not claim I built Tiveflow's backend/)).toBeInTheDocument();
+    }
+    unmount();
   });
 
   test("renders the production scheduling in a nutshell narrative", () => {
@@ -75,6 +114,12 @@ describe("CaseStudyPage", () => {
     expect(within(approach).getAllByRole("button", { name: /^Enlarge: DFD Level/ })).toHaveLength(2);
     const stageHeadings = within(approach).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
     expect(stageHeadings.indexOf("Business process analysis with BPMN")).toBeLessThan(stageHeadings.indexOf("System and database design"));
+    const development = screen.getByRole("region", { name: "Development" });
+    expect(within(development).getByRole("heading", { name: "Frontend" })).toBeInTheDocument();
+    expect(within(development).getByRole("heading", { name: "Backend" })).toBeInTheDocument();
+    expect(within(development).getByText(/daily capacity/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Frontend" })).toHaveAttribute("href", "#case-study-frontend");
+    expect(screen.getByRole("link", { name: "Backend" })).toHaveAttribute("href", "#case-study-backend");
     const facts = screen.getByRole("region", { name: "Project facts" });
     expect(facts.querySelector("dl")).not.toBeNull();
     expect(within(facts).queryByRole("heading")).not.toBeInTheDocument();
@@ -86,5 +131,19 @@ describe("CaseStudyPage", () => {
     expect(
       screen.getByRole("link", { name: "In a nutshell" }),
     ).not.toHaveAttribute("aria-current");
+  });
+
+  test("explains both implementation layers in Indonesian", () => {
+    const study = getCaseStudy("penjadwalan-produksi");
+    render(
+      <LocaleProvider>
+        <CaseStudyPage study={study!} locale="id" />
+      </LocaleProvider>,
+    );
+
+    const development = screen.getByRole("region", { name: "Pengembangan" });
+    expect(within(development).getByText(/Halaman PHP dirender di server/)).toBeInTheDocument();
+    expect(within(development).getByText(/Estimasi dan rincian parameter disimpan bersama/)).toBeInTheDocument();
+    expect(within(development).getByText(/tanggal pesanan lebih dulu/)).toBeInTheDocument();
   });
 });

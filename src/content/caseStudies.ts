@@ -268,11 +268,11 @@ export const caseStudies: CaseStudy[] = [
       en: "Bringing student, teacher, class, payment, attendance, and assessment workflows into one role-aware LMS.",
     },
     snapshot: {
-      role: { id: "Engineering contributor", en: "Engineering contributor" },
+      role: { id: "Pengembang full-stack", en: "Full-stack developer" },
       duration: { id: "Belum dicantumkan", en: "Not stated" },
       scope: {
-        id: "LMS, role-based access, enrollment, teaching, payment, report card",
-        en: "LMS, role-based access, enrollment, teaching, payments, report cards",
+        id: "Frontend, backend, CI/CD, Docker",
+        en: "Frontend, backend, CI/CD, Docker",
       },
       stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Redis", "Zod"],
       type: { id: "Project — organisasi dianonimkan", en: "Project — organization anonymized" },
@@ -364,9 +364,9 @@ export const caseStudies: CaseStudy[] = [
       en: "Connecting POS, inventory, branches, finance, budgeting, and online orders in one operations platform.",
     },
     snapshot: {
-      role: { id: "Engineering contributor", en: "Engineering contributor" },
+      role: { id: "Pengembang frontend & penguji", en: "Frontend developer & tester" },
       duration: { id: "Belum dicantumkan", en: "Not stated" },
-      scope: { id: "POS, inventory, finance, branch, analytics, QA", en: "POS, inventory, finance, branches, analytics, QA" },
+      scope: { id: "Frontend SDM & Portal Karyawan; pengujian lintas fitur", en: "HR & Employee Portal frontend; cross-feature testing" },
       stack: ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Redis", "React Query"],
       type: { id: "Platform operasional — data tenant dianonimkan", en: "Operations platform — tenant data anonymized" },
     },
@@ -457,9 +457,9 @@ export const caseStudies: CaseStudy[] = [
       en: "Digitizing the entertainment business cycle from opportunities and events to production, talent, documents, and finance.",
     },
     snapshot: {
-      role: { id: "Engineering contributor", en: "Engineering contributor" },
+      role: { id: "Pengembang full-stack", en: "Full-stack developer" },
       duration: { id: "Belum dicantumkan", en: "Not stated" },
-      scope: { id: "CRM, event, production, finance, talent, document workflow", en: "CRM, events, production, finance, talent, document workflows" },
+      scope: { id: "Frontend, backend, CI/CD, Docker", en: "Frontend, backend, CI/CD, Docker" },
       stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Redis", "Raw SQL", "Zod"],
       type: { id: "Platform bisnis — brand dan data dianonimkan", en: "Business platform — brands and data anonymized" },
     },
@@ -616,29 +616,30 @@ export const caseStudies: CaseStudy[] = [
       "en": "Production Scheduling System"
     },
     "pitch": {
-      "id": "Dari Excel dan kertas ke prioritas produksi berbasis estimasi waktu dan Shortest Processing Time.",
-      "en": "From Excel and paper to production priorities based on time estimates and Shortest Processing Time."
+      "id": "Dari Excel dan kertas ke estimasi per proses dan jadwal produksi berbasis kapasitas harian.",
+      "en": "From Excel and paper to process-level estimates and daily-capacity production scheduling."
     },
     "inANutshell": {
-      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSistem berbasis PHP menghitung estimasi durasi setiap pesanan dari waktu proses produksi yang terlibat. Estimasi ini menjadi dasar pengurutan pekerjaan dengan Shortest Processing Time (SPT), sehingga supervisor dapat menyusun prioritas dan melihat perkiraan tanggal selesai melalui timeline produksi.",
-      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nThe PHP system estimates each order’s duration from its production processes and calculates the expected completion date for each order. Shortest Processing Time (SPT) uses these estimates to order jobs, giving supervisors a structured production timeline for setting priorities."
+      "id": "PT Thursina Mediana Utama merupakan perusahaan penerbitan dan percetakan yang mengelola jadwal produksi secara manual menggunakan Excel dan kertas. Ketika beberapa pesanan menumpuk, supervisor kesulitan menentukan pekerjaan yang harus diprioritaskan karena belum ada aturan yang jelas.\n\nSaya membangun aplikasi web PHP dan MySQL dari frontend hingga backend. Sistem menghitung estimasi durasi per proses, lalu menyusun pesanan berdasarkan tanggal pesanan dan durasi lebih singkat pada tanggal yang sama (SPT). Jumlah cetak dialokasikan menurut kapasitas harian, sehingga supervisor dapat meninjau rencana produksi dan perkiraan tanggal selesai.",
+      "en": "PT Thursina Mediana Utama, a publishing and printing company, managed production schedules manually using Excel and paper. When orders accumulated, supervisors struggled to prioritize jobs without a clear scheduling rule.\n\nI built the PHP and MySQL web application across frontend and backend. It estimates each order’s process times, then sequences orders by order date and shorter duration within the same date (SPT). Print quantities are allocated against daily capacity, giving supervisors a production plan and an expected completion date for each order."
     },
     "snapshot": {
       "role": {
-        "id": "Peneliti & pengembang sistem",
-        "en": "Researcher & system developer"
+        "id": "Peneliti & pengembang full-stack",
+        "en": "Researcher & full-stack developer"
       },
       "duration": {
         "id": "Feb 2025 — Agu 2025",
         "en": "Feb 2025 — Aug 2025"
       },
       "scope": {
-        "id": "Analisis, perancangan, implementasi, pengujian",
-        "en": "Analysis, design, implementation, test"
+        "id": "Analisis, UI/UX, frontend, backend, database, pengujian",
+        "en": "Analysis, UI/UX, frontend, backend, database, testing"
       },
       "stack": [
         "PHP",
         "MySQL",
+        "JavaScript",
         "Tailwind CSS",
         "Balsamiq",
         "Draw.io"
@@ -682,8 +683,8 @@ export const caseStudies: CaseStudy[] = [
           "en": "Sequence jobs without a consistent duration rule."
         },
         "reason": {
-          "id": "Shortest Processing Time memprioritaskan pekerjaan dengan estimasi durasi lebih pendek. Supervisor memiliki dasar yang konsisten untuk membandingkan pesanan.",
-          "en": "Shortest Processing Time prioritizes jobs with shorter estimated durations, giving supervisors a consistent basis for comparing orders."
+          "id": "Kode jadwal mengurutkan tanggal pesanan terlebih dahulu, lalu estimasi durasi lebih pendek pada tanggal yang sama. Supervisor memiliki dasar yang konsisten untuk membandingkan pesanan yang masuk bersamaan.",
+          "en": "The schedule sorts by order date first, then shorter estimated duration within the same date, giving supervisors a consistent way to compare orders received together."
         }
       }
     ],
@@ -707,8 +708,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     "deepDive": [],
     "impact": {
-      "id": "Sistem menghubungkan pesanan, estimasi durasi, prioritas SPT, dan jadwal produksi dalam satu alur kerja.",
-      "en": "The system connects orders, duration estimates, SPT priorities, and production schedules in one workflow."
+      "id": "Sistem menghubungkan pesanan, estimasi durasi, urutan kerja, dan alokasi kapasitas harian dalam satu alur.",
+      "en": "The system connects orders, duration estimates, job sequencing, and daily-capacity allocation in one workflow."
     },
     "reflection": {
       "id": "Pengembangan berikutnya akan berfokus pada penjelasan perhitungan estimasi, penjadwalan ulang ketika terjadi gangguan, dan pemantauan produksi secara langsung.",
@@ -725,13 +726,13 @@ export const caseStudies: CaseStudy[] = [
           "en": "The system connects orders and print files to estimates, process durations, and production schedules. Design and machine data support the calculations. The context diagram and DFD map workflows for four roles: administrator, sales staff, publishing manager, and production supervisor."
         },
         {
-          "id": "Shortest Processing Time memprioritaskan pekerjaan dengan estimasi durasi lebih pendek. Supervisor memiliki dasar yang konsisten untuk membandingkan pesanan.",
-          "en": "Shortest Processing Time prioritizes jobs with shorter estimated durations, giving supervisors a consistent basis for comparing orders."
+          "id": "Jadwal mengurutkan tanggal pesanan terlebih dahulu, lalu durasi estimasi yang lebih pendek pada tanggal yang sama, sebelum mengalokasikan jumlah cetak ke kapasitas harian.",
+          "en": "The schedule sorts by order date first, then shorter estimated duration within the same date, before allocating print quantities against daily capacity."
         }
       ],
       "impact": {
-        "id": "Sistem menghubungkan pesanan, estimasi durasi, prioritas SPT, dan jadwal produksi dalam satu alur kerja.",
-        "en": "The system connects orders, duration estimates, SPT priorities, and production schedules in one workflow."
+        "id": "Sistem menghubungkan pesanan, estimasi durasi, urutan kerja, dan alokasi kapasitas harian dalam satu alur.",
+        "en": "The system connects orders, duration estimates, job sequencing, and daily-capacity allocation in one workflow."
       }
     }
   },
