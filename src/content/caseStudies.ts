@@ -625,8 +625,8 @@ export const caseStudies: CaseStudy[] = [
     },
     "snapshot": {
       "role": {
-        "id": "Peneliti & pengembang full-stack",
-        "en": "Researcher & full-stack developer"
+        "id": "Pengembang sistem full-stack",
+        "en": "Full-stack system developer"
       },
       "duration": {
         "id": "Feb 2025 — Agu 2025",

@@ -115,14 +115,15 @@ describe("CaseStudyPage", () => {
     const stageHeadings = within(approach).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
     expect(stageHeadings.indexOf("Business process analysis with BPMN")).toBeLessThan(stageHeadings.indexOf("System and database design"));
     const development = screen.getByRole("region", { name: "Development" });
-    expect(within(development).getByRole("heading", { name: "Frontend" })).toBeInTheDocument();
-    expect(within(development).getByRole("heading", { name: "Backend" })).toBeInTheDocument();
-    expect(within(development).getByText(/daily capacity/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Frontend" })).toHaveAttribute("href", "#case-study-frontend");
-    expect(screen.getByRole("link", { name: "Backend" })).toHaveAttribute("href", "#case-study-backend");
+    expect(within(development).getByText(/pages for four roles/)).toBeInTheDocument();
+    expect(within(development).queryByRole("heading", { name: "Frontend" })).not.toBeInTheDocument();
+    expect(within(development).queryByRole("heading", { name: "Backend" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Frontend" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Backend" })).not.toBeInTheDocument();
     const facts = screen.getByRole("region", { name: "Project facts" });
     expect(facts.querySelector("dl")).not.toBeNull();
     expect(within(facts).queryByRole("heading")).not.toBeInTheDocument();
+    expect(within(facts).getByText("Full-stack system developer")).toBeInTheDocument();
     const resultLink = screen.getByRole("link", {
       name: "System design",
     });
@@ -133,7 +134,7 @@ describe("CaseStudyPage", () => {
     ).not.toHaveAttribute("aria-current");
   });
 
-  test("explains both implementation layers in Indonesian", () => {
+  test("shows a concise development paragraph in Indonesian", () => {
     const study = getCaseStudy("penjadwalan-produksi");
     render(
       <LocaleProvider>
@@ -142,8 +143,8 @@ describe("CaseStudyPage", () => {
     );
 
     const development = screen.getByRole("region", { name: "Pengembangan" });
-    expect(within(development).getByText(/Halaman PHP dirender di server/)).toBeInTheDocument();
-    expect(within(development).getByText(/Estimasi dan rincian parameter disimpan bersama/)).toBeInTheDocument();
-    expect(within(development).getByText(/tanggal pesanan lebih dulu/)).toBeInTheDocument();
+    expect(within(development).getByText(/halaman untuk empat peran/)).toBeInTheDocument();
+    expect(within(development).queryByText(/logika PHP dan MySQL/)).not.toBeInTheDocument();
+    expect(screen.getByText("Pengembang sistem full-stack")).toBeInTheDocument();
   });
 });

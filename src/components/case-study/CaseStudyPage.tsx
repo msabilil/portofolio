@@ -38,8 +38,10 @@ export function CaseStudyPage({
       { id: "case-study-system-design", label: id ? "Perancangan sistem" : "System design" },
       { id: "case-study-prototype", label: id ? "Perancangan UI/UX" : "UI/UX design" },
       { id: "case-study-interface", label: id ? "Pengembangan" : "Development" },
-      { id: "case-study-frontend", label: "Frontend" },
-      { id: "case-study-backend", label: "Backend" },
+      ...(!production ? [
+        { id: "case-study-frontend", label: "Frontend" },
+        { id: "case-study-backend", label: "Backend" },
+      ] : []),
       { id: "case-study-next", label: id ? "Pengembangan berikutnya" : "Future development" },
     ] : [
       { id: "case-study-in-a-nutshell", label: "In a nutshell" },
