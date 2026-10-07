@@ -58,3 +58,4 @@ next-env.d.ts
 .superdesign
 .claude/skills/superdesign
 .env.local
+PRODUCT.md
