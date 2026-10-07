@@ -15,12 +15,12 @@ const copy = (id: string, en: string): LocalizedText => ({ id, en });
 export const fullStackCaseStudyDetails: Record<string, Detail> = {
   "financial-management-system": {
     nutshell: copy(
-      "Tim finance membutuhkan alur yang lebih terstruktur daripada spreadsheet untuk transaksi proyek, PPN, jurnal, dan laporan. Saya mengembangkan aplikasi Next.js dari antarmuka hingga API dan penyimpanan Firebase agar data transaksi dapat dipakai kembali di seluruh proses tersebut.",
-      "The finance team needed a more structured flow than spreadsheets for project transactions, VAT, journals, and reports. I built the Next.js application from interface to API and Firebase storage so transaction data could support those connected processes.",
+      "PT Indera Sae Pratama mengelola transaksi dan laporan keuangan proyek melalui alur berbasis Excel. Tim finance perlu mencatat transaksi, menghitung PPN, menyusun jurnal debit-kredit, serta menelusuri pengadaan dan pembayaran menurut proyek; alur ini membutuhkan struktur input dan rekap yang konsisten.\n\nSaya membangun aplikasi web Next.js dan Firebase dari frontend hingga API serta penyimpanan data. Kode proyek menghubungkan transaksi, Purchase Order, RCA, pembayaran, dan invoice, sementara akun dan subakun mengelompokkan pencatatan debit-kredit. Data transaksi dirangkum dalam buku besar, neraca lajur, neraca, dan laba-rugi.",
+      "PT Indera Sae Pratama managed project transactions and financial reports through an Excel-based workflow. The finance team needed to record transactions, calculate VAT, prepare debit-credit entries, and track procurement and payments by project; this workflow needed consistent input and reporting structures.\n\nI built the Next.js and Firebase web application across its frontend, API, and data layer. Project codes connect transactions, purchase orders, RCA, payments, and invoices, while accounts and subaccounts organize debit-credit records. Transaction data is summarized in the general ledger, trial balance, balance sheet, and income statement.",
     ),
     analysis: copy(
-      "Alur kerja dimulai dari master proyek dan akun, berlanjut ke transaksi serta item pengadaan, lalu ke jurnal debit-kredit dan laporan. Purchase Order, RCA, pembayaran, dan invoice memiliki data serta status yang saling terkait.",
-      "The workflow starts with project and account master data, moves through transactions and procurement items, then feeds debit-credit journals and reports. Purchase orders, RCA, payments, and invoices have related data and statuses.",
+      "Master proyek, akun, subakun, dan inventory menjadi referensi untuk transaksi. Kode proyek menghubungkan pencatatan transaksi dengan Purchase Order, RCA, pembayaran, dan invoice; modul laporan merangkum data debit-kredit menurut akun, proyek, atau periode sesuai kebutuhannya.",
+      "Project, account, subaccount, and inventory records provide references for transactions. Project codes connect transaction records with purchase orders, RCA, payments, and invoices; reporting modules summarize debit-credit data by account, project, or period where relevant.",
     ),
     system: copy(
       "Aplikasi Next.js menyatukan halaman web dan route handler API dalam satu repo. Firestore menyimpan proyek, akun, transaksi, dan dokumen terkait; Firebase Authentication menangani login dan Firebase Storage menyimpan lampiran bukti transaksi.",
@@ -35,12 +35,12 @@ export const fullStackCaseStudyDetails: Record<string, Detail> = {
       "I built the system across its interface, Next.js API, and Firebase data layer.",
     ),
     frontend: [
-      copy("Halaman operasional dan admin menyediakan master proyek, akun, inventory, transaksi, Purchase Order, RCA, invoice, serta rincian pembayaran.", "Operational and admin pages cover project, account, and inventory master data, transactions, purchase orders, RCA, invoices, and payment details."),
-      copy("Form dan tabel membantu pengguna mencatat transaksi, memilih referensi data, mengunggah bukti, dan meninjau buku besar serta laporan keuangan.", "Forms and tables let users enter transactions, select reference data, upload evidence, and review ledgers and financial reports."),
+      copy("Halaman operasional dan admin mencakup master proyek, akun dan subakun, inventory, transaksi, Purchase Order, RCA, invoice, serta detail persetujuan pembayaran.", "Operational and admin pages cover project, account, subaccount, and inventory records, transactions, purchase orders, RCA, invoices, and payment approval details."),
+      copy("Form dan tabel mendukung pemilihan referensi data, pencatatan transaksi dan bukti, serta peninjauan buku besar, neraca lajur, neraca, dan laba-rugi.", "Forms and tables support reference selection, transaction and evidence entry, and review of the general ledger, trial balance, balance sheet, and income statement."),
     ],
     backend: [
-      copy("Route handler mengolah master data, transaksi, upload, dan rekap laporan; transaksi dihubungkan ke proyek serta akun debit-kredit dan perhitungan PPN mengikuti rumus aplikasi.", "Route handlers process master data, transactions, uploads, and report summaries; transactions link to projects and debit-credit accounts, while VAT follows the application formula."),
-      copy("Firestore menyimpan data operasional dan laporan mengambil rekap dari transaksi. Firebase Authentication serta Storage mendukung akses pengguna dan lampiran bukti.", "Firestore stores operational data and reports summarize transactions. Firebase Authentication and Storage support user access and evidence attachments."),
+      copy("Route handler mengolah master data, transaksi, pengadaan, invoice, upload, dan rekap laporan. Pencatatan transaksi menghubungkan kode proyek dengan akun debit-kredit; PPN dihitung menurut rumus di kode aplikasi.", "Route handlers process master data, transactions, procurement, invoices, uploads, and report summaries. Transaction records link project codes with debit-credit accounts; VAT follows the formula in the application code."),
+      copy("Firestore menyimpan data operasional untuk rekap laporan. Firebase Authentication menangani login email dan kata sandi, sementara Firebase Storage menyimpan lampiran bukti transaksi.", "Firestore stores operational data used by report summaries. Firebase Authentication handles email and password sign-in, while Firebase Storage stores transaction evidence attachments."),
     ],
   },
   "edutive-learning-management-system": {

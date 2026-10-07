@@ -52,16 +52,16 @@ export const experience: Experience[] = [
     logo: "/assets/logos/indera-sae-pratama.png",
     description: {
       en: [
-        "Replaced a manual Excel-based accounting workflow with a financial web application (Next.js, TypeScript, React, Firestore), automating VAT calculations, debit-credit journal entries, and master data management for accounts, projects, and inventory.",
-        "Built a complete financial reporting module (general ledger, trial balance, balance sheet, profit and loss statement) directly from live transaction data, working alongside the finance team to align outputs with accounting standards.",
+        "Built an internal financial application with Next.js, TypeScript, and Firebase for project transactions, procurement, payments, invoices, accounts, and inventory.",
+        "Developed the interface, API route handlers, and Firebase data layer, including VAT calculations, debit-credit records, and general ledger, trial balance, balance sheet, and income statement views.",
         "Produced interface mockups in Figma prior to implementation, ensuring the transaction input flow was intuitive for a non-technical finance team, then built it directly into code.",
-        "Implemented role-based permissions in Firestore to restrict finance module access to authorized users, and performed debugging and stress-testing against real-time transactions to preserve data accuracy ahead of period closing.",
+        "Added admin controls for transaction entry access and Firebase Storage uploads for supporting documents; tested transaction and reporting workflows.",
       ],
       id: [
-        "Menggantikan alur kerja akuntansi manual berbasis Excel dengan aplikasi web keuangan (Next.js, TypeScript, React, Firestore), mengotomasi perhitungan PPN, jurnal debit-kredit, dan pengelolaan master data akun, proyek, dan inventaris.",
-        "Membangun modul laporan keuangan lengkap (general ledger, trial balance, neraca, laporan laba rugi) langsung dari data transaksi live, bekerja sama dengan tim finance untuk menyelaraskan output dengan standar akuntansi.",
+        "Membangun aplikasi keuangan internal dengan Next.js, TypeScript, dan Firebase untuk transaksi proyek, pengadaan, pembayaran, invoice, akun, dan inventory.",
+        "Mengembangkan antarmuka, API route handler, dan penyimpanan Firebase, termasuk perhitungan PPN, pencatatan debit-kredit, serta tampilan buku besar, neraca lajur, neraca, dan laba-rugi.",
         "Membuat mockup antarmuka di Figma sebelum implementasi, memastikan alur input transaksi intuitif untuk tim finance non-teknis, lalu membangunnya langsung ke kode.",
-        "Menerapkan role-based permission di Firestore untuk membatasi akses modul finance ke pengguna yang berwenang, serta melakukan debugging dan stress-testing terhadap transaksi real-time demi menjaga akurasi data menjelang tutup periode.",
+        "Menambahkan kontrol admin untuk akses pencatatan transaksi dan unggah bukti melalui Firebase Storage; menguji alur transaksi serta laporan.",
       ],
     },
     skills: ["Next.js", "React", "TypeScript", "NoSQL (Firestore)", "Figma"],

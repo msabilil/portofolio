@@ -16,6 +16,11 @@ describe("CaseStudyPage", () => {
     expect(
       screen.getByRole("heading", { name: study!.title.id, level: 1 }),
     ).toBeInTheDocument();
+    const nutshell = screen.getByRole("region", { name: "In a nutshell" });
+    const paragraphs = nutshell.querySelectorAll("p");
+    expect(paragraphs).toHaveLength(2);
+    expect(paragraphs[0]).toHaveTextContent("PT Indera Sae Pratama");
+    expect(paragraphs[1]).toHaveTextContent("Saya membangun aplikasi web Next.js dan Firebase");
     expect(screen.queryByText("PROJECT CASE STUDY")).not.toBeInTheDocument();
     expect(screen.queryByText("01")).not.toBeInTheDocument();
     expect(

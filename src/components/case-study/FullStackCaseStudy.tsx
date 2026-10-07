@@ -14,7 +14,9 @@ export function FullStackCaseStudy({ study, locale }: { study: CaseStudy; locale
     <>
       <section className={styles.nutshell} aria-labelledby="case-study-in-a-nutshell">
         <h2 id="case-study-in-a-nutshell">In a nutshell</h2>
-        <div className={styles.nutshellBody}><p>{text(detail.nutshell)}</p></div>
+        <div className={styles.nutshellBody}>
+          {text(detail.nutshell).split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
       </section>
 
       <Section name="problem" title={id ? "Masalah" : "The problem"}>

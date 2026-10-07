@@ -43,8 +43,8 @@ export const projects: Project[] = [
     slug: "financial-management-system",
     title: "Financial Management System",
     description: {
-      en: "A structured web system for digitizing transaction input, VAT calculations, journals, master data, and financial reporting.",
-      id: "Sistem web terstruktur untuk mendigitalisasi input transaksi, perhitungan PPN, jurnal, master data, dan laporan keuangan.",
+      en: "An internal financial system connecting project transactions, procurement, payments, invoices, and accounting reports.",
+      id: "Sistem keuangan internal yang menghubungkan transaksi proyek, pengadaan, pembayaran, invoice, dan laporan akuntansi.",
     },
     categories: ["ui-ux", "frontend", "backend"],
     tags: ["Next.js", "TypeScript", "Firestore", "Figma"],

@@ -75,8 +75,8 @@ export const caseStudies: CaseStudy[] = [
       en: "Financial Management System",
     },
     pitch: {
-      id: "Mendigitalkan alur akuntansi manual menjadi sistem keuangan yang lebih terstruktur.",
-      en: "Digitizing a manual accounting workflow into a more structured financial system.",
+      id: "Menghubungkan transaksi proyek, pengadaan, pembayaran, dan pelaporan dalam satu aplikasi keuangan.",
+      en: "Connecting project transactions, procurement, payments, and reporting in one financial application.",
     },
     snapshot: {
       role: {
@@ -88,13 +88,13 @@ export const caseStudies: CaseStudy[] = [
         en: "Jul 2024 — Dec 2024",
       },
       scope: {
-        id: "UI/UX, frontend, financial workflow, permissions, testing",
-        en: "UI/UX, frontend, financial workflow, permissions, testing",
+        id: "UI/UX, frontend, API, Firebase, dan pengujian",
+        en: "UI/UX, frontend, API, Firebase, and testing",
       },
-      stack: ["Next.js", "React", "TypeScript", "Firestore", "Figma"],
+      stack: ["Next.js", "React", "TypeScript", "Firebase", "Figma"],
       type: {
-        id: "Project internship — data bisnis dianonimkan",
-        en: "Internship project — business data anonymized",
+        id: "Aplikasi internal saat magang — data bisnis dianonimkan",
+        en: "Internal application built during an internship — business data anonymized",
       },
     },
     problem: {
@@ -102,8 +102,8 @@ export const caseStudies: CaseStudy[] = [
       en: "The finance team relied on an Excel-based workflow to record transactions, calculate VAT, prepare debit-credit journal entries, and produce reports. The workflow needed more consistent input structure and safer controls to protect data accuracy before period closing.",
     },
     informationArchitecture: {
-      id: "Alur utama disusun dari input transaksi ke pencatatan jurnal, lalu ke laporan. Master data akun, proyek, dan inventaris menjadi fondasi bersama agar setiap transaksi tidak perlu mengulang data referensi.",
-      en: "The main flow moves from transaction input to journal entries and then to financial reports. Account, project, and inventory master data act as shared foundations so each transaction does not repeat reference data.",
+      id: "Kode proyek menjadi penghubung transaksi, Purchase Order, RCA, pembayaran, dan invoice. Master akun dan subakun mengelompokkan pencatatan debit-kredit untuk buku besar, neraca lajur, neraca, dan laba-rugi.",
+      en: "Project codes connect transactions, purchase orders, RCA, payments, and invoices. Account and subaccount master data group debit-credit entries for the general ledger, trial balance, balance sheet, and income statement.",
     },
     uxWriting: [
       {
@@ -142,8 +142,8 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         decision: {
-          id: "Saya membangun laporan langsung dari data transaksi live.",
-          en: "I built reports directly from live transaction data.",
+          id: "Saya membangun rekap laporan dari data transaksi di Firestore.",
+          en: "I built report summaries from transaction data in Firestore.",
         },
         alternative: {
           id: "Mengandalkan rekap manual terpisah.",
@@ -163,8 +163,8 @@ export const caseStudies: CaseStudy[] = [
           en: "Manual workflow digitized",
         },
         impact: {
-          id: "Excel, perhitungan PPN, jurnal debit-kredit, master data, dan laporan dipindahkan ke satu aplikasi web.",
-          en: "Excel, VAT calculations, debit-credit journals, master data, and reports were moved into one web application.",
+          id: "Aplikasi menyediakan input transaksi, perhitungan PPN sesuai rumus kode, jurnal debit-kredit, master data, dan laporan dalam satu sistem.",
+          en: "The application provides transaction entry, VAT calculations based on its code, debit-credit journals, master data, and reports in one system.",
         },
         status: "proxy",
         method: {
@@ -179,8 +179,8 @@ export const caseStudies: CaseStudy[] = [
           en: "Input error prevention",
         },
         impact: {
-          id: "Validasi form, permission berbasis role, dan stress-testing membantu menjaga konsistensi transaksi.",
-          en: "Form validation, role-based permissions, and stress testing help protect transaction consistency.",
+          id: "Form terstruktur, referensi master data, dan pengaturan akses pencatatan membantu pengguna mengikuti alur input yang konsisten.",
+          en: "Structured forms, master-data references, and transaction access settings help users follow a consistent entry flow.",
         },
         status: "qualitative",
         method: {
@@ -228,8 +228,8 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     impact: {
-      id: "Project ini mengubah workflow akuntansi yang bergantung pada Excel menjadi sistem web terstruktur tanpa mengklaim angka operasional yang belum tersedia.",
-      en: "The project changed an Excel-dependent accounting workflow into a structured web system without claiming unavailable operational metrics.",
+      id: "Aplikasi ini menyediakan alur digital untuk pekerjaan akuntansi yang sebelumnya bergantung pada Excel. Status pemakaian dan dampak operasionalnya belum dikonfirmasi.",
+      en: "The application provides a digital workflow for accounting work that previously relied on Excel. Its usage status and operational impact have not been confirmed.",
     },
     reflection: {
       id: "Jika dikerjakan kembali, saya akan menyiapkan baseline waktu proses dan error rate sejak awal agar dampak digitalisasi dapat diukur lebih kuat.",
@@ -237,8 +237,8 @@ export const caseStudies: CaseStudy[] = [
     },
     recruiterSummary: {
       problem: {
-        id: "Menggantikan workflow accounting berbasis Excel yang membutuhkan perhitungan dan rekap manual.",
-        en: "Replaced an Excel-based accounting workflow that required manual calculations and recaps.",
+        id: "Membangun aplikasi untuk alur akuntansi berbasis Excel yang membutuhkan perhitungan dan rekap manual.",
+        en: "Built an application for an Excel-based accounting workflow that required manual calculations and recaps.",
       },
       architecture: [
         {
@@ -246,13 +246,13 @@ export const caseStudies: CaseStudy[] = [
           en: "Created Figma mockups before implementation so the input flow matched non-technical finance needs.",
         },
         {
-          id: "Menghubungkan transaksi live dengan jurnal dan financial reporting.",
-          en: "Connected live transactions to journals and financial reporting.",
+          id: "Membangun frontend, API, dan penyimpanan Firebase untuk transaksi, pengadaan, pembayaran, invoice, serta laporan.",
+          en: "Built the frontend, API, and Firebase data layer for transactions, procurement, payments, invoices, and reports.",
         },
       ],
       impact: {
-        id: "Digitized transaction, VAT, master-data, reporting, permissions, and testing workflows. Impact status: proxy and qualitative.",
-        en: "Digitized transaction, VAT, master-data, reporting, permissions, and testing workflows. Impact status: proxy and qualitative.",
+        id: "Fitur transaksi, PPN, master data, dan laporan telah dibangun. Dampak operasional belum terukur.",
+        en: "Transaction, VAT, master-data, and reporting features were built. Operational impact has not been measured.",
       },
     },
   },
