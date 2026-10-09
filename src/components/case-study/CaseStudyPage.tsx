@@ -28,6 +28,7 @@ export function CaseStudyPage({
   const text = (value: { id: string; en: string }) => value[locale];
   const presentation = getCaseStudyPresentation(study.slug);
   const production = study.slug === "penjadwalan-produksi";
+  const financial = study.slug === "financial-management-system";
   const fullStack = study.slug in fullStackCaseStudyDetails;
   const sections = useMemo(
     () => production || fullStack ? [
@@ -144,15 +145,21 @@ export function CaseStudyPage({
           </section>
         </section>
 
-        {production ? (
+        {production || financial ? (
           <div className={styles.heroScreenshot}>
             <ArtifactImage
-              src="/assets/projects/penjadwalan-produksi/screen-gantt.png"
-              alt={id ? "Gantt chart estimasi produksi pada aplikasi TMU" : "Production estimation Gantt chart in the TMU application"}
-              caption={id ? "Halaman Gantt Chart Estimasi" : "Estimation Gantt Chart Page"}
+              src={production
+                ? "/assets/projects/penjadwalan-produksi/screen-gantt.png"
+                : "/assets/projects/financial-management-system/income-statement-redacted.png"}
+              alt={production
+                ? id ? "Gantt chart estimasi produksi pada aplikasi TMU" : "Production estimation Gantt chart in the TMU application"
+                : id ? "Tampilan Income Statement proyek dengan kode akun dan nilai disamarkan" : "Project income statement screen with account codes and values redacted"}
+              caption={production
+                ? id ? "Halaman Gantt Chart Estimasi" : "Estimation Gantt Chart Page"
+                : id ? "Income Statement proyek · ilustrasi berbasis tangkapan layar, data disamarkan dengan AI" : "Project income statement · screenshot-based illustration with AI-redacted data"}
               locale={locale}
-              width={1838}
-              height={948}
+              width={production ? 1838 : 1742}
+              height={production ? 948 : 903}
               originalResolution
             />
           </div>

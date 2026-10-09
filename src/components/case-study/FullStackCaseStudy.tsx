@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { CaseStudy } from "@/content/caseStudies";
 import { fullStackCaseStudyDetails } from "@/content/fullStackCaseStudyDetails";
 import { getCaseStudyPresentation } from "@/content/caseStudyPresentation";
+import { ArtifactImage } from "./ArtifactImage";
 import styles from "./CaseStudyPage.module.css";
 
 export function FullStackCaseStudy({ study, locale }: { study: CaseStudy; locale: "id" | "en" }) {
@@ -46,6 +47,28 @@ export function FullStackCaseStudy({ study, locale }: { study: CaseStudy; locale
         <div className={styles.subsection}>
           <h3 id="case-study-prototype" className={styles.stageHeading}>{id ? "Perancangan UI/UX" : "UI/UX design"}</h3>
           <p>{text(detail.ux)}</p>
+          {study.slug === "financial-management-system" && (
+            <div className={styles.artifactGallery}>
+              <ArtifactImage
+                src="/assets/projects/financial-management-system/figma-users-redacted.png"
+                alt={id ? "Mockup Figma halaman pengguna dengan ID dan nama disamarkan" : "Figma user page mockup with IDs and names redacted"}
+                caption={id ? "Mockup Figma halaman pengguna · data disamarkan dengan AI" : "Figma user page mockup · AI-redacted data"}
+                locale={locale}
+                width={1484}
+                height={1060}
+                originalResolution
+              />
+              <ArtifactImage
+                src="/assets/projects/financial-management-system/figma-payment-approval-redacted.png"
+                alt={id ? "Mockup Figma ACC Payments dengan data bisnis disamarkan" : "Figma ACC Payments mockup with business data redacted"}
+                caption={id ? "Mockup Figma ACC Payments · data disamarkan dengan AI" : "Figma ACC Payments mockup · AI-redacted data"}
+                locale={locale}
+                width={1484}
+                height={1060}
+                originalResolution
+              />
+            </div>
+          )}
         </div>
       </Section>
 
@@ -56,6 +79,28 @@ export function FullStackCaseStudy({ study, locale }: { study: CaseStudy; locale
           <ul className={styles.implementationList}>
             {detail.frontend.map((item) => <li key={item.en}>{text(item)}</li>)}
           </ul>
+          {study.slug === "financial-management-system" && (
+            <div className={styles.artifactGallery}>
+              <ArtifactImage
+                src="/assets/projects/financial-management-system/general-ledger-redacted.png"
+                alt={id ? "Tampilan buku besar proyek dengan data transaksi disamarkan" : "Project general ledger screen with transaction data redacted"}
+                caption={id ? "Buku besar proyek · ilustrasi berbasis tangkapan layar, data disamarkan dengan AI" : "Project general ledger · screenshot-based illustration with AI-redacted data"}
+                locale={locale}
+                width={1751}
+                height={898}
+                originalResolution
+              />
+              <ArtifactImage
+                src="/assets/projects/financial-management-system/payment-approval-redacted.png"
+                alt={id ? "Tampilan detail persetujuan pembayaran dengan data bisnis disamarkan" : "Payment approval detail screen with business data redacted"}
+                caption={id ? "Detail persetujuan pembayaran · ilustrasi berbasis tangkapan layar, data disamarkan dengan AI" : "Payment approval details · screenshot-based illustration with AI-redacted data"}
+                locale={locale}
+                width={1744}
+                height={901}
+                originalResolution
+              />
+            </div>
+          )}
         </div>
         <div className={styles.subsection}>
           <h3 id="case-study-backend" className={styles.stageHeading}>Backend</h3>

@@ -27,8 +27,8 @@ export const fullStackCaseStudyDetails: Record<string, Detail> = {
       "The Next.js application keeps web pages and API route handlers in one repository. Firestore stores projects, accounts, transactions, and related documents; Firebase Authentication handles sign-in and Firebase Storage keeps transaction attachments.",
     ),
     ux: copy(
-      "Saya menyiapkan mockup Figma sebelum implementasi agar alur input dapat ditinjau oleh tim finance. Form transaksi mengelompokkan proyek, akun, nilai, tanggal, dan bukti; laporan disusun menurut akun, proyek, vendor, atau periode sesuai modulnya.",
-      "I prepared Figma mockups before implementation so the finance team could review the input flow. Transaction forms group project, account, amount, date, and evidence; reports are organized by account, project, vendor, or period where relevant.",
+      "Saya menyiapkan mockup Figma sebelum implementasi agar susunan informasi dapat ditinjau. Contohnya mencakup tabel pengguna dengan pencarian dan status, serta detail persetujuan pembayaran yang memisahkan informasi vendor, pemesan, item Purchase Order, dan ringkasan PPN. Data pada gambar berikut disamarkan.",
+      "I prepared Figma mockups before implementation to review how information was organized. Examples include a searchable user table with status indicators and a payment approval detail that separates vendor, requisitioner, purchase order items, and VAT summary. Data in the following images has been redacted.",
     ),
     contribution: copy(
       "Saya mengembangkan sistem ini secara menyeluruh, termasuk antarmuka, API di aplikasi Next.js, dan penyimpanan Firebase.",

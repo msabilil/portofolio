@@ -200,7 +200,8 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         label: { id: "Figma", en: "Figma" },
-        status: "private",
+        href: "https://www.figma.com/design/994X4wMI22Uu8mCJngWMQv/Sistem-Keuangan-ISP?node-id=0-1&p=f&t=TtqyMdCKj4ojtlhg-0",
+        status: "available",
       },
     ],
     deepDive: [

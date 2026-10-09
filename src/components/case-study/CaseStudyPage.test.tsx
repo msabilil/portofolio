@@ -21,6 +21,12 @@ describe("CaseStudyPage", () => {
     expect(paragraphs).toHaveLength(2);
     expect(paragraphs[0]).toHaveTextContent("PT Indera Sae Pratama");
     expect(paragraphs[1]).toHaveTextContent("Saya membangun aplikasi web Next.js dan Firebase");
+    expect(screen.getByRole("button", { name: /Perbesar: Tampilan Income Statement proyek/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Perbesar: Mockup Figma halaman pengguna/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Perbesar: Mockup Figma ACC Payments/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Perbesar: Tampilan buku besar proyek/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Perbesar: Tampilan detail persetujuan pembayaran/ })).toBeInTheDocument();
+    expect(screen.getAllByText(/data disamarkan dengan AI/, { selector: "figcaption" })).toHaveLength(5);
     expect(screen.queryByText("PROJECT CASE STUDY")).not.toBeInTheDocument();
     expect(screen.queryByText("01")).not.toBeInTheDocument();
     expect(
@@ -39,6 +45,10 @@ describe("CaseStudyPage", () => {
     expect(screen.getByRole("heading", { name: "Backend" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Pengembangan berikutnya" })).toBeInTheDocument();
     expect(screen.getByText("Repository · Private")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Figma" })).toHaveAttribute(
+      "href",
+      "https://www.figma.com/design/994X4wMI22Uu8mCJngWMQv/Sistem-Keuangan-ISP?node-id=0-1&p=f&t=TtqyMdCKj4ojtlhg-0",
+    );
   });
 
   test.each([
